@@ -1,0 +1,9 @@
+services:
+  app:
+    image: bft/tester
+    build:
+      context: ../..
+      dockerfile: ./ci/docker/velox.Dockerfile
+      args:
+        PIP_PACKAGES: pyvelox
+    command: /usr/bin/python3 -mpytest bft/tests/test_pyvelox.py

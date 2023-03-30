@@ -1,0 +1,49 @@
+name: velox_presto
+type: sql
+scalar_functions:
+  - name: add
+    local_name: +
+    infix: True
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - i32
+          - i32
+        result: i32
+      - args:
+          - fp32
+          - fp32
+        result: fp32
+  - name: subtract
+    local_name: "-"
+    infix: True
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - i32
+          - i32
+        result: i32
+      - args:
+          - fp32
+          - fp32
+        result: fp32
