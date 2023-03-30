@@ -1,0 +1,28 @@
+services:
+  app:
+    image: bft/tester
+    build:
+      context: ../..
+      dockerfile: ./ci/docker/base-tester.Dockerfile
+      args:
+        PIP_PACKAGES: psycopg[binary]
+    command: /usr/bin/python -mpytest bft/tests/test_postgres.py
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: bft
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: bft
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5

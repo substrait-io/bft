@@ -1,0 +1,33 @@
+name: Test
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  sqlite:
+    name: Run tests with sqlite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Build & run
+        run: docker run --rm $(docker build -q --file ./ci/docker/sqlite.Dockerfile .)
+  postgres:
+    name: Run tests with postgres
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Build
+        run: docker-compose -f ./ci/docker/postgres-compose.yaml build
+
+      - name: Run
+        run: docker-compose -f ./ci/docker/postgres-compose.yaml run app

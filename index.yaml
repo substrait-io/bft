@@ -1,0 +1,10 @@
+substrait:
+  extensions:
+    - location: ./substrait/extensions/functions_arithmetic.yaml
+      canonical: https://github.com/substrait-io/substrait/blob/main/extensions/functions_arithmetic.yaml
+cases:
+  - ./cases
+dialects:
+  - ./dialects
+supplements:
+  - ./supplemental

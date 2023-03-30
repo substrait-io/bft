@@ -1,0 +1,41 @@
+name: postgres
+type: sql
+scalar_functions:
+  - name: add
+    local_name: +
+    infix: True
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - fp32
+          - fp32
+        result: fp32
+      - args:
+          - fp64
+          - fp64
+        result: fp64
+  - name: subtract
+    local_name: "-"
+    infix: True
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - fp32
+          - fp32
+        result: fp32
+      - args:
+          - fp64
+          - fp64
+        result: fp64

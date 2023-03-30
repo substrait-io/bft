@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ name }} - bft</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Reference for the {{ name }} function">
+    <link rel="stylesheet" href="./terminal.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="terminal">
+    <header class="container terminal-nav">
+        <div class="terminal-logo">
+            <div class="logo terminal-prompt">
+                <a href="#">The BFT</a>
+            </div>
+        </div>
+        <nav class="terminal-menu">
+            <ul>
+                <li>
+                    <a href="./index.html" class="menu-item">Function Index</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <article class="container">
+        <h2>{{ name|title}}</h2>
+        <section>
+            <p>
+                Defined in <a href="{{ uri }}">{{ uri_short }}</a>
+            </p>
+            <hr>
+            <p>
+                {{ brief }}
+            </p>
+        </section>
+        <hr>
+        <section id="options">
+            <h3>Options&nbsp;<a href="#options">&para;</a></h3>
+            {% for option in options %}
+                <h4>{{option.name|title}}</h4>
+                {{option.description}}
+                <dl>
+                    {% for value in option.values %}
+                    <dt>{{value.name|upper}}</dt>
+                    <dd>{{value.description}}
+                    </dd>
+                    {% endfor %}
+                </dl>
+            {% endfor %}
+        </section>
+        <hr>
+        <section id="kernels">
+            <h3>Kernels&nbsp;<a href="#kernels">&para;</a></h3>
+            <ul>
+                {% for kernel in kernels %}
+                <li class="bft-kernel"><span>{{ name }}({{ kernel.arg_types|join(', ') }}) -> {{ kernel.return_type }} : [{{ kernel.available_options|join(', ') }}]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                {% endfor %}
+            </ul>
+        </section>
+        <hr>
+        <section id="dialects">
+            <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
+            <select id="dialect">
+                {% for dialect in dialects %}
+                <option>{{ dialect.name }}</option>
+                {% endfor %}
+            </select>
+            {% for dialect in dialects %}
+            <dl class="dialect-definition" id="dialect-{{ dialect.name }}">
+                {% for opt, val in dialect.options | dictsort %}
+                <dt>{{ opt }}</dt>
+                <dd>{{ val }}</dd>
+                {% endfor %}
+            </dl>
+            {% endfor %}
+        </section>
+        <hr>
+        <section id="details">
+            <h3>Details&nbsp;<a href="#details">&para;</a></h3>
+            {% for detail in details %}
+            <h4>{{ detail.title }}</h4>
+            {{ detail.description }}
+            {% endfor %}
+        </section>
+        <hr>
+        <section id="properties">
+            <h3>Properties&nbsp;<a href="#properties">&para;</a></h3>
+            <dl>
+                {% for property in properties | sort(attribute='id') %}
+                <dt>{{ property.id }}</dt>
+                <dd>{{ property.description }}</dd>
+                {% endfor %}
+            </dl>
+        </section>
+        <hr>
+        <section id="examples">
+            <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
+            {% for example_group in example_groups %}
+            <table>
+                <caption>{{ example_group.description }}</caption>
+                <thead>
+                    <tr>
+                        {% for opt in example_group.option_names %}
+                        <th>{{ opt }}</th>
+                        {% endfor %}
+                        {% for arg_type in example_group.arg_types %}
+                        <th>arg{{ loop.index }} ({{ arg_type }})</th>
+                        {% endfor %}
+                        <th>result ({{ example_group.result_type }})</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for case in example_group.cases %}
+                    <tr class="bft-case">
+                        {% for opt in case.options %}
+                        <td>{{ opt }}</td>
+                        {% endfor %}
+                        {% for arg in case.args %}
+                        <td>{{ arg }}</td>
+                        {% endfor %}
+                        {% if case.result.value %}
+                        <td>{{ case.result.value }}</td>
+                        {% else %}
+                        <td>{{ case.result | upper }}</td>
+                        {% endif %}
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    {% endfor -%}
+                </tbody>
+            </table>
+            {% endfor %}
+        </section>
+    </article>
+    <script src="./lib.js"></script>
+    <script>
+      var bftDialects = {
+        {% for dialect in dialects %}
+        '{{dialect.name}}': {
+            examples: [
+                {% for case in dialect.case_info %}
+                {% if case %}
+                  "{{ case }}",
+                {% else %}
+                  null,
+                {% endif %}
+                {% endfor %}
+            ],
+            kernels: [
+                {% for kernel in dialect.kernel_info %}
+                {{ kernel|lower }},
+                {% endfor %}
+            ]
+        },
+        {% endfor %}
+      };
+      window.addEventListener('load', function() {
+        window.bftInitialize(bftDialects);
+      });
+    </script>
+</body>
+</html>

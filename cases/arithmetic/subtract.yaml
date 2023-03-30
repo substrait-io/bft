@@ -1,0 +1,134 @@
+function: subtract
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 120
+        type: i8
+      - value: 5
+        type: i8
+    result:
+      value: 115
+      type: i8
+  - group: basic
+    args:
+      - value: -100
+        type: i16
+      - value: 100
+        type: i16
+    result:
+      value: -200
+      type: i16
+  - group: basic
+    args:
+      - value: -30000
+        type: i32
+      - value: 30000
+        type: i32
+    result:
+      value: -60000
+      type: i32
+  - group: basic
+    args:
+      - value: -2000000000
+        type: i64
+      - value: 2000000000
+        type: i64
+    result:
+      value: -4000000000
+      type: i64
+  - group:
+      id: overflow
+      description: Examples demonstrating overflow behavior
+    args:
+      - value: -120
+        type: i8
+      - value: 10
+        type: i8
+    options:
+      overflow: ERROR
+    result:
+      special: error
+  - group: overflow
+    args:
+      - value: -30000
+        type: i16
+      - value: 30000
+        type: i16
+    options:
+      overflow: ERROR
+    result:
+      special: error
+  - group: overflow
+    args:
+      - value: -2000000000
+        type: i32
+      - value: 2000000000
+        type: i32
+    options:
+      overflow: ERROR
+    result:
+      special: error
+  - group: overflow
+    args:
+      - value: -9223372036854775808
+        type: i64
+      - value: 1
+        type: i64
+    options:
+      overflow: ERROR
+    result:
+      special: error
+  - group: overflow
+    args:
+      - value: -120
+        type: i8
+      - value: 10
+        type: i8
+    options:
+      overflow: SATURATE
+    result:
+      value: -128
+      type: i8
+  - group: overflow
+    args:
+      - value: 120
+        type: i8
+      - value: -10
+        type: i8
+    options:
+      overflow: SATURATE
+    result:
+      value: 127
+      type: i8
+  - group: overflow
+    args:
+      - value: -120
+        type: i8
+      - value: 10
+        type: i8
+    options:
+      overflow: SILENT
+    result:
+      special: undefined
+  - group:
+      id: floating_exception
+      description: Examples demonstrating exceptional floating point cases
+    args:
+      - value: -1.5e+308
+        type: fp64
+      - value: 1.5e+308
+        type: fp64
+    result:
+      value: -inf
+      type: fp64
+  - group: floating_exception
+    args:
+      - value: 1.5e+308
+        type: fp64
+      - value: -1.5e+308
+        type: fp64
+    result:
+      value: inf
+      type: fp64

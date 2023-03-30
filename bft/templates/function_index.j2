@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Function index - bft</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Index of all currently documented functions">
+    <link rel="stylesheet" href="./terminal.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="terminal">
+    <header class="container terminal-nav">
+        <div class="terminal-logo">
+            <div class="logo terminal-prompt">
+                <a href="#">The BFT</a>
+            </div>
+        </div>
+        <nav class="terminal-menu">
+            <ul>
+                <li>
+                    <a href="./index.html" class="menu-item active">Function Index</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <article class="container">
+        <h2>Scalar Functions</h2>
+        <section>
+            <dl>
+                {% for function in functions %}
+                <dt>
+                    {% if function.enabled %}
+                    <a href="./{{function.name|lower}}.html">{{function.name|title}}</a>
+                    {% else %}
+                    <a class="disabled" aria-disabled="true">{{function.name|title}}</a>
+                    {% endif %}
+                </dt>
+                <dd>{{function.brief}}</dd>
+                {% endfor %}
+            </dl>
+        </section>
+    </article>
+</body>
+</html>

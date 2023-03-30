@@ -1,0 +1,41 @@
+.tooltip {
+    position: absolute;
+    z-index: 99;
+    padding: 5px;
+    background: #222;
+    color: #fff;
+    border-radius: 5px;
+}
+
+tbody {
+    position: relative;
+}
+
+.bft-error-case td {
+    background-color: #FFCDD2;
+    background-clip: padding-box;
+}
+
+.bft-case-err-message {
+    font-weight: lighter !important;
+    font-style: italic;
+}
+
+/* We don't use row headers */
+table tbody td:first-child {
+    font-weight: initial;
+}
+
+.bft-unsupported-kernel {
+    text-decoration: line-through;
+}
+
+a.disabled {
+    cursor: initial;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+a.disabled:hover {
+    background: initial;
+}

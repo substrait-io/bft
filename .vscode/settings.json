@@ -1,0 +1,20 @@
+{
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "isort.args": [
+        "--profile",
+        "black"
+    ],
+    "yaml.schemas": {
+        "./tools/schema/casefile.yaml": "cases/**",
+        "https://json.schemastore.org/github-workflow.json": "file:///home/pace/dev/bft/.github/workflows/deploy.yml"
+    },
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+        "bft"
+    ]
+}

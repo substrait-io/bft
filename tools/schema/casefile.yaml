@@ -1,0 +1,74 @@
+$id: https://thebft.info/schemas/casefile.json
+$schema: https://json-schema.org/draft/2020-12/schema
+type: object
+properties:
+  function:
+    type: string
+  cases:
+    type: array
+    items:
+      type: object
+      properties:
+        group:
+          oneOf:
+            - type: object
+              properties:
+                id:
+                  type: string
+                description:
+                  type: string
+              required:
+                - id
+                - description
+              additionalProperties: false
+            - type: string
+        args:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                oneOf:
+                  - type: string
+                  - type: number
+              type:
+                type: string
+            required:
+              - value
+              - type
+            additionalProperties: false
+        options:
+          type: object
+          additionalProperties:
+            type: string
+        result:
+          oneOf:
+            - type: object
+              properties:
+                value:
+                  oneOf:
+                    - type: string
+                    - type: number
+                type:
+                  type: string
+              required:
+                - value
+                - type
+              additionalProperties: false
+            - type: object
+              properties:
+                special:
+                  enum:
+                    - error
+                    - undefined
+              required:
+                - special
+              additionalProperties: false
+      additionalProperties: false
+      required:
+        - group
+        - result
+additionalProperties: false
+required:
+  - function
+  - cases
