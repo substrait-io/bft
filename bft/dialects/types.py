@@ -68,7 +68,8 @@ class Dialect(object):
         for case_opt, case_val in case.options:
             dval = dfunc.required_options.get(case_opt)
             if dval is None:
-                return f"The dialect {self.name} does not describe how it handles the option {case_opt}"
+                # If the dialect does not require an option we assume it supports all values
+                continue
             if dval != case_val:
                 return f"The dialect {self.name} expects {case_opt}={dval} but {case_opt}={case_val} was requested"
         return None

@@ -1,0 +1,13 @@
+name: cudf
+type: sql
+scalar_functions:
+  - name: add
+    local_name: add
+    required_options:
+      overflow: SILENT # cudf rolls over on overflow
+      rounding: TIE_TO_EVEN
+  - name: subtract
+    local_name: subtract
+    required_options:
+      overflow: SILENT # cudf rolls over on overflow
+      rounding: TIE_TO_EVEN
