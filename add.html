@@ -126,15 +126,17 @@ then round to the value closest to zero.</p>
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
+                <option>velox_presto</option>
                 
                 <option>sqlite</option>
                 
-                <option>velox_presto</option>
+                <option>postgres</option>
+                
+                <option>cudf</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                 <dt>overflow</dt>
                 <dd>ERROR</dd>
@@ -154,10 +156,20 @@ then round to the value closest to zero.</p>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                 <dt>overflow</dt>
                 <dd>ERROR</dd>
+                
+                <dt>rounding</dt>
+                <dd>TIE_TO_EVEN</dd>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                <dt>overflow</dt>
+                <dd>SILENT</dd>
                 
                 <dt>rounding</dt>
                 <dd>TIE_TO_EVEN</dd>
@@ -559,11 +571,19 @@ guaranteed to be true for integer addition when overflow is SILENT.</p></dd>
     <script>
       var bftDialects = {
         
-        'postgres': {
+        'velox_presto': {
             examples: [
                 
                 
-                  "The dialect postgres does not support the kernel add(i8, i8) -> i8",
+                  "The dialect velox_presto does not support the kernel add(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel add(i16, i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel add(i32, i32) -> i32",
                 
                 
                 
@@ -579,19 +599,15 @@ guaranteed to be true for integer addition when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect postgres does not support the kernel add(fp64, fp64) -> fp64",
+                  "The dialect velox_presto does not support the kernel add(i8, i8) -> error",
                 
                 
                 
-                  "The dialect postgres does not support the kernel add(fp64, fp64) -> fp64",
+                  "The dialect velox_presto does not support the kernel add(i16, i16) -> error",
                 
                 
                 
-                  "The dialect postgres does not support the kernel add(i8, i8) -> error",
-                
-                
-                
-                  null,
+                  "The dialect velox_presto does not support the kernel add(i32, i32) -> error",
                 
                 
                 
@@ -599,31 +615,27 @@ guaranteed to be true for integer addition when overflow is SILENT.</p></dd>
                 
                 
                 
+                  "The dialect velox_presto does not support the kernel add(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel add(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel add(i8, i8) -> undefined",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel add(fp32, fp32) -> fp32",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel add(fp32, fp32) -> fp32",
+                
+                
+                
                   null,
-                
-                
-                
-                  "The dialect postgres does not support the kernel add(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel add(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel add(i8, i8) -> undefined",
-                
-                
-                
-                  "The dialect postgres does not support the kernel add(fp32, fp32) -> fp32",
-                
-                
-                
-                  "The dialect postgres does not support the kernel add(fp32, fp32) -> fp32",
-                
-                
-                
-                  "The dialect postgres does not support the kernel add(fp64, fp64) -> fp64",
                 
                 
             ],
@@ -631,15 +643,15 @@ guaranteed to be true for integer addition when overflow is SILENT.</p></dd>
                 
                 false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
                 true,
                 
                 false,
                 
-                false,
+                true,
                 
             ]
         },
@@ -729,19 +741,11 @@ guaranteed to be true for integer addition when overflow is SILENT.</p></dd>
             ]
         },
         
-        'velox_presto': {
+        'postgres': {
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel add(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel add(i16, i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel add(i32, i32) -> i32",
+                  "The dialect postgres does not support the kernel add(i8, i8) -> i8",
                 
                 
                 
@@ -757,15 +761,15 @@ guaranteed to be true for integer addition when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel add(i8, i8) -> error",
+                  "The dialect postgres does not support the kernel add(fp64, fp64) -> fp64",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel add(i16, i16) -> error",
+                  "The dialect postgres does not support the kernel add(fp64, fp64) -> fp64",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel add(i32, i32) -> error",
+                  "The dialect postgres does not support the kernel add(i8, i8) -> error",
                 
                 
                 
@@ -773,23 +777,116 @@ guaranteed to be true for integer addition when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel add(i8, i8) -> i8",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel add(i8, i8) -> i8",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel add(i8, i8) -> undefined",
+                  "The dialect postgres does not support the kernel add(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel add(fp32, fp32) -> fp32",
+                  "The dialect postgres does not support the kernel add(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel add(fp32, fp32) -> fp32",
+                  "The dialect postgres does not support the kernel add(i8, i8) -> undefined",
+                
+                
+                
+                  "The dialect postgres does not support the kernel add(fp32, fp32) -> fp32",
+                
+                
+                
+                  "The dialect postgres does not support the kernel add(fp32, fp32) -> fp32",
+                
+                
+                
+                  "The dialect postgres does not support the kernel add(fp64, fp64) -> fp64",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects rounding=TIE_TO_EVEN but rounding=FLOOR was requested",
                 
                 
                 
@@ -799,15 +896,15 @@ guaranteed to be true for integer addition when overflow is SILENT.</p></dd>
             ],
             kernels: [
                 
-                false,
-                
-                false,
-                
-                false,
+                true,
                 
                 true,
                 
-                false,
+                true,
+                
+                true,
+                
+                true,
                 
                 true,
                 
