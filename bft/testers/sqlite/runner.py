@@ -12,6 +12,7 @@ type_map = {
     "i64": "HUGEINT",
     "fp32": "REAL",
     "fp64": "REAL",
+    "boolean": "BOOLEAN",
 }
 
 

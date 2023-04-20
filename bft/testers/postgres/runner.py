@@ -7,7 +7,7 @@ from bft.cases.runner import SqlCaseResult, SqlCaseRunner
 from bft.cases.types import Case, CaseLiteral
 from bft.dialects.types import SqlMapping
 
-type_map = {"i16": "smallint", "i32": "integer", "i64": "bigint"}
+type_map = {"i16": "smallint", "i32": "integer", "i64": "bigint", "boolean": "boolean"}
 
 
 def type_to_postgres_type(type: str):

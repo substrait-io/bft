@@ -1,0 +1,78 @@
+function: xor
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: true
+        type: boolean
+      - value: false
+        type: boolean
+    result:
+      value: true
+      type: boolean
+  - group: basic
+    args:
+      - value: true
+        type: boolean
+      - value: true
+        type: boolean
+    result:
+      value: false
+      type: boolean
+  - group: basic
+    args:
+      - value: false
+        type: boolean
+      - value: false
+        type: boolean
+    result:
+      value: false
+      type: boolean
+  - group: basic
+    args:
+      - value: false
+        type: boolean
+      - value: true
+        type: boolean
+    result:
+      value: true
+      type: boolean
+  - group:
+      id: null_input
+      description: Examples with null as input
+    args:
+      - value: true
+        type: boolean
+      - value: "Null"
+        type: boolean
+    result:
+      value: null
+      type: boolean
+  - group: null_input
+    args:
+      - value: "Null"
+        type: boolean
+      - value: true
+        type: boolean
+    result:
+      value: null
+      type: boolean
+  - group: null_input
+    args:
+      - value: false
+        type: boolean
+      - value: "Null"
+        type: boolean
+    result:
+      value: null
+      type: boolean
+  - group: null_input
+    args:
+      - value: "Null"
+        type: boolean
+      - value: false
+        type: boolean
+    result:
+      value: null
+      type: boolean
