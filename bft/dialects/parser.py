@@ -13,8 +13,9 @@ class DialectFileVisitor(BaseYamlVisitor[DialectFile]):
         required_opts = self._get_or_else(func, "required_options", {})
         local_name = self._get_or_else(func, "local_name", name)
         infix = self._get_or_else(func, "infix", False)
+        prefix = self._get_or_else(func, "prefix", False)
         bad_kernels = self._visit_list(self.visit_kernel, func, "unsupported_kernels")
-        return DialectFunction(name, local_name, infix, required_opts, bad_kernels)
+        return DialectFunction(name, local_name, infix, prefix, required_opts, bad_kernels)
 
     def visit(self, dfile):
         name = self._get_or_die(dfile, "name")

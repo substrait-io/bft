@@ -1,0 +1,67 @@
+function: nullif
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 1
+        type: i16
+      - value: 5
+        type: i16
+    result:
+      value: 1
+      type: i16
+  - group: basic
+    args:
+      - value: 2.5
+        type: fp32
+      - value: 1
+        type: fp32
+    result:
+      value: 2.5
+      type: fp32
+  - group: basic
+    args:
+      - value: 2.5
+        type: fp32
+      - value: 2.5
+        type: fp32
+    result:
+      value: null
+      type: fp32
+  - group: basic
+    args:
+      - value: false
+        type: boolean
+      - value: true
+        type: boolean
+    result:
+      value: false
+      type: boolean
+  - group: basic
+    args:
+      - value: true
+        type: boolean
+      - value: false
+        type: boolean
+    result:
+      value: true
+      type: boolean
+  - group: basic
+    args:
+      - value: false
+        type: boolean
+      - value: false
+        type: boolean
+    result:
+      value: null
+      type: boolean
+  - group: basic
+    args:
+      - value: true
+        type: boolean
+      - value: true
+        type: boolean
+    result:
+      value: null
+      type: boolean

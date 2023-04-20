@@ -62,3 +62,31 @@ scalar_functions:
   - name: not
     local_name: not
     infix: False
+  - name: lt
+    local_name: "<"
+    infix: True
+  - name: lte
+    local_name: "<="
+    infix: True
+  - name: gt
+    local_name: ">"
+    infix: True
+  - name: gte
+    local_name: ">="
+    infix: True
+  - name: equal
+    local_name: "="
+    infix: True
+  - name: not_equal
+    local_name: "!="
+    infix: True
+  - name: is_not_distinct_from
+    local_name: "IS"
+    infix: True
+  - name: nullif
+    local_name: "NULLIF"
+    infix: False
+  - name: coalesce
+    local_name: "coalesce"
+    infix: False
+

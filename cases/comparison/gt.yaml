@@ -1,0 +1,60 @@
+function: gt
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 1
+        type: i8
+      - value: 2
+        type: i8
+    result:
+      value: false
+      type: boolean
+  - group: basic
+    args:
+      - value: 200
+        type: i16
+      - value: 199
+        type: i16
+    result:
+      value: true
+      type: boolean
+  - group: basic
+    args:
+      - value: 2000.12
+        type: fp32
+      - value: 1000.88
+        type: fp32
+    result:
+      value: true
+      type: boolean
+  - group:
+      id: null_input
+      description: Examples with null as input
+    args:
+      - value: null
+        type: i16
+      - value: 100
+        type: i16
+    result:
+      value: null
+      type: boolean
+  - group: null_input
+    args:
+      - value: 2
+        type: i16
+      - value: null
+        type: i16
+    result:
+      value: null
+      type: boolean
+  - group: null_input
+    args:
+      - value: null
+        type: i16
+      - value: null
+        type: i16
+    result:
+      value: null
+      type: boolean
