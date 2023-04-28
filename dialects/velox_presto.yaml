@@ -56,6 +56,9 @@ scalar_functions:
   - name: or
     local_name: " or "
     infix: True
+  - name: xor
+    local_name: " <> "
+    infix: True
   - name: not
     local_name: not
     infix: False
