@@ -1,0 +1,69 @@
+function: round
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 2
+        type: i8
+      - value: 2
+        type: i8
+    result:
+      value: 2
+      type: i8
+  - group: basic
+    args:
+      - value: 2.75
+        type: fp32
+      - value: 1
+        type: i8
+    result:
+      value: 2.8
+      type: fp32
+  - group: basic
+    args:
+      - value: 2.0000007152457373046875
+        type: fp64
+      - value: 10
+        type: i8
+    result:
+      value: 2.0000007152
+      type: fp64
+  - group: basic
+    args:
+      - value: 2.0000007152457373046875
+        type: fp64
+      - value: 10
+        type: i32
+    result:
+      value: 2.0000007152
+      type: fp64
+  - group:
+      id: negative_rounding
+      description: Examples with negative rounding
+    args:
+      - value: 2
+        type: i8
+      - value: -2
+        type: i8
+    result:
+      value: 2
+      type: i8
+  - group: negative_rounding
+    args:
+      - value: 123
+        type: i8
+      - value: -2
+        type: i32
+    result:
+      value: 100
+      type: i8
+  - group: negative_rounding
+    args:
+      - value: 8793
+        type: i8
+      - value: -2
+        type: i32
+    result:
+      value: 8800
+      type: i8

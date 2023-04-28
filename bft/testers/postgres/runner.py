@@ -11,8 +11,8 @@ type_map = {
     "i16": "smallint",
     "i32": "integer",
     "i64": "bigint",
-    "fp32": "real",
-    "fp64": "double precision",
+    "fp32": "float4",
+    "fp64": "float8",
     "boolean": "boolean",
 }
 

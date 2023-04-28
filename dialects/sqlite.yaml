@@ -69,3 +69,7 @@ scalar_functions:
     local_name: "NULLIF"
     infix: False
   - name: coalesce
+  - name: ceil
+  - name: floor
+  - name: round
+    unsupported: true
