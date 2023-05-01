@@ -12,6 +12,7 @@ type_map = {
     "i64": "HUGEINT",
     "fp32": "REAL",
     "fp64": "REAL",
+    "boolean": "BOOLEAN",
 }
 
 
@@ -22,6 +23,8 @@ def type_to_sqlite_type(type: str):
 
 
 def literal_to_str(lit: CaseLiteral):
+    if lit.value is None:
+        return "null"
     return str(lit.value)
 
 
@@ -51,7 +54,7 @@ class SqliteRunner(SqlCaseRunner):
             if mapping.infix:
                 if len(arg_names) != 2:
                     raise Exception(f"Infix function with {len(arg_names)} args")
-                expr = f"SELECT {arg_names[0]}{mapping.local_name}{arg_names[1]} FROM my_table;"
+                expr = f"SELECT {arg_names[0]} {mapping.local_name} {arg_names[1]} FROM my_table;"
             else:
                 expr = f"SELECT {mapping.local_name}({joined_arg_names}) FROM my_table;"
             result = self.conn.execute(expr).fetchone()[0]
