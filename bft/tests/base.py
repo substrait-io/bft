@@ -26,6 +26,10 @@ def case_id_fn(case: Case):
     return f"{case.function}_{case.group.id}_{case.group.index}"
 
 def run_test(case: Case, tester: BaseTester):
+    if tester.runner.__class__.__name__ == "VeloxRunner":
+        for case_literal in case.args:
+            if case_literal.value is None:
+                pytest.skip("Skipping. Pyvelox does not support null input")
     result = tester.run_test(case)
     if result.passed:
         if not result.should_have_passed:
