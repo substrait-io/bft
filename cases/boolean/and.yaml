@@ -35,14 +35,14 @@ cases:
     args:
       - value: true
         type: boolean
-      - value: "Null"
+      - value: null
         type: boolean
     result:
       value: null
       type: boolean
   - group: null_input
     args:
-      - value: "Null"
+      - value: null
         type: boolean
       - value: true
         type: boolean
@@ -53,14 +53,14 @@ cases:
     args:
       - value: false
         type: boolean
-      - value: "Null"
+      - value: null
         type: boolean
     result:
       value: false
       type: boolean
   - group: null_input
     args:
-      - value: "Null"
+      - value: null
         type: boolean
       - value: false
         type: boolean
@@ -69,9 +69,9 @@ cases:
       type: boolean
   - group: null_input
     args:
-      - value: "Null"
+      - value: null
         type: boolean
-      - value: "Null"
+      - value: null
         type: boolean
     result:
       value: null

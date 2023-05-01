@@ -31,6 +31,8 @@ properties:
                 oneOf:
                   - type: string
                   - type: number
+                  - type: boolean
+                  - type: "null"
               type:
                 type: string
             required:
@@ -49,6 +51,8 @@ properties:
                   oneOf:
                     - type: string
                     - type: number
+                    - type: boolean
+                    - type: "null"
                 type:
                   type: string
               required:
