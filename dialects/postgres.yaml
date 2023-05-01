@@ -40,16 +40,16 @@ scalar_functions:
           - fp64
         result: fp64
   - name: and
-    local_name: " and "
+    local_name: and
     infix: True
   - name: and_not
-    local_name: " and NOT "
+    local_name: and NOT
     infix: True
   - name: or
-    local_name: " or "
+    local_name: or
     infix: True
   - name: xor
-    local_name: " <> "
+    local_name: <>
     infix: True
   - name: not
     local_name: not

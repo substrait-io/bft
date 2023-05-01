@@ -20,7 +20,7 @@ cases:
       id: null_input
       description: Examples with null as input
     args:
-      - value: "Null"
+      - value: null
         type: boolean
     result:
       value: null
