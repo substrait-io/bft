@@ -128,9 +128,9 @@ then round to the value closest to zero.</p>
                 
                 <option>velox_presto</option>
                 
-                <option>sqlite</option>
-                
                 <option>postgres</option>
+                
+                <option>sqlite</option>
                 
                 <option>cudf</option>
                 
@@ -146,20 +146,20 @@ then round to the value closest to zero.</p>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-sqlite">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                 <dt>overflow</dt>
-                <dd>SILENT</dd>
+                <dd>ERROR</dd>
                 
                 <dt>rounding</dt>
                 <dd>TIE_TO_EVEN</dd>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-sqlite">
                 
                 <dt>overflow</dt>
-                <dd>ERROR</dd>
+                <dd>SILENT</dd>
                 
                 <dt>rounding</dt>
                 <dd>TIE_TO_EVEN</dd>
@@ -656,91 +656,6 @@ guaranteed to be true for integer addition when overflow is SILENT.</p></dd>
             ]
         },
         
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite does not support the kernel add(fp32, fp32) -> fp32",
-                
-                
-                
-                  "The dialect sqlite does not support the kernel add(fp32, fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                false,
-                
-                true,
-                
-            ]
-        },
-        
         'postgres': {
             examples: [
                 
@@ -822,6 +737,91 @@ guaranteed to be true for integer addition when overflow is SILENT.</p></dd>
                 false,
                 
                 false,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect sqlite does not support the kernel add(fp32, fp32) -> fp32",
+                
+                
+                
+                  "The dialect sqlite does not support the kernel add(fp32, fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                false,
+                
+                true,
                 
             ]
         },
