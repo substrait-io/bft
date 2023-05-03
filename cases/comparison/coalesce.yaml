@@ -49,14 +49,3 @@ cases:
     result:
       value: null
       type: i16
-  - group: null_input
-    args:
-      - value: null
-        type: i16
-      - value: null
-        type: i16
-      - value: 300
-        type: i16
-    result:
-      value: 300
-      type: i16

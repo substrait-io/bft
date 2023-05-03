@@ -83,9 +83,6 @@ scalar_functions:
   - name: is_not_distinct_from
     local_name: "IS"
     infix: True
-  - name: nullif
-    local_name: "NULLIF"
-    infix: False
   - name: coalesce
     local_name: "coalesce"
     infix: False
