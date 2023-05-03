@@ -81,7 +81,7 @@ scalar_functions:
     local_name: "!="
     infix: True
   - name: is_not_distinct_from
-    local_name: "IS"
+    local_name: "IS NOT DISTINCT FROM"
     infix: True
   - name: coalesce
     local_name: "coalesce"
