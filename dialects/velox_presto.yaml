@@ -287,6 +287,10 @@ scalar_functions:
         result: fp64
   - name: extract
     unsupported: True
+  - name: substring
+    local_name: substr
+  - name: concat
+  - name: like
 aggregate_functions:
   - name: min
     unsupported: True

@@ -91,6 +91,12 @@ scalar_functions:
     unsupported: true
   - name: extract
     unsupported: True
+  - name: substring
+  - name: concat
+    local_name: "||"
+    infix: True
+  - name: like
+    infix: True
 aggregate_functions:
   - name: min
     aggregate: True

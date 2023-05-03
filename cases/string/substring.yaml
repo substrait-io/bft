@@ -1,0 +1,54 @@
+function: substring
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 'abcdefg'
+        type: string
+      - value: 1
+        type: i32
+      - value: 5
+        type: i32
+    result:
+      value: 'abcde'
+      type: string
+  - group:
+      id: negative_start
+      description: Example where start argument is a negative integer
+    args:
+      - value: 'abcdefg'
+        type: string
+      - value: -3
+        type: i32
+      - value: 2
+        type: i32
+    result:
+      value: 'ef'
+      type: string
+  - group:
+      id: start_greater_than_length
+      description: Example where start argument greater than the length of the string
+    args:
+      - value: 'abcdefg'
+        type: string
+      - value: 10
+        type: i32
+      - value: 2
+        type: i32
+    result:
+      value: ''
+      type: string
+  - group:
+      id: multi_byte_characters
+      description: Example where multi byte characters exist in the string
+    args:
+      - value: '😊a😊b😊😊'
+        type: string
+      - value: 1
+        type: i32
+      - value: 3
+        type: i32
+    result:
+      value: '😊a😊'
+      type: string

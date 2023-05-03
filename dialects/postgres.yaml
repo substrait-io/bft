@@ -220,6 +220,12 @@ scalar_functions:
         result: fp64
   - name: extract
     extract: True
+  - name: substring
+  - name: concat
+    local_name: "||"
+    infix: True
+  - name: like
+    infix: True
 aggregate_functions:
   - name: min
     aggregate: True
