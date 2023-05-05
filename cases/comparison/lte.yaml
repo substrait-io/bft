@@ -31,18 +31,18 @@ cases:
       type: boolean
   - group: basic
     args:
-      - value: 7.00000095367431640625
+      - value: 7.00
         type: fp32
-      - value: 2.5000007152557373046875
+      - value: 2.50
         type: fp32
     result:
       value: false
       type: boolean
   - group: basic
     args:
-      - value: 7.00000095367431640625
+      - value: 7.25
         type: fp32
-      - value: 7.00000095367431640625
+      - value: 7.25
         type: fp32
     result:
       value: true

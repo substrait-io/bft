@@ -13,18 +13,18 @@ cases:
       type: i16
   - group: basic
     args:
-      - value: 7.00000095367431640625
+      - value: 7.25
         type: fp32
-      - value: 1.0000000022873981
+      - value: 1.00
         type: fp32
     result:
-      value: 7.00000095367431640625
+      value: 7.25
       type: fp32
   - group: basic
     args:
-      - value: 1.0000000022873981
+      - value: 1.11
         type: fp32
-      - value: 1.0000000022873981
+      - value: 1.11
         type: fp32
     result:
       value: null
