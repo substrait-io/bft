@@ -33,6 +33,23 @@ class CaseFileVisitor(BaseYamlVisitor[CaseFile]):
         if data_type.startswith("fp"):
             if isinstance(value, str):
                 if value.lower().startswith("inf"):
+                    value = "'" + "Infinity" + "'"
+                elif value.lower().startswith("-inf"):
+                    value = "'" + "-Infinity" + "'"
+                elif value.lower().startswith("nan"):
+                    value = math.nan
+                else:
+                    raise ValueError(f"Unrecognized fp32 string literal {value}")
+        return CaseLiteral(value, data_type)
+
+    def visit_literal_result(self, lit):
+        value = self._get_or_die(lit, "value")
+        data_type = self._get_or_die(lit, "type")
+        # YAML/JSON can't represent infinity or nan
+        # so its a special case
+        if data_type.startswith("fp"):
+            if isinstance(value, str):
+                if value.lower().startswith("inf"):
                     value = math.inf
                 elif value.lower().startswith("-inf"):
                     value = -math.inf
@@ -45,7 +62,7 @@ class CaseFileVisitor(BaseYamlVisitor[CaseFile]):
     def visit_result(self, res):
         special = self._get_or_else(res, "special", None)
         if special is None:
-            return self.visit_literal(res)
+            return self.visit_literal_result(res)
         return special
 
     def visit_case(self, case):

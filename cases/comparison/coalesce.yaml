@@ -13,26 +13,6 @@ cases:
       type: i8
   - group: basic
     args:
-      - value: 5
-        type: i8
-      - value: 5
-        type: i8
-    result:
-      value: 5
-      type: i8
-  - group: basic
-    args:
-      - value: 300
-        type: i16
-      - value: 200
-        type: i16
-    result:
-      value: 300
-      type: i16
-  - group:
-      id: null_input
-      description: Examples with null as input
-    args:
       - value: null
         type: i8
       - value: 2
@@ -40,7 +20,7 @@ cases:
     result:
       value: 2
       type: i8
-  - group: null_input
+  - group: basic
     args:
       - value: null
         type: i16

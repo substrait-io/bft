@@ -26,9 +26,9 @@ class VeloxRunner(SqlCaseRunner):
             if len(case.args) != 2:
                 raise Exception(f"Infix function with {len(case.args)} args")
             expr_str = f"arg0 {mapping.local_name} arg1"
-        elif mapping.prefix:
+        elif mapping.postfix:
             if len(arg_names) != 1:
-                raise Exception(f"Prefix function with {len(arg_names)} args")
+                raise Exception(f"Postfix function with {len(arg_names)} args")
             expr_str = f"arg0 {mapping.local_name}"
         else:
             joined_args = ", ".join(arg_names)

@@ -61,10 +61,10 @@ scalar_functions:
     infix: True
   - name: is_null
     local_name: "IS NULL"
-    prefix: True
+    postfix: True
   - name: is_not_null
     local_name: "IS NOT NULL"
-    prefix: True
+    postfix: True
   - name: nullif
     local_name: "NULLIF"
     infix: False

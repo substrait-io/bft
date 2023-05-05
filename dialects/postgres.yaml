@@ -132,7 +132,7 @@ scalar_functions:
         result: boolean
   - name: is_null
     local_name: "IS NULL"
-    prefix: True
+    postfix: True
     unsupported_kernels:
       - args:
           - i8
@@ -142,7 +142,7 @@ scalar_functions:
         result: boolean
   - name: is_not_null
     local_name: "IS NOT NULL"
-    prefix: True
+    postfix: True
     unsupported_kernels:
       - args:
           - i8

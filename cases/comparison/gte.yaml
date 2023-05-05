@@ -31,21 +31,48 @@ cases:
       type: boolean
   - group: basic
     args:
-      - value: 2000.12
+      - value: 7.00000095367431640625
         type: fp32
-      - value: 1000.88
+      - value: 2.5000007152557373046875
         type: fp32
     result:
       value: true
       type: boolean
   - group: basic
     args:
-      - value: 2000.12
+      - value: 7.00000095367431640625
         type: fp32
-      - value: 2000.12
+      - value: 7.00000095367431640625
         type: fp32
     result:
       value: true
+      type: boolean
+  - group: basic
+    args:
+      - value: Infinity
+        type: fp64
+      - value: 1.5e+308
+        type: fp64
+    result:
+      value: true
+      type: boolean
+  - group: basic
+    args:
+      - value: Infinity
+        type: fp64
+      - value: Infinity
+        type: fp64
+    result:
+      value: true
+      type: boolean
+  - group: basic
+    args:
+      - value: -Infinity
+        type: fp64
+      - value: -1.5e+308
+        type: fp64
+    result:
+      value: false
       type: boolean
   - group:
       id: null_input

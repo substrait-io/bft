@@ -33,6 +33,33 @@ cases:
       id: null_input
       description: Examples with null as input
     args:
+      - value: Infinity
+        type: fp64
+      - value: Infinity
+        type: fp64
+    result:
+      value: true
+      type: boolean
+  - group: basic
+    args:
+      - value: -Infinity
+        type: fp64
+      - value: -Infinity
+        type: fp64
+    result:
+      value: true
+      type: boolean
+  - group: basic
+    args:
+      - value: -Infinity
+        type: fp64
+      - value: Infinity
+        type: fp64
+    result:
+      value: False
+      type: boolean
+  - group: basic
+    args:
       - value: null
         type: i16
       - value: 1

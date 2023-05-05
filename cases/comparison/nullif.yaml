@@ -13,18 +13,18 @@ cases:
       type: i16
   - group: basic
     args:
-      - value: 2.5
+      - value: 7.00000095367431640625
         type: fp32
-      - value: 1
+      - value: 1.0000000022873981
         type: fp32
     result:
-      value: 2.5
+      value: 7.00000095367431640625
       type: fp32
   - group: basic
     args:
-      - value: 2.5
+      - value: 1.0000000022873981
         type: fp32
-      - value: 2.5
+      - value: 1.0000000022873981
         type: fp32
     result:
       value: null
@@ -61,6 +61,35 @@ cases:
       - value: true
         type: boolean
       - value: true
+        type: boolean
+    result:
+      value: null
+      type: boolean
+  - group:
+      id: null_input
+      description: Examples with null as input
+    args:
+      - value: null
+        type: boolean
+      - value: true
+        type: boolean
+    result:
+      value: null
+      type: boolean
+  - group: null_input
+    args:
+      - value: true
+        type: boolean
+      - value: null
+        type: boolean
+    result:
+      value: true
+      type: boolean
+  - group: null_input
+    args:
+      - value: null
+        type: boolean
+      - value: null
         type: boolean
     result:
       value: null

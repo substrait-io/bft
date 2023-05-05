@@ -18,7 +18,7 @@ cases:
       type: boolean
   - group: basic
     args:
-      - value: 2.5
+      - value: 7.00000095367431640625
         type: fp32
     result:
       value: true

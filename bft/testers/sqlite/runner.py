@@ -55,9 +55,9 @@ class SqliteRunner(SqlCaseRunner):
                 if len(arg_names) != 2:
                     raise Exception(f"Infix function with {len(arg_names)} args")
                 expr = f"SELECT {arg_names[0]} {mapping.local_name} {arg_names[1]} FROM my_table;"
-            elif mapping.prefix:
+            elif mapping.postfix:
                 if len(arg_names) != 1:
-                    raise Exception(f"Prefix function with {len(arg_names)} args")
+                    raise Exception(f"Postfix function with {len(arg_names)} args")
                 expr = f"SELECT {arg_names[0]} {mapping.local_name} FROM my_table;"
             else:
                 expr = f"SELECT {mapping.local_name}({joined_arg_names}) FROM my_table;"
