@@ -139,8 +139,6 @@ scalar_functions:
           - fp64
         result: fp64
   - name: coalesce
-    local_name: "coalesce"
-    infix: False
     unsupported_kernels:
       - args:
           - i8

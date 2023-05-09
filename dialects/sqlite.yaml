@@ -69,5 +69,3 @@ scalar_functions:
     local_name: "NULLIF"
     infix: False
   - name: coalesce
-    local_name: "coalesce"
-    infix: False

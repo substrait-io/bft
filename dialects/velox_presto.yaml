@@ -81,6 +81,3 @@ scalar_functions:
     local_name: "!="
     infix: True
   - name: coalesce
-    local_name: "coalesce"
-    infix: False
-
