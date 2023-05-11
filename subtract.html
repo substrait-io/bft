@@ -128,25 +128,15 @@ then round to the value closest to zero.</p>
                 
                 <option>velox_presto</option>
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
                 
                 <option>cudf</option>
                 
+                <option>postgres</option>
+                
             </select>
             
             <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                <dt>overflow</dt>
-                <dd>ERROR</dd>
-                
-                <dt>rounding</dt>
-                <dd>TIE_TO_EVEN</dd>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
                 
                 <dt>overflow</dt>
                 <dd>ERROR</dd>
@@ -170,6 +160,16 @@ then round to the value closest to zero.</p>
                 
                 <dt>overflow</dt>
                 <dd>SILENT</dd>
+                
+                <dt>rounding</dt>
+                <dd>TIE_TO_EVEN</dd>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                <dt>overflow</dt>
+                <dd>ERROR</dd>
                 
                 <dt>rounding</dt>
                 <dd>TIE_TO_EVEN</dd>
@@ -560,79 +560,6 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
             ]
         },
         
-        'postgres': {
-            examples: [
-                
-                
-                  "The dialect postgres does not support the kernel subtract(i8, i8) -> i8",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres does not support the kernel subtract(fp64, fp64) -> fp64",
-                
-                
-                
-                  "The dialect postgres does not support the kernel subtract(fp64, fp64) -> fp64",
-                
-                
-                
-                  "The dialect postgres does not support the kernel subtract(i8, i8) -> error",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres does not support the kernel subtract(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel subtract(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel subtract(i8, i8) -> undefined",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
         'sqlite': {
             examples: [
                 
@@ -775,6 +702,79 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 true,
                 
                 true,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  "The dialect postgres does not support the kernel subtract(i8, i8) -> i8",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel subtract(fp64, fp64) -> fp64",
+                
+                
+                
+                  "The dialect postgres does not support the kernel subtract(fp64, fp64) -> fp64",
+                
+                
+                
+                  "The dialect postgres does not support the kernel subtract(i8, i8) -> error",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel subtract(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel subtract(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel subtract(i8, i8) -> undefined",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                false,
+                
+                false,
                 
             ]
         },
