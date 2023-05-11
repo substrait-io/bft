@@ -23,6 +23,20 @@ scalar_functions:
           - fp32
           - fp32
         result: fp32
+  - name: multiply
+    local_name: "*"
+    infix: True
+    required_options:
+      overflow: SILENT
+  - name: divide
+    local_name: "/"
+    infix: True
+    required_options:
+      overflow: SILENT
+  - name: abs
+    required_options:
+      overflow: SILENT
+      rounding: TIE_TO_EVEN
   - name: and
     local_name: and
     infix: True

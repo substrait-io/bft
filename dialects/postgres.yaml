@@ -31,6 +31,42 @@ scalar_functions:
           - fp64
           - fp64
         result: fp64
+  - name: multiply
+    local_name: "*"
+    infix: True
+    required_options:
+      overflow: ERROR
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - fp32
+          - fp32
+        result: fp32
+  - name: divide
+    local_name: "/"
+    infix: True
+    required_options:
+      overflow: ERROR
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - fp32
+          - fp32
+        result: fp32
+  - name: abs
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i8
   - name: and
     local_name: and
     infix: True
