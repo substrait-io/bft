@@ -1,0 +1,25 @@
+function: is_null
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 25
+        type: i16
+    result:
+      value: false
+      type: boolean
+  - group: basic
+    args:
+      - value: false
+        type: boolean
+    result:
+      value: false
+      type: boolean
+  - group: basic
+    args:
+      - value: null
+        type: i16
+    result:
+      value: true
+      type: boolean

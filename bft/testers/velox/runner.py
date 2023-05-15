@@ -5,7 +5,7 @@ from bft.dialects.types import Dialect
 
 
 def is_type_supported(type):
-    return type in set({"i64", "fp64", "boolean"})
+    return type in set({"i8", "i16", "i32", "i64", "fp32", "fp64", "boolean"})
 
 
 class VeloxRunner(SqlCaseRunner):
@@ -26,6 +26,10 @@ class VeloxRunner(SqlCaseRunner):
             if len(case.args) != 2:
                 raise Exception(f"Infix function with {len(case.args)} args")
             expr_str = f"arg0 {mapping.local_name} arg1"
+        elif mapping.postfix:
+            if len(arg_names) != 1:
+                raise Exception(f"Postfix function with {len(arg_names)} args")
+            expr_str = f"arg0 {mapping.local_name}"
         else:
             joined_args = ", ".join(arg_names)
             expr_str = f"{mapping.local_name}({joined_args})"

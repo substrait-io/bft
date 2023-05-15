@@ -7,7 +7,14 @@ from bft.cases.runner import SqlCaseResult, SqlCaseRunner
 from bft.cases.types import Case, CaseLiteral
 from bft.dialects.types import SqlMapping
 
-type_map = {"i16": "smallint", "i32": "integer", "i64": "bigint", "boolean": "boolean"}
+type_map = {
+    "i16": "smallint",
+    "i32": "integer",
+    "i64": "bigint",
+    "fp32": "real",
+    "fp64": "double precision",
+    "boolean": "boolean",
+}
 
 
 def type_to_postgres_type(type: str):
@@ -19,6 +26,10 @@ def type_to_postgres_type(type: str):
 def literal_to_str(lit: CaseLiteral):
     if lit.value is None:
         return "null"
+    elif lit.value == float("inf"):
+        return "'Infinity'"
+    elif lit.value == float("-inf"):
+        return "'-Infinity'"
     return str(lit.value)
 
 
@@ -59,6 +70,10 @@ class PostgresRunner(SqlCaseRunner):
                 if len(arg_names) != 2:
                     raise Exception(f"Infix function with {len(arg_names)} args")
                 expr = f"SELECT {arg_names[0]} {mapping.local_name} {arg_names[1]} FROM my_table;"
+            elif mapping.postfix:
+                if len(arg_names) != 1:
+                    raise Exception(f"Postfix function with {len(arg_names)} args")
+                expr = f"SELECT {arg_names[0]} {mapping.local_name} FROM my_table;"
             else:
                 expr = f"SELECT {mapping.local_name}({joined_arg_names}) FROM my_table;"
             result = self.conn.execute(expr).fetchone()[0]

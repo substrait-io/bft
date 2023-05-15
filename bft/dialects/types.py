@@ -13,6 +13,7 @@ class DialectFunction(NamedTuple):
     name: str
     local_name: str
     infix: bool
+    postfix: bool
     required_options: Dict[str, str]
     unsupported_kernels: List[DialectKernel]
 
@@ -26,6 +27,7 @@ class DialectFile(NamedTuple):
 class SqlMapping(NamedTuple):
     local_name: str
     infix: bool
+    postfix: bool
     should_pass: bool
     reason: str
 
@@ -103,13 +105,13 @@ class Dialect(object):
 
         kernel_failure = self.__supports_case_kernel(dfunc, case.args, case.result)
         if kernel_failure is not None:
-            return SqlMapping(dfunc.local_name, dfunc.infix, False, kernel_failure)
+            return SqlMapping(dfunc.local_name, dfunc.infix, dfunc.postfix, False, kernel_failure)
 
         option_failure = self.__supports_options(dfunc, case)
         if option_failure is not None:
-            return SqlMapping(dfunc.local_name, dfunc.infix, False, option_failure)
+            return SqlMapping(dfunc.local_name, dfunc.infix, dfunc.postfix, False, option_failure)
 
-        return SqlMapping(dfunc.local_name, dfunc.infix, True, None)
+        return SqlMapping(dfunc.local_name, dfunc.infix, dfunc.postfix, True, None)
 
 
 class DialectsLibrary(object):
