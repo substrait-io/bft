@@ -25,38 +25,31 @@ class CaseFileVisitor(BaseYamlVisitor[CaseFile]):
         self.__groups[id] = CaseGroup(id, description)
         return id
 
-    def visit_literal(self, lit):
-        value = self._get_or_die(lit, "value")
-        data_type = self._get_or_die(lit, "type")
+    def __normalize_yaml_literal(self, value, data_type):
         # YAML/JSON can't represent infinity or nan
         # so its a special case
         if data_type.startswith("fp"):
             if isinstance(value, str):
                 if value.lower().startswith("inf"):
-                    value = "'" + "Infinity" + "'"
+                    return float("inf")
                 elif value.lower().startswith("-inf"):
-                    value = "'" + "-Infinity" + "'"
+                    return float("-inf")
                 elif value.lower().startswith("nan"):
-                    value = math.nan
+                    return math.nan
                 else:
-                    raise ValueError(f"Unrecognized fp32 string literal {value}")
+                    raise ValueError(f"Unrecognized float string literal {value}")
+        return value
+
+    def visit_literal(self, lit):
+        value = self._get_or_die(lit, "value")
+        data_type = self._get_or_die(lit, "type")
+        value = self.__normalize_yaml_literal(value, data_type)
         return CaseLiteral(value, data_type)
 
     def visit_literal_result(self, lit):
         value = self._get_or_die(lit, "value")
         data_type = self._get_or_die(lit, "type")
-        # YAML/JSON can't represent infinity or nan
-        # so its a special case
-        if data_type.startswith("fp"):
-            if isinstance(value, str):
-                if value.lower().startswith("inf"):
-                    value = math.inf
-                elif value.lower().startswith("-inf"):
-                    value = -math.inf
-                elif value.lower().startswith("nan"):
-                    value = math.nan
-                else:
-                    raise ValueError(f"Unrecognized fp32 string literal {value}")
+        value = self.__normalize_yaml_literal(value, data_type)
         return CaseLiteral(value, data_type)
 
     def visit_result(self, res):
