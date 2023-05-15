@@ -26,6 +26,10 @@ def type_to_postgres_type(type: str):
 def literal_to_str(lit: CaseLiteral):
     if lit.value is None:
         return "null"
+    elif lit.value == float("inf"):
+        return "'Infinity'"
+    elif lit.value == float("-inf"):
+        return "'-Infinity'"
     return str(lit.value)
 
 

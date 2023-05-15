@@ -72,7 +72,7 @@ cases:
       - value: -Infinity
         type: fp64
     result:
-      value: true
+      value: false
       type: boolean
   - group:
       id: null_input

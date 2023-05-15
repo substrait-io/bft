@@ -25,6 +25,11 @@ def type_to_sqlite_type(type: str):
 def literal_to_str(lit: CaseLiteral):
     if lit.value is None:
         return "null"
+    # The simplest way to get infinity into sqlite is to use an impossibly large/small value
+    elif lit.value == float("inf"):
+        return "9e999"
+    elif lit.value == float("-inf"):
+        return "-9e999"
     return str(lit.value)
 
 
