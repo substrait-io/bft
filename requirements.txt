@@ -1,3 +1,4 @@
+duckdb
 jinja2
 mistletoe
 pytest

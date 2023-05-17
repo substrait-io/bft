@@ -1,0 +1,9 @@
+name: duckdb
+type: sql
+scalar_functions:
+  - name: add
+    local_name: +
+    infix: True
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
