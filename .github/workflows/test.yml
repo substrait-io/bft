@@ -17,6 +17,17 @@ jobs:
 
       - name: Build & run
         run: docker run --rm $(docker build -q --file ./ci/docker/sqlite.Dockerfile .)
+  duckdb:
+    name: Run tests with duckdb
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Build & run
+        run: docker run --rm $(docker build -q --file ./ci/docker/duckdb.Dockerfile .)
   postgres:
     name: Run tests with postgres
     runs-on: ubuntu-latest
