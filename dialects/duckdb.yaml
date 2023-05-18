@@ -7,3 +7,24 @@ scalar_functions:
     required_options:
       overflow: ERROR
       rounding: TIE_TO_EVEN
+  - name: subtract
+    local_name: "-"
+    infix: True
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+  - name: and
+    local_name: and
+    infix: True
+  - name: and_not
+    local_name: and NOT
+    infix: True
+  - name: or
+    local_name: or
+    infix: True
+  - name: xor
+    local_name: <>
+    infix: True
+  - name: not
+    local_name: not
+    infix: False
