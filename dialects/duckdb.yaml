@@ -28,3 +28,32 @@ scalar_functions:
   - name: not
     local_name: not
     infix: False
+  - name: lt
+    local_name: "<"
+    infix: True
+  - name: lte
+    local_name: "<="
+    infix: True
+  - name: gt
+    local_name: ">"
+    infix: True
+  - name: gte
+    local_name: ">="
+    infix: True
+  - name: equal
+    local_name: "="
+    infix: True
+  - name: not_equal
+    local_name: "!="
+    infix: True
+  - name: is_not_distinct_from
+    local_name: "IS NOT DISTINCT FROM"
+    infix: True
+  - name: is_null
+    local_name: "IS NULL"
+    postfix: True
+  - name: is_not_null
+    local_name: "IS NOT NULL"
+    postfix: True
+  - name: nullif
+  - name: coalesce

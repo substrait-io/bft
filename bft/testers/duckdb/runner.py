@@ -39,7 +39,6 @@ class DuckDBRunner(SqlCaseRunner):
         self.conn = duckdb.connect()
 
     def run_sql_case(self, case: Case, mapping: SqlMapping) -> SqlCaseResult:
-        # self.conn.execute("BEGIN;")
 
         try:
             arg_defs = [
