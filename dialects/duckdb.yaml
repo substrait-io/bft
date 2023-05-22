@@ -1,0 +1,59 @@
+name: duckdb
+type: sql
+scalar_functions:
+  - name: add
+    local_name: +
+    infix: True
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+  - name: subtract
+    local_name: "-"
+    infix: True
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+  - name: and
+    local_name: and
+    infix: True
+  - name: and_not
+    local_name: and NOT
+    infix: True
+  - name: or
+    local_name: or
+    infix: True
+  - name: xor
+    local_name: <>
+    infix: True
+  - name: not
+    local_name: not
+    infix: False
+  - name: lt
+    local_name: "<"
+    infix: True
+  - name: lte
+    local_name: "<="
+    infix: True
+  - name: gt
+    local_name: ">"
+    infix: True
+  - name: gte
+    local_name: ">="
+    infix: True
+  - name: equal
+    local_name: "="
+    infix: True
+  - name: not_equal
+    local_name: "!="
+    infix: True
+  - name: is_not_distinct_from
+    local_name: "IS NOT DISTINCT FROM"
+    infix: True
+  - name: is_null
+    local_name: "IS NULL"
+    postfix: True
+  - name: is_not_null
+    local_name: "IS NOT NULL"
+    postfix: True
+  - name: nullif
+  - name: coalesce
