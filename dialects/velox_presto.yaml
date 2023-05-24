@@ -285,3 +285,5 @@ scalar_functions:
           - fp64
           - i32
         result: fp64
+  - name: extract
+    unsupported: True

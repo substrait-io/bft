@@ -17,6 +17,7 @@ class DialectFunction(NamedTuple):
     infix: bool
     postfix: bool
     unsupported: bool
+    extract: bool
     required_options: Dict[str, str]
     unsupported_kernels: List[DialectKernel]
 
@@ -32,6 +33,7 @@ class SqlMapping(NamedTuple):
     infix: bool
     postfix: bool
     unsupported: bool
+    extract: bool
     should_pass: bool
     reason: str
 
@@ -116,6 +118,7 @@ class Dialect(object):
                 dfunc.infix,
                 dfunc.postfix,
                 dfunc.unsupported,
+                dfunc.extract,
                 False,
                 kernel_failure,
             )
@@ -127,12 +130,19 @@ class Dialect(object):
                 dfunc.infix,
                 dfunc.postfix,
                 dfunc.unsupported,
+                dfunc.extract,
                 False,
                 option_failure,
             )
 
         return SqlMapping(
-            dfunc.local_name, dfunc.infix, dfunc.postfix, dfunc.unsupported, True, None
+            dfunc.local_name,
+            dfunc.infix,
+            dfunc.postfix,
+            dfunc.unsupported,
+            dfunc.extract,
+            True,
+            None,
         )
 
 

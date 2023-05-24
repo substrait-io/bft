@@ -87,3 +87,5 @@ scalar_functions:
           - fp32
           - i8
         result: fp32
+  - name: extract
+    extract: True

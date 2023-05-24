@@ -14,6 +14,9 @@ type_map = {
     "fp32": "float4",
     "fp64": "float8",
     "boolean": "boolean",
+    "string": "TEXT",
+    "date": "DATE",
+    "timestamp": "TIMESTAMP",
 }
 
 
@@ -61,7 +64,17 @@ class PostgresRunner(SqlCaseRunner):
 
             arg_names = [f"arg{idx}" for idx in range(len(case.args))]
             joined_arg_names = ",".join(arg_names)
-            arg_vals = ",".join([literal_to_str(arg) for arg in case.args])
+
+            arg_vals_list = list()
+            for arg in case.args:
+                if (
+                    arg.type in ["string", "timestamp", "date"]
+                    and arg.value is not None
+                ):
+                    arg_vals_list.append("'" + literal_to_str(arg) + "'")
+                else:
+                    arg_vals_list.append(literal_to_str(arg))
+            arg_vals = ", ".join(arg_vals_list)
             self.conn.execute(
                 f"INSERT INTO my_table ({joined_arg_names}) VALUES ({arg_vals});"
             )
@@ -74,6 +87,10 @@ class PostgresRunner(SqlCaseRunner):
                 if len(arg_names) != 1:
                     raise Exception(f"Postfix function with {len(arg_names)} args")
                 expr = f"SELECT {arg_names[0]} {mapping.local_name} FROM my_table;"
+            elif mapping.extract:
+                if len(arg_names) != 2:
+                    raise Exception(f"Extract function with {len(arg_names)} args")
+                expr = f"SELECT {mapping.local_name}({arg_vals_list[0]} FROM {arg_names[1]}) FROM my_table;"
             else:
                 expr = f"SELECT {mapping.local_name}({joined_arg_names}) FROM my_table;"
             result = self.conn.execute(expr).fetchone()[0]

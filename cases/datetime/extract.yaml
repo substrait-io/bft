@@ -1,0 +1,76 @@
+function: extract
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: YEAR
+        type: string
+      - value: '2016-12-31 13:30:15'
+        type: timestamp
+    result:
+      value: 2016
+      type: i64
+  - group: basic
+    args:
+      - value: QUARTER
+        type: string
+      - value: '2016-12-31 13:30:15'
+        type: timestamp
+    result:
+      value: 4
+      type: i64
+  - group: basic
+    args:
+      - value: MONTH
+        type: string
+      - value: '2016-12-31 13:30:15'
+        type: timestamp
+    result:
+      value: 12
+      type: i64
+  - group: basic
+    args:
+      - value: DAY
+        type: string
+      - value: '2016-12-31 13:30:15'
+        type: timestamp
+    result:
+      value: 31
+      type: i64
+  - group: basic
+    args:
+      - value: HOUR
+        type: string
+      - value: '2016-12-31 13:30:15'
+        type: timestamp
+    result:
+      value: 13
+      type: i64
+  - group: basic
+    args:
+      - value: MINUTE
+        type: string
+      - value: '2016-12-31 13:30:15'
+        type: timestamp
+    result:
+      value: 30
+      type: i64
+  - group: basic
+    args:
+      - value: SECOND
+        type: string
+      - value: '2016-12-31 13:30:15'
+        type: timestamp
+    result:
+      value: 15
+      type: i64
+  - group: basic
+    args:
+      - value: EPOCH
+        type: string
+      - value: '2016-12-31 13:30:15'
+        type: timestamp
+    result:
+      value: 1483191015
+      type: i64
