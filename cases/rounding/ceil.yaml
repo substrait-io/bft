@@ -1,0 +1,25 @@
+function: ceil
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 2.25
+        type: fp32
+    result:
+      value: 3
+      type: fp32
+  - group: basic
+    args:
+      - value: 2.0000007152557373046875
+        type: fp64
+    result:
+      value: 3
+      type: fp64
+  - group: basic
+    args:
+      - value: -65.500000001223334444
+        type: fp64
+    result:
+      value: -65
+      type: fp64

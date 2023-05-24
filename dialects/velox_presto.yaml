@@ -80,4 +80,32 @@ scalar_functions:
   - name: not_equal
     local_name: "!="
     infix: True
+  - name: is_not_distinct_from
+    unsupported: True
+  - name: is_null
+    unsupported: True
+  - name: is_not_null
+    unsupported: True
+  - name: nullif
+    unsupported: True
   - name: coalesce
+  - name: ceil
+  - name: floor
+  - name: round
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - fp32
+          - i8
+        result: fp32
+      - args:
+          - fp64
+          - i8
+        result: fp64

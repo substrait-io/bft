@@ -144,3 +144,40 @@ scalar_functions:
           - i8
           - i8
         result: i8
+  - name: ceil
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i8
+  - name: floor
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i8
+  - name: round
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i8
+          - i32
+        result: i8
+      - args:
+          - fp32
+          - i8
+        result: fp32
+      - args:
+          - fp32
+          - i32
+        result: fp32
+      - args:
+          - fp64
+          - i8
+        result: fp64
+      - args:
+          - fp64
+          - i32
+        result: fp64
+

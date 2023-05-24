@@ -1,5 +1,7 @@
 from typing import Dict, List, NamedTuple
 
+import pytest
+
 from bft.cases.types import Case, CaseLiteral, Literal, case_to_kernel_str
 from bft.core.function import Kernel
 
@@ -14,6 +16,7 @@ class DialectFunction(NamedTuple):
     local_name: str
     infix: bool
     postfix: bool
+    unsupported: bool
     required_options: Dict[str, str]
     unsupported_kernels: List[DialectKernel]
 
@@ -28,6 +31,7 @@ class SqlMapping(NamedTuple):
     local_name: str
     infix: bool
     postfix: bool
+    unsupported: bool
     should_pass: bool
     reason: str
 
@@ -100,18 +104,36 @@ class Dialect(object):
 
     def mapping_for_case(self, case: Case) -> SqlMapping:
         dfunc = self.__scalar_functions_by_name.get(case.function, None)
+        if dfunc.unsupported:
+            pytest.skip("Skipping unsupported function.")
         if dfunc is None:
             return None
 
         kernel_failure = self.__supports_case_kernel(dfunc, case.args, case.result)
         if kernel_failure is not None:
-            return SqlMapping(dfunc.local_name, dfunc.infix, dfunc.postfix, False, kernel_failure)
+            return SqlMapping(
+                dfunc.local_name,
+                dfunc.infix,
+                dfunc.postfix,
+                dfunc.unsupported,
+                False,
+                kernel_failure,
+            )
 
         option_failure = self.__supports_options(dfunc, case)
         if option_failure is not None:
-            return SqlMapping(dfunc.local_name, dfunc.infix, dfunc.postfix, False, option_failure)
+            return SqlMapping(
+                dfunc.local_name,
+                dfunc.infix,
+                dfunc.postfix,
+                dfunc.unsupported,
+                False,
+                option_failure,
+            )
 
-        return SqlMapping(dfunc.local_name, dfunc.infix, dfunc.postfix, True, None)
+        return SqlMapping(
+            dfunc.local_name, dfunc.infix, dfunc.postfix, dfunc.unsupported, True, None
+        )
 
 
 class DialectsLibrary(object):
