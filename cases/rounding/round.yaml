@@ -47,7 +47,7 @@ cases:
       - value: -2
         type: i8
     result:
-      value: 2
+      value: 0
       type: i8
   - group: negative_rounding
     args:
@@ -61,7 +61,7 @@ cases:
   - group: negative_rounding
     args:
       - value: 8793
-        type: i8
+        type: i16
       - value: -2
         type: i32
     result:

@@ -57,3 +57,11 @@ scalar_functions:
     postfix: True
   - name: nullif
   - name: coalesce
+  - name: ceil
+  - name: floor
+  - name: round
+    unsupported_kernels:
+      - args:
+          - fp32
+          - i8
+        result: fp32
