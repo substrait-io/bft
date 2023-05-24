@@ -13,6 +13,24 @@ scalar_functions:
     required_options:
       overflow: ERROR
       rounding: TIE_TO_EVEN
+  - name: multiply
+    local_name: "*"
+    infix: True
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+  - name: divide
+    local_name: "/"
+    infix: True
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+  - name: abs
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+  - name: negate
+    unsupported: true
   - name: and
     local_name: and
     infix: True

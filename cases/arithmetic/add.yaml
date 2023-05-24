@@ -143,7 +143,7 @@ cases:
     options:
       rounding: TIE_TO_EVEN
     result:
-      value: 7.000001
+      value: 7.00000095367431640625
       type: fp32
   - group: rounding
     args:

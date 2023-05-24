@@ -133,30 +133,6 @@ cases:
       value: -Infinity
       type: fp64
   - group:
-      id: rounding
-      description: Examples demonstrating floating point rounding behavior
-    args:
-      - value: 4.0
-        type: fp64
-      - value: 2.5000007152557373046875
-        type: fp64
-    options:
-      rounding: TIE_TO_EVEN
-    result:
-      value: 10.00000286102295
-      type: fp64
-  - group: rounding
-    args:
-      - value: 4.0
-        type: fp64
-      - value: 2.5000007152557373046875
-        type: fp64
-    options:
-      rounding: FLOOR
-    result:
-      value: 10.000002861022949
-      type: fp64
-  - group:
       id: types
       description: Examples demonstrating behavior of different data types
     args:

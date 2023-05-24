@@ -37,6 +37,8 @@ scalar_functions:
     required_options:
       overflow: SILENT
       rounding: TIE_TO_EVEN
+  - name: negate
+    unsupported: true
   - name: and
     local_name: and
     infix: True

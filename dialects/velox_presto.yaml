@@ -51,19 +51,19 @@ scalar_functions:
     local_name: "*"
     infix: True
     required_options:
-      overflow: SILENT
+      overflow: ERROR
   - name: divide
     local_name: "/"
     infix: True
     required_options:
-      overflow: SILENT
+      overflow: ERROR
   - name: abs
     required_options:
-      overflow: SILENT
+      overflow: ERROR
       rounding: TIE_TO_EVEN
   - name: negate
     required_options:
-      overflow: SILENT
+      overflow: ERROR
   - name: and
     local_name: and
     infix: True
