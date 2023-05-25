@@ -29,6 +29,10 @@ scalar_functions:
     required_options:
       overflow: ERROR
       rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
   - name: negate
     unsupported: true
   - name: and

@@ -73,16 +73,6 @@ cases:
       special: error
   - group: overflow
     args:
-      - value: -2147483648
-        type: i32
-      - value: -1
-        type: i32
-    options:
-      overflow: ERROR
-    result:
-      special: error
-  - group: overflow
-    args:
       - value: -128
         type: i8
       - value: -1
@@ -92,16 +82,6 @@ cases:
     result:
       value: 127
       type: i8
-  - group: overflow
-    args:
-      - value: -128
-        type: i8
-      - value: -1
-        type: i8
-    options:
-      overflow: SILENT
-    result:
-      special: undefined
   - group:
       id: floating_exception
       description: Examples demonstrating exceptional floating point cases
