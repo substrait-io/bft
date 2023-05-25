@@ -1,6 +1,5 @@
-from typing import Dict, NamedTuple
-
 import duckdb
+from typing import Dict, NamedTuple
 
 from bft.cases.runner import SqlCaseResult, SqlCaseRunner
 from bft.cases.types import Case, CaseLiteral
