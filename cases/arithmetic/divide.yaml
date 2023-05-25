@@ -39,6 +39,17 @@ cases:
       value: -800000
       type: i64
   - group:
+      id: division_by_zero
+      description: Examples demonstrating division by zero
+    args:
+      - value: 5
+        type: i8
+      - value: 0
+        type: i8
+    result:
+      value: null
+      type: i8
+  - group:
       id: overflow
       description: Examples demonstrating overflow behavior
     args:

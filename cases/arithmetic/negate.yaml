@@ -44,6 +44,13 @@ cases:
     result:
       value: -2.000002861022949
       type: fp64
+  - group: basic
+    args:
+      - value: Infinity
+        type: fp64
+    result:
+      value: -Infinity
+      type: fp64
   - group:
       id: null_input
       description: Examples with null as input
