@@ -53,20 +53,10 @@ cases:
       id: overflow
       description: Examples demonstrating overflow behavior
     args:
-      - value: 128
-        type: i8
+      - value: -9223372036854775808
+        type: i64
       - value: -1
-        type: i8
-    options:
-      overflow: ERROR
-    result:
-      special: error
-  - group: overflow
-    args:
-      - value: 32768
-        type: i16
-      - value: -1
-        type: i16
+        type: i64
     options:
       overflow: ERROR
     result:
