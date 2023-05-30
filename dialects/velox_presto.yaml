@@ -52,18 +52,78 @@ scalar_functions:
     infix: True
     required_options:
       overflow: ERROR
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - i32
+          - i32
+        result: i32
+      - args:
+          - fp32
+          - fp32
+        result: fp32
   - name: divide
     local_name: "/"
     infix: True
     required_options:
       overflow: ERROR
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - i32
+          - i32
+        result: i32
+      - args:
+          - fp32
+          - fp32
+        result: fp32
   - name: abs
     required_options:
       overflow: ERROR
       rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i8
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
+          - fp32
+        result: fp32
   - name: negate
     required_options:
       overflow: ERROR
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i8
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
+          - fp32
+        result: fp32
   - name: and
     local_name: and
     infix: True
