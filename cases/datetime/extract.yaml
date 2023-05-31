@@ -67,12 +67,21 @@ cases:
       type: i64
   - group: timestamps
     args:
-      - value: DAYOFWEEK
+      - value: DOW
         type: string
       - value: '2016-12-25 13:30:15'
         type: timestamp
     result:
       value: 0
+      type: i64
+  - group: timestamps
+    args:
+      - value: DOY
+        type: string
+      - value: '2016-12-25 13:30:15'
+        type: timestamp
+    result:
+      value: 360
       type: i64
   - group: timestamps
     args:
@@ -136,15 +145,6 @@ cases:
         type: timestamp
     result:
       value: 15220000
-      type: i64
-  - group: timestamps
-    args:
-      - value: TIMEZONE
-        type: string
-      - value: '2016-12-31 13:30:15'
-        type: timestamp
-    result:
-      value: 0
       type: i64
   - group: timestamps
     args:
