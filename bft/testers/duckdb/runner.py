@@ -16,7 +16,9 @@ type_map = {
     "boolean": "BOOLEAN",
     "string": "VARCHAR",
     "date": "DATE",
+    "time": "TIME",
     "timestamp": "TIMESTAMP",
+    "timestamp_tz": "TIMESTAMPTZ"
 }
 
 
@@ -36,6 +38,10 @@ def literal_to_str(lit: CaseLiteral):
     return str(lit.value)
 
 
+def is_string_type(arg):
+    return arg.type in ["string", "timestamp", "timestamp_tz", "date", "time"] and arg.value is not None
+
+
 class DuckDBRunner(SqlCaseRunner):
     def __init__(self, dialect):
         super().__init__(dialect)
@@ -50,16 +56,14 @@ class DuckDBRunner(SqlCaseRunner):
             ]
             schema = ",".join(arg_defs)
             self.conn.execute(f"CREATE TABLE my_table({schema});")
+            self.conn.execute(f"SET TimeZone='UTC';")
 
             arg_names = [f"arg{idx}" for idx in range(len(case.args))]
             joined_arg_names = ",".join(arg_names)
 
             arg_vals_list = list()
             for arg in case.args:
-                if (
-                    arg.type in ["string", "timestamp", "date"]
-                    and arg.value is not None
-                ):
+                if is_string_type(arg):
                     arg_vals_list.append("'" + literal_to_str(arg) + "'")
                 else:
                     arg_vals_list.append(literal_to_str(arg))

@@ -14,9 +14,10 @@ type_map = {
     "fp32": "float4",
     "fp64": "float8",
     "boolean": "boolean",
-    "string": "TEXT",
-    "date": "DATE",
-    "timestamp": "TIMESTAMP",
+    "string": "text",
+    "date": "date",
+    "timestamp": "timestamp",
+    "timestamp_tz": "timestamptz",
 }
 
 
@@ -34,6 +35,10 @@ def literal_to_str(lit: CaseLiteral):
     elif lit.value == float("-inf"):
         return "'-Infinity'"
     return str(lit.value)
+
+
+def is_string_type(arg):
+    return arg.type in ["string", "timestamp", "date"] and arg.value is not None
 
 
 def get_connection_str():
@@ -67,10 +72,7 @@ class PostgresRunner(SqlCaseRunner):
 
             arg_vals_list = list()
             for arg in case.args:
-                if (
-                    arg.type in ["string", "timestamp", "date"]
-                    and arg.value is not None
-                ):
+                if is_string_type(arg):
                     arg_vals_list.append("'" + literal_to_str(arg) + "'")
                 else:
                     arg_vals_list.append(literal_to_str(arg))
