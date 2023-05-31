@@ -20,7 +20,7 @@ scalar_functions:
       overflow: ERROR
       rounding: TIE_TO_EVEN
   - name: divide
-    local_name: "/"
+    local_name: "//"
     infix: True
     required_options:
       overflow: ERROR
