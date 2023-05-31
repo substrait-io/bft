@@ -221,6 +221,12 @@ scalar_functions:
   - name: extract
     extract: True
   - name: substring
+    unsupported_kernels:
+      - args:
+          - string
+          - i64
+          - i64
+        result: string
   - name: concat
     local_name: "||"
     infix: True

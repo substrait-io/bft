@@ -289,6 +289,12 @@ scalar_functions:
     unsupported: True
   - name: substring
     local_name: substr
+    unsupported_kernels:
+      - args:
+          - string
+          - i32
+          - i32
+        result: string
   - name: concat
   - name: like
 aggregate_functions:

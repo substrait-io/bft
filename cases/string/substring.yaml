@@ -13,6 +13,17 @@ cases:
     result:
       value: 'abcde'
       type: string
+  - group: basic
+    args:
+      - value: 'abcdefg'
+        type: string
+      - value: 1
+        type: i64
+      - value: 5
+        type: i64
+    result:
+      value: 'abcde'
+      type: string
   - group:
       id: negative_start
       description: Example where start argument is a negative integer
@@ -23,6 +34,17 @@ cases:
         type: i32
       - value: 2
         type: i32
+    result:
+      value: 'ef'
+      type: string
+  - group: negative_start
+    args:
+      - value: 'abcdefg'
+        type: string
+      - value: -3
+        type: i64
+      - value: 2
+        type: i64
     result:
       value: 'ef'
       type: string
@@ -39,6 +61,17 @@ cases:
     result:
       value: ''
       type: string
+  - group: start_greater_than_length
+    args:
+      - value: 'abcdefg'
+        type: string
+      - value: 10
+        type: i64
+      - value: 2
+        type: i64
+    result:
+      value: ''
+      type: string
   - group:
       id: multi_byte_characters
       description: Example where multi byte characters exist in the string
@@ -49,6 +82,17 @@ cases:
         type: i32
       - value: 3
         type: i32
+    result:
+      value: '😊a😊'
+      type: string
+  - group: multi_byte_characters
+    args:
+      - value: '😊a😊b😊😊'
+        type: string
+      - value: 1
+        type: i64
+      - value: 3
+        type: i64
     result:
       value: '😊a😊'
       type: string
