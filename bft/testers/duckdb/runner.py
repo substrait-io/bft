@@ -18,7 +18,7 @@ type_map = {
     "date": "DATE",
     "time": "TIME",
     "timestamp": "TIMESTAMP",
-    "timestamp_tz": "TIMESTAMPTZ"
+    "timestamp_tz": "TIMESTAMPTZ",
 }
 
 
@@ -39,7 +39,10 @@ def literal_to_str(lit: CaseLiteral):
 
 
 def is_string_type(arg):
-    return arg.type in ["string", "timestamp", "timestamp_tz", "date", "time"] and arg.value is not None
+    return (
+        arg.type in ["string", "timestamp", "timestamp_tz", "date", "time"]
+        and arg.value is not None
+    )
 
 
 class DuckDBRunner(SqlCaseRunner):

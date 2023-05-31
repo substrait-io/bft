@@ -16,6 +16,7 @@ type_map = {
     "boolean": "boolean",
     "string": "text",
     "date": "date",
+    "time": "time",
     "timestamp": "timestamp",
     "timestamp_tz": "timestamptz",
 }
@@ -38,7 +39,10 @@ def literal_to_str(lit: CaseLiteral):
 
 
 def is_string_type(arg):
-    return arg.type in ["string", "timestamp", "date"] and arg.value is not None
+    return (
+        arg.type in ["string", "timestamp", "timestamp_tz", "date", "time"]
+        and arg.value is not None
+    )
 
 
 def get_connection_str():
