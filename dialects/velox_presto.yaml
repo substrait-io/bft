@@ -69,6 +69,10 @@ scalar_functions:
           - fp32
           - fp32
         result: fp32
+      - args:
+          - fp32
+          - fp64
+        result: fp32
   - name: divide
     local_name: "/"
     infix: True
@@ -142,21 +146,91 @@ scalar_functions:
   - name: lt
     local_name: "<"
     infix: True
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: boolean
+      - args:
+          - i16
+          - i16
+        result: boolean
+      - args:
+          - fp32
+          - fp32
+        result: boolean
   - name: lte
     local_name: "<="
     infix: True
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: boolean
+      - args:
+          - i16
+          - i16
+        result: boolean
+      - args:
+          - fp32
+          - fp32
+        result: boolean
   - name: gt
     local_name: ">"
     infix: True
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: boolean
+      - args:
+          - i16
+          - i16
+        result: boolean
+      - args:
+          - fp32
+          - fp32
+        result: boolean
   - name: gte
     local_name: ">="
     infix: True
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: boolean
+      - args:
+          - i16
+          - i16
+        result: boolean
+      - args:
+          - fp32
+          - fp32
+        result: boolean
   - name: equal
     local_name: "="
     infix: True
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: boolean
+      - args:
+          - i16
+          - i16
+        result: boolean
   - name: not_equal
     local_name: "!="
     infix: True
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: boolean
+      - args:
+          - i16
+          - i16
+        result: boolean
   - name: is_not_distinct_from
     unsupported: True
   - name: is_null
@@ -167,12 +241,28 @@ scalar_functions:
     unsupported: True
   - name: coalesce
   - name: ceil
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: boolean
+      - args:
+          - fp32
+        result: fp32
   - name: floor
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
   - name: round
     unsupported_kernels:
       - args:
           - i8
           - i8
+        result: i8
+      - args:
+          - i8
+          - i32
         result: i8
       - args:
           - i16
@@ -185,4 +275,8 @@ scalar_functions:
       - args:
           - fp64
           - i8
+        result: fp64
+      - args:
+          - fp64
+          - i32
         result: fp64
