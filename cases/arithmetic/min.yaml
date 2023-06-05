@@ -1,0 +1,18 @@
+function: min
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: [2000000000 -3217908979 629000000 -100000000 0 987654321]
+        type: i64
+    result:
+      value: -3217908979
+      type: i64
+  - group: basic
+    args:
+      - value: [1.5e+308 1.5e+10 -1.5e+8 -1.5e+7 -1.5e+70]
+        type: fp64
+    result:
+      value: -1.5e+70
+      type: fp64

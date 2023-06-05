@@ -89,3 +89,8 @@ scalar_functions:
         result: fp32
   - name: extract
     extract: True
+aggregate_functions:
+  - name: min
+    aggregate: True
+  - name: max
+    aggregate: True

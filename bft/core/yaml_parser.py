@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import BinaryIO, Generic, Iterable, List, TypeVar
+from bft.cases.types import CaseLiteral
 
 import yaml
 
@@ -30,6 +31,14 @@ class BaseYamlVisitor(ABC, Generic[T]):
                 self.__location_stack.append(f"{attr}[{idx}]")
                 results.append(visitor(item))
                 self.__location_stack.pop()
+            for result in results:
+                # if the yaml arg value is a list, split it up and create multiple
+                # CaseLiteral objects to be added to the result.
+                if isinstance(result, CaseLiteral) and isinstance(result.value, list):
+                    listed_result = result.value[0].split(" ")
+                    for individual_result in listed_result:
+                        results.append(CaseLiteral(individual_result, result.type))
+                    results.remove(result)
             return results
         elif required:
             self._fail(f"Expected required attribute {attr}")

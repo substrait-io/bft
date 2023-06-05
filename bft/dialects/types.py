@@ -16,6 +16,7 @@ class DialectFunction(NamedTuple):
     local_name: str
     infix: bool
     postfix: bool
+    aggregate: bool
     unsupported: bool
     extract: bool
     required_options: Dict[str, str]
@@ -26,12 +27,14 @@ class DialectFile(NamedTuple):
     name: str
     type: str
     scalar_functions: List[DialectFunction]
+    aggregate_functions: List[DialectFunction]
 
 
 class SqlMapping(NamedTuple):
     local_name: str
     infix: bool
     postfix: bool
+    aggregate: bool
     unsupported: bool
     extract: bool
     should_pass: bool
@@ -43,6 +46,9 @@ class Dialect(object):
         self.name = dialect_file.name
         self.__scalar_functions_by_name: Dict[str, DialectFunction] = {
             f.name: f for f in dialect_file.scalar_functions
+        }
+        self.__aggregate_functions_by_name: Dict[str, DialectFunction] = {
+            f.name: f for f in dialect_file.aggregate_functions
         }
 
     def __supports_case_kernel(
@@ -83,8 +89,8 @@ class Dialect(object):
         return None
 
     def required_options(self, function_name) -> Dict[str, str]:
-        dfunc = self.__scalar_functions_by_name[function_name]
-        return dfunc.required_options
+        scalar_dfunc = self.__scalar_functions_by_name[function_name]
+        return scalar_dfunc
 
     def supports_kernel(self, function_name: str, kernel: Kernel) -> bool:
         dfunc = self.__scalar_functions_by_name.get(function_name, None)
@@ -105,7 +111,9 @@ class Dialect(object):
         return True
 
     def mapping_for_case(self, case: Case) -> SqlMapping:
-        dfunc = self.__scalar_functions_by_name.get(case.function, None)
+        dfunc_scalar = self.__scalar_functions_by_name.get(case.function, None)
+        dfunc_aggregate = self.__aggregate_functions_by_name.get(case.function, None)
+        dfunc = dfunc_scalar or dfunc_aggregate
         if dfunc.unsupported:
             pytest.skip("Skipping unsupported function.")
         if dfunc is None:
@@ -117,6 +125,7 @@ class Dialect(object):
                 dfunc.local_name,
                 dfunc.infix,
                 dfunc.postfix,
+                dfunc.aggregate,
                 dfunc.unsupported,
                 dfunc.extract,
                 False,
@@ -129,6 +138,7 @@ class Dialect(object):
                 dfunc.local_name,
                 dfunc.infix,
                 dfunc.postfix,
+                dfunc.aggregate,
                 dfunc.unsupported,
                 dfunc.extract,
                 False,
@@ -141,6 +151,7 @@ class Dialect(object):
             dfunc.postfix,
             dfunc.unsupported,
             dfunc.extract,
+            dfunc.aggregate
             True,
             None,
         )
