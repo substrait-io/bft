@@ -11,8 +11,29 @@ cases:
       type: i64
   - group: basic
     args:
+      - value: [Null -3217908979 629000000 -100000000 Null 987654321]
+        type: i64
+    result:
+      value: 987654321
+      type: i64
+  - group: basic
+    args:
+      - value: [2.5 0 5.0 -2.5 -7.5]
+        type: fp32
+    result:
+      value: 5.0
+      type: fp32
+  - group: basic
+    args:
       - value: [1.5e+30 1.5e+10 -1.5e+8 -1.5e+7 -1.5e+70]
         type: fp64
     result:
       value: 1.5e+30
+      type: fp64
+  - group: basic
+    args:
+      - value: [Null Null -1.5e+8 -1.5e+7 -1.5e+70]
+        type: fp64
+    result:
+      value: -1.5e+7
       type: fp64
