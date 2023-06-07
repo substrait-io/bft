@@ -94,3 +94,7 @@ aggregate_functions:
     aggregate: True
   - name: max
     aggregate: True
+  - name: sum
+    aggregate: True
+  - name: count
+    aggregate: True

@@ -85,9 +85,10 @@ class PostgresRunner(SqlCaseRunner):
             arg_vals = ",".join([literal_to_str(arg) for arg in case.args])
             if mapping.aggregate:
                 arg_vals_list = ", ".join(f"({val})" for val in arg_vals.split(","))
-                self.conn.execute(
-                    f"INSERT INTO my_table ({joined_arg_names}) VALUES {arg_vals_list};"
-                )
+                if arg_vals != "[]":
+                    self.conn.execute(
+                        f"INSERT INTO my_table ({joined_arg_names}) VALUES {arg_vals_list};"
+                    )
             else:
                 self.conn.execute(
                     f"INSERT INTO my_table ({joined_arg_names}) VALUES ({arg_vals});"

@@ -58,7 +58,11 @@ class Dialect(object):
         result: CaseLiteral | Literal["error", "undefined"],
     ):
         for unsupported_kernel in dfunc.unsupported_kernels:
-            if len(unsupported_kernel.arg_types) != len(args):
+            if dfunc.aggregate:
+                arg_len = 1
+            else:
+                arg_len = len(args)
+            if len(unsupported_kernel.arg_types) != arg_len:
                 raise Exception(
                     "Unreachable path.  Unsupported kernel with different # of types than case"
                 )

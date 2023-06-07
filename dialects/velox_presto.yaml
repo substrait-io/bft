@@ -292,3 +292,7 @@ aggregate_functions:
     unsupported: True
   - name: max
     unsupported: True
+  - name: sum
+    unsupported: True
+  - name: count
+    unsupported: True

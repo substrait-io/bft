@@ -35,10 +35,11 @@ class BaseYamlVisitor(ABC, Generic[T]):
                 # if the yaml arg value is a list, split it up and create multiple
                 # CaseLiteral objects to be added to the result.
                 if isinstance(result, CaseLiteral) and isinstance(result.value, list):
-                    listed_result = result.value[0].split(" ")
-                    for individual_result in listed_result:
-                        results.append(CaseLiteral(individual_result, result.type))
-                    results.remove(result)
+                    if len(result.value) > 0:
+                        listed_result = str(result.value[0]).split(" ")
+                        for individual_result in listed_result:
+                            results.append(CaseLiteral(individual_result, result.type))
+                        results.remove(result)
             return results
         elif required:
             self._fail(f"Expected required attribute {attr}")

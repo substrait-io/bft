@@ -225,3 +225,15 @@ aggregate_functions:
     aggregate: True
   - name: max
     aggregate: True
+  - name: sum
+    aggregate: True
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i8
+  - name: count
+    aggregate: True
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i8
