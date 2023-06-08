@@ -23,3 +23,10 @@ cases:
     result:
       value: 0
       type: i8
+  - group: basic
+    args:
+      - value: [Null Null Null]
+        type: i8
+    result:
+      value: 0
+      type: i8
