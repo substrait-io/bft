@@ -11,6 +11,20 @@ cases:
       type: i8
   - group: basic
     args:
+      - value: [Null Null Null]
+        type: i16
+    result:
+      value: Null
+      type: i16
+  - group: basic
+    args:
+      - value: []
+        type: i16
+    result:
+      value: Null
+      type: i16
+  - group: basic
+    args:
       - value: [2000000000 -3217908979 629000000 -100000000 0 987654321]
         type: i64
     result:
