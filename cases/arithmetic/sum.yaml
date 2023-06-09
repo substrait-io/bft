@@ -72,3 +72,18 @@ cases:
     result:
       value: -inf
       type: fp64
+  - group: basic
+    args:
+      - value: [2.500000715 'inf' 2.500000715]
+        type: fp64
+    result:
+      value: inf
+      type: fp64
+  - group: basic
+    args:
+      - value: [2.5000007 '-inf' 2.5000007 10.0]
+        type: fp64
+    result:
+      value: -inf
+      type: fp64
+

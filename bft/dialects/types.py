@@ -153,9 +153,9 @@ class Dialect(object):
             dfunc.local_name,
             dfunc.infix,
             dfunc.postfix,
+            dfunc.aggregate,
             dfunc.unsupported,
             dfunc.extract,
-            dfunc.aggregate
             True,
             None,
         )

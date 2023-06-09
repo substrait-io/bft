@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from typing import BinaryIO, Generic, Iterable, List, TypeVar
 from bft.cases.types import CaseLiteral
 
+import math
 import yaml
 
 try:
@@ -38,6 +39,12 @@ class BaseYamlVisitor(ABC, Generic[T]):
                     if len(result.value) > 0:
                         listed_result = str(result.value[0]).split(" ")
                         for individual_result in listed_result:
+                            if individual_result.lower().startswith("'inf'"):
+                                individual_result = float("inf")
+                            elif individual_result.lower().startswith("'-inf'"):
+                                individual_result = float("-inf")
+                            elif individual_result.lower().startswith("'nan'"):
+                                individual_result = math.nan
                             results.append(CaseLiteral(individual_result, result.type))
                         results.remove(result)
             return results

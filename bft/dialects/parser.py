@@ -25,9 +25,9 @@ class DialectFileVisitor(BaseYamlVisitor[DialectFile]):
             local_name,
             infix,
             postfix,
+            aggregate,
             unsupported,
             extract,
-            aggregate,
             required_opts,
             bad_kernels,
         )
@@ -40,6 +40,9 @@ class DialectFileVisitor(BaseYamlVisitor[DialectFile]):
         postfix = self._get_or_else(func, "postfix", False)
         aggregate = self._get_or_else(func, "aggregate", False)
         unsupported = self._get_or_else(func, "unsupported", False)
+        # The extract function uses a special grammar in some SQL dialects.
+        # i.e. SELECT EXTRACT(YEAR FROM times) FROM my_table
+        extract = self._get_or_else(func, "extract", False)
         bad_kernels = self._visit_list(self.visit_kernel, func, "unsupported_kernels")
         return DialectFunction(
             name,
@@ -48,6 +51,7 @@ class DialectFileVisitor(BaseYamlVisitor[DialectFile]):
             postfix,
             aggregate,
             unsupported,
+            extract,
             required_opts,
             bad_kernels,
         )

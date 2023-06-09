@@ -51,3 +51,17 @@ cases:
     result:
       value: -1.5e+7
       type: fp64
+  - group: basic
+    args:
+      - value: [Null '-inf' -1.5e+8 -1.5e+7 -1.5e+70]
+        type: fp64
+    result:
+      value: -inf
+      type: fp64
+  - group: basic
+    args:
+      - value: [Null 'inf']
+        type: fp64
+    result:
+      value: inf
+      type: fp64

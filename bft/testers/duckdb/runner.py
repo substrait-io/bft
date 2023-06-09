@@ -72,8 +72,9 @@ class DuckDBRunner(SqlCaseRunner):
                     arg_vals_list.append("'" + literal_to_str(arg) + "'")
                 else:
                     arg_vals_list.append(literal_to_str(arg))
-            arg_vals = ",".join([literal_to_str(arg) for arg in case.args])
+            arg_vals = ", ".join(arg_vals_list)
             if mapping.aggregate:
+                arg_vals = ",".join([literal_to_str(arg) for arg in case.args])
                 arg_vals_list = ", ".join(f"({val})" for val in arg_vals.split(","))
                 if arg_vals != "[]":
                     self.conn.execute(
