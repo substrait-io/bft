@@ -14,6 +14,11 @@ type_map = {
     "fp32": "float4",
     "fp64": "float8",
     "boolean": "boolean",
+    "string": "text",
+    "date": "date",
+    "time": "time",
+    "timestamp": "timestamp",
+    "timestamp_tz": "timestamptz",
 }
 
 
@@ -31,6 +36,13 @@ def literal_to_str(lit: CaseLiteral):
     elif lit.value == float("-inf"):
         return "'-Infinity'"
     return str(lit.value)
+
+
+def is_string_type(arg):
+    return (
+        arg.type in ["string", "timestamp", "timestamp_tz", "date", "time"]
+        and arg.value is not None
+    )
 
 
 def get_connection_str():
@@ -61,7 +73,14 @@ class PostgresRunner(SqlCaseRunner):
 
             arg_names = [f"arg{idx}" for idx in range(len(case.args))]
             joined_arg_names = ",".join(arg_names)
-            arg_vals = ",".join([literal_to_str(arg) for arg in case.args])
+
+            arg_vals_list = list()
+            for arg in case.args:
+                if is_string_type(arg):
+                    arg_vals_list.append("'" + literal_to_str(arg) + "'")
+                else:
+                    arg_vals_list.append(literal_to_str(arg))
+            arg_vals = ", ".join(arg_vals_list)
             self.conn.execute(
                 f"INSERT INTO my_table ({joined_arg_names}) VALUES ({arg_vals});"
             )
@@ -74,6 +93,10 @@ class PostgresRunner(SqlCaseRunner):
                 if len(arg_names) != 1:
                     raise Exception(f"Postfix function with {len(arg_names)} args")
                 expr = f"SELECT {arg_names[0]} {mapping.local_name} FROM my_table;"
+            elif mapping.extract:
+                if len(arg_names) != 2:
+                    raise Exception(f"Extract function with {len(arg_names)} args")
+                expr = f"SELECT {mapping.local_name}({arg_vals_list[0]} FROM {arg_names[1]}) FROM my_table;"
             else:
                 expr = f"SELECT {mapping.local_name}({joined_arg_names}) FROM my_table;"
             result = self.conn.execute(expr).fetchone()[0]

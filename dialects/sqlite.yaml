@@ -89,3 +89,5 @@ scalar_functions:
   - name: floor
   - name: round
     unsupported: true
+  - name: extract
+    unsupported: True

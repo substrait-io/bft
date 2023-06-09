@@ -1,5 +1,6 @@
-import duckdb
 from typing import Dict, NamedTuple
+
+import duckdb
 
 from bft.cases.runner import SqlCaseResult, SqlCaseRunner
 from bft.cases.types import Case, CaseLiteral
@@ -13,7 +14,11 @@ type_map = {
     "fp32": "REAL",
     "fp64": "DOUBLE",
     "boolean": "BOOLEAN",
-    "string": "VARCHAR"
+    "string": "VARCHAR",
+    "date": "DATE",
+    "time": "TIME",
+    "timestamp": "TIMESTAMP",
+    "timestamp_tz": "TIMESTAMPTZ",
 }
 
 
@@ -33,6 +38,13 @@ def literal_to_str(lit: CaseLiteral):
     return str(lit.value)
 
 
+def is_string_type(arg):
+    return (
+        arg.type in ["string", "timestamp", "timestamp_tz", "date", "time"]
+        and arg.value is not None
+    )
+
+
 class DuckDBRunner(SqlCaseRunner):
     def __init__(self, dialect):
         super().__init__(dialect)
@@ -47,10 +59,18 @@ class DuckDBRunner(SqlCaseRunner):
             ]
             schema = ",".join(arg_defs)
             self.conn.execute(f"CREATE TABLE my_table({schema});")
+            self.conn.execute(f"SET TimeZone='UTC';")
 
             arg_names = [f"arg{idx}" for idx in range(len(case.args))]
             joined_arg_names = ",".join(arg_names)
-            arg_vals = ",".join([literal_to_str(arg) for arg in case.args])
+
+            arg_vals_list = list()
+            for arg in case.args:
+                if is_string_type(arg):
+                    arg_vals_list.append("'" + literal_to_str(arg) + "'")
+                else:
+                    arg_vals_list.append(literal_to_str(arg))
+            arg_vals = ", ".join(arg_vals_list)
             self.conn.execute(
                 f"INSERT INTO my_table ({joined_arg_names}) VALUES ({arg_vals});"
             )
@@ -63,6 +83,10 @@ class DuckDBRunner(SqlCaseRunner):
                 if len(arg_names) != 1:
                     raise Exception(f"Postfix function with {len(arg_names)} args")
                 expr = f"SELECT {arg_names[0]} {mapping.local_name} FROM my_table;"
+            elif mapping.extract:
+                if len(arg_names) != 2:
+                    raise Exception(f"Extract function with {len(arg_names)} args")
+                expr = f"SELECT {mapping.local_name}({arg_vals_list[0]} FROM {arg_names[1]}) FROM my_table;"
             else:
                 expr = f"SELECT {mapping.local_name}({joined_arg_names}) FROM my_table;"
             result = self.conn.execute(expr).fetchone()[0]
