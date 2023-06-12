@@ -96,5 +96,9 @@ aggregate_functions:
     aggregate: True
   - name: sum
     aggregate: True
+    unsupported_kernels:
+      - args:
+          - i64
+        result: i64
   - name: count
     aggregate: True
