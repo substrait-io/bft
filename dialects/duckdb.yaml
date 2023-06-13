@@ -89,3 +89,16 @@ scalar_functions:
         result: fp32
   - name: extract
     extract: True
+aggregate_functions:
+  - name: min
+    aggregate: True
+  - name: max
+    aggregate: True
+  - name: sum
+    aggregate: True
+    unsupported_kernels:
+      - args:
+          - i64
+        result: i64
+  - name: count
+    aggregate: True

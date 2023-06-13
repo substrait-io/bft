@@ -91,3 +91,12 @@ scalar_functions:
     unsupported: true
   - name: extract
     unsupported: True
+aggregate_functions:
+  - name: min
+    aggregate: True
+  - name: max
+    aggregate: True
+  - name: sum
+    aggregate: True
+  - name: count
+    aggregate: True

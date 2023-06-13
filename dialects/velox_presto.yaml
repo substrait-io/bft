@@ -287,3 +287,12 @@ scalar_functions:
         result: fp64
   - name: extract
     unsupported: True
+aggregate_functions:
+  - name: min
+    unsupported: True
+  - name: max
+    unsupported: True
+  - name: sum
+    unsupported: True
+  - name: count
+    unsupported: True

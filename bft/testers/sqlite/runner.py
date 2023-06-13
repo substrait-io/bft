@@ -50,11 +50,20 @@ class SqliteRunner(SqlCaseRunner):
             self.conn.execute(f"CREATE TABLE my_table({schema});")
 
             arg_names = [f"arg{idx}" for idx in range(len(case.args))]
+            if mapping.aggregate:
+                arg_names = [arg_names[0]]
             joined_arg_names = ",".join(arg_names)
             arg_vals = ",".join([literal_to_str(arg) for arg in case.args])
-            self.conn.execute(
-                f"INSERT INTO my_table ({joined_arg_names}) VALUES ({arg_vals});"
-            )
+            if mapping.aggregate:
+                arg_vals_list = ", ".join(f"({val})" for val in arg_vals.split(","))
+                if arg_vals != "[]":
+                    self.conn.execute(
+                        f"INSERT INTO my_table ({joined_arg_names}) VALUES {arg_vals_list};"
+                    )
+            else:
+                self.conn.execute(
+                    f"INSERT INTO my_table ({joined_arg_names}) VALUES ({arg_vals});"
+                )
 
             if mapping.infix:
                 if len(arg_names) != 2:
@@ -64,6 +73,10 @@ class SqliteRunner(SqlCaseRunner):
                 if len(arg_names) != 1:
                     raise Exception(f"Postfix function with {len(arg_names)} args")
                 expr = f"SELECT {arg_names[0]} {mapping.local_name} FROM my_table;"
+            elif mapping.aggregate:
+                if len(arg_names) < 1:
+                    raise Exception(f"Aggregate function with {len(arg_names)} args")
+                expr = f"SELECT {mapping.local_name}({arg_names[0]}) FROM my_table;"
             else:
                 expr = f"SELECT {mapping.local_name}({joined_arg_names}) FROM my_table;"
             result = self.conn.execute(expr).fetchone()[0]
