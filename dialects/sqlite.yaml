@@ -92,6 +92,8 @@ scalar_functions:
   - name: extract
     unsupported: True
   - name: substring
+    required_options:
+      negative_start: WRAP_FROM_END
   - name: concat
     local_name: "||"
     infix: True

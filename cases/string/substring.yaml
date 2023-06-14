@@ -25,30 +25,6 @@ cases:
       value: 'abcde'
       type: string
   - group:
-      id: negative_start
-      description: Example where start argument is a negative integer
-    args:
-      - value: 'abcdefg'
-        type: string
-      - value: -3
-        type: i32
-      - value: 2
-        type: i32
-    result:
-      value: 'ef'
-      type: string
-  - group: negative_start
-    args:
-      - value: 'abcdefg'
-        type: string
-      - value: -3
-        type: i64
-      - value: 2
-        type: i64
-    result:
-      value: 'ef'
-      type: string
-  - group:
       id: start_greater_than_length
       description: Example where start argument greater than the length of the string
     args:
@@ -95,4 +71,45 @@ cases:
         type: i64
     result:
       value: '😊a😊'
+      type: string
+  - group:
+      id: negative_start
+      description: Example where start argument is a negative integer
+    args:
+      - value: 'abcdefg'
+        type: string
+      - value: -3
+        type: i64
+      - value: 2
+        type: i64
+    options:
+      negative_start: WRAP_FROM_END
+    result:
+      value: 'ef'
+      type: string
+  - group: negative_start
+    args:
+      - value: 'abcdefg'
+        type: string
+      - value: -3
+        type: i64
+      - value: 4
+        type: i64
+    options:
+      negative_start: LEFT_OF_BEGINNING
+    result:
+      value: ''
+      type: string
+  - group: negative_start
+    args:
+      - value: 'abcdefg'
+        type: string
+      - value: -3
+        type: i64
+      - value: 4
+        type: i64
+    options:
+      negative_start: LEFT_OF_BEGINNING
+    result:
+      value: 'ab'
       type: string

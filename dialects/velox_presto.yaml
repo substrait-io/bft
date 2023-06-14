@@ -289,6 +289,8 @@ scalar_functions:
     unsupported: True
   - name: substring
     local_name: substr
+    required_options:
+      negative_start: WRAP_FROM_END
     unsupported_kernels:
       - args:
           - string
@@ -297,6 +299,7 @@ scalar_functions:
         result: string
   - name: concat
   - name: like
+    unsupported: True
 aggregate_functions:
   - name: min
     unsupported: True
