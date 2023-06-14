@@ -1,29 +1,37 @@
 import datafusion
-import pyarrow
+import pyarrow as pa
 
 from bft.cases.runner import SqlCaseResult, SqlCaseRunner
 from bft.cases.types import Case, CaseLiteral
 from bft.dialects.types import SqlMapping
 
-def is_type_supported(type):
-    return type in set({"i64", "fp64", "boolean", "string"})
 
-# type_map = {
-#     "i8": "TINYINT",
-#     "i16": "SMALLINT",
-#     "i32": "INTEGER",
-#     "i64": "BIGINT",
-#     "fp32": "REAL",
-#     "fp64": "DOUBLE",
-#     "boolean": "BOOLEAN",
-#     "string": "VARCHAR",
-# }
-#
-#
-# def type_to_datafusion_type(type: str):
-#     if type not in type_map:
-#         raise Exception(f"Unrecognized type: {type}")
-#     return type_map[type]
+type_map = {
+    "i8": pa.int8(),
+    "i16": pa.int16(),
+    "i32": pa.int32(),
+    "i64": pa.int64(),
+    "fp32": pa.float32(),
+    "fp64": pa.float64(),
+    "boolean": pa.bool_(),
+    "string": pa.string(),
+}
+
+
+def type_to_datafusion_type(type: str):
+    if type not in type_map:
+        raise Exception(f"Unrecognized type: {type}")
+    return type_map[type]
+
+
+def literal_to_str(lit: CaseLiteral):
+    if lit.value is None:
+        return "null"
+    elif lit.value == float("inf"):
+        return "'Infinity'"
+    elif lit.value == float("-inf"):
+        return "'-Infinity'"
+    return str(lit.value)
 
 
 class DatafusionRunner(SqlCaseRunner):
@@ -37,17 +45,19 @@ class DatafusionRunner(SqlCaseRunner):
             arg_vectors = []
             arg_names = []
             for arg_idx, arg in enumerate(case.args):
-                if not is_type_supported(arg.type):
-                    return SqlCaseResult.unsupported(
-                        f"The type {arg.type} is not supported"
-                    )
-                arg_vectors.append(pyarrow.array([arg.value]))
+                # for aggregate:
+                # batch = pa.RecordBatch.from_arrays([pa.array([1, None, -4], pa.int16())], ["a"])
+                arg_val = arg.value
+                arg_type = type_to_datafusion_type(arg.type)
+                arg_vectors.append(
+                    pa.array([arg_val], arg_type)
+                )
                 arg_names.append(f"arg{arg_idx}")
 
             joined_arg_names = ",".join(arg_names)
-            batch = pyarrow.RecordBatch.from_arrays(arg_vectors, names=arg_names,)
+            batch = pa.RecordBatch.from_arrays(arg_vectors,names=arg_names,)
 
-            self.ctx.register_record_batches('my_table', [[batch]])
+            self.ctx.register_record_batches("my_table", [[batch]])
             if mapping.infix:
                 if len(case.args) != 2:
                     raise Exception(f"Infix function with {len(case.args)} args")
@@ -56,8 +66,14 @@ class DatafusionRunner(SqlCaseRunner):
                 if len(arg_names) != 1:
                     raise Exception(f"Postfix function with {len(arg_names)} args")
                 expr_str = f"SELECT {arg_names[0]} {mapping.local_name} FROM my_table;"
+            elif mapping.aggregate:
+                if len(arg_names) < 1:
+                    raise Exception(f"Aggregate function with {len(arg_names)} args")
+                expr_str = f"SELECT {mapping.local_name}({arg_names[0]}) FROM my_table;"
             else:
-                expr_str = f"SELECT {mapping.local_name}({joined_arg_names}) FROM my_table;"
+                expr_str = (
+                    f"SELECT {mapping.local_name}({joined_arg_names}) FROM my_table;"
+                )
 
             result = self.ctx.sql(expr_str).collect()[0].columns[0].to_pylist()
 
@@ -74,7 +90,7 @@ class DatafusionRunner(SqlCaseRunner):
                     return SqlCaseResult.success()
                 else:
                     return SqlCaseResult.mismatch(str(result))
-        except datafusion.Error as err:
-            return SqlCaseResult.error(str(err))
+        # except datafusion.Error as err:
+        #     return SqlCaseResult.error(str(err))
         finally:
             self.ctx.deregister_table("my_table")

@@ -6,128 +6,27 @@ scalar_functions:
     infix: True
     required_options:
       overflow: SILENT
-      rounding: TIE_TO_EVEN
-    unsupported_kernels:
-      - args:
-          - i8
-          - i8
-        result: i8
-      - args:
-          - i16
-          - i16
-        result: i16
-      - args:
-          - i32
-          - i32
-        result: i32
-      - args:
-          - fp32
-          - fp32
-        result: fp32
   - name: subtract
     local_name: "-"
     infix: True
     required_options:
-      overflow: ERROR
-      rounding: TIE_TO_EVEN
-    unsupported_kernels:
-      - args:
-          - i8
-          - i8
-        result: i8
-      - args:
-          - i16
-          - i16
-        result: i16
-      - args:
-          - i32
-          - i32
-        result: i32
-      - args:
-          - fp32
-          - fp32
-        result: fp32
+      overflow: SILENT
   - name: multiply
     local_name: "*"
     infix: True
     required_options:
-      overflow: ERROR
-    unsupported_kernels:
-      - args:
-          - i8
-          - i8
-        result: i8
-      - args:
-          - i16
-          - i16
-        result: i16
-      - args:
-          - i32
-          - i32
-        result: i32
-      - args:
-          - fp32
-          - fp32
-        result: fp32
-      - args:
-          - fp32
-          - fp64
-        result: fp64
+      overflow: SILENT
   - name: divide
     local_name: "/"
     infix: True
     required_options:
       overflow: ERROR
-    unsupported_kernels:
-      - args:
-          - i8
-          - i8
-        result: i8
-      - args:
-          - i16
-          - i16
-        result: i16
-      - args:
-          - i32
-          - i32
-        result: i32
-      - args:
-          - fp32
-          - fp32
-        result: fp32
+      rounding: TIE_TO_EVEN
   - name: abs
     required_options:
-      overflow: ERROR
-      rounding: TIE_TO_EVEN
-    unsupported_kernels:
-      - args:
-          - i8
-        result: i8
-      - args:
-          - i16
-        result: i16
-      - args:
-          - i32
-        result: i32
-      - args:
-          - fp32
-        result: fp32
+      overflow: SILENT
   - name: negate
-    required_options:
-      overflow: ERROR
-    unsupported_kernels:
-      - args:
-          - i8
-        result: i8
-      - args:
-          - i16
-        result: i16
-      - args:
-          - i32
-        result: i32
-      - args:
-          - fp32
-        result: fp32
+    unsupported: true
   - name: and
     local_name: and
     infix: True
@@ -146,154 +45,43 @@ scalar_functions:
   - name: lt
     local_name: "<"
     infix: True
-    unsupported_kernels:
-      - args:
-          - i8
-          - i8
-        result: boolean
-      - args:
-          - i16
-          - i16
-        result: boolean
-      - args:
-          - fp32
-          - fp32
-        result: boolean
   - name: lte
     local_name: "<="
     infix: True
-    unsupported_kernels:
-      - args:
-          - i8
-          - i8
-        result: boolean
-      - args:
-          - i16
-          - i16
-        result: boolean
-      - args:
-          - fp32
-          - fp32
-        result: boolean
   - name: gt
     local_name: ">"
     infix: True
-    unsupported_kernels:
-      - args:
-          - i8
-          - i8
-        result: boolean
-      - args:
-          - i16
-          - i16
-        result: boolean
-      - args:
-          - fp32
-          - fp32
-        result: boolean
   - name: gte
     local_name: ">="
     infix: True
-    unsupported_kernels:
-      - args:
-          - i8
-          - i8
-        result: boolean
-      - args:
-          - i16
-          - i16
-        result: boolean
-      - args:
-          - fp32
-          - fp32
-        result: boolean
   - name: equal
     local_name: "="
     infix: True
-    unsupported_kernels:
-      - args:
-          - i8
-          - i8
-        result: boolean
-      - args:
-          - i16
-          - i16
-        result: boolean
   - name: not_equal
     local_name: "!="
     infix: True
-    unsupported_kernels:
-      - args:
-          - i8
-          - i8
-        result: boolean
-      - args:
-          - i16
-          - i16
-        result: boolean
   - name: is_not_distinct_from
-    unsupported: True
+    local_name: "IS NOT DISTINCT FROM"
+    infix: True
   - name: is_null
-    unsupported: True
+    local_name: "IS NULL"
+    postfix: True
   - name: is_not_null
-    unsupported: True
+    local_name: "IS NOT NULL"
+    postfix: True
   - name: nullif
-    unsupported: True
   - name: coalesce
-    unsupported_kernels:
-      - args:
-          - i8
-          - i8
-        result: i8
   - name: ceil
-    unsupported_kernels:
-      - args:
-          - fp32
-        result: fp32
   - name: floor
-    unsupported_kernels:
-      - args:
-          - fp32
-        result: fp32
   - name: round
-    unsupported_kernels:
-      - args:
-          - i8
-          - i8
-        result: i8
-      - args:
-          - i8
-          - i32
-        result: i8
-      - args:
-          - i16
-          - i16
-        result: i16
-      - args:
-          - i16
-          - i32
-        result: i8
-      - args:
-          - fp32
-          - i8
-        result: fp32
-      - args:
-          - fp64
-          - i8
-        result: fp64
-      - args:
-          - fp64
-          - i32
-        result: fp64
   - name: extract
-    unsupported: True
-  - name: substring
-    local_name: substr
-    unsupported_kernels:
-      - args:
-          - string
-          - i32
-          - i32
-        result: string
-  - name: concat
-  - name: like
+    unsupported: true
+aggregate_functions:
+  - name: min
+    aggregate: True
+  - name: max
+    aggregate: True
+  - name: sum
+    aggregate: True
+  - name: count
+    aggregate: True
