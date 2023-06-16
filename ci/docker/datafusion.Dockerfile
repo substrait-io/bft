@@ -1,9 +1,9 @@
-FROM alpine:latest
+FROM ubuntu:22.04
 
 ENV PYTHONUNBUFFERED=1
-RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
-RUN python3 -m ensurepip
-RUN pip3 install --no-cache --upgrade pip setuptools pytest pyyaml mistletoe datafusion
+RUN apt-get update && apt-get install -y python3.10 && ln -sf python3 /usr/bin/python
+RUN apt install -y pip
+RUN pip install --upgrade pip setuptools pytest pyyaml mistletoe datafusion
 
 WORKDIR /bft
 COPY . .

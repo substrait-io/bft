@@ -121,7 +121,5 @@ class DatafusionRunner(SqlCaseRunner):
                     return SqlCaseResult.success()
                 else:
                     return SqlCaseResult.mismatch(str(result))
-        # except datafusion.Error as err:
-        #     return SqlCaseResult.error(str(err))
         finally:
             self.ctx.deregister_table("my_table")
