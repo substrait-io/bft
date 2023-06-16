@@ -6,6 +6,7 @@ scalar_functions:
     infix: True
     required_options:
       overflow: SILENT
+      rounding: TIE_TO_EVEN
   - name: subtract
     local_name: "-"
     infix: True
@@ -20,7 +21,7 @@ scalar_functions:
     local_name: "/"
     infix: True
     required_options:
-      overflow: ERROR
+      overflow: SILENT
       rounding: TIE_TO_EVEN
   - name: abs
     required_options:
@@ -83,5 +84,7 @@ aggregate_functions:
     aggregate: True
   - name: sum
     aggregate: True
+    required_options:
+      overflow: SILENT
   - name: count
     aggregate: True

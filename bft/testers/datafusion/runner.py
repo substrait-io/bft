@@ -5,7 +5,6 @@ from bft.cases.runner import SqlCaseResult, SqlCaseRunner
 from bft.cases.types import Case, CaseLiteral
 from bft.dialects.types import SqlMapping
 
-
 type_map = {
     "i8": pa.int8(),
     "i16": pa.int16(),
@@ -27,11 +26,34 @@ def type_to_datafusion_type(type: str):
 def literal_to_str(lit: CaseLiteral):
     if lit.value is None:
         return "null"
+    elif lit.value == "Null":
+        return None
     elif lit.value == float("inf"):
         return "'Infinity'"
     elif lit.value == float("-inf"):
         return "'-Infinity'"
     return str(lit.value)
+
+
+def is_string_type(arg):
+    return (
+        arg.type in ["string", "timestamp", "timestamp_tz", "date", "time"]
+        or arg.value in ["Null"]
+    ) and arg.value is not None
+
+
+def arg_with_type(arg):
+    if is_string_type(arg):
+        arg_val = literal_to_str(arg)
+    elif isinstance(arg.value, list) or arg.value is None:
+        arg_val = None
+    elif arg.type.startswith("i"):
+        arg_val = int(arg.value)
+    elif arg.type.startswith("fp"):
+        arg_val = float(arg.value)
+    else:
+        arg_val = arg.value
+    return arg_val
 
 
 class DatafusionRunner(SqlCaseRunner):
@@ -44,18 +66,27 @@ class DatafusionRunner(SqlCaseRunner):
         try:
             arg_vectors = []
             arg_names = []
+            arg_vals_list = []
+            arg_types_list = []
             for arg_idx, arg in enumerate(case.args):
-                # for aggregate:
-                # batch = pa.RecordBatch.from_arrays([pa.array([1, None, -4], pa.int16())], ["a"])
-                arg_val = arg.value
+                arg_val = arg_with_type(arg)
                 arg_type = type_to_datafusion_type(arg.type)
-                arg_vectors.append(
-                    pa.array([arg_val], arg_type)
-                )
+                arg_vals_list.append(arg_val)
+                arg_types_list.append(arg_type)
                 arg_names.append(f"arg{arg_idx}")
 
+            if mapping.aggregate:
+                arg_vectors = [pa.array(arg_vals_list, arg_type)]
+                arg_names = [arg_names[0]]
+            else:
+                for val, arg_type in zip(arg_vals_list, arg_types_list):
+                    arg_vectors.append(pa.array([val], arg_type))
+
             joined_arg_names = ",".join(arg_names)
-            batch = pa.RecordBatch.from_arrays(arg_vectors,names=arg_names,)
+            batch = pa.RecordBatch.from_arrays(
+                arg_vectors,
+                names=arg_names,
+            )
 
             self.ctx.register_record_batches("my_table", [[batch]])
             if mapping.infix:
