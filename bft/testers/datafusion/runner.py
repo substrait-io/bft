@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import datafusion
 import pyarrow as pa
 
@@ -14,6 +16,10 @@ type_map = {
     "fp64": pa.float64(),
     "boolean": pa.bool_(),
     "string": pa.string(),
+    "date": pa.timestamp("s"),
+    "time": pa.timestamp("s"),
+    "timestamp": pa.timestamp("s"),
+    "timestamp_tz": pa.timestamp("s"),
 }
 
 
@@ -56,6 +62,17 @@ def arg_with_type(arg):
     return arg_val
 
 
+def str_to_datetime(str_val, type):
+    if type == "time":
+        return datetime.strptime(str_val, "%H:%M:%S.%f")
+    if len(str_val) > 19:
+        return datetime.strptime(str_val, "%Y-%m-%d %H:%M:%S %Z")
+    elif len(str_val) < 16:
+        return datetime.strptime(str_val, "%Y-%m-%d")
+    else:
+        return datetime.strptime(str_val, "%Y-%m-%d %H:%M:%S")
+
+
 class DatafusionRunner(SqlCaseRunner):
     def __init__(self, dialect):
         super().__init__(dialect)
@@ -67,10 +84,12 @@ class DatafusionRunner(SqlCaseRunner):
             arg_vectors = []
             arg_names = []
             arg_vals_list = []
+            orig_types = []
             arg_types_list = []
             for arg_idx, arg in enumerate(case.args):
                 arg_val = arg_with_type(arg)
                 arg_type = type_to_datafusion_type(arg.type)
+                orig_types.append(arg.type)
                 arg_vals_list.append(arg_val)
                 arg_types_list.append(arg_type)
                 arg_names.append(f"arg{arg_idx}")
@@ -79,7 +98,11 @@ class DatafusionRunner(SqlCaseRunner):
                 arg_vectors = [pa.array(arg_vals_list, arg_type)]
                 arg_names = [arg_names[0]]
             else:
-                for val, arg_type in zip(arg_vals_list, arg_types_list):
+                for val, arg_type, orig_type in zip(
+                    arg_vals_list, arg_types_list, orig_types
+                ):
+                    if isinstance(arg_type, pa.lib.TimestampType):
+                        val = str_to_datetime(val, orig_type)
                     arg_vectors.append(pa.array([val], arg_type))
 
             joined_arg_names = ",".join(arg_names)
@@ -97,6 +120,10 @@ class DatafusionRunner(SqlCaseRunner):
                 if len(arg_names) != 1:
                     raise Exception(f"Postfix function with {len(arg_names)} args")
                 expr_str = f"SELECT {arg_names[0]} {mapping.local_name} FROM my_table;"
+            elif mapping.extract:
+                if len(arg_names) != 2:
+                    raise Exception(f"Extract function with {len(arg_names)} args")
+                expr_str = f"SELECT {mapping.local_name}({arg_vals_list[0]} FROM {arg_names[1]}) FROM my_table;"
             elif mapping.aggregate:
                 if len(arg_names) < 1:
                     raise Exception(f"Aggregate function with {len(arg_names)} args")
