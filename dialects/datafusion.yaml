@@ -77,6 +77,14 @@ scalar_functions:
   - name: round
   - name: extract
     unsupported: true
+  - name: substring
+    required_options:
+      negative_start: LEFT_OF_BEGINNING
+  - name: concat
+    local_name: "||"
+    infix: True
+  - name: like
+    infix: True
 aggregate_functions:
   - name: min
     aggregate: True

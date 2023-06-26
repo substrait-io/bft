@@ -78,22 +78,35 @@ cases:
     args:
       - value: 'abcdefg'
         type: string
-      - value: -3
+      - value: -1
         type: i64
       - value: 2
         type: i64
     options:
       negative_start: WRAP_FROM_END
     result:
-      value: 'ef'
+      value: 'g'
       type: string
   - group: negative_start
     args:
       - value: 'abcdefg'
         type: string
-      - value: -3
+      - value: -2
         type: i64
-      - value: 4
+      - value: 1
+        type: i64
+    options:
+      negative_start: WRAP_FROM_END
+    result:
+      value: 'f'
+      type: string
+  - group: negative_start
+    args:
+      - value: 'abcdefg'
+        type: string
+      - value: -1
+        type: i64
+      - value: 2
         type: i64
     options:
       negative_start: LEFT_OF_BEGINNING
@@ -104,12 +117,12 @@ cases:
     args:
       - value: 'abcdefg'
         type: string
-      - value: -3
+      - value: -1
         type: i64
-      - value: 4
+      - value: 3
         type: i64
     options:
       negative_start: LEFT_OF_BEGINNING
     result:
-      value: 'ab'
+      value: 'a'
       type: string
