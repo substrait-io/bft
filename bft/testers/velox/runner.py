@@ -5,7 +5,7 @@ from bft.dialects.types import Dialect
 
 
 def is_type_supported(type):
-    return type in set({"i64", "fp64", "boolean"})
+    return type in set({"i64", "fp64", "boolean", "string"})
 
 
 class VeloxRunner(SqlCaseRunner):

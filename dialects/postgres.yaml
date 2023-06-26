@@ -220,6 +220,20 @@ scalar_functions:
         result: fp64
   - name: extract
     extract: True
+  - name: substring
+    required_options:
+      negative_start: LEFT_OF_BEGINNING
+    unsupported_kernels:
+      - args:
+          - string
+          - i64
+          - i64
+        result: string
+  - name: concat
+    local_name: "||"
+    infix: True
+  - name: like
+    infix: True
 aggregate_functions:
   - name: min
     aggregate: True

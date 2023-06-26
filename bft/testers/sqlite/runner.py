@@ -13,6 +13,7 @@ type_map = {
     "fp32": "REAL",
     "fp64": "REAL",
     "boolean": "BOOLEAN",
+    "string": "TEXT",
 }
 
 
@@ -53,7 +54,14 @@ class SqliteRunner(SqlCaseRunner):
             if mapping.aggregate:
                 arg_names = [arg_names[0]]
             joined_arg_names = ",".join(arg_names)
-            arg_vals = ",".join([literal_to_str(arg) for arg in case.args])
+            arg_vals = ",".join(
+                [
+                    "'" + literal_to_str(arg) + "'"
+                    if arg.type == "string" and arg.value is not None
+                    else literal_to_str(arg)
+                    for arg in case.args
+                ]
+            )
             if mapping.aggregate:
                 arg_vals_list = ", ".join(f"({val})" for val in arg_vals.split(","))
                 if arg_vals != "[]":
