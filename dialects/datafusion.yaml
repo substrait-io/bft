@@ -24,6 +24,7 @@ scalar_functions:
       overflow: SILENT
       rounding: TIE_TO_EVEN
   - name: abs
+    unsupported: true
     required_options:
       overflow: SILENT
   - name: negate
