@@ -1,0 +1,198 @@
+{
+    "function": "lte",
+    "cases": [
+        {
+            "group": {
+                "id": "basic",
+                "description": "Basic examples without any special cases"
+            },
+            "args": [
+                {
+                    "value": 1,
+                    "type": "i8"
+                },
+                {
+                    "value": 2,
+                    "type": "i8"
+                }
+            ],
+            "result": {
+                "value": true,
+                "type": "boolean"
+            }
+        },
+        {
+            "group": "basic",
+            "args": [
+                {
+                    "value": 2,
+                    "type": "i8"
+                },
+                {
+                    "value": 2,
+                    "type": "i8"
+                }
+            ],
+            "result": {
+                "value": true,
+                "type": "boolean"
+            }
+        },
+        {
+            "group": "basic",
+            "args": [
+                {
+                    "value": 200,
+                    "type": "i16"
+                },
+                {
+                    "value": 199,
+                    "type": "i16"
+                }
+            ],
+            "result": {
+                "value": false,
+                "type": "boolean"
+            }
+        },
+        {
+            "group": "basic",
+            "args": [
+                {
+                    "value": 7.0,
+                    "type": "fp32"
+                },
+                {
+                    "value": 2.5,
+                    "type": "fp32"
+                }
+            ],
+            "result": {
+                "value": false,
+                "type": "boolean"
+            }
+        },
+        {
+            "group": "basic",
+            "args": [
+                {
+                    "value": 7.25,
+                    "type": "fp32"
+                },
+                {
+                    "value": 7.25,
+                    "type": "fp32"
+                }
+            ],
+            "result": {
+                "value": true,
+                "type": "boolean"
+            }
+        },
+        {
+            "group": "basic",
+            "args": [
+                {
+                    "value": 1.5e+308,
+                    "type": "fp64"
+                },
+                {
+                    "value": "Infinity",
+                    "type": "fp64"
+                }
+            ],
+            "result": {
+                "value": true,
+                "type": "boolean"
+            }
+        },
+        {
+            "group": "basic",
+            "args": [
+                {
+                    "value": "Infinity",
+                    "type": "fp64"
+                },
+                {
+                    "value": "Infinity",
+                    "type": "fp64"
+                }
+            ],
+            "result": {
+                "value": true,
+                "type": "boolean"
+            }
+        },
+        {
+            "group": "basic",
+            "args": [
+                {
+                    "value": -1.5e+308,
+                    "type": "fp64"
+                },
+                {
+                    "value": "-Infinity",
+                    "type": "fp64"
+                }
+            ],
+            "result": {
+                "value": false,
+                "type": "boolean"
+            }
+        },
+        {
+            "group": {
+                "id": "null_input",
+                "description": "Examples with null as input"
+            },
+            "args": [
+                {
+                    "value": null,
+                    "type": "i16"
+                },
+                {
+                    "value": 1,
+                    "type": "i16"
+                }
+            ],
+            "result": {
+                "value": null,
+                "type": "boolean"
+            }
+        },
+        {
+            "group": "null_input",
+            "args": [
+                {
+                    "value": 2,
+                    "type": "i16"
+                },
+                {
+                    "value": null,
+                    "type": "i16"
+                }
+            ],
+            "result": {
+                "value": null,
+                "type": "boolean"
+            }
+        },
+        {
+            "group": "null_input",
+            "args": [
+                {
+                    "value": null,
+                    "type": "i16"
+                },
+                {
+                    "value": null,
+                    "type": "i16"
+                }
+            ],
+            "result": {
+                "value": null,
+                "type": "boolean"
+            }
+        }
+    ]
+}

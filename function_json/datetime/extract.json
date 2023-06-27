@@ -1,0 +1,456 @@
+{
+    "function": "extract",
+    "cases": [
+        {
+            "group": {
+                "id": "timestamps",
+                "description": "examples using the timestamp and timestamptz types"
+            },
+            "args": [
+                {
+                    "value": "YEAR",
+                    "type": "string"
+                },
+                {
+                    "value": "2016-12-31 13:30:15",
+                    "type": "timestamp"
+                }
+            ],
+            "result": {
+                "value": 2016,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "timestamps",
+            "args": [
+                {
+                    "value": "ISOYEAR",
+                    "type": "string"
+                },
+                {
+                    "value": "2016-01-01 13:30:15",
+                    "type": "timestamp"
+                }
+            ],
+            "result": {
+                "value": 2015,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "timestamps",
+            "args": [
+                {
+                    "value": "QUARTER",
+                    "type": "string"
+                },
+                {
+                    "value": "2016-12-31 13:30:15",
+                    "type": "timestamp"
+                }
+            ],
+            "result": {
+                "value": 4,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "timestamps",
+            "args": [
+                {
+                    "value": "MONTH",
+                    "type": "string"
+                },
+                {
+                    "value": "2016-12-31 13:30:15",
+                    "type": "timestamp"
+                }
+            ],
+            "result": {
+                "value": 12,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "timestamps",
+            "args": [
+                {
+                    "value": "WEEK",
+                    "type": "string"
+                },
+                {
+                    "value": "2016-12-31 13:30:15",
+                    "type": "timestamp"
+                }
+            ],
+            "result": {
+                "value": 52,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "timestamps",
+            "args": [
+                {
+                    "value": "DAY",
+                    "type": "string"
+                },
+                {
+                    "value": "2016-12-31 13:30:15",
+                    "type": "timestamp"
+                }
+            ],
+            "result": {
+                "value": 31,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "timestamps",
+            "args": [
+                {
+                    "value": "ISODOW",
+                    "type": "string"
+                },
+                {
+                    "value": "2016-12-25 13:30:15",
+                    "type": "timestamp"
+                }
+            ],
+            "result": {
+                "value": 7,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "timestamps",
+            "args": [
+                {
+                    "value": "DOW",
+                    "type": "string"
+                },
+                {
+                    "value": "2016-12-25 13:30:15",
+                    "type": "timestamp"
+                }
+            ],
+            "result": {
+                "value": 0,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "timestamps",
+            "args": [
+                {
+                    "value": "DOY",
+                    "type": "string"
+                },
+                {
+                    "value": "2016-12-25 13:30:15",
+                    "type": "timestamp"
+                }
+            ],
+            "result": {
+                "value": 360,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "timestamps",
+            "args": [
+                {
+                    "value": "HOUR",
+                    "type": "string"
+                },
+                {
+                    "value": "2016-12-31 13:30:15",
+                    "type": "timestamp"
+                }
+            ],
+            "result": {
+                "value": 13,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "timestamps",
+            "args": [
+                {
+                    "value": "HOUR",
+                    "type": "string"
+                },
+                {
+                    "value": "1999-01-08 04:05:06 PST",
+                    "type": "timestamp_tz"
+                }
+            ],
+            "result": {
+                "value": 12,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "timestamps",
+            "args": [
+                {
+                    "value": "HOUR",
+                    "type": "string"
+                },
+                {
+                    "value": "2016-12-31 13:30:15-10",
+                    "type": "timestamp_tz"
+                }
+            ],
+            "result": {
+                "value": 23,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "timestamps",
+            "args": [
+                {
+                    "value": "MINUTE",
+                    "type": "string"
+                },
+                {
+                    "value": "2016-12-31 13:30:15",
+                    "type": "timestamp"
+                }
+            ],
+            "result": {
+                "value": 30,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "timestamps",
+            "args": [
+                {
+                    "value": "SECOND",
+                    "type": "string"
+                },
+                {
+                    "value": "2016-12-31 13:30:15",
+                    "type": "timestamp"
+                }
+            ],
+            "result": {
+                "value": 15,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "timestamps",
+            "args": [
+                {
+                    "value": "MILLISECONDS",
+                    "type": "string"
+                },
+                {
+                    "value": "2016-12-31 13:30:15",
+                    "type": "timestamp"
+                }
+            ],
+            "result": {
+                "value": 15000,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "timestamps",
+            "args": [
+                {
+                    "value": "MICROSECONDS",
+                    "type": "string"
+                },
+                {
+                    "value": "2016-12-31 13:30:15.22",
+                    "type": "timestamp"
+                }
+            ],
+            "result": {
+                "value": 15220000,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "timestamps",
+            "args": [
+                {
+                    "value": "TIMEZONE",
+                    "type": "string"
+                },
+                {
+                    "value": "1999-01-08 04:05:06 PST",
+                    "type": "timestamp_tz"
+                }
+            ],
+            "result": {
+                "value": 0,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "timestamps",
+            "args": [
+                {
+                    "value": "EPOCH",
+                    "type": "string"
+                },
+                {
+                    "value": "2016-12-31 13:30:15",
+                    "type": "timestamp"
+                }
+            ],
+            "result": {
+                "value": 1483191015,
+                "type": "i64"
+            }
+        },
+        {
+            "group": {
+                "id": "date",
+                "description": "examples using the date type"
+            },
+            "args": [
+                {
+                    "value": "YEAR",
+                    "type": "string"
+                },
+                {
+                    "value": "2020-12-31",
+                    "type": "date"
+                }
+            ],
+            "result": {
+                "value": 2020,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "date",
+            "args": [
+                {
+                    "value": "MONTH",
+                    "type": "string"
+                },
+                {
+                    "value": "2020-12-31",
+                    "type": "date"
+                }
+            ],
+            "result": {
+                "value": 12,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "date",
+            "args": [
+                {
+                    "value": "DAY",
+                    "type": "string"
+                },
+                {
+                    "value": "2020-12-31",
+                    "type": "date"
+                }
+            ],
+            "result": {
+                "value": 31,
+                "type": "i64"
+            }
+        },
+        {
+            "group": {
+                "id": "time",
+                "description": "examples using the time type"
+            },
+            "args": [
+                {
+                    "value": "HOUR",
+                    "type": "string"
+                },
+                {
+                    "value": "01:02:03+1559",
+                    "type": "time"
+                }
+            ],
+            "result": {
+                "value": 1,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "time",
+            "args": [
+                {
+                    "value": "MINUTE",
+                    "type": "string"
+                },
+                {
+                    "value": "01:02:03+1559",
+                    "type": "time"
+                }
+            ],
+            "result": {
+                "value": 2,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "time",
+            "args": [
+                {
+                    "value": "SECOND",
+                    "type": "string"
+                },
+                {
+                    "value": "01:02:03+1559",
+                    "type": "time"
+                }
+            ],
+            "result": {
+                "value": 3,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "time",
+            "args": [
+                {
+                    "value": "MILLISECOND",
+                    "type": "string"
+                },
+                {
+                    "value": "01:02:03+1559",
+                    "type": "time"
+                }
+            ],
+            "result": {
+                "value": 3000,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "time",
+            "args": [
+                {
+                    "value": "MICROSECOND",
+                    "type": "string"
+                },
+                {
+                    "value": "01:02:03.45",
+                    "type": "time"
+                }
+            ],
+            "result": {
+                "value": 3450000,
+                "type": "i64"
+            }
+        }
+    ]
+}

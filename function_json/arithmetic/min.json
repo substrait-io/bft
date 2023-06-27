@@ -1,0 +1,141 @@
+{
+    "function": "min",
+    "cases": [
+        {
+            "group": {
+                "id": "basic",
+                "description": "Basic examples without any special casesc"
+            },
+            "args": [
+                {
+                    "value": [
+                        "Null Null Null"
+                    ],
+                    "type": "i16"
+                }
+            ],
+            "result": {
+                "value": null,
+                "type": "i16"
+            }
+        },
+        {
+            "group": "basic",
+            "args": [
+                {
+                    "value": [],
+                    "type": "i16"
+                }
+            ],
+            "result": {
+                "value": null,
+                "type": "i16"
+            }
+        },
+        {
+            "group": "basic",
+            "args": [
+                {
+                    "value": [
+                        "2000000000 -3217908979 629000000 -100000000 0 987654321"
+                    ],
+                    "type": "i64"
+                }
+            ],
+            "result": {
+                "value": -3217908979,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "basic",
+            "args": [
+                {
+                    "value": [
+                        "2000000000 Null 629000000 -100000000 Null 987654321"
+                    ],
+                    "type": "i64"
+                }
+            ],
+            "result": {
+                "value": -100000000,
+                "type": "i64"
+            }
+        },
+        {
+            "group": "basic",
+            "args": [
+                {
+                    "value": [
+                        "2.5 0 5.0 -2.5 -7.5"
+                    ],
+                    "type": "fp32"
+                }
+            ],
+            "result": {
+                "value": -7.5,
+                "type": "fp32"
+            }
+        },
+        {
+            "group": "basic",
+            "args": [
+                {
+                    "value": [
+                        "1.5e+308 1.5e+10 -1.5e+8 -1.5e+7 -1.5e+70"
+                    ],
+                    "type": "fp64"
+                }
+            ],
+            "result": {
+                "value": -1.5e+70,
+                "type": "fp64"
+            }
+        },
+        {
+            "group": "basic",
+            "args": [
+                {
+                    "value": [
+                        "1.5e+308 1.5e+10 Null -1.5e+7 Null"
+                    ],
+                    "type": "fp64"
+                }
+            ],
+            "result": {
+                "value": -15000000.0,
+                "type": "fp64"
+            }
+        },
+        {
+            "group": "basic",
+            "args": [
+                {
+                    "value": [
+                        "Null '-inf' -1.5e+8 -1.5e+7 -1.5e+70"
+                    ],
+                    "type": "fp64"
+                }
+            ],
+            "result": {
+                "value": "-inf",
+                "type": "fp64"
+            }
+        },
+        {
+            "group": "basic",
+            "args": [
+                {
+                    "value": [
+                        "Null 'inf'"
+                    ],
+                    "type": "fp64"
+                }
+            ],
+            "result": {
+                "value": "inf",
+                "type": "fp64"
+            }
+        }
+    ]
+}
