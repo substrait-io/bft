@@ -1,34 +1,32 @@
-name: duckdb
+name: datafusion
 type: sql
 scalar_functions:
   - name: add
     local_name: +
     infix: True
     required_options:
-      overflow: ERROR
+      overflow: SILENT
       rounding: TIE_TO_EVEN
   - name: subtract
     local_name: "-"
     infix: True
     required_options:
-      overflow: ERROR
-      rounding: TIE_TO_EVEN
+      overflow: SILENT
   - name: multiply
     local_name: "*"
     infix: True
     required_options:
-      overflow: ERROR
-      rounding: TIE_TO_EVEN
+      overflow: SILENT
   - name: divide
-    local_name: "//"
+    local_name: "/"
     infix: True
     required_options:
-      overflow: ERROR
+      overflow: SILENT
       rounding: TIE_TO_EVEN
   - name: abs
+    unsupported: true
     required_options:
-      overflow: ERROR
-      rounding: TIE_TO_EVEN
+      overflow: SILENT
   - name: negate
     unsupported: true
   - name: and
@@ -78,16 +76,11 @@ scalar_functions:
   - name: ceil
   - name: floor
   - name: round
-    unsupported_kernels:
-      - args:
-          - fp32
-          - i8
-        result: fp32
   - name: extract
-    extract: True
+    unsupported: true
   - name: substring
     required_options:
-      negative_start: WRAP_FROM_END
+      negative_start: LEFT_OF_BEGINNING
   - name: concat
     local_name: "||"
     infix: True
@@ -100,9 +93,7 @@ aggregate_functions:
     aggregate: True
   - name: sum
     aggregate: True
-    unsupported_kernels:
-      - args:
-          - i64
-        result: i64
+    required_options:
+      overflow: SILENT
   - name: count
     aggregate: True

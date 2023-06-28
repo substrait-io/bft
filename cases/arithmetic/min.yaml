@@ -2,7 +2,7 @@ function: min
 cases:
   - group:
       id: basic
-      description: Basic examples without any special casesc
+      description: Basic examples without any special cases
     args:
       - value: [Null Null Null]
         type: i16

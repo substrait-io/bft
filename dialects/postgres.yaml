@@ -67,6 +67,9 @@ scalar_functions:
       - args:
           - i8
         result: i8
+      - args:
+          - fp32
+        result: fp32
   - name: negate
     unsupported: true
   - name: and

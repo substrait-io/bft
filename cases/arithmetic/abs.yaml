@@ -32,10 +32,10 @@ cases:
       type: i64
   - group: basic
     args:
-      - value: 2.55
+      - value: 2.5499999523162841796875
         type: fp32
     result:
-      value: 2.55
+      value: 2.5499999523162841796875
       type: fp32
   - group: basic
     args:
