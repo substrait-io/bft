@@ -3,6 +3,11 @@ from pathlib import Path
 
 import yaml
 
+try:
+    from yaml import CSafeLoader as SafeLoader
+except ImportError:
+    from yaml import SafeLoader
+
 BASE_DIR = Path(__file__).parent.parent
 JSON_DIR = BASE_DIR / "function_json"
 CASES_DIR = BASE_DIR / "cases"
@@ -18,6 +23,6 @@ for function_folder in FUNCTION_FOLDERS:
         yaml_file = folder_path / function_yaml.name
         json_file = json_path / function_yaml.stem
         with open(yaml_file) as f:
-            dataMap = yaml.safe_load(f)
+            dataMap = yaml.load(f, SafeLoader)
             with open(f"{json_file}.json", "w") as outfile:
                 outfile.write('{}\n'.format(json.dumps(dataMap, indent=4)))
