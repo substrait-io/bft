@@ -20,4 +20,4 @@ for function_folder in FUNCTION_FOLDERS:
         with open(yaml_file) as f:
             dataMap = yaml.safe_load(f)
             with open(f"{json_file}.json", "w") as outfile:
-                outfile.write(json.dumps(dataMap, indent=4))
+                outfile.write('{}\n'.format(json.dumps(dataMap, indent=4)))
