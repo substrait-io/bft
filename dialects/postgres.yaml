@@ -63,9 +63,50 @@ scalar_functions:
           - fp32
           - fp32
         result: fp32
-  - name: abs
+  - name: modulus
+    local_name: "%"
+    infix: True
     required_options:
       overflow: ERROR
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - fp32
+          - fp32
+        result: fp32
+  - name: power
+  - name: sqrt
+    required_options:
+      on_domain_error: ERROR
+  - name: exp
+  - name: cos
+  - name: sin
+  - name: tan
+  - name: cosh
+  - name: sinh
+  - name: tanh
+  - name: acos
+  - name: asin
+  - name: atan
+  - name: acosh
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
+  - name: asinh
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
+  - name: atanh
+  - name: atan2
+  - name: factorial
+  - name: abs
+    required_options:
+      on_domain_error: ERROR
       rounding: TIE_TO_EVEN
     unsupported_kernels:
       - args:

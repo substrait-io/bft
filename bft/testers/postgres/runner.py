@@ -115,10 +115,13 @@ class PostgresRunner(SqlCaseRunner):
                 expr = f"SELECT {mapping.local_name}({joined_arg_names}) FROM my_table;"
             result = self.conn.execute(expr).fetchone()[0]
 
+            print(f"case result: {case.result}")
             if case.result == "undefined":
                 return SqlCaseResult.success()
             elif case.result == "error":
                 return SqlCaseResult.unexpected_pass(str(result))
+            elif case.result == "nan":
+                return SqlCaseResult.error(str(result))
             else:
                 if result == case.result.value:
                     return SqlCaseResult.success()

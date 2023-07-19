@@ -1,0 +1,39 @@
+function: sinh
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 0.0
+        type: fp32
+    result:
+      value: 0.0
+      type: fp32
+  - group: basic
+    args:
+      - value: 1.0
+        type: fp64
+    result:
+      value: 1.1752011936438014
+      type: fp64
+  - group: basic
+    args:
+      - value: 7.0000009
+        type: fp64
+    result:
+      value: 548.3166167588001
+      type: fp64
+  - group: basic
+    args:
+      - value: -7.0000009
+        type: fp64
+    result:
+      value: -548.3166167588001
+      type: fp64
+  - group: basic
+    args:
+      - value: null
+        type: fp64
+    result:
+      value: null
+      type: fp64

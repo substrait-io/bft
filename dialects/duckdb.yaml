@@ -25,6 +25,45 @@ scalar_functions:
     required_options:
       overflow: ERROR
       rounding: TIE_TO_EVEN
+  - name: modulus
+    local_name: "%"
+    infix: True
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+  - name: power
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+  - name: sqrt
+    required_options:
+      on_domain_error: ERROR
+      rounding: TIE_TO_EVEN
+  - name: exp
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+  - name: cos
+  - name: sin
+  - name: tan
+  - name: cosh
+    unsupported: true
+  - name: sinh
+    unsupported: true
+  - name: tanh
+    unsupported: true
+  - name: acos
+  - name: asin
+  - name: atan
+  - name: acosh
+    unsupported: true
+  - name: asinh
+    unsupported: true
+  - name: atanh
+    unsupported: true
+  - name: atan2
+  - name: factorial
+    unsupported: true
   - name: abs
     required_options:
       overflow: ERROR
