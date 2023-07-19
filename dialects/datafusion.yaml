@@ -24,6 +24,39 @@ scalar_functions:
       on_division_by_zero: ERROR
       overflow: ERROR
       rounding: TIE_TO_EVEN
+  - name: modulus
+    unsupported: true
+  - name: power
+  - name: sqrt
+    required_options:
+      on_domain_error: NAN
+  - name: exp
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
+  - name: cos
+  - name: sin
+  - name: tan
+  - name: cosh
+  - name: sinh
+  - name: tanh
+  - name: acos
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
+  - name: asin
+  - name: atan
+  - name: acosh
+    unsupported: true
+  - name: asinh
+    unsupported: true
+  - name: atanh
+    unsupported: true
+  - name: atan2
+  - name: factorial
+    unsupported: True
   - name: abs
     unsupported: true
     required_options:

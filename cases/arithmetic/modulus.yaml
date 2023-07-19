@@ -1,0 +1,85 @@
+function: modulus
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 9
+        type: i8
+      - value: 3
+        type: i8
+    result:
+      value: 0
+      type: i8
+  - group: basic
+    args:
+      - value: 10
+        type: i8
+      - value: 3
+        type: i8
+    result:
+      value: 1
+      type: i8
+  - group: basic
+    args:
+      - value: 10
+        type: i8
+      - value: -3
+        type: i8
+    result:
+      value: 1
+      type: i8
+  - group: basic
+    args:
+      - value: -10
+        type: i8
+      - value: 3
+        type: i8
+    result:
+      value: -1
+      type: i8
+  - group: basic
+    args:
+      - value: -10
+        type: i8
+      - value: -3
+        type: i8
+    result:
+      value: -1
+      type: i8
+  - group: basic
+    args:
+      - value: 5
+        type: i8
+      - value: 0
+        type: i8
+    result:
+      value: null
+      type: i8
+  - group: basic
+    args:
+      - value: 5
+        type: i8
+      - value: null
+        type: i8
+    result:
+      value: null
+      type: i8
+  - group: basic
+    args:
+      - value: null
+        type: i8
+      - value: 1
+        type: i8
+    result:
+      value: null
+      type: i8
+  - group: basic
+    args:
+      - value: null
+        type: i8
+      - value: null
+        type: i8
+    result:
+      value: null
+      type: i8

@@ -1,0 +1,32 @@
+function: acosh
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 0.01
+        type: fp32
+    result:
+      value: null
+      type: fp32
+  - group: basic
+    args:
+      - value: 1.0
+        type: fp64
+    result:
+      value: 0.0
+      type: fp64
+  - group: basic
+    args:
+      - value: 10.0005
+        type: fp64
+    result:
+      value: 2.9932730967481995
+      type: fp64
+  - group: basic
+    args:
+      - value: null
+        type: fp64
+    result:
+      value: null
+      type: fp64

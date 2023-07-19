@@ -34,6 +34,31 @@ scalar_functions:
     required_options:
       on_division_by_zero: NAN
       overflow: SILENT
+  - name: modulus
+    local_name: "%"
+    infix: True
+    required_options:
+      overflow: SILENT
+  - name: power
+  - name: sqrt
+    required_options:
+      on_domain_error: NONE
+  - name: exp
+  - name: cos
+  - name: sin
+  - name: tan
+  - name: cosh
+  - name: sinh
+  - name: tanh
+  - name: acos
+  - name: asin
+  - name: atan
+  - name: acosh
+  - name: asinh
+  - name: atanh
+  - name: atan2
+  - name: factorial
+    unsupported: True
   - name: abs
     required_options:
       overflow: SILENT

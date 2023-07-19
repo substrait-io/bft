@@ -96,6 +96,98 @@ scalar_functions:
           - fp32
           - fp32
         result: fp32
+  - name: modulus
+    local_name: mod
+    required_options:
+      overflow: ERROR
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - i32
+          - i32
+        result: i32
+      - args:
+          - fp32
+          - fp32
+        result: fp32
+  - name: power
+    unsupported_kernels:
+      - args:
+          - fp32
+          - fp32
+        result: fp32
+  - name: sqrt
+    required_options:
+      on_domain_error: ERROR
+    unsupported_kernels:
+      - args:
+          - i64
+        result: i64
+      - args:
+          - fp32
+        result: fp32
+  - name: exp
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
+  - name: cos
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
+  - name: sin
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
+  - name: tan
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
+  - name: acos
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
+  - name: asin
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
+  - name: atan
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
+  - name: cosh
+    unsupported: true
+  - name: sinh
+    unsupported: true
+  - name: tanh
+    unsupported: true
+  - name: acosh
+    unsupported: true
+  - name: asinh
+    unsupported: true
+  - name: atanh
+    unsupported: true
+  - name: atan2
+    unsupported_kernels:
+      - args:
+          - fp32
+          - fp32
+        result: fp32
+  - name: factorial
+    unsupported: True
   - name: abs
     required_options:
       overflow: ERROR
