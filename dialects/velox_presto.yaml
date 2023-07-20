@@ -310,6 +310,6 @@ aggregate_functions:
   - name: count
     unsupported: True
   - name: bool_and
-    aggregate: True
+    unsupported: True
   - name: bool_or
-    aggregate: True
+    unsupported: True
