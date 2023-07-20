@@ -309,3 +309,7 @@ aggregate_functions:
     unsupported: True
   - name: count
     unsupported: True
+  - name: bool_and
+    aggregate: True
+  - name: bool_or
+    aggregate: True

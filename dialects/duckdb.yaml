@@ -106,3 +106,7 @@ aggregate_functions:
         result: i64
   - name: count
     aggregate: True
+  - name: bool_and
+    aggregate: True
+  - name: bool_or
+    aggregate: True

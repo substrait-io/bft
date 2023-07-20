@@ -108,3 +108,7 @@ aggregate_functions:
     aggregate: True
   - name: count
     aggregate: True
+  - name: bool_and
+    unsupported: true
+  - name: bool_or
+    unsupported: true
