@@ -119,6 +119,10 @@ scalar_functions:
     infix: True
   - name: like
     infix: True
+  - name: ln
+    required_options:
+      on_log_zero: MINUS_INFINITY
+      on_domain_error: NAN
 aggregate_functions:
   - name: min
     aggregate: True

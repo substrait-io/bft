@@ -132,6 +132,10 @@ scalar_functions:
     infix: True
   - name: like
     infix: True
+  - name: ln
+    required_options:
+      on_log_zero: ERROR
+      on_domain_error: ERROR
 aggregate_functions:
   - name: min
     aggregate: True
