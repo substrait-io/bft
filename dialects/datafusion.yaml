@@ -123,6 +123,14 @@ scalar_functions:
     required_options:
       on_log_zero: MINUS_INFINITY
       on_domain_error: NAN
+  - name: log
+    required_options:
+      on_log_zero: MINUS_INFINITY
+      on_domain_error: NAN
+  - name: log2
+    required_options:
+      on_log_zero: MINUS_INFINITY
+      on_domain_error: NAN
 aggregate_functions:
   - name: min
     aggregate: True
