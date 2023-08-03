@@ -1,3 +1,4 @@
+import math
 from datetime import datetime
 
 import datafusion
@@ -144,7 +145,7 @@ class DatafusionRunner(SqlCaseRunner):
             elif case.result == "error":
                 return SqlCaseResult.unexpected_pass(str(result))
             elif case.result == "nan":
-                if case.result == str(result):
+                if math.isnan(result):
                     return SqlCaseResult.success()
             else:
                 if result == case.result.value:

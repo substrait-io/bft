@@ -120,6 +120,7 @@ class PostgresRunner(SqlCaseRunner):
             elif case.result == "error":
                 return SqlCaseResult.unexpected_pass(str(result))
             elif case.result == "nan":
+                print(f"Expected NAN but received {result}")
                 return SqlCaseResult.error(str(result))
             else:
                 if result == case.result.value:

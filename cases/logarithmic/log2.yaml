@@ -30,7 +30,9 @@ cases:
     result:
       value: inf
       type: fp64
-  - group: basic
+  - group:
+      id: negative_infinity
+      description: Examples with negative infinity as input
     args:
       - value: -inf
         type: fp64
@@ -38,7 +40,7 @@ cases:
       on_domain_error: ERROR
     result:
       special: error
-  - group: basic
+  - group: negative_infinity
     args:
       - value: -inf
         type: fp64
@@ -46,7 +48,7 @@ cases:
       on_domain_error: NAN
     result:
       special: nan
-  - group: basic
+  - group: negative_infinity
     args:
       - value: -inf
         type: fp64

@@ -1,3 +1,5 @@
+import math
+
 import pyvelox.pyvelox as pv
 
 from bft.cases.runner import Case, SqlCaseResult, SqlCaseRunner, SqlMapping
@@ -50,7 +52,7 @@ class VeloxRunner(SqlCaseRunner):
         elif case.result == "error":
             return SqlCaseResult.unexpected_pass(str(result))
         elif case.result == "nan":
-            if case.result == str(result):
+            if math.isnan(result):
                 return SqlCaseResult.success()
         else:
             if result == case.result.value:
