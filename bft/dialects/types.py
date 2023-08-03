@@ -16,6 +16,7 @@ class DialectFunction(NamedTuple):
     local_name: str
     infix: bool
     postfix: bool
+    between: bool
     aggregate: bool
     unsupported: bool
     extract: bool
@@ -34,6 +35,7 @@ class SqlMapping(NamedTuple):
     local_name: str
     infix: bool
     postfix: bool
+    between: bool
     aggregate: bool
     unsupported: bool
     extract: bool
@@ -129,6 +131,7 @@ class Dialect(object):
                 dfunc.local_name,
                 dfunc.infix,
                 dfunc.postfix,
+                dfunc.between,
                 dfunc.aggregate,
                 dfunc.unsupported,
                 dfunc.extract,
@@ -142,6 +145,7 @@ class Dialect(object):
                 dfunc.local_name,
                 dfunc.infix,
                 dfunc.postfix,
+                dfunc.between,
                 dfunc.aggregate,
                 dfunc.unsupported,
                 dfunc.extract,
@@ -153,6 +157,7 @@ class Dialect(object):
             dfunc.local_name,
             dfunc.infix,
             dfunc.postfix,
+            dfunc.between,
             dfunc.aggregate,
             dfunc.unsupported,
             dfunc.extract,

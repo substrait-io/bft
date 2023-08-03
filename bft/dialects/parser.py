@@ -14,6 +14,7 @@ class DialectFileVisitor(BaseYamlVisitor[DialectFile]):
         local_name = self._get_or_else(func, "local_name", name)
         infix = self._get_or_else(func, "infix", False)
         postfix = self._get_or_else(func, "postfix", False)
+        between = self._get_or_else(func, "between", False)
         aggregate = self._get_or_else(func, "aggregate", False)
         unsupported = self._get_or_else(func, "unsupported", False)
         # The extract function uses a special grammar in some SQL dialects.
@@ -25,6 +26,7 @@ class DialectFileVisitor(BaseYamlVisitor[DialectFile]):
             local_name,
             infix,
             postfix,
+            between,
             aggregate,
             unsupported,
             extract,
@@ -38,6 +40,7 @@ class DialectFileVisitor(BaseYamlVisitor[DialectFile]):
         local_name = self._get_or_else(func, "local_name", name)
         infix = self._get_or_else(func, "infix", False)
         postfix = self._get_or_else(func, "postfix", False)
+        between = self._get_or_else(func, "between", False)
         aggregate = self._get_or_else(func, "aggregate", False)
         unsupported = self._get_or_else(func, "unsupported", False)
         # The extract function uses a special grammar in some SQL dialects.
@@ -49,6 +52,7 @@ class DialectFileVisitor(BaseYamlVisitor[DialectFile]):
             local_name,
             infix,
             postfix,
+            between,
             aggregate,
             unsupported,
             extract,

@@ -81,6 +81,10 @@ class SqliteRunner(SqlCaseRunner):
                 if len(arg_names) != 1:
                     raise Exception(f"Postfix function with {len(arg_names)} args")
                 expr = f"SELECT {arg_names[0]} {mapping.local_name} FROM my_table;"
+            elif mapping.between:
+                if len(arg_names) != 3:
+                    raise Exception(f"Between function with {len(arg_names)} args")
+                expr = f"SELECT {arg_names[0]} BETWEEN {arg_names[1]} AND {arg_names[2]} FROM my_table;"
             elif mapping.aggregate:
                 if len(arg_names) < 1:
                     raise Exception(f"Aggregate function with {len(arg_names)} args")

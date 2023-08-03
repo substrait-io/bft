@@ -76,6 +76,14 @@ scalar_functions:
     postfix: True
   - name: nullif
   - name: coalesce
+  - name: is_finite
+    local_name: "isfinite"
+  - name: is_infinite
+    local_name: "isinf"
+  - name: is_nan
+    local_name: "isnan"
+  - name: between
+    unsupported: True
   - name: ceil
   - name: floor
   - name: round
