@@ -1,0 +1,78 @@
+function: ln
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 1.0
+        type: fp32
+    result:
+      value: 0
+      type: fp32
+  - group: basic
+    args:
+      - value: 2.015
+        type: fp64
+    result:
+      value: 0.7006191953986464
+      type: fp64
+  - group: basic
+    args:
+      - value: inf
+        type: fp64
+    result:
+      value: inf
+      type: fp64
+  - group: basic
+    args:
+      - value: -inf
+        type: fp64
+    options:
+      on_domain_error: ERROR
+    result:
+      special: error
+  - group: basic
+    args:
+      - value: -inf
+        type: fp64
+    options:
+      on_domain_error: NAN
+    result:
+      special: nan
+  - group: basic
+    args:
+      - value: -inf
+        type: fp64
+    options:
+      on_domain_error: NONE
+    result:
+      value: null
+      type: fp64
+  - group:
+      id: log_zero
+      description: Examples with log zero
+    args:
+      - value: 0.0
+        type: fp64
+    options:
+      on_log_zero: ERROR
+    result:
+      special: error
+  - group: log_zero
+    args:
+      - value: 0.0
+        type: fp64
+    options:
+      on_log_zero: NAN
+    result:
+      value: null
+      type: fp64
+  - group: log_zero
+    args:
+      - value: 0.0
+        type: fp64
+    options:
+      on_log_zero: MINUS_INFINITY
+    result:
+      value: -inf
+      type: fp64

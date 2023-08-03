@@ -100,6 +100,18 @@ scalar_functions:
     infix: True
   - name: like
     infix: True
+  - name: ln
+    required_options:
+      on_log_zero: NAN
+      on_domain_error: NONE
+  - name: log
+    required_options:
+      on_log_zero: NAN
+      on_domain_error: NONE
+  - name: log2
+    required_options:
+      on_log_zero: NAN
+      on_domain_error: NONE
 aggregate_functions:
   - name: min
     aggregate: True

@@ -49,6 +49,9 @@ class VeloxRunner(SqlCaseRunner):
             return SqlCaseResult.success()
         elif case.result == "error":
             return SqlCaseResult.unexpected_pass(str(result))
+        elif case.result == "nan":
+            if case.result == str(result):
+                return SqlCaseResult.success()
         else:
             if result == case.result.value:
                 return SqlCaseResult.success()
