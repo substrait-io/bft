@@ -133,7 +133,6 @@ class DatafusionRunner(SqlCaseRunner):
                     f"SELECT {mapping.local_name}({joined_arg_names}) FROM my_table;"
                 )
 
-
             result = self.ctx.sql(expr_str).collect()[0].columns[0].to_pylist()
 
             if len(result) != 1:
