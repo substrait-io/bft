@@ -30,6 +30,10 @@ scalar_functions:
       overflow: SILENT
   - name: negate
     unsupported: true
+  - name: bitwise_and
+    unsupported: true
+  - name: bitwise_or
+    unsupported: true
   - name: and
     local_name: and
     infix: True
