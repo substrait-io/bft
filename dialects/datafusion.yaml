@@ -21,7 +21,8 @@ scalar_functions:
     local_name: "/"
     infix: True
     required_options:
-      overflow: SILENT
+      on_division_by_zero: ERROR
+      overflow: ERROR
       rounding: TIE_TO_EVEN
   - name: abs
     unsupported: true

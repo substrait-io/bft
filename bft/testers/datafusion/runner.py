@@ -133,6 +133,7 @@ class DatafusionRunner(SqlCaseRunner):
                     f"SELECT {mapping.local_name}({joined_arg_names}) FROM my_table;"
                 )
 
+
             result = self.ctx.sql(expr_str).collect()[0].columns[0].to_pylist()
 
             if len(result) != 1:
@@ -148,5 +149,7 @@ class DatafusionRunner(SqlCaseRunner):
                     return SqlCaseResult.success()
                 else:
                     return SqlCaseResult.mismatch(str(result))
+        except Exception as err:
+            return SqlCaseResult.error(str(err))
         finally:
             self.ctx.deregister_table("my_table")
