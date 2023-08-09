@@ -270,6 +270,16 @@ scalar_functions:
           - i8
         result: boolean
       - args:
+          - i16
+          - i16
+          - i16
+        result: boolean
+      - args:
+          - i32
+          - i32
+          - i32
+        result: boolean
+      - args:
           - fp32
           - fp32
           - fp32
