@@ -242,6 +242,16 @@ scalar_functions:
     infix: True
   - name: like
     infix: True
+  - name: ln
+    required_options:
+      on_log_zero: ERROR
+      on_domain_error: ERROR
+  - name: log
+    required_options:
+      on_log_zero: ERROR
+      on_domain_error: ERROR
+  - name: log2
+    unsupported: true
 aggregate_functions:
   - name: min
     aggregate: True

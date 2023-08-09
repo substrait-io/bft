@@ -301,6 +301,31 @@ scalar_functions:
   - name: concat
   - name: like
     unsupported: True
+  - name: ln
+    required_options:
+      on_log_zero: MINUS_INFINITY
+      on_domain_error: NAN
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
+  - name: log
+    local_name: log10
+    required_options:
+      on_log_zero: MINUS_INFINITY
+      on_domain_error: NAN
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
+  - name: log2
+    required_options:
+      on_log_zero: MINUS_INFINITY
+      on_domain_error: NAN
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
 aggregate_functions:
   - name: min
     unsupported: True
