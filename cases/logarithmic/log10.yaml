@@ -24,8 +24,8 @@ cases:
       value: inf
       type: fp64
   - group:
-      id: negative_infinity
-      description: Examples with negative infinity as input
+      id: infinity
+      description: Examples with infinity as input
     args:
       - value: -inf
         type: fp64
@@ -33,7 +33,7 @@ cases:
       on_domain_error: ERROR
     result:
       special: error
-  - group: negative_infinity
+  - group: infinity
     args:
       - value: -inf
         type: fp64
@@ -41,9 +41,18 @@ cases:
       on_domain_error: NAN
     result:
       special: nan
-  - group: negative_infinity
+  - group: infinity
     args:
       - value: -inf
+        type: fp64
+    options:
+      on_domain_error: NONE
+    result:
+      value: null
+      type: fp64
+  - group: infinity
+    args:
+      - value: inf
         type: fp64
     options:
       on_domain_error: NONE
