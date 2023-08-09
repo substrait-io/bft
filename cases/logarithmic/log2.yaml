@@ -61,10 +61,8 @@ cases:
     args:
       - value: inf
         type: fp64
-    options:
-      on_domain_error: NONE
     result:
-      value: null
+      value: inf
       type: fp64
   - group:
       id: log_zero
