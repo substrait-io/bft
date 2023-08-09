@@ -190,6 +190,20 @@ scalar_functions:
           - i8
           - i8
         result: i8
+  - name: is_finite
+    unsupported: True
+  - name: is_infinite
+    unsupported: True
+  - name: is_nan
+    unsupported: True
+  - name: between
+    between: True
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+          - i8
+        result: boolean
   - name: ceil
     unsupported_kernels:
       - args:

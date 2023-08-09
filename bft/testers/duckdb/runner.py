@@ -1,3 +1,4 @@
+import math
 import duckdb
 from typing import Dict, NamedTuple
 
@@ -30,6 +31,8 @@ def type_to_duckdb_type(type: str):
 def literal_to_str(lit: CaseLiteral):
     if lit.value is None:
         return "null"
+    if lit.value is math.nan:
+        return "'NaN'"
     elif lit.value == float("inf"):
         return "'Infinity'"
     elif lit.value == float("-inf"):

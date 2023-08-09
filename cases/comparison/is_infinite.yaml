@@ -1,0 +1,46 @@
+function: is_infinite
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 0.0
+        type: fp32
+    result:
+      value: false
+      type: boolean
+  - group: basic
+    args:
+      - value: 0.55
+        type: fp32
+    result:
+      value: false
+      type: boolean
+  - group: basic
+    args:
+      - value: 1000.000000000001
+        type: fp64
+    result:
+      value: false
+      type: boolean
+  - group: basic
+    args:
+      - value: -inf
+        type: fp64
+    result:
+      value: true
+      type: boolean
+  - group: basic
+    args:
+      - value: inf
+        type: fp64
+    result:
+      value: true
+      type: boolean
+  - group: basic
+    args:
+      - value: null
+        type: fp64
+    result:
+      value: null
+      type: boolean

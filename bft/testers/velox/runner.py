@@ -32,6 +32,10 @@ class VeloxRunner(SqlCaseRunner):
             if len(arg_names) != 1:
                 raise Exception(f"Postfix function with {len(arg_names)} args")
             expr_str = f"arg0 {mapping.local_name}"
+        elif mapping.between:
+            if len(arg_names) != 3:
+                raise Exception(f"between function with {len(arg_names)} args")
+            expr_str = f"arg0 {mapping.local_name} arg1 and arg2"
         else:
             joined_args = ", ".join(arg_names)
             expr_str = f"{mapping.local_name}({joined_args})"

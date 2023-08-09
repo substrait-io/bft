@@ -86,6 +86,14 @@ scalar_functions:
     local_name: "NULLIF"
     infix: False
   - name: coalesce
+  - name: is_finite
+    unsupported: True
+  - name: is_infinite
+    unsupported: True
+  - name: is_nan
+    unsupported: True
+  - name: between
+    between: True
   - name: ceil
   - name: floor
   - name: round

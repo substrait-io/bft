@@ -246,6 +246,44 @@ scalar_functions:
           - i8
           - i8
         result: i8
+  - name: is_finite
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: boolean
+  - name: is_infinite
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: boolean
+  - name: is_nan
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: boolean
+  - name: between
+    between: True
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+          - i8
+        result: boolean
+      - args:
+          - i16
+          - i16
+          - i16
+        result: boolean
+      - args:
+          - i32
+          - i32
+          - i32
+        result: boolean
+      - args:
+          - fp32
+          - fp32
+          - fp32
+        result: boolean
   - name: ceil
     unsupported_kernels:
       - args:
