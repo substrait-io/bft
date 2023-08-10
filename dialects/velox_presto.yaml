@@ -124,9 +124,10 @@ scalar_functions:
           - fp32
         result: fp32
   - name: sqrt
-    required_options:
-      on_domain_error: ERROR
     unsupported_kernels:
+      - args:
+          - i64
+        result: i64
       - args:
           - fp32
         result: fp32
