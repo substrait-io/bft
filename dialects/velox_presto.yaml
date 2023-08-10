@@ -172,11 +172,14 @@ scalar_functions:
     unsupported_kernels:
       - args:
           - i8
+          - i8
         result: i8
       - args:
           - i16
+          - i16
         result: i16
       - args:
+          - i32
           - i32
         result: i32
   - name: and

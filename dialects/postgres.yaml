@@ -100,6 +100,7 @@ scalar_functions:
           - i8
         result: i8
   - name: bitwise_xor
+    local_name: "#"
     unsupported_kernels:
       - args:
           - i8
