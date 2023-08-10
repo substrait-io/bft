@@ -1,0 +1,94 @@
+function: bitwise_xor
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 0
+        type: i8
+      - value: 1
+        type: i8
+    result:
+      value: 1
+      type: i8
+  - group: basic
+    args:
+      - value: 127
+        type: i8
+      - value: 127
+        type: i8
+    result:
+      value: 0
+      type: i8
+  - group: basic
+    args:
+      - value: -127
+        type: i8
+      - value: -10
+        type: i8
+    result:
+      value: 119
+      type: i8
+  - group: basic
+    args:
+      - value: 31766
+        type: i16
+      - value: 900
+        type: i16
+    result:
+      value: 32658
+      type: i16
+  - group: basic
+    args:
+      - value: -31766
+        type: i16
+      - value: 900
+        type: i16
+    result:
+      value: -32658
+      type: i16
+  - group: basic
+    args:
+      - value: 2147483647
+        type: i32
+      - value: 123456789
+        type: i32
+    result:
+      value: 2024026858
+      type: i32
+  - group: basic
+    args:
+      - value: 2147483647
+        type: i32
+      - value: 123456789
+        type: i32
+    result:
+      value: 2024026858
+      type: i32
+  - group: basic
+    args:
+      - value: 9223372036854775807
+        type: i64
+      - value: 127
+        type: i64
+    result:
+      value: 9223372036854775680
+      type: i64
+  - group: basic
+    args:
+      - value: -9223372036854775807
+        type: i64
+      - value: 127
+        type: i64
+    result:
+      value: -9223372036854775682
+      type: i64
+  - group: basic
+    args:
+      - value: null
+        type: i64
+      - value: 127
+        type: i64
+    result:
+      value: null
+      type: i64
