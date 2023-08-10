@@ -40,12 +40,16 @@ scalar_functions:
       rounding: TIE_TO_EVEN
   - name: negate
     unsupported: true
+  - name: bitwise_not
+    local_name: "~"
   - name: bitwise_and
     local_name: "&"
     infix: True
   - name: bitwise_or
     local_name: "|"
     infix: True
+  - name: bitwise_xor
+    unsupported: true
   - name: and
     local_name: and
     infix: True

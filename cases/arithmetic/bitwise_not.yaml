@@ -1,0 +1,74 @@
+function: bitwise_not
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 0
+        type: i8
+    result:
+      value: -1
+      type: i8
+  - group: basic
+    args:
+      - value: 1
+        type: i8
+    result:
+      value: -2
+      type: i8
+  - group: basic
+    args:
+      - value: -127
+        type: i8
+    result:
+      value: 126
+      type: i8
+  - group: basic
+    args:
+      - value: 31766
+        type: i16
+    result:
+      value: -31767
+      type: i16
+  - group: basic
+    args:
+      - value: -31766
+        type: i16
+    result:
+      value: 31765
+      type: i16
+  - group: basic
+    args:
+      - value: 2147483647
+        type: i32
+    result:
+      value: -2147483648
+      type: i32
+  - group: basic
+    args:
+      - value: 2147483647
+        type: i32
+    result:
+      value: -2147483648
+      type: i32
+  - group: basic
+    args:
+      - value: 9223372036854775807
+        type: i64
+    result:
+      value: -9223372036854775808
+      type: i64
+  - group: basic
+    args:
+      - value: -9223372036854775807
+        type: i64
+    result:
+      value: 9223372036854775806
+      type: i64
+  - group: basic
+    args:
+      - value: null
+        type: i64
+    result:
+      value: null
+      type: i64
