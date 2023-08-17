@@ -1,0 +1,64 @@
+function: octet_length
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 'abc'
+        type: string
+    result:
+      value: 3
+      type: i64
+  - group: basic
+    args:
+      - value: ''
+        type: string
+    result:
+      value: 0
+      type: i64
+  - group: basic
+    args:
+      - value: ' '
+        type: string
+    result:
+      value: 1
+      type: i64
+  - group: basic
+    args:
+      - value: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+        type: string
+    result:
+      value: 48
+      type: i64
+  - group: basic
+    args:
+      - value: '   456'
+        type: string
+    result:
+      value: 6
+      type: i64
+  - group:
+      id: null_input
+      description: Examples with null as input
+    args:
+      - value: null
+        type: string
+    result:
+      value: null
+      type: i64
+  - group:
+      id: unicode
+      description: Examples with unicode characters as input
+    args:
+      - value: 'à'
+        type: string
+    result:
+      value: 2
+      type: i64
+  - group: unicode
+    args:
+      - value: '😄'
+        type: string
+    result:
+      value: 4
+      type: i64

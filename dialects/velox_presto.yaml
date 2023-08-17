@@ -337,8 +337,62 @@ scalar_functions:
           - i32
         result: string
   - name: concat
+  - name: concat_ws
+    unsupported: True
   - name: like
     unsupported: True
+  - name: lower
+  - name: upper
+  - name: reverse
+  - name: repeat
+    unsupported_kernels:
+      - args:
+          - string
+          - i64
+        result: string
+  - name: bit_length
+    unsupported: True
+  - name: char_length
+    local_name: "length"
+  - name: octet_length
+    unsupported: True
+  - name: ltrim
+    required_options:
+      spaces_only: TRUE
+  - name: rtrim
+    required_options:
+      spaces_only: TRUE
+  - name: trim
+    required_options:
+      spaces_only: TRUE
+  - name: lpad
+    unsupported_kernels:
+      - args:
+          - string
+          - i32
+          - string
+        result: string
+  - name: rpad
+    unsupported_kernels:
+      - args:
+          - string
+          - i32
+          - string
+        result: string
+  - name: left
+    unsupported_kernels:
+      - args:
+          - string
+          - i32
+        result: string
+  - name: right
+    unsupported_kernels:
+      - args:
+          - string
+          - i32
+        result: string
+  - name: string_split
+    local_name: "split"
   - name: ln
     required_options:
       on_log_zero: MINUS_INFINITY

@@ -100,8 +100,26 @@ scalar_functions:
   - name: concat
     local_name: "||"
     infix: True
+  - name: concat_ws
   - name: like
     infix: True
+  - name: lower
+  - name: upper
+  - name: reverse
+  - name: repeat
+  - name: bit_length
+  - name: char_length
+    local_name: "length"
+  - name: octet_length
+    unsupported: True
+  - name: ltrim
+  - name: rtrim
+  - name: trim
+  - name: lpad
+  - name: rpad
+  - name: left
+  - name: right
+  - name: string_split
   - name: ln
     required_options:
       on_log_zero: ERROR
