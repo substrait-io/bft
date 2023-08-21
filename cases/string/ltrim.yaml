@@ -75,3 +75,14 @@ cases:
     result:
       value: 'def'
       type: string
+  - group: two_inputs
+    args:
+      - value: 'abc,cba,def'
+        type: string
+      - value: 'abc'
+        type: string
+    options:
+      spaces_only: FALSE
+    result:
+      value: 'def'
+      type: string

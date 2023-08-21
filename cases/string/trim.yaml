@@ -75,3 +75,14 @@ cases:
     result:
       value: 'abcabc'
       type: string
+  - group: two_inputs
+    args:
+      - value: 'abc,cba,def,abc'
+        type: string
+      - value: 'abc'
+        type: string
+    options:
+      spaces_only: FALSE
+    result:
+      value: ',cba,def,'
+      type: string

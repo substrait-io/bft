@@ -47,7 +47,7 @@ cases:
         type: string
     result:
       value: null
-      type: string\
+      type: string
   - group: null_input
     args:
       - value: 'abcd'

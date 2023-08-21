@@ -56,3 +56,23 @@ cases:
     result:
       value: null
       type: string
+  - group:
+      id: unicode
+      description: Examples with unicode characters as input
+    args:
+      - value: 'ææããa'
+        type: string
+      - value: 2
+        type: i32
+    result:
+      value: 'aããææ'
+      type: i32
+  - group: unicode
+    args:
+      - value: '😔😄😔😄'
+        type: string
+      - value: 2
+        type: i32
+    result:
+      value: string
+      type: i32
