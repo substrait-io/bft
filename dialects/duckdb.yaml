@@ -156,6 +156,8 @@ aggregate_functions:
         result: i64
   - name: count
     aggregate: True
+  - name: approx_count_distinct
+    aggregate: True
   - name: bool_and
     aggregate: True
   - name: bool_or

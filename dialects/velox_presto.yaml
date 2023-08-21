@@ -482,6 +482,9 @@ aggregate_functions:
     unsupported: True
   - name: count
     unsupported: True
+  - name: approx_count_distinct
+    local_name: "approx_distinct"
+    aggregate: True
   - name: bool_and
     unsupported: True
   - name: bool_or

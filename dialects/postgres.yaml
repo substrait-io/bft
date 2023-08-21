@@ -335,6 +335,8 @@ aggregate_functions:
       - args:
           - i8
         result: i8
+  - name: approx_count_distinct
+    unsupported: True
   - name: bool_and
     aggregate: True
   - name: bool_or

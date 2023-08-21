@@ -1,0 +1,39 @@
+function: approx_count_distinct
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: [1 -2 3 -4 5 6]
+        type: i8
+    result:
+      value: 6
+      type: i64
+  - group: basic
+    args:
+      - value: [1]
+        type: i8
+    result:
+      value: 1
+      type: i64
+  - group: basic
+    args:
+      - value: []
+        type: i8
+    result:
+      value: 0
+      type: i64
+  - group: basic
+    args:
+      - value: [Null Null Null]
+        type: i8
+    result:
+      value: 0
+      type: i64
+  - group: basic
+    args:
+      - value: [Null Null 4 3 Null 922337203685477580 12833888]
+        type: i8
+    result:
+      value: 0
+      type: i64
