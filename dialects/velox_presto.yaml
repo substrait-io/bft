@@ -485,6 +485,16 @@ aggregate_functions:
   - name: approx_count_distinct
     local_name: "approx_distinct"
     aggregate: True
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i64
+      - args:
+          - i16
+        result: i64
+      - args:
+          - i32
+        result: i64
   - name: bool_and
     unsupported: True
   - name: bool_or

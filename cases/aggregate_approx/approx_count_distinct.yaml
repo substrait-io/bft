@@ -35,5 +35,5 @@ cases:
       - value: [Null Null 4 3 Null 922337203685477580 12833888]
         type: i64
     result:
-      value: 0
+      value: 4
       type: i64
