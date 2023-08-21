@@ -53,5 +53,5 @@ cases:
       - value: '😔😄'
         type: string
     result:
-      value: string
+      value: '😄😔'
       type: string

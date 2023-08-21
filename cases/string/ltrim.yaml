@@ -84,5 +84,5 @@ cases:
     options:
       spaces_only: FALSE
     result:
-      value: 'def'
+      value: ',cba,def'
       type: string
