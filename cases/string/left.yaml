@@ -66,7 +66,7 @@ cases:
         type: i32
     result:
       value: 'ææ'
-      type: i32
+      type: string
   - group: unicode
     args:
       - value: '😔😄😔😄'
@@ -75,4 +75,4 @@ cases:
         type: i32
     result:
       value: '😔😄'
-      type: i32
+      type: string

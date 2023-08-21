@@ -77,12 +77,12 @@ cases:
       type: string
   - group: two_inputs
     args:
-      - value: 'abc,cba,def'
+      - value: 'defabccba'
         type: string
-      - value: 'def'
+      - value: 'abc'
         type: string
     options:
       spaces_only: FALSE
     result:
-      value: 'abc,cba,'
+      value: 'def'
       type: string
