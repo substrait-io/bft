@@ -33,7 +33,7 @@ cases:
   - group: basic
     args:
       - value: [Null Null 4 3 Null 922337203685477580 12833888]
-        type: i8
+        type: i64
     result:
       value: 0
       type: i64
