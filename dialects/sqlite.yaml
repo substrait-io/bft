@@ -111,7 +111,11 @@ scalar_functions:
   - name: like
     infix: True
   - name: lower
+    required_options:
+      full_unicode: FALSE
   - name: upper
+    required_options:
+      full_unicode: FALSE
   - name: reverse
     unsupported: True
   - name: repeat

@@ -45,6 +45,8 @@ cases:
     args:
       - value: 'ÆÆÃÃA'
         type: string
+    options:
+      full_unicode: TRUE
     result:
       value: 'ææããa'
       type: string
