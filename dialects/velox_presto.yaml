@@ -394,6 +394,7 @@ scalar_functions:
         result: string
   - name: string_split
     local_name: "split"
+    unsupported: True
   - name: ln
     required_options:
       on_log_zero: MINUS_INFINITY
