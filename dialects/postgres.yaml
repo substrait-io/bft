@@ -262,6 +262,7 @@ scalar_functions:
   - name: reverse
   - name: repeat
     unsupported: True
+  - name: replace
   - name: bit_length
   - name: char_length
   - name: octet_length

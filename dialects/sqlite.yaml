@@ -116,6 +116,7 @@ scalar_functions:
     unsupported: True
   - name: repeat
     unsupported: True
+  - name: replace
   - name: bit_length
     unsupported: True
   - name: char_length

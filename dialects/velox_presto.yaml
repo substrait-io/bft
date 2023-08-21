@@ -350,6 +350,7 @@ scalar_functions:
           - string
           - i64
         result: string
+  - name: replace
   - name: bit_length
     unsupported: True
   - name: char_length
