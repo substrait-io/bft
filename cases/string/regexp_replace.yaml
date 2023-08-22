@@ -1,0 +1,258 @@
+function: regexp_replace
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 'test@test.com'
+        type: string
+      - value: '^\S+@\S+$'
+        type: string
+      - value: 'email_found'
+        type: string
+    result:
+      value: 'email_found'
+      type: string
+  - group: basic
+    args:
+      - value: '17:50'
+        type: string
+      - value: '[0-9]?[0-9]:[0-9][0-9]'
+        type: string
+      - value: 'TIME'
+        type: string
+    result:
+      value: 'TIME'
+      type: string
+  - group:
+      id: lazy_matching
+      description: Examples with lazy matching
+    args:
+      - value: 'Hello'
+        type: string
+      - value: 'Hel+?'
+        type: string
+      - value: '1'
+        type: string
+    result:
+      value: '1lo'
+      type: string
+  - group: lazy_matching
+    args:
+      - value: 'Hello'
+        type: string
+      - value: 'Hel+'
+        type: string
+      - value: '1'
+        type: string
+    result:
+      value: '1o'
+      type: string
+  - group:
+      id: greedy_matching
+      description: Examples with greedy matching
+    args:
+      - value: 'Hello'
+        type: string
+      - value: 'Hel+'
+        type: string
+      - value: '1'
+        type: string
+    result:
+      value: '1o'
+      type: string
+  - group: greedy_matching
+    args:
+      - value: 'Helo'
+        type: string
+      - value: 'Hel+'
+        type: string
+      - value: '1'
+        type: string
+    result:
+      value: '1o'
+      type: string
+  - group:
+      id: null_input
+      description: Examples with null as input
+    args:
+      - value: 'Hello'
+        type: string
+      - value: null
+        type: string
+      - value: '1'
+        type: string
+    result:
+      value: null
+      type: string
+  - group: null_input
+    args:
+      - value: null
+        type: string
+      - value: ' '
+        type: string
+      - value: '1'
+        type: string
+    result:
+      value: null
+      type: string
+  - group:
+      id: position_anchors
+      description: Examples with position anchors
+    args:
+      - value: 'abcdefg'
+        type: string
+      - value: '\Aabc'
+        type: string
+      - value: '111'
+        type: string
+    result:
+      value: '111defg'
+      type: string
+  - group: position_anchors
+    args:
+      - value: 'abcdefg'
+        type: string
+      - value: 'efg$'
+        type: string
+      - value: '111'
+        type: string
+    result:
+      value: 'abcd111'
+      type: string
+  - group: position_anchors
+    args:
+      - value: 'catdogdog'
+        type: string
+      - value: '^cat'
+        type: string
+      - value: 'dog'
+        type: string
+    result:
+      value: 'dogdogdog'
+      type: string
+  - group: position_anchors
+    args:
+      - value: 'dogcatdogdog'
+        type: string
+      - value: '^cat'
+        type: string
+      - value: 'dog'
+        type: string
+    result:
+      value: 'dogcatdogdog'
+      type: string
+  - group:
+      id: metacharacters
+      description: Examples with metacharacters
+    args:
+      - value: 'abc1abc'
+        type: string
+      - value: '\d'
+        type: string
+      - value: ''
+        type: string
+    result:
+      value: 'abcabc'
+      type: string
+  - group: metacharacters
+    args:
+      - value: '111a111'
+        type: string
+      - value: '\D'
+        type: string
+      - value: ''
+        type: string
+    result:
+      value: '111111'
+      type: string
+  - group: metacharacters
+    args:
+      - value: 'abc def'
+        type: string
+      - value: '\s'
+        type: string
+      - value: ''
+        type: string
+    result:
+      value: 'abcdef'
+      type: string
+  - group: metacharacters
+    args:
+      - value: 'a bcdef'
+        type: string
+      - value: '\S'
+        type: string
+      - value: ','
+        type: string
+    result:
+      value: ', bcdef'
+      type: string
+  - group: metacharacters
+    args:
+      - value: ' abcdef'
+        type: string
+      - value: '\w'
+        type: string
+      - value: '1'
+        type: string
+    result:
+      value: ' 1bcdef'
+      type: string
+  - group: metacharacters
+    args:
+      - value: 'a bcdef'
+        type: string
+      - value: '\W'
+        type: string
+      - value: 'a'
+        type: string
+    result:
+      value: 'aabcdef'
+      type: string
+  - group:
+      id: occurrence_indicator
+      description: Examples with occurrence indicators
+    args:
+      - value: 'abc123abc'
+        type: string
+      - value: '[0-9]+'
+        type: string
+      - value: 'abc'
+        type: string
+    result:
+      value: 'abcabcabc'
+      type: string
+  - group: occurrence_indicator
+    args:
+      - value: 'abcabcabc'
+        type: string
+      - value: '[bc]'
+        type: string
+      - value: 'dd'
+        type: string
+    result:
+      value: 'addcabcabc'
+      type: string
+  - group: occurrence_indicator
+    args:
+      - value: 'abc'
+        type: string
+      - value: '(.*)c'
+        type: string
+      - value: '\1e'
+        type: string
+    result:
+      value: 'abe'
+      type: string
+  - group: occurrence_indicator
+    args:
+      - value: 'abbbbc'
+        type: string
+      - value: '[b]{2,3}'
+        type: string
+      - value: 'd'
+        type: string
+    result:
+      value: 'adbc'
+      type: string

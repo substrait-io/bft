@@ -113,6 +113,13 @@ scalar_functions:
   - name: reverse
   - name: repeat
   - name: replace
+  - name: regexp_replace
+  - name: regexp_string_split
+    unsupported: true
+  - name: regexp_count_substring
+    unsupported: true
+  - name: regexp_match_substring
+    unsupported: true
   - name: bit_length
   - name: char_length
   - name: octet_length

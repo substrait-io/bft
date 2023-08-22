@@ -293,6 +293,13 @@ scalar_functions:
   - name: repeat
     unsupported: True
   - name: replace
+  - name: regexp_replace
+  - name: regexp_string_split
+    local_name: "regexp_split_to_array"
+  - name: regexp_count_substring
+    local_name: "regexp_count"
+  - name: regexp_match_substring
+    local_name: "regexp_substr"
   - name: bit_length
   - name: char_length
   - name: octet_length
