@@ -1,0 +1,88 @@
+function: rtrim
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 'abc'
+        type: string
+    result:
+      value: 'abc'
+      type: string
+  - group: basic
+    args:
+      - value: '   abc'
+        type: string
+    result:
+      value: '   abc'
+      type: string
+  - group: basic
+    args:
+      - value: 'abc   '
+        type: string
+    result:
+      value: 'abc'
+      type: string
+  - group: basic
+    args:
+      - value: '   abc   '
+        type: string
+    result:
+      value: '   abc'
+      type: string
+  - group: basic
+    args:
+      - value: ''
+        type: string
+    result:
+      value: ''
+      type: string
+  - group: basic
+    args:
+      - value: ' '
+        type: string
+    result:
+      value: ''
+      type: string
+  - group: basic
+    args:
+      - value: null
+        type: string
+    result:
+      value: null
+      type: string
+  - group:
+      id: two_inputs
+      description: Examples with character input to trim off
+    args:
+      - value: 'aaaaabccccc'
+        type: string
+      - value: 'c'
+        type: string
+    options:
+      spaces_only: FALSE
+    result:
+      value: 'aaaaab'
+      type: string
+  - group: two_inputs
+    args:
+      - value: 'abcabcdef'
+        type: string
+      - value: 'def'
+        type: string
+    options:
+      spaces_only: FALSE
+    result:
+      value: 'abcabc'
+      type: string
+  - group: two_inputs
+    args:
+      - value: 'defabccba'
+        type: string
+      - value: 'abc'
+        type: string
+    options:
+      spaces_only: FALSE
+    result:
+      value: 'def'
+      type: string

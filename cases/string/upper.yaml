@@ -1,0 +1,59 @@
+function: upper
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 'abc'
+        type: string
+    result:
+      value: 'ABC'
+      type: string
+  - group: basic
+    args:
+      - value: 'aBc'
+        type: string
+    result:
+      value: 'ABC'
+      type: string
+  - group: basic
+    args:
+      - value: 'ABC'
+        type: string
+    result:
+      value: 'ABC'
+      type: string
+  - group: basic
+    args:
+      - value: ''
+        type: string
+    result:
+      value: ''
+      type: string
+  - group:
+      id: null_input
+      description: Examples with null as input
+    args:
+      - value: null
+        type: string
+    result:
+      value: null
+      type: string
+  - group:
+      id: unicode
+      description: Examples with unicode characters as input
+    args:
+      - value: 'ææããa'
+        type: string
+    options:
+      full_unicode: TRUE
+    result:
+      value: 'ÆÆÃÃA'
+      type: string
+  - group: unicode
+    args:
+      - value: '😄'
+        type: string
+    result:
+      value: '😄'
+      type: string

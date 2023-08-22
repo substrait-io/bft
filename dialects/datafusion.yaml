@@ -101,8 +101,32 @@ scalar_functions:
   - name: concat
     local_name: "||"
     infix: True
+  - name: concat_ws
   - name: like
     infix: True
+  - name: lower
+    required_options:
+      full_unicode: FALSE
+  - name: upper
+    required_options:
+      full_unicode: FALSE
+  - name: reverse
+  - name: repeat
+  - name: replace
+  - name: bit_length
+  - name: char_length
+  - name: octet_length
+  - name: ltrim
+  - name: rtrim
+  - name: trim
+    required_options:
+      spaces_only: TRUE
+  - name: lpad
+  - name: rpad
+  - name: left
+  - name: right
+  - name: string_split
+    unsupported: True
   - name: ln
     required_options:
       on_log_zero: MINUS_INFINITY

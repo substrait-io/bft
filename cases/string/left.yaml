@@ -1,0 +1,78 @@
+function: left
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 'abcdef'
+        type: string
+      - value: 2
+        type: i32
+    result:
+      value: 'ab'
+      type: string
+  - group: basic
+    args:
+      - value: 'abcdef'
+        type: string
+      - value: 6
+        type: i32
+    result:
+      value: 'abcdef'
+      type: string
+  - group: basic
+    args:
+      - value: 'abcdef'
+        type: string
+      - value: 10
+        type: i32
+    result:
+      value: 'abcdef'
+      type: string
+  - group: basic
+    args:
+      - value: '  abcdef  abcdef'
+        type: string
+      - value: 10
+        type: i32
+    result:
+      value: '  abcdef  '
+      type: string
+  - group: basic
+    args:
+      - value: null
+        type: string
+      - value: 10
+        type: i32
+    result:
+      value: null
+      type: string
+  - group: basic
+    args:
+      - value: 'abcdef'
+        type: string
+      - value: null
+        type: i32
+    result:
+      value: null
+      type: string
+  - group:
+      id: unicode
+      description: Examples with unicode characters as input
+    args:
+      - value: 'ææããa'
+        type: string
+      - value: 2
+        type: i32
+    result:
+      value: 'ææ'
+      type: string
+  - group: unicode
+    args:
+      - value: '😔😄😔😄'
+        type: string
+      - value: 2
+        type: i32
+    result:
+      value: '😔😄'
+      type: string
