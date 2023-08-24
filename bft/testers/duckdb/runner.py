@@ -76,11 +76,19 @@ class DuckDBRunner(SqlCaseRunner):
                     arg_vals_list.append(literal_to_str(arg))
             arg_vals = ", ".join(arg_vals_list)
             if mapping.aggregate:
-                arg_vals = ",".join([literal_to_str(arg) for arg in case.args])
-                arg_vals_list = ", ".join(f"({val})" for val in arg_vals.split(","))
-                if arg_vals != "[]":
+                arg_vals_list = ""
+                for arg in case.args:
+                    if is_string_type(arg):
+                        if arg.value == "Null":
+                            arg_vals_list += f"({literal_to_str(arg)}),"
+                        else:
+                            arg_vals_list += f"('{literal_to_str(arg)}'),"
+                    else:
+                        arg_vals_list += f"({literal_to_str(arg)}),"
+
+                if arg_vals_list[:-1] != "([])":
                     self.conn.execute(
-                        f"INSERT INTO my_table ({joined_arg_names}) VALUES {arg_vals_list};"
+                        f"INSERT INTO my_table ({joined_arg_names}) VALUES {arg_vals_list[:-1]};"
                     )
             else:
                 self.conn.execute(
