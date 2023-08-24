@@ -49,7 +49,7 @@ cases:
       - value: [abc Null ghi]
         type: string
     result:
-      value: 1
+      value: 2
       type: i64
   - group: basic
     args:
