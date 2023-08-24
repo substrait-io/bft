@@ -39,6 +39,20 @@ cases:
       type: i64
   - group: basic
     args:
+      - value: [abc def ghi]
+        type: string
+    result:
+      value: 3
+      type: i64
+  - group: basic
+    args:
+      - value: [abc Null ghi]
+        type: string
+    result:
+      value: 1
+      type: i64
+  - group: basic
+    args:
       - value: []
         type: i8
     result:
