@@ -11,14 +11,14 @@ cases:
       type: i64
   - group: basic
     args:
-      - value: [-32767 -20000 30000  5 32767]
+      - value: [-32767 -20000 30000 5 32767]
         type: i16
     result:
       value: 5
       type: i64
   - group: basic
     args:
-      - value: [-2147483648 -10000000 30000000  2147483647]
+      - value: [-2147483648 -10000000 30000000 2147483647]
         type: i32
     result:
       value: 4
