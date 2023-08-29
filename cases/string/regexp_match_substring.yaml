@@ -152,7 +152,7 @@ cases:
     options:
       lookaround: TRUE
     result:
-      value: 100
+      value: '100'
       type: string
   - group:
       id: negative_lookahead
