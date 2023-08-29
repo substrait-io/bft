@@ -141,3 +141,55 @@ cases:
     result:
       value: " "
       type: string
+  - group:
+      id: lookahead
+      description: Examples with lookahead
+    args:
+      - value: '100 dollars'
+        type: string
+      - value: '\d+(?= dollars)'
+        type: string
+    options:
+      lookaround: TRUE
+    result:
+      value: 100
+      type: string
+  - group:
+      id: negative_lookahead
+      description: Examples with negative lookahead
+    args:
+      - value: '100 pesos'
+        type: string
+      - value: '\d+(?!\d| dollars)'
+        type: string
+    options:
+      lookaround: TRUE
+    result:
+      value: '100'
+      type: string
+  - group:
+      id: lookbehind
+      description: Examples with lookbehind
+    args:
+      - value: 'USD100'
+        type: string
+      - value: '(?<=USD)\d{3}'
+        type: string
+    options:
+      lookaround: TRUE
+    result:
+      value: '100'
+      type: string
+  - group:
+      id: negative_lookbehind
+      description: Examples with negative lookbehind
+    args:
+      - value: 'JPY100'
+        type: string
+      - value: '\d{3}(?<!USD\d{3})'
+        type: string
+    options:
+      lookaround: TRUE
+    result:
+      value: '100'
+      type: string

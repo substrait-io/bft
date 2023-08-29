@@ -294,6 +294,8 @@ scalar_functions:
     unsupported: True
   - name: replace
   - name: regexp_replace
+    required_options:
+      lookaround: TRUE
   - name: regexp_string_split
     local_name: "regexp_split_to_array"
   - name: regexp_count_substring

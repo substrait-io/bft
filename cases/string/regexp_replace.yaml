@@ -256,3 +256,63 @@ cases:
     result:
       value: 'adbc'
       type: string
+  - group:
+      id: lookahead
+      description: Examples with lookahead
+    args:
+      - value: '100 dollars'
+        type: string
+      - value: '\d+(?= dollars)'
+        type: string
+      - value: 'hundred'
+        type: string
+    options:
+      lookaround: TRUE
+    result:
+      value: 'hundred dollars'
+      type: string
+  - group:
+      id: negative_lookahead
+      description: Examples with negative lookahead
+    args:
+      - value: '100 pesos'
+        type: string
+      - value: '\d+(?!\d| dollars)'
+        type: string
+      - value: '999'
+        type: string
+    options:
+      lookaround: TRUE
+    result:
+      value: '999 pesos'
+      type: string
+  - group:
+      id: lookbehind
+      description: Examples with lookbehind
+    args:
+      - value: 'USD100'
+        type: string
+      - value: '(?<=USD)\d{3}'
+        type: string
+      - value: '999'
+        type: string
+    options:
+      lookaround: TRUE
+    result:
+      value: 'USD999'
+      type: string
+  - group:
+      id: negative_lookbehind
+      description: Examples with negative lookbehind
+    args:
+      - value: 'JPY100'
+        type: string
+      - value: '\d{3}(?<!USD\d{3})'
+        type: string
+      - value: '999'
+        type: string
+    options:
+      lookaround: TRUE
+    result:
+      value: 'JPY999'
+      type: string

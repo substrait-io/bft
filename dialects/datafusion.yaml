@@ -114,6 +114,8 @@ scalar_functions:
   - name: repeat
   - name: replace
   - name: regexp_replace
+    required_options:
+      lookaround: FALSE
   - name: regexp_string_split
     unsupported: true
   - name: regexp_count_substring
