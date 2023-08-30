@@ -272,6 +272,31 @@ scalar_functions:
         result: fp64
   - name: extract
     extract: True
+  - name: add_datetime
+    local_name: +
+    infix: True
+    required_options:
+      with_time: TRUE
+  - name: add_intervals
+    local_name: +
+    infix: True
+  - name: subtract_datetime
+    local_name: "-"
+    infix: True
+    required_options:
+      with_time: TRUE
+  - name: lt_datetime
+    local_name: "<"
+    infix: True
+  - name: lte_datetime
+    local_name: "<="
+    infix: True
+  - name: gt_datetime
+    local_name: ">"
+    infix: True
+  - name: gte_datetime
+    local_name: ">="
+    infix: True
   - name: substring
     required_options:
       negative_start: LEFT_OF_BEGINNING

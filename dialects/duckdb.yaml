@@ -104,6 +104,31 @@ scalar_functions:
         result: fp32
   - name: extract
     extract: True
+  - name: add_datetime
+    local_name: +
+    infix: True
+    required_options:
+      with_time: FALSE
+  - name: add_intervals
+    local_name: +
+    infix: True
+  - name: subtract_datetime
+    local_name: "-"
+    infix: True
+    required_options:
+      with_time: FALSE
+  - name: lt_datetime
+    local_name: "<"
+    infix: True
+  - name: lte_datetime
+    local_name: "<="
+    infix: True
+  - name: gt_datetime
+    local_name: ">"
+    infix: True
+  - name: gte_datetime
+    local_name: ">="
+    infix: True
   - name: substring
     required_options:
       negative_start: WRAP_FROM_END

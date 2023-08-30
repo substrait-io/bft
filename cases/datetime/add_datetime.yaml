@@ -1,0 +1,99 @@
+function: add_datetime
+cases:
+  - group:
+      id: timestamps
+      description: examples using the timestamp types
+    args:
+      - value: '2016-12-31 13:30:15'
+        type: timestamp
+      - value: INTERVAL '5 DAY'
+        type: interval
+    result:
+      value: '2017-01-05 13:30:15'
+      type: timestamp
+  - group: timestamps
+    args:
+      - value: '2016-12-01 13:30:15'
+        type: timestamp
+      - value: INTERVAL '5 YEAR'
+        type: interval
+    result:
+      value: '2021-12-01 13:30:15'
+      type: timestamp
+  - group: timestamps
+    args:
+      - value: '2016-12-01 13:30:15'
+        type: timestamp
+      - value: INTERVAL '5 HOUR'
+        type: interval
+    result:
+      value: '2016-12-01 18:30:15'
+      type: timestamp
+  - group:
+      id: date
+      description: examples using the date types
+    args:
+      - value: '2020-12-31'
+        type: date
+      - value: INTERVAL '5 DAY'
+        type: interval
+    options:
+      with_time: FALSE
+    result:
+      value: '2021-01-05'
+      type: date
+  - group: date
+    args:
+      - value: '2020-12-31'
+        type: date
+      - value: INTERVAL '5 YEAR'
+        type: interval
+    options:
+      with_time: FALSE
+    result:
+      value: '2025-12-31'
+      type: date
+  - group: date
+    args:
+      - value: '2020-12-31'
+        type: date
+      - value: INTERVAL '5 MONTH'
+        type: interval
+    options:
+      with_time: FALSE
+    result:
+      value: '2021-05-31'
+      type: date
+  - group: date
+    args:
+      - value: '2020-12-31'
+        type: date
+      - value: INTERVAL '5 DAY'
+        type: interval
+    options:
+      with_time: TRUE
+    result:
+      value: '2021-01-05 00:00:00'
+      type: date
+  - group: date
+    args:
+      - value: '2020-12-31 '
+        type: date
+      - value: INTERVAL '5 YEAR'
+        type: interval
+    options:
+      with_time: TRUE
+    result:
+      value: '2025-12-31 00:00:00'
+      type: date
+  - group: date
+    args:
+      - value: '2020-12-31'
+        type: date
+      - value: INTERVAL '5 MONTH'
+        type: interval
+    options:
+      with_time: TRUE
+    result:
+      value: '2021-05-31 00:00:00'
+      type: date

@@ -1,0 +1,62 @@
+function: add_intervals
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: INTERVAL '10 HOUR'
+        type: interval
+      - value: INTERVAL '5 HOUR'
+        type: interval
+    result:
+      value: '15:00:00'
+      type: string
+  - group: basic
+    args:
+      - value: INTERVAL '10 DAY'
+        type: interval
+      - value: INTERVAL '5 DAY'
+        type: interval
+    result:
+      value: '15 days, 0:00:00'
+      type: string
+  - group: basic
+    args:
+      - value: INTERVAL '1 YEAR'
+        type: interval
+      - value: INTERVAL '1 YEAR'
+        type: interval
+    options:
+      return_type: DATE
+    result:
+      value: '730 days, 0:00:00'
+      type: string
+  - group: basic
+    args:
+      - value: INTERVAL '1 DAY'
+        type: interval
+      - value: INTERVAL '10 HOUR'
+        type: interval
+    result:
+      value: '1 day, 10:00:00'
+      type: string
+  - group: basic
+    args:
+      - value: INTERVAL '1 YEAR'
+        type: interval
+      - value: INTERVAL '1 HOUR'
+        type: interval
+    result:
+      value: '365 days, 1:00:00'
+      type: string
+  - group:
+      id: null
+      description: Basic examples where the input args or return is null
+    args:
+      - value: null
+        type: interval
+      - value: INTERVAL '1 YEAR'
+        type: interval
+    result:
+      value: null
+      type: string
