@@ -97,3 +97,14 @@ cases:
     result:
       value: '2020-07-31 00:00:00'
       type: date
+  - group:
+      id: null_input
+      description: examples with null args or return
+    args:
+      - value: null
+        type: date
+      - value: INTERVAL '5 DAY'
+        type: interval
+    result:
+      value: null
+      type: date

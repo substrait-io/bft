@@ -98,3 +98,32 @@ cases:
     result:
       value: false
       type: boolean
+  - group:
+      id: null_input
+      description: examples with null args or return
+    args:
+      - value: null
+        type: interval
+      - value: INTERVAL '5 DAY'
+        type: interval
+    result:
+      value: null
+      type: boolean
+  - group: null_input
+    args:
+      - value: null
+        type: date
+      - value: '2020-12-30'
+        type: date
+    result:
+      value: null
+      type: boolean
+  - group: null_input
+    args:
+      - value: null
+        type: timestamp
+      - value: '2018-12-31 13:30:15'
+        type: timestamp
+    result:
+      value: null
+      type: boolean

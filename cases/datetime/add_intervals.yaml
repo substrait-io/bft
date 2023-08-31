@@ -74,7 +74,7 @@ cases:
       value: '365 days, 1:00:00'
       type: string
   - group:
-      id: null
+      id: null_input
       description: Basic examples where the input args or return is null
     args:
       - value: null
