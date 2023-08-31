@@ -118,6 +118,19 @@ scalar_functions:
   - name: reverse
   - name: repeat
   - name: replace
+  - name: regexp_replace
+    required_options:
+      lookaround: FALSE
+  - name: regexp_string_split
+    local_name: "regexp_split_to_array"
+    required_options:
+      lookaround: FALSE
+  - name: regexp_count_substring
+    unsupported: true
+  - name: regexp_match_substring
+    local_name: "regexp_extract"
+    required_options:
+      lookaround: FALSE
   - name: bit_length
   - name: char_length
     local_name: "length"

@@ -131,6 +131,14 @@ scalar_functions:
   - name: repeat
     unsupported: True
   - name: replace
+  - name: regexp_replace
+    unsupported: True
+  - name: regexp_string_split
+    unsupported: true
+  - name: regexp_count_substring
+    unsupported: true
+  - name: regexp_match_substring
+    unsupported: true
   - name: bit_length
     unsupported: True
   - name: char_length
