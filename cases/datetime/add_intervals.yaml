@@ -27,7 +27,18 @@ cases:
       - value: INTERVAL '1 YEAR'
         type: interval
     options:
-      return_type: DATE
+      year_interval: 360
+    result:
+      value: '720 days, 0:00:00'
+      type: string
+  - group: basic
+    args:
+      - value: INTERVAL '1 YEAR'
+        type: interval
+      - value: INTERVAL '1 YEAR'
+        type: interval
+    options:
+      year_interval: 365
     result:
       value: '730 days, 0:00:00'
       type: string
@@ -46,6 +57,19 @@ cases:
         type: interval
       - value: INTERVAL '1 HOUR'
         type: interval
+    options:
+      year_interval: 360
+    result:
+      value: '360 days, 1:00:00'
+      type: string
+  - group: basic
+    args:
+      - value: INTERVAL '1 YEAR'
+        type: interval
+      - value: INTERVAL '1 HOUR'
+        type: interval
+    options:
+      year_interval: 365
     result:
       value: '365 days, 1:00:00'
       type: string
