@@ -1,3 +1,4 @@
+import datetime
 import os
 from typing import Dict, NamedTuple
 
@@ -19,6 +20,7 @@ type_map = {
     "time": "time",
     "timestamp": "timestamp",
     "timestamp_tz": "timestamptz",
+    "interval": "interval",
 }
 
 
@@ -43,6 +45,11 @@ def is_string_type(arg):
         arg.type in ["string", "timestamp", "timestamp_tz", "date", "time"]
         and arg.value is not None
     )
+
+
+def is_datetype(arg):
+    print(f"postgres type is: {type(arg)}")
+    return type(arg) in [datetime.datetime, datetime.date, datetime.timedelta]
 
 
 def get_connection_str():
@@ -128,6 +135,8 @@ class PostgresRunner(SqlCaseRunner):
                 return SqlCaseResult.error(str(result))
             else:
                 if result == case.result.value:
+                    return SqlCaseResult.success()
+                elif is_datetype(result) and str(result) == case.result.value:
                     return SqlCaseResult.success()
                 else:
                     return SqlCaseResult.mismatch(str(result))

@@ -95,6 +95,20 @@ scalar_functions:
   - name: round
   - name: extract
     unsupported: true
+  - name: add_datetime
+    unsupported: True
+  - name: add_intervals
+    unsupported: True
+  - name: subtract_datetime
+    unsupported: True
+  - name: lt_datetime
+    unsupported: True
+  - name: lte_datetime
+    unsupported: True
+  - name: gt_datetime
+    unsupported: True
+  - name: gte_datetime
+    unsupported: True
   - name: substring
     required_options:
       negative_start: LEFT_OF_BEGINNING

@@ -1,6 +1,8 @@
+import datetime
 import math
-import duckdb
 from typing import Dict, NamedTuple
+
+import duckdb
 
 from bft.cases.runner import SqlCaseResult, SqlCaseRunner
 from bft.cases.types import Case, CaseLiteral
@@ -19,6 +21,7 @@ type_map = {
     "time": "TIME",
     "timestamp": "TIMESTAMP",
     "timestamp_tz": "TIMESTAMPTZ",
+    "interval": "INTERVAL",
 }
 
 
@@ -45,6 +48,10 @@ def is_string_type(arg):
         arg.type in ["string", "timestamp", "timestamp_tz", "date", "time"]
         and arg.value is not None
     )
+
+
+def is_datetype(arg):
+    return type(arg) in [datetime.datetime, datetime.date, datetime.timedelta]
 
 
 class DuckDBRunner(SqlCaseRunner):
@@ -121,6 +128,8 @@ class DuckDBRunner(SqlCaseRunner):
                 return SqlCaseResult.unexpected_pass(str(result))
             else:
                 if result == case.result.value:
+                    return SqlCaseResult.success()
+                elif is_datetype(result) and str(result) == case.result.value:
                     return SqlCaseResult.success()
                 else:
                     return SqlCaseResult.mismatch(str(result))
