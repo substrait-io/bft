@@ -1,15 +1,13 @@
 # The B(ig) F(unction) T(axonomy)
 
 The BFT aims to be a comprehensive catalogue of functions.  Functions are the
-backbone of any compute system but they are chronically underdocumented and often
+backbone of any compute system, but they are chronically under documented and often
 full of corner cases whose behavior differs in various systems.  By documenting
 exhaustively documenting these corner cases we hope to make it possible for systems
 to fully describe their behaviors.  This will make it easier to know what problems
 will be encountered switching between systems and, in some cases, make it possible
 to obtain the correct behavior through expression transformation or a precise application
 of function options.
-
-This information is made available for human consumption at <https://westonpace.github.io/bft>
 
 ## Major Concepts
 
