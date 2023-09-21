@@ -1,0 +1,39 @@
+function: exp
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 0.25
+        type: fp32
+    result:
+      value: 1.2840254166877414
+      type: fp32
+  - group: basic
+    args:
+      - value: 0.693
+        type: fp64
+    result:
+      value: 1.9997056605411638
+      type: fp64
+  - group: basic
+    args:
+      - value: 2.0000007152557373046875
+        type: fp64
+    result:
+      value: 7.3890613839973085
+      type: fp64
+  - group: basic
+    args:
+      - value: 0.0
+        type: fp64
+    result:
+      value: 1.0
+      type: fp64
+  - group: basic
+    args:
+      - value: null
+        type: fp64
+    result:
+      value: null
+      type: fp64

@@ -1,0 +1,42 @@
+function: factorial
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 0
+        type: i32
+    result:
+      value: 1
+      type: i32
+  - group: basic
+    args:
+      - value: 1
+        type: i64
+    result:
+      value: 1
+      type: i64
+  - group: basic
+    args:
+      - value: 20
+        type: i64
+    result:
+      value: 2432902008176640000
+      type: i64
+  - group: basic
+    args:
+      - value: null
+        type: i64
+    result:
+      value: null
+      type: i64
+  - group:
+      id: overflow
+      description: Examples demonstrating overflow behavior
+    args:
+      - value: 1000000
+        type: i64
+    options:
+      overflow: ERROR
+    result:
+      special: error
