@@ -63,3 +63,16 @@ against the system and verify the behavior is what we expected.
 All of this information is rolled up into a website that serves as reference
 documentation for these compute functions.  This is intended for consumption by
 humans that wish to learn more details about specific functions.
+
+### Getting Started
+
+The following commands will build the website on Ubuntu:
+
+```
+git clone git@github.com:voltrondata/bft.git
+cd bft
+git submodule init
+git submodule update
+pip install -r requirements.txt
+python3 build_site.py
+```
