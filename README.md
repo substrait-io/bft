@@ -64,7 +64,7 @@ All of this information is rolled up into a website that serves as reference
 documentation for these compute functions.  This is intended for consumption by
 humans that wish to learn more details about specific functions.
 
-### Getting Started
+#### Building the website
 
 The following commands will build and serve the website on Ubuntu:
 

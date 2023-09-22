@@ -24,7 +24,6 @@ class DialectFunction(NamedTuple):
     unsupported_kernels: List[DialectKernel]
     # Work around a Jinja version incompatibility.
     def items(self):
-        #return {"FAKEKEY": "FAKEVALUE"}
         return self._asdict().items()
 
 
