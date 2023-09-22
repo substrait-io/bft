@@ -66,7 +66,7 @@ humans that wish to learn more details about specific functions.
 
 ### Getting Started
 
-The following commands will build the website on Ubuntu:
+The following commands will build and serve the website on Ubuntu:
 
 ```
 git clone git@github.com:voltrondata/bft.git
@@ -74,5 +74,10 @@ cd bft
 git submodule init
 git submodule update
 pip install -r requirements.txt
+pushd substrait/extensions
+perl -pi -e 's/YAML 1.2/YAML 1.1/g' *yaml
+popd
 python3 build_site.py
+cd dist
+python -m http.server -b "::" 8000
 ```
