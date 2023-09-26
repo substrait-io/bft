@@ -124,13 +124,7 @@ scalar_functions:
           - fp32
         result: fp32
   - name: sqrt
-    unsupported_kernels:
-      - args:
-          - i64
-        result: i64
-      - args:
-          - fp32
-        result: fp32
+    unsupported: true
   - name: exp
     unsupported_kernels:
       - args:
