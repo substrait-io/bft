@@ -72,8 +72,7 @@
             </select>
             {% for dialect in dialects %}
             <dl class="dialect-definition" id="dialect-{{ dialect.name }}">
-                {% for opt, val in dialect.options %}
-                <dt>{{ opt }}</dt>
+                {% for val in dialect.options %}
                 <dd>{{ val }}</dd>
                 {% endfor %}
             </dl>
