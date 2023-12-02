@@ -1,10 +1,10 @@
-# Subtract
+# Multiply
 
 ## Options
 
 ### Overflow
 
-Subtracting two integers can trigger an overflow when the result is outside the
+Multiplying two integers can trigger an overflow when the result is outside the
 representable range of the type class. This option controls what happens when
 this overflow occurs.
 
@@ -13,7 +13,7 @@ this overflow occurs.
 If an overflow occurs then an integer value will be returned. The value is
 undefined. It may be any integer and can change from engine to engine or
 even from row to row within the same query.  The only constraint is that it
-must be a valid value for the result type class (e.g. subtracting two int16
+must be a valid value for the result type class (e.g. multiplying two int16
 cannot yield an int32 on overflow)
 
 #### SATURATE
@@ -27,7 +27,7 @@ If an overflow occurs then an error should be raised.
 
 ### Rounding
 
-Subtracting two floating point numbers can yield a result that is not exactly
+Multiplying two floating point numbers can yield a result that is not exactly
 representable in the given type class. In this case the value will be rounded.
 Rounding behaviors are defined as part of the IEEE 754 standard.
 
@@ -69,11 +69,11 @@ information on what happens in these cases refer to the IEEE 754 standard.
 
 ### Not commutative
 
-Subtraction, the algebraic operation, is commutative.  So it may be tempting to
-believe the subtract function is commutative as well.  However, this is not true
+Multiplication, the algebraic operation, is commutative.  So it may be tempting to
+believe the multiply function is commutative as well.  However, this is not true
 because of overflow.  For example, when working with int8 the result of
-subtract(subtract(-120, 10), -5) will yield a different result than
-subtract(subtract(120, -5), 10) because the first will overflow and the second
+multiply(multiply(120, 10), -5) will yield a different result than
+multiply(multiply(120, -5), 10) because the first will overflow and the second
 will not.
 
 ## Properties
@@ -90,4 +90,4 @@ will be NaN
 ### Stateless
 
 The output will be the same regardless of the order of input rows. This is not
-guaranteed to be true for integer subtraction when overflow is SILENT.
+guaranteed to be true for integer multiplication when overflow is SILENT.
