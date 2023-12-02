@@ -12,8 +12,10 @@ scalar_functions:
       overflow: SILENT # cudf rolls over on overflow
       rounding: TIE_TO_EVEN
   - name: multiply
+    local_name: multiply
     required_options:
-      overflow: SILENT
+      overflow: SILENT # cudf rolls over on overflow
+      rounding: TIE_TO_EVEN
   - name: divide
     required_options:
       on_division_by_zero: LIMIT
