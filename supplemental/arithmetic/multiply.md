@@ -72,8 +72,8 @@ information on what happens in these cases refer to the IEEE 754 standard.
 Multiplication, the algebraic operation, is commutative.  So it may be tempting to
 believe the multiply function is commutative as well.  However, this is not true
 because of overflow.  For example, when working with int8 the result of
-multiply(multiply(120, 10), -5) will yield a different result than
-multiply(multiply(120, -5), 10) because the first will overflow and the second
+multiply(multiply(-1, -128), -1) may yield a different result than
+multiply(multiply(-1, -1), -128) because the first will overflow and the second
 will not.
 
 ## Properties
