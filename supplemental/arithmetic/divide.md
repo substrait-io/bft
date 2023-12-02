@@ -57,7 +57,7 @@ Round to the value closest to positive infinity.
 
 Round to the value closest to negative infinity.
 
-### On domain error
+### On_domain_error
 
 Option controls what happens when the dividend and divisor in a divide function
 are either both 0 or both ±infinity.
@@ -72,7 +72,7 @@ both ±infinity.
 If the dividend and the divisor are either both 0 or both ±infinity an error should 
 be raised.
 
-### On division by zero
+### On_division_by_zero
 
 Option controls function behavior in cases when the divisor is 0 but the dividend is not zero.
 
