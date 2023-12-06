@@ -17,7 +17,7 @@ scalar_functions:
       overflow: SILENT # cudf rolls over on overflow
       rounding: TIE_TO_EVEN
   - name: divide
-    local_name: division
+    local_name: divide
     required_options:
       overflow: SILENT # cudf rolls over on overflow
       rounding: TIE_TO_EVEN

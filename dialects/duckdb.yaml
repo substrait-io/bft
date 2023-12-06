@@ -33,6 +33,15 @@ scalar_functions:
       on_division_by_zero: NONE
       overflow: ERROR
       rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - fp32
+          - fp32
+        result: fp32
+      - args:
+          - fp64
+          - fp64
+        result: fp64
   - name: power
     required_options:
       overflow: ERROR

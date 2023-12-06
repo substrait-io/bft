@@ -25,7 +25,31 @@ scalar_functions:
       overflow: ERROR
       rounding: TIE_TO_EVEN
   - name: modulus
-    unsupported: true
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - i32
+          - i32
+        result: i32
+      - args:
+          - i64
+          - i64
+        result: i64
+      - args:
+          - fp32
+          - fp32
+        result: fp32
+      - args:
+          - fp64
+          - fp64
+        result: fp64
   - name: power
   - name: sqrt
     required_options:
