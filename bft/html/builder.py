@@ -139,6 +139,7 @@ def create_dialect(
         mapping = dialect.mapping_for_case(case)
         if mapping is None:
             case_info.append("There is no dialect information for this function")
+            continue
         case_info.append(mapping.reason)
     kernel_info = []
     for kernel in kernels:
@@ -159,6 +160,7 @@ def create_function_info(
     options = [create_function_option(opt, supplements) for opt in func.options]
     kernels = func.kernels
     example_groups, ordered_cases = create_example_groups(cases)
+
     dialects = [
         create_dialect(func.name, dialect, ordered_cases, func.kernels)
         for dialect in dialects.dialects.values()
@@ -184,7 +186,7 @@ def create_function_index(
 ) -> FunctionIndexInfo:
     items = [
         FunctionIndexItem(
-            function.name, function.description, function.name in supplements
+            function.name, function.description, True # TODO: only avoid generating Function index if no information at all is present
         )
         for function in functions
     ]
@@ -231,8 +233,6 @@ def build_site(index_path: str, dest_dir):
         supplement = supplements.get(func.name, None)
         if supplement is None:
             supplement = empty_supplements_file(func.name)
-            print(f"Skipping {func.name}")
-            continue
         print(f"Creating site for {func.name}")
         info = create_function_info(func, matching_cases, supplement, dialects_lib)
         out_path = pathlib.Path(dest_dir) / f"{func.name}.html"

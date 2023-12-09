@@ -72,30 +72,42 @@
             </select>
             {% for dialect in dialects %}
             <dl class="dialect-definition" id="dialect-{{ dialect.name }}">
-                {% for opt, val in dialect.options.items() %}
-                <dt>{{ opt }}</dt>
-                <dd>{{ val }}</dd>
-                {% endfor %}
+                {% if dialect.options is none %}
+                    <dt>Dialect isn't yet supported</dt>
+                {% else %}
+                    {% for opt, val in dialect.options.items() %}
+                        <dt>{{ opt }}</dt>
+                        <dd>{{ val }}</dd>
+                    {% endfor %}
+                {% endif %}
             </dl>
             {% endfor %}
         </section>
         <hr>
         <section id="details">
             <h3>Details&nbsp;<a href="#details">&para;</a></h3>
-            {% for detail in details %}
-            <h4>{{ detail.title }}</h4>
-            {{ detail.description }}
-            {% endfor %}
+            {% if details %}
+                {% for detail in details %}
+                    <h4>{{ detail.title }}</h4>
+                    {{ detail.description }}
+                {% endfor %}
+            {% else %}
+                <p>No supplemental information about the details available</p>
+            {% endif %}
         </section>
         <hr>
         <section id="properties">
             <h3>Properties&nbsp;<a href="#properties">&para;</a></h3>
-            <dl>
-                {% for property in properties | sort(attribute='id') %}
-                <dt>{{ property.id }}</dt>
-                <dd>{{ property.description }}</dd>
-                {% endfor %}
-            </dl>
+            {% if properties %}
+                <dl>
+                    {% for property in properties | sort(attribute='id') %}
+                        <dt>{{ property.id }}</dt>
+                        <dd>{{ property.description }}</dd>
+                    {% endfor %}
+                </dl>
+            {% else %}
+                <p>No supplemental information about the properties available</p>
+            {% endif %}
         </section>
         <hr>
         <section id="examples">
