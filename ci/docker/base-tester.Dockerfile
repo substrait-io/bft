@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.18
 ARG PIP_PACKAGES
 
 ENV PYTHONUNBUFFERED=1
