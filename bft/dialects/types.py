@@ -1,6 +1,7 @@
 from typing import Dict, List, NamedTuple
 
 import pytest
+import inspect
 
 from bft.cases.types import Case, CaseLiteral, Literal, case_to_kernel_str
 from bft.core.function import Kernel
@@ -120,8 +121,14 @@ class Dialect(object):
         dfunc_scalar = self.__scalar_functions_by_name.get(case.function, None)
         dfunc_aggregate = self.__aggregate_functions_by_name.get(case.function, None)
         dfunc = dfunc_scalar or dfunc_aggregate
-        if dfunc is None:
-            return None
+        build_site = False
+        if inspect.stack()[1].function == "create_dialect":
+            build_site = True
+        if build_site:
+            if dfunc is None:
+                return None
+        elif dfunc.unsupported:
+            pytest.skip("Skipping unsupported function.")
 
         kernel_failure = self.__supports_case_kernel(dfunc, case.args, case.result)
         if kernel_failure is not None:
