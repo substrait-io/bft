@@ -31,6 +31,7 @@ class Implementation(NamedTuple):
     args: List[ValueArg | EnumArg]
     options: Dict[str, List[str]]
     return_type: str
+    variadic: int
 
 
 class ScalarFunction(NamedTuple):
@@ -101,11 +102,14 @@ class ExtensionFileVisitor(object):
         args = self.__visit_list(self.visit_impl_arg, impl, "args")
         options = self.__get_or_else(impl, "options", {})
         opts = {}
+        variadic = "0"
+        if "variadic" in impl:
+            variadic = str(impl["variadic"]["min"])
         for key in options.keys():
             values = self.__get_or_die(options[key], "values")
             opts[key] = values
         return_type = self.__get_or_die(impl, "return")
-        return Implementation(args, opts, return_type)
+        return Implementation(args, opts, return_type, variadic)
 
     def visit_scalar_function(self, func):
         name = self.__get_or_die(func, "name")
@@ -134,4 +138,4 @@ def add_extensions_file_to_library(ext_file: ExtensionsFile, library: LibraryBui
                     arg_types.append(arg.type)
                 else:
                     arg_types.append("|".join(arg.options))
-            builder.note_kernel(arg_types, impl.return_type, impl.options.keys())
+            builder.note_kernel(arg_types, impl.return_type, impl.options.keys(), impl.variadic)

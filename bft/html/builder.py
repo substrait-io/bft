@@ -6,7 +6,7 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 from bft.cases.loader import load_cases
 from bft.cases.types import Case
 from bft.core.function import FunctionDefinition, Kernel, Option
-from bft.core.index_parser import load_index
+from bft.core.index_parser import load_index, IndexFunctionsFile
 from bft.dialects.loader import load_dialects
 from bft.dialects.types import Dialect, DialectsLibrary
 from bft.html.types import (FunctionIndexInfo, FunctionIndexItem,
@@ -141,10 +141,11 @@ def create_function_info(
     cases: List[Case],
     supplements: SupplementsFile,
     dialects: DialectsLibrary,
+    function_file: IndexFunctionsFile,
 ) -> ScalarFunctionInfo:
     name = func.name
     uri = "https://TODO"
-    uri_short = "functions_arithmetic.yaml"
+    uri_short = pathlib.Path(function_file[0]).name
     brief = func.description
     options = [create_function_option(opt, supplements) for opt in func.options]
     kernels = func.kernels
@@ -223,7 +224,7 @@ def build_site(index_path: str, dest_dir):
         if supplement is None:
             supplement = empty_supplements_file(func.name)
         print(f"Creating site for {func.name}")
-        info = create_function_info(func, matching_cases, supplement, dialects_lib)
+        info = create_function_info(func, matching_cases, supplement, dialects_lib, function_file)
         out_path = pathlib.Path(dest_dir) / f"{func.name}.html"
         with open(out_path, mode="w") as out:
             out.write(render_scalar_function(info))

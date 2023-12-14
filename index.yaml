@@ -1,7 +1,23 @@
 substrait:
   extensions:
+    - location: ./substrait/extensions/functions_aggregate_approx.yaml
+      canonical: https://github.com/substrait-io/substrait/blob/main/extensions/functions_aggregate_approx.yaml
+    - location: ./substrait/extensions/functions_aggregate_generic.yaml
+      canonical: https://github.com/substrait-io/substrait/blob/main/extensions/functions_aggregate_generic.yaml
     - location: ./substrait/extensions/functions_arithmetic.yaml
       canonical: https://github.com/substrait-io/substrait/blob/main/extensions/functions_arithmetic.yaml
+    - location: ./substrait/extensions/functions_boolean.yaml
+      canonical: https://github.com/substrait-io/substrait/blob/main/extensions/functions_boolean.yaml
+    - location: ./substrait/extensions/functions_comparison.yaml
+      canonical: https://github.com/substrait-io/substrait/blob/main/extensions/functions_comparison.yaml
+    - location: ./substrait/extensions/functions_datetime.yaml
+      canonical: https://github.com/substrait-io/substrait/blob/main/extensions/functions_datetime.yaml
+    - location: ./substrait/extensions/functions_logarithmic.yaml
+      canonical: https://github.com/substrait-io/substrait/blob/main/extensions/functions_logarithmic.yaml
+    - location: ./substrait/extensions/functions_rounding.yaml
+      canonical: https://github.com/substrait-io/substrait/blob/main/extensions/functions_rounding.yaml
+    - location: ./substrait/extensions/functions_string.yaml
+      canonical: https://github.com/substrait-io/substrait/blob/main/extensions/functions_string.yaml
 cases:
   - ./cases
 dialects:

@@ -103,7 +103,7 @@ class Dialect(object):
         if dfunc is None:
             return False
         for unsupported_kernel in dfunc.unsupported_kernels:
-            if len(unsupported_kernel.arg_types) != len(kernel.arg_types):
+            if len(unsupported_kernel.arg_types) != len(kernel.arg_types) and len(unsupported_kernel.arg_types) < int(kernel.variadic):
                 raise Exception(
                     "Unreachable path.  Unsupported kernel with different # of types than official kernel"
                 )
@@ -120,12 +120,8 @@ class Dialect(object):
         dfunc_scalar = self.__scalar_functions_by_name.get(case.function, None)
         dfunc_aggregate = self.__aggregate_functions_by_name.get(case.function, None)
         dfunc = dfunc_scalar or dfunc_aggregate
-
-        if "PYTEST_CURRENT_TEST" not in os.environ:
-            if dfunc is None:
-                return None
-        elif dfunc.unsupported:
-            pytest.skip("Skipping unsupported function.")
+        if dfunc is None:
+            return None
 
         kernel_failure = self.__supports_case_kernel(dfunc, case.args, case.result)
         if kernel_failure is not None:
