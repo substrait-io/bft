@@ -6,22 +6,19 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 from bft.cases.loader import load_cases
 from bft.cases.types import Case
 from bft.core.function import FunctionDefinition, Kernel, Option
-from bft.core.index_parser import load_index, IndexFunctionsFile
+from bft.core.index_parser import IndexFunctionsFile, load_index
 from bft.dialects.loader import load_dialects
 from bft.dialects.types import Dialect, DialectsLibrary
-from bft.html.types import (FunctionIndexInfo, FunctionIndexItem,
-                            ScalarFunctionDetailInfo,
-                            ScalarFunctionDialectInfo,
-                            ScalarFunctionExampleCaseInfo,
-                            ScalarFunctionExampleGroupInfo, ScalarFunctionInfo,
-                            ScalarFunctionOptionInfo,
-                            ScalarFunctionOptionValueInfo,
-                            ScalarFunctionPropertyInfo)
+from bft.html.types import (
+    FunctionIndexInfo, FunctionIndexItem, ScalarFunctionDetailInfo,
+    ScalarFunctionDialectInfo, ScalarFunctionExampleCaseInfo,
+    ScalarFunctionExampleGroupInfo, ScalarFunctionInfo, ScalarFunctionOptionInfo,
+    ScalarFunctionOptionValueInfo, ScalarFunctionPropertyInfo)
 from bft.substrait.extension_file_parser import (
     ExtensionFileParser, LibraryBuilder, add_extensions_file_to_library)
 from bft.supplements.parser import load_supplements
-from bft.supplements.types import (BasicSupplement, OptionSupplement,
-                                   SupplementsFile, empty_supplements_file)
+from bft.supplements.types import (
+    BasicSupplement, OptionSupplement, SupplementsFile, empty_supplements_file)
 
 env = Environment(loader=PackageLoader("bft"), autoescape=select_autoescape())
 
@@ -176,7 +173,9 @@ def create_function_index(
 ) -> FunctionIndexInfo:
     items = [
         FunctionIndexItem(
-            function.name, function.description, True # TODO: only avoid generating Function index if no information at all is present
+            function.name,
+            function.description,
+            True,  # TODO: only avoid generating Function index if no information at all is present
         )
         for function in functions
     ]
@@ -224,7 +223,9 @@ def build_site(index_path: str, dest_dir):
         if supplement is None:
             supplement = empty_supplements_file(func.name)
         print(f"Creating site for {func.name}")
-        info = create_function_info(func, matching_cases, supplement, dialects_lib, function_file)
+        info = create_function_info(
+            func, matching_cases, supplement, dialects_lib, function_file
+        )
         out_path = pathlib.Path(dest_dir) / f"{func.name}.html"
         with open(out_path, mode="w") as out:
             out.write(render_scalar_function(info))

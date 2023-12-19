@@ -55,7 +55,13 @@ class FunctionBuilder(object):
         else:
             self.options[name] = values
 
-    def note_kernel(self, arg_types: List[str], return_type: str, available_options: List[str], variadic: int):
+    def note_kernel(
+        self,
+        arg_types: List[str],
+        return_type: str,
+        available_options: List[str],
+        variadic: int,
+    ):
         self.kernels.append(Kernel(arg_types, return_type, available_options, variadic))
 
     def finish(self) -> FunctionDefinition:
@@ -75,7 +81,7 @@ class LibraryBuilder(object):
         if name not in self.functions:
             self.functions[name] = FunctionBuilder(name)
         return self.functions[name]
-    
+
     def function_names(self) -> List[str]:
         return sorted(self.functions.keys())
 

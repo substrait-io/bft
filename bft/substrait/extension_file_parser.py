@@ -138,4 +138,6 @@ def add_extensions_file_to_library(ext_file: ExtensionsFile, library: LibraryBui
                     arg_types.append(arg.type)
                 else:
                     arg_types.append("|".join(arg.options))
-            builder.note_kernel(arg_types, impl.return_type, impl.options.keys(), impl.variadic)
+            builder.note_kernel(
+                arg_types, impl.return_type, impl.options.keys(), impl.variadic
+            )

@@ -1,3 +1,4 @@
+import os
 from typing import Dict, List, NamedTuple
 
 import pytest
@@ -96,14 +97,16 @@ class Dialect(object):
 
     def required_options(self, function_name) -> Dict[str, str]:
         scalar_dfunc = self.__scalar_functions_by_name.get(function_name, None)
-        return getattr(scalar_dfunc, 'required_options', None)
+        return getattr(scalar_dfunc, "required_options", None)
 
     def supports_kernel(self, function_name: str, kernel: Kernel) -> bool:
         dfunc = self.__scalar_functions_by_name.get(function_name, None)
         if dfunc is None:
             return False
         for unsupported_kernel in dfunc.unsupported_kernels:
-            if len(unsupported_kernel.arg_types) != len(kernel.arg_types) and len(unsupported_kernel.arg_types) < int(kernel.variadic):
+            if len(unsupported_kernel.arg_types) != len(kernel.arg_types) and len(
+                unsupported_kernel.arg_types
+            ) < int(kernel.variadic):
                 raise Exception(
                     "Unreachable path.  Unsupported kernel with different # of types than official kernel"
                 )
