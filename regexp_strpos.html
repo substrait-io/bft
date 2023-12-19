@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>regexp_strpos - bft</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Reference for the regexp_strpos function">
+    <link rel="stylesheet" href="./terminal.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="terminal">
+    <header class="container terminal-nav">
+        <div class="terminal-logo">
+            <div class="logo terminal-prompt">
+                <a href="#">The BFT</a>
+            </div>
+        </div>
+        <nav class="terminal-menu">
+            <ul>
+                <li>
+                    <a href="./index.html" class="menu-item">Function Index</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <article class="container">
+        <h2>Regexp_strpos</h2>
+        <section>
+            <p>
+                Defined in <a href="https://TODO">functions_string.yaml</a>
+            </p>
+            <hr>
+            <p>
+                Return the position of an occurrence of the given regular expression pattern in a string. The first character of the string is at position 1. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html). The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer. Which occurrence to return the position of is specified using the `occurrence` argument. Specifying `1` means the position first occurrence will be returned, `2` means the position of the second occurrence, and so on. The `occurrence` argument should be a positive non-zero integer. If no occurrence is found, 0 is returned.
+The `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines. This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.
+Behavior is undefined if the regex fails to compile, the occurrence value is out of range, or the position value is out of range.
+            </p>
+        </section>
+        <hr>
+        <section id="options">
+            <h3>Options&nbsp;<a href="#options">&para;</a></h3>
+            
+                <h4>Case_sensitivity</h4>
+                No supplemental information for case_sensitivity
+                <dl>
+                    
+                    <dt>CASE_SENSITIVE</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                    <dt>CASE_INSENSITIVE</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                    <dt>CASE_INSENSITIVE_ASCII</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                </dl>
+            
+                <h4>Multiline</h4>
+                No supplemental information for multiline
+                <dl>
+                    
+                    <dt>MULTILINE_DISABLED</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                    <dt>MULTILINE_ENABLED</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                </dl>
+            
+                <h4>Dotall</h4>
+                No supplemental information for dotall
+                <dl>
+                    
+                    <dt>DOTALL_DISABLED</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                    <dt>DOTALL_ENABLED</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                </dl>
+            
+        </section>
+        <hr>
+        <section id="kernels">
+            <h3>Kernels&nbsp;<a href="#kernels">&para;</a></h3>
+            <ul>
+                
+                <li class="bft-kernel"><span>regexp_strpos(varchar<L1>, varchar<L2>, i64, i64) -> i64 : [case_sensitivity, multiline, dotall]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>regexp_strpos(string, string, i64, i64) -> i64 : [case_sensitivity, multiline, dotall]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+            </ul>
+        </section>
+        <hr>
+        <section id="dialects">
+            <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
+            <select id="dialect">
+                
+                <option>duckdb</option>
+                
+                <option>velox_presto</option>
+                
+                <option>cudf</option>
+                
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+            </select>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+        </section>
+        <hr>
+        <section id="details">
+            <h3>Details&nbsp;<a href="#details">&para;</a></h3>
+            
+                <p>No supplemental information about the details available</p>
+            
+        </section>
+        <hr>
+        <section id="properties">
+            <h3>Properties&nbsp;<a href="#properties">&para;</a></h3>
+            
+                <p>No supplemental information about the properties available</p>
+            
+        </section>
+        <hr>
+        <section id="examples">
+            <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
+            
+        </section>
+    </article>
+    <script src="./lib.js"></script>
+    <script>
+      var bftDialects = {
+        
+        'duckdb': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'cudf': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'datafusion': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+      };
+      window.addEventListener('load', function() {
+        window.bftInitialize(bftDialects);
+      });
+    </script>
+</body>
+</html>

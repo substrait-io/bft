@@ -31,7 +31,7 @@
         <h2>Subtract</h2>
         <section>
             <p>
-                Defined in <a href="https://TODO">functions_arithmetic.yaml</a>
+                Defined in <a href="https://TODO">functions_string.yaml</a>
             </p>
             <hr>
             <p>
@@ -118,6 +118,20 @@ then round to the value closest to zero.</p>
                 <li class="bft-kernel"><span>subtract(fp32, fp32) -> fp32 : [rounding]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
                 <li class="bft-kernel"><span>subtract(fp64, fp64) -> fp64 : [rounding]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>subtract(timestamp, interval_year) -> timestamp : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>subtract(timestamp_tz, interval_year) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>subtract(timestamp_tz, interval_year, string) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>subtract(date, interval_year) -> date : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>subtract(timestamp, interval_day) -> timestamp : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>subtract(timestamp_tz, interval_day) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>subtract(date, interval_day) -> date : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
             </ul>
         </section>
@@ -594,6 +608,20 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 true,
                 
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
             ]
         },
         
@@ -667,6 +695,20 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 true,
                 
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
             ]
         },
         
@@ -727,6 +769,20 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
             ],
             kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
                 
                 true,
                 
@@ -813,6 +869,20 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 true,
                 
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
             ]
         },
         
@@ -873,6 +943,20 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
             ],
             kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
                 
                 true,
                 
@@ -958,6 +1042,20 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 false,
                 
                 false,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
                 
             ]
         },
