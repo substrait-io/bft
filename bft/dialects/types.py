@@ -123,8 +123,11 @@ class Dialect(object):
         dfunc_scalar = self.__scalar_functions_by_name.get(case.function, None)
         dfunc_aggregate = self.__aggregate_functions_by_name.get(case.function, None)
         dfunc = dfunc_scalar or dfunc_aggregate
-        if dfunc is None:
-            return None
+        if "PYTEST_CURRENT_TEST" not in os.environ:
+            if dfunc is None:
+                return None
+        elif dfunc.unsupported:
+            pytest.skip("Skipping unsupported function.")
 
         kernel_failure = self.__supports_case_kernel(dfunc, case.args, case.result)
         if kernel_failure is not None:
