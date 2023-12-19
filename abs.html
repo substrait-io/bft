@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>subtract - bft</title>
+    <title>abs - bft</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Reference for the subtract function">
+    <meta name="description" content="Reference for the abs function">
     <link rel="stylesheet" href="./terminal.css">
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -28,14 +28,16 @@
     </header>
 
     <article class="container">
-        <h2>Subtract</h2>
+        <h2>Abs</h2>
         <section>
             <p>
                 Defined in <a href="https://TODO">functions_arithmetic.yaml</a>
             </p>
             <hr>
             <p>
-                Subtract one value from another.
+                Calculate the absolute value of the argument.
+Integer values allow the specification of overflow behavior to handle the unevenness of the twos complement, e.g. Int8 range [-128 : 127].
+
             </p>
         </section>
         <hr>
@@ -43,60 +45,19 @@
             <h3>Options&nbsp;<a href="#options">&para;</a></h3>
             
                 <h4>Overflow</h4>
-                <p>Subtracting two integers can trigger an overflow when the result is outside the
-representable range of the type class. This option controls what happens when
-this overflow occurs.</p>
+                No supplemental information for overflow
                 <dl>
                     
                     <dt>SILENT</dt>
-                    <dd><p>If an overflow occurs then an integer value will be returned. The value is
-undefined. It may be any integer and can change from engine to engine or
-even from row to row within the same query.  The only constraint is that it
-must be a valid value for the result type class (e.g. adding two int16 cannot
-yield an int32 on overflow)</p>
+                    <dd>Missing supplementary description
                     </dd>
                     
                     <dt>SATURATE</dt>
-                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest
-(for negative overflow) possible value for the type class will be returned.</p>
+                    <dd>Missing supplementary description
                     </dd>
                     
                     <dt>ERROR</dt>
-                    <dd><p>If an overflow occurs then an error should be raised.</p>
-                    </dd>
-                    
-                </dl>
-            
-                <h4>Rounding</h4>
-                <p>Subtracting two floating point numbers can yield a result that is not exactly
-representable in the given type class. In this case the value will be rounded.
-Rounding behaviors are defined as part of the IEEE 754 standard.</p>
-                <dl>
-                    
-                    <dt>TIE_TO_EVEN</dt>
-                    <dd><p>Round to the nearest value. If the number is exactly halfway between two
-values then round to the number whose least significant digit is even. Or,
-because we are working with binary digits, round to the number whose last digit
-is 0. This is the default behavior in many systems because it helps to avoid
-bias in rounding.</p>
-                    </dd>
-                    
-                    <dt>TIE_AWAY_FROM_ZERO</dt>
-                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values
-then round to the number furthest from zero.</p>
-                    </dd>
-                    
-                    <dt>TRUNCATE</dt>
-                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values
-then round to the value closest to zero.</p>
-                    </dd>
-                    
-                    <dt>CEILING</dt>
-                    <dd><p>Round to the value closest to positive infinity.</p>
-                    </dd>
-                    
-                    <dt>FLOOR</dt>
-                    <dd><p>Round to the value closest to negative infinity.</p>
+                    <dd>Missing supplementary description
                     </dd>
                     
                 </dl>
@@ -107,17 +68,17 @@ then round to the value closest to zero.</p>
             <h3>Kernels&nbsp;<a href="#kernels">&para;</a></h3>
             <ul>
                 
-                <li class="bft-kernel"><span>subtract(i8, i8) -> i8 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>abs(i8) -> i8 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>subtract(i16, i16) -> i16 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>abs(i16) -> i16 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>subtract(i32, i32) -> i32 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>abs(i32) -> i32 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>subtract(i64, i64) -> i64 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>abs(i64) -> i64 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>subtract(fp32, fp32) -> fp32 : [rounding]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>abs(fp32) -> fp32 : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>subtract(fp64, fp64) -> fp64 : [rounding]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>abs(fp64) -> fp64 : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
             </ul>
         </section>
@@ -166,13 +127,7 @@ then round to the value closest to zero.</p>
             
             <dl class="dialect-definition" id="dialect-cudf">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
@@ -200,7 +155,7 @@ then round to the value closest to zero.</p>
             <dl class="dialect-definition" id="dialect-postgres">
                 
                     
-                        <dt>overflow</dt>
+                        <dt>on_domain_error</dt>
                         <dd>ERROR</dd>
                     
                         <dt>rounding</dt>
@@ -214,42 +169,14 @@ then round to the value closest to zero.</p>
         <section id="details">
             <h3>Details&nbsp;<a href="#details">&para;</a></h3>
             
-                
-                    <h4>Other floating point exceptions</h4>
-                    <p>The IEEE 754 standard defines a number of exceptions beyond rounding. For
-example, division by zero, overflow, and underflow. However, these exceptions
-have default behaviors defined by IEEE 754 and, since no known engine deviates
-from these default values, these exceptions are not exposed as options. For more
-information on what happens in these cases refer to the IEEE 754 standard.</p>
-                
-                    <h4>Not commutative</h4>
-                    <p>Subtraction, the algebraic operation, is commutative.  So it may be tempting to
-believe the subtract function is commutative as well.  However, this is not true
-because of overflow.  For example, when working with int8 the result of
-subtract(subtract(-120, 10), -5) will yield a different result than
-subtract(subtract(120, -5), 10) because the first will overflow and the second
-will not.</p>
-                
+                <p>No supplemental information about the details available</p>
             
         </section>
         <hr>
         <section id="properties">
             <h3>Properties&nbsp;<a href="#properties">&para;</a></h3>
             
-                <dl>
-                    
-                        <dt>NaN propagating</dt>
-                        <dd><p>If any of the inputs is NaN (and the other input is not null) then the output
-will be NaN</p></dd>
-                    
-                        <dt>Null propagating</dt>
-                        <dd><p>If any of the inputs is null then the output will be null</p></dd>
-                    
-                        <dt>Stateless</dt>
-                        <dd><p>The output will be the same regardless of the order of input rows. This is not
-guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
-                    
-                </dl>
+                <p>No supplemental information about the properties available</p>
             
         </section>
         <hr>
@@ -262,86 +189,7 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                     <tr>
                         
                         
-                        <th>arg1 (i64)</th>
-                        
-                        <th>arg2 (i64)</th>
-                        
-                        <th>result (i64)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>120</td>
-                        
-                        <td>5</td>
-                        
-                        
-                        <td>115</td>
-                        
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>-100</td>
-                        
-                        <td>100</td>
-                        
-                        
-                        <td>-200</td>
-                        
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>-30000</td>
-                        
-                        <td>30000</td>
-                        
-                        
-                        <td>-60000</td>
-                        
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>-2000000000</td>
-                        
-                        <td>2000000000</td>
-                        
-                        
-                        <td>-4000000000</td>
-                        
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
-            <table>
-                <caption>Examples demonstrating exceptional floating point cases</caption>
-                <thead>
-                    <tr>
-                        
-                        
                         <th>arg1 (fp64)</th>
-                        
-                        <th>arg2 (fp64)</th>
                         
                         <th>result (fp64)</th>
                     </tr>
@@ -351,12 +199,10 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                     <tr class="bft-case">
                         
                         
-                        <td>-1.5e+308</td>
-                        
-                        <td>1.5e+308</td>
+                        <td>25</td>
                         
                         
-                        <td>-inf</td>
+                        <td>25</td>
                         
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
@@ -366,12 +212,90 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                     <tr class="bft-case">
                         
                         
-                        <td>1.5e+308</td>
-                        
-                        <td>-1.5e+308</td>
+                        <td>-200</td>
                         
                         
-                        <td>inf</td>
+                        <td>200</td>
+                        
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>30000</td>
+                        
+                        
+                        <td>30000</td>
+                        
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>-9223372036854775800</td>
+                        
+                        
+                        <td>9223372036854775800</td>
+                        
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2.549999952316284</td>
+                        
+                        
+                        <td>2.549999952316284</td>
+                        
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>-2.0000007152557373</td>
+                        
+                        
+                        <td>2.0000007152557373</td>
+                        
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>Examples with null as input</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (i8)</th>
+                        
+                        <th>result (i8)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>None</td>
+                        
+                        
+                        <td>CASELITERAL(VALUE=NONE, TYPE='I8')</td>
                         
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
@@ -390,8 +314,6 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                         
                         <th>arg1 (i8)</th>
                         
-                        <th>arg2 (i8)</th>
-                        
                         <th>result (i8)</th>
                     </tr>
                 </thead>
@@ -402,60 +324,7 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                         <td>ERROR</td>
                         
                         
-                        <td>-120</td>
-                        
-                        <td>10</td>
-                        
-                        
-                        <td>ERROR</td>
-                        
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>ERROR</td>
-                        
-                        
-                        <td>-30000</td>
-                        
-                        <td>30000</td>
-                        
-                        
-                        <td>ERROR</td>
-                        
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>ERROR</td>
-                        
-                        
-                        <td>-2000000000</td>
-                        
-                        <td>2000000000</td>
-                        
-                        
-                        <td>ERROR</td>
-                        
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>ERROR</td>
-                        
-                        
-                        <td>-9223372036854775808</td>
-                        
-                        <td>1</td>
+                        <td>-128</td>
                         
                         
                         <td>ERROR</td>
@@ -468,28 +337,9 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                     <tr class="bft-case">
                         
                         <td>SATURATE</td>
-                        
-                        
-                        <td>-120</td>
-                        
-                        <td>10</td>
                         
                         
                         <td>-128</td>
-                        
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>SATURATE</td>
-                        
-                        
-                        <td>120</td>
-                        
-                        <td>-10</td>
                         
                         
                         <td>127</td>
@@ -504,9 +354,7 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                         <td>SILENT</td>
                         
                         
-                        <td>-120</td>
-                        
-                        <td>10</td>
+                        <td>-128</td>
                         
                         
                         <td>UNDEFINED</td>
@@ -560,18 +408,6 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                 
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect duckdb expects overflow=ERROR but overflow=SATURATE was requested",
-                
-                
-                
                   "The dialect duckdb expects overflow=ERROR but overflow=SATURATE was requested",
                 
                 
@@ -601,19 +437,15 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> i8",
+                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel subtract(i16, i16) -> i16",
+                  "The dialect velox_presto does not support the kernel abs(i16) -> i16",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel subtract(i32, i32) -> i32",
-                
-                
-                
-                  null,
+                  "The dialect velox_presto does not support the kernel abs(i32) -> i32",
                 
                 
                 
@@ -621,19 +453,7 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                 
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> error",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel subtract(i16, i16) -> error",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel subtract(i32, i32) -> error",
+                  "The dialect velox_presto does not support the kernel abs(fp32) -> fp32",
                 
                 
                 
@@ -641,15 +461,19 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> i8",
+                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> i8",
+                  "The dialect velox_presto does not support the kernel abs(i8) -> error",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> undefined",
+                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(i8) -> undefined",
                 
                 
             ],
@@ -674,71 +498,59 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
             examples: [
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  null,
+                  "There is no dialect information for this function",
                 
                 
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -771,23 +583,11 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
+                  null,
                 
                 
                 
                   "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
                 
                 
                 
@@ -809,7 +609,7 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 true,
                 
-                false,
+                true,
                 
                 true,
                 
@@ -844,23 +644,11 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
+                  null,
                 
                 
                 
                   "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect datafusion expects overflow=SILENT but overflow=SATURATE was requested",
                 
                 
                 
@@ -893,7 +681,7 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
             examples: [
                 
                 
-                  "The dialect postgres does not support the kernel subtract(i8, i8) -> i8",
+                  "The dialect postgres does not support the kernel abs(i8) -> i8",
                 
                 
                 
@@ -909,15 +697,7 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect postgres does not support the kernel subtract(fp64, fp64) -> fp64",
-                
-                
-                
-                  "The dialect postgres does not support the kernel subtract(fp64, fp64) -> fp64",
-                
-                
-                
-                  "The dialect postgres does not support the kernel subtract(i8, i8) -> error",
+                  "The dialect postgres does not support the kernel abs(fp32) -> fp32",
                 
                 
                 
@@ -925,23 +705,19 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                 
-                  null,
+                  "The dialect postgres does not support the kernel abs(i8) -> i8",
                 
                 
                 
-                  null,
+                  "The dialect postgres does not support the kernel abs(i8) -> error",
                 
                 
                 
-                  "The dialect postgres does not support the kernel subtract(i8, i8) -> i8",
+                  "The dialect postgres does not support the kernel abs(i8) -> i8",
                 
                 
                 
-                  "The dialect postgres does not support the kernel subtract(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel subtract(i8, i8) -> undefined",
+                  "The dialect postgres does not support the kernel abs(i8) -> undefined",
                 
                 
             ],
@@ -957,7 +733,7 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 false,
                 
-                false,
+                true,
                 
             ]
         },
