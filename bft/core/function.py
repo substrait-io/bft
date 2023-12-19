@@ -15,9 +15,15 @@ class Kernel(NamedTuple):
 
 class FunctionDefinition(object):
     def __init__(
-        self, name: str, description: str, options: List[Option], kernels: List[Kernel]
+        self,
+        name: str,
+        uri: str,
+        description: str,
+        options: List[Option],
+        kernels: List[Kernel],
     ):
         self.name = name
+        self.uri = uri
         self.description = description
         self.options = options
         self.kernels = kernels
@@ -34,12 +40,16 @@ class FunctionDefinition(object):
 class FunctionBuilder(object):
     def __init__(self, name: str):
         self.name = name
+        self.uri: str = None
         self.description: str = None
         self.options = {}
         self.kernels = []
 
     def set_description(self, description: str):
         self.description = description
+
+    def set_uri(self, uri: str):
+        self.uri = uri
 
     def try_set_description(self, description: str):
         if self.description is None:
@@ -70,7 +80,9 @@ class FunctionBuilder(object):
         opts = []
         for key, values in self.options.items():
             opts.append(Option(key, values))
-        return FunctionDefinition(self.name, self.description, opts, self.kernels)
+        return FunctionDefinition(
+            self.name, self.uri, self.description, opts, self.kernels
+        )
 
 
 class LibraryBuilder(object):
