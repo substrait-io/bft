@@ -9,30 +9,19 @@ from bft.core.function import FunctionDefinition, Kernel, Option
 from bft.core.index_parser import load_index
 from bft.dialects.loader import load_dialects
 from bft.dialects.types import Dialect, DialectsLibrary
-from bft.html.types import (
-    FunctionIndexInfo,
-    FunctionIndexItem,
-    ScalarFunctionDetailInfo,
-    ScalarFunctionDialectInfo,
-    ScalarFunctionExampleCaseInfo,
-    ScalarFunctionExampleGroupInfo,
-    ScalarFunctionInfo,
-    ScalarFunctionOptionInfo,
-    ScalarFunctionOptionValueInfo,
-    ScalarFunctionPropertyInfo,
-)
+from bft.html.types import (FunctionIndexInfo, FunctionIndexItem,
+                            ScalarFunctionDetailInfo,
+                            ScalarFunctionDialectInfo,
+                            ScalarFunctionExampleCaseInfo,
+                            ScalarFunctionExampleGroupInfo, ScalarFunctionInfo,
+                            ScalarFunctionOptionInfo,
+                            ScalarFunctionOptionValueInfo,
+                            ScalarFunctionPropertyInfo)
 from bft.substrait.extension_file_parser import (
-    ExtensionFileParser,
-    LibraryBuilder,
-    add_extensions_file_to_library,
-)
+    ExtensionFileParser, LibraryBuilder, add_extensions_file_to_library)
 from bft.supplements.parser import load_supplements
-from bft.supplements.types import (
-    BasicSupplement,
-    OptionSupplement,
-    SupplementsFile,
-    empty_supplements_file,
-)
+from bft.supplements.types import (BasicSupplement, OptionSupplement,
+                                   SupplementsFile, empty_supplements_file)
 
 env = Environment(loader=PackageLoader("bft"), autoescape=select_autoescape())
 
