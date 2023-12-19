@@ -1,3 +1,4 @@
+import os
 from typing import Dict, List, NamedTuple
 
 import pytest
@@ -95,8 +96,8 @@ class Dialect(object):
         return None
 
     def required_options(self, function_name) -> Dict[str, str]:
-        scalar_dfunc = self.__scalar_functions_by_name[function_name]
-        return scalar_dfunc.required_options
+        scalar_dfunc = self.__scalar_functions_by_name.get(function_name, None)
+        return getattr(scalar_dfunc, 'required_options', None)
 
     def supports_kernel(self, function_name: str, kernel: Kernel) -> bool:
         dfunc = self.__scalar_functions_by_name.get(function_name, None)
@@ -120,10 +121,12 @@ class Dialect(object):
         dfunc_scalar = self.__scalar_functions_by_name.get(case.function, None)
         dfunc_aggregate = self.__aggregate_functions_by_name.get(case.function, None)
         dfunc = dfunc_scalar or dfunc_aggregate
-        if dfunc.unsupported:
+
+        if "PYTEST_CURRENT_TEST" not in os.environ:
+            if dfunc is None:
+                return None
+        elif dfunc.unsupported:
             pytest.skip("Skipping unsupported function.")
-        if dfunc is None:
-            return None
 
         kernel_failure = self.__supports_case_kernel(dfunc, case.args, case.result)
         if kernel_failure is not None:

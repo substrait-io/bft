@@ -1,9 +1,10 @@
+import math
 from abc import ABC, abstractmethod
 from typing import BinaryIO, Generic, Iterable, List, TypeVar
-from bft.cases.types import CaseLiteral
 
-import math
 import yaml
+
+from bft.cases.types import CaseLiteral
 
 try:
     from yaml import CSafeDumper as SafeDumper
