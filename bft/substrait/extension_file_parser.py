@@ -1,3 +1,4 @@
+import pathlib
 from collections import namedtuple
 from collections.abc import Iterable
 from typing import Dict, List, NamedTuple
@@ -124,9 +125,12 @@ class ExtensionFileParser(object):
         return ExtensionFileVisitor().visit_ext_file(data)
 
 
-def add_extensions_file_to_library(ext_file: ExtensionsFile, library: LibraryBuilder):
+def add_extensions_file_to_library(
+    location: str, ext_file: ExtensionsFile, library: LibraryBuilder
+):
     for scalar_func in ext_file.scalar_functions:
         builder: FunctionBuilder = library.get_function(scalar_func.name)
+        builder.set_uri(pathlib.Path(location).name)
         if scalar_func.description is not None:
             builder.try_set_description(scalar_func.description)
         for impl in scalar_func.implementations:

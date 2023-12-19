@@ -9,16 +9,19 @@ from bft.core.function import FunctionDefinition, Kernel, Option
 from bft.core.index_parser import IndexFunctionsFile, load_index
 from bft.dialects.loader import load_dialects
 from bft.dialects.types import Dialect, DialectsLibrary
-from bft.html.types import (
-    FunctionIndexInfo, FunctionIndexItem, ScalarFunctionDetailInfo,
-    ScalarFunctionDialectInfo, ScalarFunctionExampleCaseInfo,
-    ScalarFunctionExampleGroupInfo, ScalarFunctionInfo, ScalarFunctionOptionInfo,
-    ScalarFunctionOptionValueInfo, ScalarFunctionPropertyInfo)
+from bft.html.types import (FunctionIndexInfo, FunctionIndexItem,
+                            ScalarFunctionDetailInfo,
+                            ScalarFunctionDialectInfo,
+                            ScalarFunctionExampleCaseInfo,
+                            ScalarFunctionExampleGroupInfo, ScalarFunctionInfo,
+                            ScalarFunctionOptionInfo,
+                            ScalarFunctionOptionValueInfo,
+                            ScalarFunctionPropertyInfo)
 from bft.substrait.extension_file_parser import (
     ExtensionFileParser, LibraryBuilder, add_extensions_file_to_library)
 from bft.supplements.parser import load_supplements
-from bft.supplements.types import (
-    BasicSupplement, OptionSupplement, SupplementsFile, empty_supplements_file)
+from bft.supplements.types import (BasicSupplement, OptionSupplement,
+                                   SupplementsFile, empty_supplements_file)
 
 env = Environment(loader=PackageLoader("bft"), autoescape=select_autoescape())
 
@@ -138,11 +141,10 @@ def create_function_info(
     cases: List[Case],
     supplements: SupplementsFile,
     dialects: DialectsLibrary,
-    function_file: IndexFunctionsFile,
 ) -> ScalarFunctionInfo:
     name = func.name
-    uri = "https://TODO"
-    uri_short = pathlib.Path(function_file[0]).name
+    uri_short = func.uri
+    uri = "https://github.com/substrait-io/substrait/blob/main/extensions/" + uri_short
     brief = func.description
     options = [create_function_option(opt, supplements) for opt in func.options]
     kernels = func.kernels
@@ -175,7 +177,6 @@ def create_function_index(
         FunctionIndexItem(
             function.name,
             function.description,
-            True,  # TODO: only avoid generating Function index if no information at all is present
         )
         for function in functions
     ]
@@ -186,12 +187,11 @@ def build_site(index_path: str, dest_dir):
     root = pathlib.Path(index_path).parent
     index_contents = load_index(index_path)
     library_builder = LibraryBuilder()
-    print(index_contents)
     for function_file in index_contents.function_files:
         resolved_location = (root / function_file.location).resolve()
         with open(resolved_location, "rb") as f:
             add_extensions_file_to_library(
-                ExtensionFileParser().parse(f), library_builder
+                resolved_location, ExtensionFileParser().parse(f), library_builder
             )
     functions = library_builder.finish()
 
@@ -216,16 +216,13 @@ def build_site(index_path: str, dest_dir):
     print(
         f"There are {len(functions)} functions and {len(cases)} cases and {len(supplements)} supplements and {(len(dialects_lib.dialects))} dialects"
     )
-
     for func in functions:
         matching_cases = [case for case in cases if case.function == func.name]
         supplement = supplements.get(func.name, None)
         if supplement is None:
             supplement = empty_supplements_file(func.name)
         print(f"Creating site for {func.name}")
-        info = create_function_info(
-            func, matching_cases, supplement, dialects_lib, function_file
-        )
+        info = create_function_info(func, matching_cases, supplement, dialects_lib)
         out_path = pathlib.Path(dest_dir) / f"{func.name}.html"
         with open(out_path, mode="w") as out:
             out.write(render_scalar_function(info))

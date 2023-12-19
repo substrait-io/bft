@@ -32,11 +32,7 @@
             <dl>
                 {% for function in functions %}
                 <dt>
-                    {% if function.enabled %}
                     <a href="./{{function.name|lower}}.html">{{function.name|title}}</a>
-                    {% else %}
-                    <a class="disabled" aria-disabled="true">{{function.name|title}}</a>
-                    {% endif %}
                 </dt>
                 <dd>{{function.brief}}</dd>
                 {% endfor %}
