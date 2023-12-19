@@ -97,14 +97,16 @@ class Dialect(object):
 
     def required_options(self, function_name) -> Dict[str, str]:
         scalar_dfunc = self.__scalar_functions_by_name.get(function_name, None)
-        return getattr(scalar_dfunc, 'required_options', None)
+        return getattr(scalar_dfunc, "required_options", None)
 
     def supports_kernel(self, function_name: str, kernel: Kernel) -> bool:
         dfunc = self.__scalar_functions_by_name.get(function_name, None)
         if dfunc is None:
             return False
         for unsupported_kernel in dfunc.unsupported_kernels:
-            if len(unsupported_kernel.arg_types) != len(kernel.arg_types):
+            if len(unsupported_kernel.arg_types) != len(kernel.arg_types) and len(
+                unsupported_kernel.arg_types
+            ) < int(kernel.variadic):
                 raise Exception(
                     "Unreachable path.  Unsupported kernel with different # of types than official kernel"
                 )
@@ -121,7 +123,6 @@ class Dialect(object):
         dfunc_scalar = self.__scalar_functions_by_name.get(case.function, None)
         dfunc_aggregate = self.__aggregate_functions_by_name.get(case.function, None)
         dfunc = dfunc_scalar or dfunc_aggregate
-
         if "PYTEST_CURRENT_TEST" not in os.environ:
             if dfunc is None:
                 return None
