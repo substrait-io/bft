@@ -3,41 +3,101 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Function index - bft</title>
+    <title>BFT - Home</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Index of all currently documented functions">
-    <link rel="stylesheet" href="./terminal.css">
-    <link rel="stylesheet" href="./style.css">
+    <meta name="description" content="Big Function Taxonomy">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/index/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
 </head>
-<body class="terminal">
-    <header class="container terminal-nav">
-        <div class="terminal-logo">
-            <div class="logo terminal-prompt">
-                <a href="#">The BFT</a>
+
+<body>
+
+    <nav class="navbar" style="background-color: #201D38;">
+        <div class="navbar-brand logo">
+        <span class= "terminal-text" style="font-size: 200%; font-family: 'Work Sans', sans-serif; color: white;">
+                Big Function Taxonomy
+        </span>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 menu-container mt-5">
+                <ul class="list-unstyled">
+                    <li class="menu-item" onclick="showContent('home')">Home</li>
+                    {% set functions_by_category = functions|groupby('category') %}
+                    {% for category, category_functions in functions_by_category %}
+                        <li class="menu-item" onclick="showContent('{{ category|lower }}')">{{ category|title }} Functions</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-md-9 content-container">
+                
+                <article class="container mt-4" id="home">
+                    <div class="fixed-container">
+                        <h2 class="category-title">The B(ig) F(unction) T(axonomy)</h2>
+                    </div>
+                    <section>
+                        <p style="color: black;">
+                            The BFT aims to be a comprehensive catalogue of functions. Functions are the backbone of 
+                            any compute system, but they are chronically under documented and often full of corner 
+                            cases whose behavior differs in various systems. By documenting exhaustively documenting 
+                            these corner cases we hope to make it possible for systems to fully describe their behaviors. 
+                            This will make it easier to know what problems will be encountered switching between systems and, 
+                            in some cases, make it possible to obtain the correct behavior through expression transformation 
+                            or a precise application of function options.
+                        </p>
+                    <section>
+                        <div class="row">
+                            {% for category, category_functions in functions_by_category %}
+                                <div class="col-md-6 mb-3" onclick="showContent('{{ category|lower }}')" style="cursor: pointer;">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ category|title }} Functions</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </section>
+                    </section>
+                </article>
+
+                {% for category, category_functions in functions_by_category %}
+                    <article class="container hidden mt-4" id="{{ category|lower }}">
+                        <div class="fixed-container">
+                            <h2 class="category-title">{{ category|title }} Functions</h2>
+                        </div>
+                        <section>
+                            <table class="functions-table">
+                                <tbody>
+                                    {% for function in category_functions %}
+                                        <tr onclick="window.location='./{{ function.name|lower }}.html';" style="cursor: pointer;">
+                                            <td class="title-column">{{ function.name|title }}</td>
+                                            <td>{{ function.brief }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </section>
+                    </article>
+                {% endfor %}
             </div>
         </div>
-        <nav class="terminal-menu">
-            <ul>
-                <li>
-                    <a href="./index.html" class="menu-item active">Function Index</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    </div>
 
-    <article class="container">
-        <h2>Scalar Functions</h2>
-        <section>
-            <dl>
-                {% for function in functions %}
-                <dt>
-                    <a href="./{{function.name|lower}}.html">{{"_".join(function.name.split('_')[1:])|title}}</a>
-                </dt>
-                <dd>{{function.brief}}</dd>
-                {% endfor %}
-            </dl>
-        </section>
-    </article>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./assets/index/script.js"></script>
+
 </body>
+
 </html>

@@ -129,6 +129,8 @@ class FunctionIndexItem(NamedTuple):
     name: str
     # Summary of the function, sourced from Substrait YAML
     brief: str
+    # Function category, i.e. Arithmetic, String, etc.
+    category: str
 
 
 class FunctionIndexInfo(NamedTuple):
