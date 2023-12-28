@@ -142,7 +142,7 @@ def create_function_info(
     supplements: SupplementsFile,
     dialects: DialectsLibrary,
 ) -> ScalarFunctionInfo:
-    name = func.name
+    name = "_".join(func.name.split('_')[1:])
     uri_short = func.uri
     uri = "https://github.com/substrait-io/substrait/blob/main/extensions/" + uri_short
     brief = func.description
@@ -151,7 +151,7 @@ def create_function_info(
     example_groups, ordered_cases = create_example_groups(cases)
 
     dialects = [
-        create_dialect(func.name, dialect, ordered_cases, func.kernels)
+        create_dialect(name, dialect, ordered_cases, func.kernels)
         for dialect in dialects.dialects.values()
     ]
     details = [create_detail(detail) for detail in supplements.details]
@@ -217,10 +217,11 @@ def build_site(index_path: str, dest_dir):
         f"There are {len(functions)} functions and {len(cases)} cases and {len(supplements)} supplements and {(len(dialects_lib.dialects))} dialects"
     )
     for func in functions:
-        matching_cases = [case for case in cases if case.function == func.name]
-        supplement = supplements.get(func.name, None)
+        func_name_full = "_".join(func.name.split('_')[1:])
+        matching_cases = [case for case in cases if case.function == func_name_full]
+        supplement = supplements.get(func_name_full, None)
         if supplement is None:
-            supplement = empty_supplements_file(func.name)
+            supplement = empty_supplements_file(func_name_full)
         print(f"Creating site for {func.name}")
         info = create_function_info(func, matching_cases, supplement, dialects_lib)
         out_path = pathlib.Path(dest_dir) / f"{func.name}.html"
