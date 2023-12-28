@@ -128,8 +128,9 @@ class ExtensionFileParser(object):
 def add_extensions_file_to_library(
     location: str, ext_file: ExtensionsFile, library: LibraryBuilder
 ):
+    function_category = pathlib.Path(location.name).stem.replace("functions_", "")
     for scalar_func in ext_file.scalar_functions:
-        builder: FunctionBuilder = library.get_function(scalar_func.name)
+        builder: FunctionBuilder = library.get_function(scalar_func.name, function_category)
         builder.set_uri(pathlib.Path(location).name)
         if scalar_func.description is not None:
             builder.try_set_description(scalar_func.description)
