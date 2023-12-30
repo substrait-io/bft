@@ -28,7 +28,7 @@
     </header>
 
     <article class="container">
-        <h2>{{ "_".join(name.split('_')[1:])|title}}</h2>
+        <h2>{{ name|title}}</h2>
         <section>
             <p>
                 Defined in <a href="{{ uri }}">{{ uri_short }}</a>
@@ -58,7 +58,7 @@
             <h3>Kernels&nbsp;<a href="#kernels">&para;</a></h3>
             <ul>
                 {% for kernel in kernels %}
-                <li class="bft-kernel"><span>{{ "_".join(name.split('_')[1:]) }}({{ kernel.arg_types|join(', ') }}) -> {{ kernel.return_type }} : [{{ kernel.available_options|join(', ') }}]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>{{ name }}({{ kernel.arg_types|join(', ') }}) -> {{ kernel.return_type }} : [{{ kernel.available_options|join(', ') }}]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 {% endfor %}
             </ul>
         </section>
