@@ -89,10 +89,11 @@ class LibraryBuilder(object):
     def __init__(self):
         self.functions = {}
 
-    def get_function(self, name):
+    def get_function(self, name, category):
+        full_name = f"{category}_{name}"
         if name not in self.functions:
-            self.functions[name] = FunctionBuilder(name)
-        return self.functions[name]
+            self.functions[full_name] = FunctionBuilder(full_name)
+        return self.functions[full_name]
 
     def function_names(self) -> List[str]:
         return sorted(self.functions.keys())

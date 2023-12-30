@@ -32,7 +32,7 @@
             <dl>
                 {% for function in functions %}
                 <dt>
-                    <a href="./{{function.name|lower}}.html">{{function.name|title}}</a>
+                    <a href="./{{function.name|lower}}.html">{{"_".join(function.name.split('_')[1:])|title}}</a>
                 </dt>
                 <dd>{{function.brief}}</dd>
                 {% endfor %}
