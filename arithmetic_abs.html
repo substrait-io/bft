@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>abs - bft</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Reference for the  function">
+    <link rel="stylesheet" href="./terminal.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="terminal">
+    <header class="container terminal-nav">
+        <div class="terminal-logo">
+            <div class="logo terminal-prompt">
+                <a href="#">The BFT</a>
+            </div>
+        </div>
+        <nav class="terminal-menu">
+            <ul>
+                <li>
+                    <a href="./index.html" class="menu-item">Function Index</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <article class="container">
+        <h2></h2>
+        <section>
+            <p>
+                Defined in <a href="https://github.com/substrait-io/substrait/blob/main/extensions/functions_arithmetic.yaml">functions_arithmetic.yaml</a>
+            </p>
+            <hr>
+            <p>
+                Calculate the absolute value of the argument.
+Integer values allow the specification of overflow behavior to handle the unevenness of the twos complement, e.g. Int8 range [-128 : 127].
+
+            </p>
+        </section>
+        <hr>
+        <section id="options">
+            <h3>Options&nbsp;<a href="#options">&para;</a></h3>
+            
+                <h4>Overflow</h4>
+                No supplemental information for overflow
+                <dl>
+                    
+                    <dt>SILENT</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                    <dt>SATURATE</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                    <dt>ERROR</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                </dl>
+            
+        </section>
+        <hr>
+        <section id="kernels">
+            <h3>Kernels&nbsp;<a href="#kernels">&para;</a></h3>
+            <ul>
+                
+                <li class="bft-kernel"><span>(i8) -> i8 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>(i16) -> i16 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>(i32) -> i32 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>(i64) -> i64 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>(fp32) -> fp32 : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>(fp64) -> fp64 : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+            </ul>
+        </section>
+        <hr>
+        <section id="dialects">
+            <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
+            <select id="dialect">
+                
+                <option>duckdb</option>
+                
+                <option>velox_presto</option>
+                
+                <option>cudf</option>
+                
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+            </select>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>ERROR</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>ERROR</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>ERROR</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
+        </section>
+        <hr>
+        <section id="details">
+            <h3>Details&nbsp;<a href="#details">&para;</a></h3>
+            
+                <p>No supplemental information about the details available</p>
+            
+        </section>
+        <hr>
+        <section id="properties">
+            <h3>Properties&nbsp;<a href="#properties">&para;</a></h3>
+            
+                <p>No supplemental information about the properties available</p>
+            
+        </section>
+        <hr>
+        <section id="examples">
+            <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
+            
+            <table>
+                <caption>Basic examples without any special cases</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (fp64)</th>
+                        
+                        <th>result (fp64)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>25</td>
+                        
+                        
+                        <td>25</td>
+                        
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>-200</td>
+                        
+                        
+                        <td>200</td>
+                        
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>30000</td>
+                        
+                        
+                        <td>30000</td>
+                        
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>-9223372036854775800</td>
+                        
+                        
+                        <td>9223372036854775800</td>
+                        
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2.549999952316284</td>
+                        
+                        
+                        <td>2.549999952316284</td>
+                        
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>-2.0000007152557373</td>
+                        
+                        
+                        <td>2.0000007152557373</td>
+                        
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>Examples with null as input</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (i8)</th>
+                        
+                        <th>result (i8)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>None</td>
+                        
+                        
+                        <td>CASELITERAL(VALUE=NONE, TYPE='I8')</td>
+                        
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>Examples demonstrating overflow behavior</caption>
+                <thead>
+                    <tr>
+                        
+                        <th>overflow</th>
+                        
+                        
+                        <th>arg1 (i8)</th>
+                        
+                        <th>result (i8)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>ERROR</td>
+                        
+                        
+                        <td>-128</td>
+                        
+                        
+                        <td>ERROR</td>
+                        
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>SATURATE</td>
+                        
+                        
+                        <td>-128</td>
+                        
+                        
+                        <td>127</td>
+                        
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>SILENT</td>
+                        
+                        
+                        <td>-128</td>
+                        
+                        
+                        <td>UNDEFINED</td>
+                        
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+        </section>
+    </article>
+    <script src="./lib.js"></script>
+    <script>
+      var bftDialects = {
+        
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb expects overflow=ERROR but overflow=SATURATE was requested",
+                
+                
+                
+                  "The dialect duckdb expects overflow=ERROR but overflow=SILENT was requested",
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(i32) -> i32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(i8) -> error",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(i8) -> undefined",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                true,
+                
+                false,
+                
+                true,
+                
+            ]
+        },
+        
+        'cudf': {
+            examples: [
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect datafusion expects overflow=SILENT but overflow=SATURATE was requested",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  "The dialect postgres does not support the kernel abs(i8) -> i8",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel abs(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel abs(i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel abs(i8) -> error",
+                
+                
+                
+                  "The dialect postgres does not support the kernel abs(i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel abs(i8) -> undefined",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                false,
+                
+                true,
+                
+            ]
+        },
+        
+      };
+      window.addEventListener('load', function() {
+        window.bftInitialize(bftDialects);
+      });
+    </script>
+</body>
+</html>
