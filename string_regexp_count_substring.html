@@ -28,7 +28,7 @@
     </header>
 
     <article class="container">
-        <h2>Count_substring</h2>
+        <h2>Regexp_count_substring</h2>
         <section>
             <p>
                 Defined in <a href="https://github.com/substrait-io/substrait/blob/main/extensions/functions_string.yaml">functions_string.yaml</a>
@@ -96,11 +96,11 @@ Behavior is undefined if the regex fails to compile or the position value is out
             <h3>Kernels&nbsp;<a href="#kernels">&para;</a></h3>
             <ul>
                 
-                <li class="bft-kernel"><span>count_substring(string, string, i64) -> i64 : [case_sensitivity, multiline, dotall]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>regexp_count_substring(string, string, i64) -> i64 : [case_sensitivity, multiline, dotall]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>count_substring(varchar<L1>, varchar<L2>, i64) -> i64 : [case_sensitivity, multiline, dotall]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>regexp_count_substring(varchar<L1>, varchar<L2>, i64) -> i64 : [case_sensitivity, multiline, dotall]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>count_substring(fixedchar<L1>, fixedchar<L2>, i64) -> i64 : [case_sensitivity, multiline, dotall]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>regexp_count_substring(fixedchar<L1>, fixedchar<L2>, i64) -> i64 : [case_sensitivity, multiline, dotall]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
             </ul>
         </section>

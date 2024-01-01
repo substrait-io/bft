@@ -28,7 +28,7 @@
     </header>
 
     <article class="container">
-        <h2></h2>
+        <h2>Subtract</h2>
         <section>
             <p>
                 Defined in <a href="https://github.com/substrait-io/substrait/blob/main/extensions/functions_datetime.yaml">functions_datetime.yaml</a>
@@ -49,19 +49,19 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
             <h3>Kernels&nbsp;<a href="#kernels">&para;</a></h3>
             <ul>
                 
-                <li class="bft-kernel"><span>(timestamp, interval_year) -> timestamp : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>subtract(timestamp, interval_year) -> timestamp : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>(timestamp_tz, interval_year) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>subtract(timestamp_tz, interval_year) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>(timestamp_tz, interval_year, string) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>subtract(timestamp_tz, interval_year, string) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>(date, interval_year) -> date : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>subtract(date, interval_year) -> date : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>(timestamp, interval_day) -> timestamp : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>subtract(timestamp, interval_day) -> timestamp : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>(timestamp_tz, interval_day) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>subtract(timestamp_tz, interval_day) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>(date, interval_day) -> date : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>subtract(date, interval_day) -> date : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
             </ul>
         </section>

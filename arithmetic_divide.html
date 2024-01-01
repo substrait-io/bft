@@ -28,7 +28,7 @@
     </header>
 
     <article class="container">
-        <h2></h2>
+        <h2>Divide</h2>
         <section>
             <p>
                 Defined in <a href="https://github.com/substrait-io/substrait/blob/main/extensions/functions_arithmetic.yaml">functions_arithmetic.yaml</a>
@@ -125,17 +125,17 @@
             <h3>Kernels&nbsp;<a href="#kernels">&para;</a></h3>
             <ul>
                 
-                <li class="bft-kernel"><span>(i8, i8) -> i8 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>divide(i8, i8) -> i8 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>(i16, i16) -> i16 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>divide(i16, i16) -> i16 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>(i32, i32) -> i32 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>divide(i32, i32) -> i32 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>(i64, i64) -> i64 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>divide(i64, i64) -> i64 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>(fp32, fp32) -> fp32 : [rounding, on_domain_error, on_division_by_zero]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>divide(fp32, fp32) -> fp32 : [rounding, on_domain_error, on_division_by_zero]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>(fp64, fp64) -> fp64 : [rounding, on_domain_error, on_division_by_zero]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>divide(fp64, fp64) -> fp64 : [rounding, on_domain_error, on_division_by_zero]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
             </ul>
         </section>

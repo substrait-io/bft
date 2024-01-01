@@ -28,7 +28,7 @@
     </header>
 
     <article class="container">
-        <h2>With</h2>
+        <h2>Starts_with</h2>
         <section>
             <p>
                 Defined in <a href="https://github.com/substrait-io/substrait/blob/main/extensions/functions_string.yaml">functions_string.yaml</a>
@@ -67,23 +67,23 @@ The `case_sensitivity` option applies to the `substring` argument.
             <h3>Kernels&nbsp;<a href="#kernels">&para;</a></h3>
             <ul>
                 
-                <li class="bft-kernel"><span>with(varchar<L1>, varchar<L2>) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>starts_with(varchar<L1>, varchar<L2>) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>with(varchar<L1>, string) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>starts_with(varchar<L1>, string) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>with(varchar<L1>, fixedchar<L2>) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>starts_with(varchar<L1>, fixedchar<L2>) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>with(string, string) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>starts_with(string, string) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>with(string, varchar<L1>) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>starts_with(string, varchar<L1>) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>with(string, fixedchar<L1>) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>starts_with(string, fixedchar<L1>) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>with(fixedchar<L1>, fixedchar<L2>) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>starts_with(fixedchar<L1>, fixedchar<L2>) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>with(fixedchar<L1>, string) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>starts_with(fixedchar<L1>, string) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>with(fixedchar<L1>, varchar<L2>) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>starts_with(fixedchar<L1>, varchar<L2>) -> BOOLEAN : [case_sensitivity]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
             </ul>
         </section>
