@@ -107,3 +107,12 @@ body {
 .functions-table tr:hover .title-column {
     color: #ffffff;
 }
+
+.search-result-title {
+    color: #005050;
+    text-decoration: none;
+}
+
+.search-result-text {
+    color: black;
+}

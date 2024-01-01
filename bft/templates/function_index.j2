@@ -20,9 +20,16 @@
 
     <nav class="navbar" style="background-color: #201D38;">
         <div class="navbar-brand logo">
-        <span class= "terminal-text" style="font-size: 200%; font-family: 'Work Sans', sans-serif; color: white;">
+            <span class="terminal-text" style="font-size: 200%; font-family: 'Work Sans', sans-serif; color: white;">
                 Big Function Taxonomy
-        </span>
+            </span>
+        </div>
+
+        <div class="ml-auto">
+            <form class="form-inline" onsubmit="searchFunctions(); return false;">
+                <input class="form-control mr-2" type="text" id="searchInput" placeholder="Search functions...">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
         </div>
     </nav>
 
@@ -69,6 +76,10 @@
                     </section>
                 </article>
 
+                <article class="container hidden mt-4" id="searchResultsSection">
+                    <!-- Search results will be shown here -->
+                </article>
+
                 {% for category, category_functions in functions_by_category %}
                     <article class="container hidden mt-4" id="{{ category|lower }}">
                         <div class="fixed-container">
@@ -79,7 +90,7 @@
                                 <tbody>
                                     {% for function in category_functions %}
                                         <tr onclick="window.location='./{{ function.name|lower }}.html';" style="cursor: pointer;">
-                                            <td class="title-column">{{ function.name|title }}</td>
+                                            <td class="title-column">{{ "_".join(function.name.split('_')[1:])|title }}</td>
                                             <td>{{ function.brief }}</td>
                                         </tr>
                                     {% endfor %}
@@ -98,6 +109,19 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="./assets/index/script.js"></script>
 
-</body>
+    <script>
+        var functionsData = [
+            {% for category, category_functions in functions_by_category %}
+                {% for function in category_functions %}
+                    {
+                        category: "{{ category|title }}",
+                        name: "{{ function.name|title }}",
+                        brief: {{ function.brief|replace("\n", "\\n")|replace('"', '\\"')|tojson|safe }}
+                    },
+                {% endfor %}
+            {% endfor %}
+        ];
+    </script>
 
+</body>
 </html>
