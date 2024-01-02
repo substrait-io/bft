@@ -25,7 +25,7 @@ function searchFunctions() {
         let searchResults = [];
 
         for (let i = 0; i < functionsData.length; i++) {
-            const functionName = functionsData[i].name.toLowerCase();
+            const functionName = functionsData[i].name.toLowerCase().replace(/^.*?_/, '');
             const functionBrief = JSON.parse('"' + functionsData[i].brief + '"').toLowerCase();
 
             /*  Perform search based on priority
@@ -49,7 +49,7 @@ function searchFunctions() {
 
                 searchResults.push({
                     category: functionsData[i].category,
-                    name: functionsData[i].name,
+                    name: functionsData[i].name.replace(/^.*?_/, ''),
                     brief: functionsData[i].brief,
                     rank: rank
                 });
