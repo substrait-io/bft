@@ -49,7 +49,7 @@ function searchFunctions() {
 
                 searchResults.push({
                     category: functionsData[i].category,
-                    name: functionsData[i].name.replace(/^.*?_/, ''),
+                    name: functionsData[i].name,
                     brief: functionsData[i].brief,
                     rank: rank
                 });
@@ -101,7 +101,7 @@ function displaySearchResults(results) {
 
             var cardText = document.createElement("p");
             cardText.className = "card-text search-result-text";
-            cardText.innerHTML = "<span style='font-weight: bold;'>" + results[i].name + "</span>: " + results[i].brief;
+            cardText.innerHTML = "<span style='font-weight: bold;'>" + results[i].name.replace(/^.*?_/, '') + "</span>: " + results[i].brief;
 
             cardBody.appendChild(cardTitle);
             cardBody.appendChild(cardText);
