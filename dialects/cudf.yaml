@@ -11,3 +11,89 @@ scalar_functions:
     required_options:
       overflow: SILENT # cudf rolls over on overflow
       rounding: TIE_TO_EVEN
+  - name: multiply
+    required_options:
+      overflow: SILENT
+  - name: divide
+    required_options:
+      on_division_by_zero: LIMIT
+      overflow: SILENT
+      rounding: TIE_TO_EVEN
+  - name: modulus
+    local_name: mod
+    required_options:
+      overflow: SILENT
+      rounding: TIE_TO_EVEN
+  - name: power
+    local_name: pow
+  - name: sqrt
+    required_options:
+      on_domain_error: NAN
+      rounding: TIE_TO_EVEN
+  - name: exp
+  - name: cos
+    required_options:
+      rounding: TIE_TO_EVEN
+  - name: sin
+    required_options:
+      rounding: TIE_TO_EVEN
+  - name: tan
+    required_options:
+      rounding: TIE_TO_EVEN
+  - name: cosh
+  - name: sinh
+  - name: tanh
+  - name: acos
+    local_name: arccos
+  - name: asin
+    local_name: arcsin
+  - name: atan
+    local_name: arctan
+  - name: acosh
+    local_name: arccosh
+  - name: asinh
+    local_name: arcsinh
+  - name: atanh
+    local_name: arctanh
+  - name: atan2
+    unsupported: true
+  - name: factorial
+    unsupported: true
+  - name: abs
+    required_options:
+      rounding: TIE_TO_EVEN
+      overflow: SILENT
+  - name: negate
+    unsupported: true
+  - name: bitwise_not
+    local_name: "~"
+  - name: bitwise_and
+    unsupported: true
+    infix: True
+  - name: bitwise_or
+    unsupported: true
+  - name: bitwise_xor
+    unsupported: true
+  - name: ln
+    local_name: log
+    required_options:
+      on_log_zero: MINUS_INFINITY
+  - name: log
+    unsupported: true
+  - name: log2
+    unsupported: true
+aggregate_functions:
+  - name: min
+    unsupported: true
+  - name: max
+    unsupported: true
+  - name: sum
+    unsupported: true
+  - name: count
+    unsupported: true
+  - name: approx_count_distinct
+    unsupported: true
+  - name: bool_and
+    unsupported: true
+  - name: bool_or
+    unsupported: true
