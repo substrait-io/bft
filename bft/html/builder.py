@@ -171,12 +171,13 @@ def create_function_info(
 
 
 def create_function_index(
-    functions: List[FunctionDefinition], supplements: Dict[str, SupplementsFile]
+    functions: List[FunctionDefinition]
 ) -> FunctionIndexInfo:
     items = [
         FunctionIndexItem(
             function.name,
             function.description,
+            function.uri.split('_')[1].split('.')[0].title()
         )
         for function in functions
     ]
@@ -228,7 +229,7 @@ def build_site(index_path: str, dest_dir):
         with open(out_path, mode="w") as out:
             out.write(render_scalar_function(info))
 
-    function_index = create_function_index(functions, supplements)
+    function_index = create_function_index(functions)
     out_path = pathlib.Path(dest_dir) / f"index.html"
     with open(out_path, mode="w") as out:
         out.write(render_function_index(function_index))

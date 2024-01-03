@@ -1,19 +1,35 @@
-import os
-import pathlib
 import shutil
+from pathlib import Path
 
 from bft.html.builder import build_site
 
-root = pathlib.Path(__file__).parent.resolve()
+
+def copy_with_progress(src, dst, copy_function=shutil.copy2):
+    for source_path in Path(src).rglob('*'):
+        relative_path = source_path.relative_to(src)
+        destination_path = dst / relative_path
+
+        if source_path.is_file():
+            destination_path.parent.mkdir(parents=True, exist_ok=True)
+            copy_function(source_path, destination_path)
+            print(f"Copying: {source_path} -> {destination_path}")
+
+root = Path(__file__).parent.resolve()
 index = root / "index.yaml"
 dest = root / "dist"
 
-shutil.rmtree(dest, ignore_errors=True)
-os.mkdir(dest)
+# Remove the destination directory if it exists
+if dest.exists():
+    shutil.rmtree(dest)
 
-build_site(str(index), str(dest))
+# Create the destination directory
+dest.mkdir()
+
+build_site(index, dest)
 
 static_content_dir = root / "static_site"
-for path in os.listdir(static_content_dir):
-    print(f"Copying static file: {path}")
-    shutil.copy2(static_content_dir / path, dest)
+
+# Use the custom copy_with_progress function
+copy_with_progress(static_content_dir, dest)
+
+print("Copying static files completed.")
