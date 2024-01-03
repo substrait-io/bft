@@ -3,196 +3,326 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Function index - bft</title>
+    <title>BFT - Home</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Index of all currently documented functions">
-    <link rel="stylesheet" href="./terminal.css">
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body class="terminal">
-    <header class="container terminal-nav">
-        <div class="terminal-logo">
-            <div class="logo terminal-prompt">
-                <a href="#">The BFT</a>
-            </div>
-        </div>
-        <nav class="terminal-menu">
-            <ul>
-                <li>
-                    <a href="./index.html" class="menu-item active">Function Index</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <meta name="description" content="Big Function Taxonomy">
 
-    <article class="container">
-        <h2>Scalar Functions</h2>
-        <section>
-            <dl>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/index/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav class="navbar" style="background-color: #201D38;">
+        <div class="navbar-brand logo">
+            <span class="terminal-text" style="font-size: 200%; font-family: 'Work Sans', sans-serif; color: white;">
+                Big Function Taxonomy
+            </span>
+        </div>
+
+        <div class="ml-auto">
+            <form class="form-inline" onsubmit="searchFunctions(); return false;">
+                <input class="form-control mr-2" type="text" id="searchInput" placeholder="Search functions...">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 menu-container mt-5">
+                <ul class="list-unstyled">
+                    <li class="menu-item" onclick="showContent('home')">Home</li>
+                    
+                    
+                        <li class="menu-item" onclick="showContent('arithmetic')">Arithmetic Functions</li>
+                    
+                        <li class="menu-item" onclick="showContent('boolean')">Boolean Functions</li>
+                    
+                        <li class="menu-item" onclick="showContent('comparison')">Comparison Functions</li>
+                    
+                        <li class="menu-item" onclick="showContent('datetime')">Datetime Functions</li>
+                    
+                        <li class="menu-item" onclick="showContent('logarithmic')">Logarithmic Functions</li>
+                    
+                        <li class="menu-item" onclick="showContent('rounding')">Rounding Functions</li>
+                    
+                        <li class="menu-item" onclick="showContent('string')">String Functions</li>
+                    
+                </ul>
+            </div>
+            <div class="col-md-9 content-container">
                 
-                <dt>
-                    <a href="./arithmetic_abs.html">Abs</a>
-                </dt>
-                <dd>Calculate the absolute value of the argument.
+                <article class="container mt-4" id="home">
+                    <div class="fixed-container">
+                        <h2 class="category-title">The B(ig) F(unction) T(axonomy)</h2>
+                    </div>
+                    <section>
+                        <p style="color: black;">
+                            The BFT aims to be a comprehensive catalogue of functions. Functions are the backbone of 
+                            any compute system, but they are chronically under documented and often full of corner 
+                            cases whose behavior differs in various systems. By documenting exhaustively documenting 
+                            these corner cases we hope to make it possible for systems to fully describe their behaviors. 
+                            This will make it easier to know what problems will be encountered switching between systems and, 
+                            in some cases, make it possible to obtain the correct behavior through expression transformation 
+                            or a precise application of function options.
+                        </p>
+                    <section>
+                        <div class="row">
+                            
+                                <div class="col-md-6 mb-3" onclick="showContent('arithmetic')" style="cursor: pointer;">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Arithmetic Functions</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-md-6 mb-3" onclick="showContent('boolean')" style="cursor: pointer;">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Boolean Functions</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-md-6 mb-3" onclick="showContent('comparison')" style="cursor: pointer;">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Comparison Functions</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-md-6 mb-3" onclick="showContent('datetime')" style="cursor: pointer;">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Datetime Functions</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-md-6 mb-3" onclick="showContent('logarithmic')" style="cursor: pointer;">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Logarithmic Functions</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-md-6 mb-3" onclick="showContent('rounding')" style="cursor: pointer;">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Rounding Functions</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-md-6 mb-3" onclick="showContent('string')" style="cursor: pointer;">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">String Functions</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </section>
+                    </section>
+                </article>
+
+                <article class="container hidden mt-4" id="searchResultsSection">
+                    <!-- Search results will be shown here -->
+                </article>
+
+                
+                    <article class="container hidden mt-4" id="arithmetic">
+                        <div class="fixed-container">
+                            <h2 class="category-title">Arithmetic Functions</h2>
+                        </div>
+                        <section>
+                            <table class="functions-table">
+                                <tbody>
+                                    
+                                        <tr onclick="window.location='./arithmetic_abs.html';" style="cursor: pointer;">
+                                            <td class="title-column">Abs</td>
+                                            <td>Calculate the absolute value of the argument.
 Integer values allow the specification of overflow behavior to handle the unevenness of the twos complement, e.g. Int8 range [-128 : 127].
-</dd>
-                
-                <dt>
-                    <a href="./arithmetic_acos.html">Acos</a>
-                </dt>
-                <dd>Get the arccosine of a value in radians.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_acosh.html">Acosh</a>
-                </dt>
-                <dd>Get the hyperbolic arccosine of a value in radians.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_add.html">Add</a>
-                </dt>
-                <dd>Add two values.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_asin.html">Asin</a>
-                </dt>
-                <dd>Get the arcsine of a value in radians.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_asinh.html">Asinh</a>
-                </dt>
-                <dd>Get the hyperbolic arcsine of a value in radians.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_atan.html">Atan</a>
-                </dt>
-                <dd>Get the arctangent of a value in radians.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_atan2.html">Atan2</a>
-                </dt>
-                <dd>Get the arctangent of values given as x/y pairs.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_atanh.html">Atanh</a>
-                </dt>
-                <dd>Get the hyperbolic arctangent of a value in radians.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_bitwise_and.html">Bitwise_and</a>
-                </dt>
-                <dd>Return the bitwise AND result for two integer inputs.
-</dd>
-                
-                <dt>
-                    <a href="./arithmetic_bitwise_not.html">Bitwise_not</a>
-                </dt>
-                <dd>Return the bitwise NOT result for one integer input.
-</dd>
-                
-                <dt>
-                    <a href="./arithmetic_bitwise_or.html">Bitwise_or</a>
-                </dt>
-                <dd>Return the bitwise OR result for two given integer inputs.
-</dd>
-                
-                <dt>
-                    <a href="./arithmetic_bitwise_xor.html">Bitwise_xor</a>
-                </dt>
-                <dd>Return the bitwise XOR result for two integer inputs.
-</dd>
-                
-                <dt>
-                    <a href="./arithmetic_cos.html">Cos</a>
-                </dt>
-                <dd>Get the cosine of a value in radians.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_cosh.html">Cosh</a>
-                </dt>
-                <dd>Get the hyperbolic cosine of a value in radians.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_divide.html">Divide</a>
-                </dt>
-                <dd>Divide x by y. In the case of integer division, partial values are truncated (i.e. rounded towards 0). The `on_division_by_zero` option governs behavior in cases where y is 0 and x is not 0. `LIMIT` means positive or negative infinity (depending on the sign of x and y). If x and y are both 0 or both +/-infinity, behavior will be governed by `on_domain_error`.
-</dd>
-                
-                <dt>
-                    <a href="./arithmetic_exp.html">Exp</a>
-                </dt>
-                <dd>The mathematical constant e, raised to the power of the value.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_factorial.html">Factorial</a>
-                </dt>
-                <dd>Return the factorial of a given integer input.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_acos.html';" style="cursor: pointer;">
+                                            <td class="title-column">Acos</td>
+                                            <td>Get the arccosine of a value in radians.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_acosh.html';" style="cursor: pointer;">
+                                            <td class="title-column">Acosh</td>
+                                            <td>Get the hyperbolic arccosine of a value in radians.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_add.html';" style="cursor: pointer;">
+                                            <td class="title-column">Add</td>
+                                            <td>Add two values.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_asin.html';" style="cursor: pointer;">
+                                            <td class="title-column">Asin</td>
+                                            <td>Get the arcsine of a value in radians.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_asinh.html';" style="cursor: pointer;">
+                                            <td class="title-column">Asinh</td>
+                                            <td>Get the hyperbolic arcsine of a value in radians.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_atan.html';" style="cursor: pointer;">
+                                            <td class="title-column">Atan</td>
+                                            <td>Get the arctangent of a value in radians.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_atan2.html';" style="cursor: pointer;">
+                                            <td class="title-column">Atan2</td>
+                                            <td>Get the arctangent of values given as x/y pairs.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_atanh.html';" style="cursor: pointer;">
+                                            <td class="title-column">Atanh</td>
+                                            <td>Get the hyperbolic arctangent of a value in radians.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_bitwise_and.html';" style="cursor: pointer;">
+                                            <td class="title-column">Bitwise_and</td>
+                                            <td>Return the bitwise AND result for two integer inputs.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_bitwise_not.html';" style="cursor: pointer;">
+                                            <td class="title-column">Bitwise_not</td>
+                                            <td>Return the bitwise NOT result for one integer input.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_bitwise_or.html';" style="cursor: pointer;">
+                                            <td class="title-column">Bitwise_or</td>
+                                            <td>Return the bitwise OR result for two given integer inputs.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_bitwise_xor.html';" style="cursor: pointer;">
+                                            <td class="title-column">Bitwise_xor</td>
+                                            <td>Return the bitwise XOR result for two integer inputs.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_cos.html';" style="cursor: pointer;">
+                                            <td class="title-column">Cos</td>
+                                            <td>Get the cosine of a value in radians.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_cosh.html';" style="cursor: pointer;">
+                                            <td class="title-column">Cosh</td>
+                                            <td>Get the hyperbolic cosine of a value in radians.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_divide.html';" style="cursor: pointer;">
+                                            <td class="title-column">Divide</td>
+                                            <td>Divide x by y. In the case of integer division, partial values are truncated (i.e. rounded towards 0). The `on_division_by_zero` option governs behavior in cases where y is 0 and x is not 0. `LIMIT` means positive or negative infinity (depending on the sign of x and y). If x and y are both 0 or both +/-infinity, behavior will be governed by `on_domain_error`.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_exp.html';" style="cursor: pointer;">
+                                            <td class="title-column">Exp</td>
+                                            <td>The mathematical constant e, raised to the power of the value.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_factorial.html';" style="cursor: pointer;">
+                                            <td class="title-column">Factorial</td>
+                                            <td>Return the factorial of a given integer input.
 The factorial of 0! is 1 by convention.
 Negative inputs will raise an error.
-</dd>
-                
-                <dt>
-                    <a href="./arithmetic_modulus.html">Modulus</a>
-                </dt>
-                <dd>Get the remainder when dividing one value by another.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_multiply.html">Multiply</a>
-                </dt>
-                <dd>Multiply two values.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_negate.html">Negate</a>
-                </dt>
-                <dd>Negation of the value</dd>
-                
-                <dt>
-                    <a href="./arithmetic_power.html">Power</a>
-                </dt>
-                <dd>Take the power with x as the base and y as exponent.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_sign.html">Sign</a>
-                </dt>
-                <dd>Return the signedness of the argument.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_modulus.html';" style="cursor: pointer;">
+                                            <td class="title-column">Modulus</td>
+                                            <td>Get the remainder when dividing one value by another.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_multiply.html';" style="cursor: pointer;">
+                                            <td class="title-column">Multiply</td>
+                                            <td>Multiply two values.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_negate.html';" style="cursor: pointer;">
+                                            <td class="title-column">Negate</td>
+                                            <td>Negation of the value</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_power.html';" style="cursor: pointer;">
+                                            <td class="title-column">Power</td>
+                                            <td>Take the power with x as the base and y as exponent.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_sign.html';" style="cursor: pointer;">
+                                            <td class="title-column">Sign</td>
+                                            <td>Return the signedness of the argument.
 Integer values return signedness with the same type as the input. Possible return values are [-1, 0, 1]
 Floating point values return signedness with the same type as the input. Possible return values are [-1.0, -0.0, 0.0, 1.0, NaN]
-</dd>
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_sin.html';" style="cursor: pointer;">
+                                            <td class="title-column">Sin</td>
+                                            <td>Get the sine of a value in radians.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_sinh.html';" style="cursor: pointer;">
+                                            <td class="title-column">Sinh</td>
+                                            <td>Get the hyperbolic sine of a value in radians.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_sqrt.html';" style="cursor: pointer;">
+                                            <td class="title-column">Sqrt</td>
+                                            <td>Square root of the value</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_subtract.html';" style="cursor: pointer;">
+                                            <td class="title-column">Subtract</td>
+                                            <td>Subtract one value from another.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_tan.html';" style="cursor: pointer;">
+                                            <td class="title-column">Tan</td>
+                                            <td>Get the tangent of a value in radians.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_tanh.html';" style="cursor: pointer;">
+                                            <td class="title-column">Tanh</td>
+                                            <td>Get the hyperbolic tangent of a value in radians.</td>
+                                        </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </section>
+                    </article>
                 
-                <dt>
-                    <a href="./arithmetic_sin.html">Sin</a>
-                </dt>
-                <dd>Get the sine of a value in radians.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_sinh.html">Sinh</a>
-                </dt>
-                <dd>Get the hyperbolic sine of a value in radians.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_sqrt.html">Sqrt</a>
-                </dt>
-                <dd>Square root of the value</dd>
-                
-                <dt>
-                    <a href="./arithmetic_subtract.html">Subtract</a>
-                </dt>
-                <dd>Subtract one value from another.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_tan.html">Tan</a>
-                </dt>
-                <dd>Get the tangent of a value in radians.</dd>
-                
-                <dt>
-                    <a href="./arithmetic_tanh.html">Tanh</a>
-                </dt>
-                <dd>Get the hyperbolic tangent of a value in radians.</dd>
-                
-                <dt>
-                    <a href="./boolean_and.html">And</a>
-                </dt>
-                <dd>The boolean `and` using Kleene logic.
+                    <article class="container hidden mt-4" id="boolean">
+                        <div class="fixed-container">
+                            <h2 class="category-title">Boolean Functions</h2>
+                        </div>
+                        <section>
+                            <table class="functions-table">
+                                <tbody>
+                                    
+                                        <tr onclick="window.location='./boolean_and.html';" style="cursor: pointer;">
+                                            <td class="title-column">And</td>
+                                            <td>The boolean `and` using Kleene logic.
 This function behaves as follows with nulls:
 
     true and null = null
@@ -209,12 +339,12 @@ In other words, in this context a null value really means "unknown", and an unkn
 Behavior for 0 or 1 inputs is as follows:
   and() -> true
   and(x) -> x
-</dd>
-                
-                <dt>
-                    <a href="./boolean_and_not.html">And_not</a>
-                </dt>
-                <dd>The boolean `and` of one value and the negation of the other using Kleene logic.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./boolean_and_not.html';" style="cursor: pointer;">
+                                            <td class="title-column">And_not</td>
+                                            <td>The boolean `and` of one value and the negation of the other using Kleene logic.
 This function behaves as follows with nulls:
 
     true and not null = null
@@ -228,19 +358,19 @@ This function behaves as follows with nulls:
     null and not null = null
 
 In other words, in this context a null value really means "unknown", and an unknown value `and not` true is always false, as is false `and not` an unknown value.
-</dd>
-                
-                <dt>
-                    <a href="./boolean_not.html">Not</a>
-                </dt>
-                <dd>The `not` of a boolean value.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./boolean_not.html';" style="cursor: pointer;">
+                                            <td class="title-column">Not</td>
+                                            <td>The `not` of a boolean value.
 When a null is input, a null is output.
-</dd>
-                
-                <dt>
-                    <a href="./boolean_or.html">Or</a>
-                </dt>
-                <dd>The boolean `or` using Kleene logic.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./boolean_or.html';" style="cursor: pointer;">
+                                            <td class="title-column">Or</td>
+                                            <td>The boolean `or` using Kleene logic.
 This function behaves as follows with nulls:
 
     true or null = true
@@ -257,142 +387,168 @@ In other words, in this context a null value really means "unknown", and an unkn
 Behavior for 0 or 1 inputs is as follows:
   or() -> false
   or(x) -> x
-</dd>
-                
-                <dt>
-                    <a href="./boolean_xor.html">Xor</a>
-                </dt>
-                <dd>The boolean `xor` of two values using Kleene logic.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./boolean_xor.html';" style="cursor: pointer;">
+                                            <td class="title-column">Xor</td>
+                                            <td>The boolean `xor` of two values using Kleene logic.
 When a null is encountered in either input, a null is output.
-</dd>
+</td>
+                                        </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </section>
+                    </article>
                 
-                <dt>
-                    <a href="./comparison_between.html">Between</a>
-                </dt>
-                <dd>Whether the `expression` is greater than or equal to `low` and less than or equal to `high`.
+                    <article class="container hidden mt-4" id="comparison">
+                        <div class="fixed-container">
+                            <h2 class="category-title">Comparison Functions</h2>
+                        </div>
+                        <section>
+                            <table class="functions-table">
+                                <tbody>
+                                    
+                                        <tr onclick="window.location='./comparison_between.html';" style="cursor: pointer;">
+                                            <td class="title-column">Between</td>
+                                            <td>Whether the `expression` is greater than or equal to `low` and less than or equal to `high`.
 `expression` BETWEEN `low` AND `high`
-If `low`, `high`, or `expression` are `null`, `null` is returned.</dd>
-                
-                <dt>
-                    <a href="./comparison_coalesce.html">Coalesce</a>
-                </dt>
-                <dd>Evaluate arguments from left to right and return the first argument that is not null. Once a non-null argument is found, the remaining arguments are not evaluated.
-If all arguments are null, return null.</dd>
-                
-                <dt>
-                    <a href="./comparison_equal.html">Equal</a>
-                </dt>
-                <dd>Whether two values are equal.
+If `low`, `high`, or `expression` are `null`, `null` is returned.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./comparison_coalesce.html';" style="cursor: pointer;">
+                                            <td class="title-column">Coalesce</td>
+                                            <td>Evaluate arguments from left to right and return the first argument that is not null. Once a non-null argument is found, the remaining arguments are not evaluated.
+If all arguments are null, return null.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./comparison_equal.html';" style="cursor: pointer;">
+                                            <td class="title-column">Equal</td>
+                                            <td>Whether two values are equal.
 `equal(x, y) := (x == y)`
 If either/both of `x` and `y` are `null`, `null` is returned.
-</dd>
-                
-                <dt>
-                    <a href="./comparison_gt.html">Gt</a>
-                </dt>
-                <dd>Greater than.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./comparison_gt.html';" style="cursor: pointer;">
+                                            <td class="title-column">Gt</td>
+                                            <td>Greater than.
 gt(x, y) := (x > y)
 If either/both of `x` and `y` are `null`, `null` is returned.
-</dd>
-                
-                <dt>
-                    <a href="./comparison_gte.html">Gte</a>
-                </dt>
-                <dd>Greater than or equal to.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./comparison_gte.html';" style="cursor: pointer;">
+                                            <td class="title-column">Gte</td>
+                                            <td>Greater than or equal to.
 gte(x, y) := (x >= y)
 If either/both of `x` and `y` are `null`, `null` is returned.
-</dd>
-                
-                <dt>
-                    <a href="./comparison_is_finite.html">Is_finite</a>
-                </dt>
-                <dd>Whether a value is finite (neither infinite nor NaN).
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./comparison_is_finite.html';" style="cursor: pointer;">
+                                            <td class="title-column">Is_finite</td>
+                                            <td>Whether a value is finite (neither infinite nor NaN).
 If `x` is `null`, `null` is returned.
-</dd>
-                
-                <dt>
-                    <a href="./comparison_is_infinite.html">Is_infinite</a>
-                </dt>
-                <dd>Whether a value is infinite.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./comparison_is_infinite.html';" style="cursor: pointer;">
+                                            <td class="title-column">Is_infinite</td>
+                                            <td>Whether a value is infinite.
 If `x` is `null`, `null` is returned.
-</dd>
-                
-                <dt>
-                    <a href="./comparison_is_nan.html">Is_nan</a>
-                </dt>
-                <dd>Whether a value is not a number.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./comparison_is_nan.html';" style="cursor: pointer;">
+                                            <td class="title-column">Is_nan</td>
+                                            <td>Whether a value is not a number.
 If `x` is `null`, `null` is returned.
-</dd>
-                
-                <dt>
-                    <a href="./comparison_is_not_distinct_from.html">Is_not_distinct_from</a>
-                </dt>
-                <dd>Whether two values are equal.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./comparison_is_not_distinct_from.html';" style="cursor: pointer;">
+                                            <td class="title-column">Is_not_distinct_from</td>
+                                            <td>Whether two values are equal.
 This function treats `null` values as comparable, so
 `is_not_distinct_from(null, null) == True`
 This is in contrast to `equal`, in which `null` values do not compare.
-</dd>
-                
-                <dt>
-                    <a href="./comparison_is_not_null.html">Is_not_null</a>
-                </dt>
-                <dd>Whether a value is not null. NaN is not null.</dd>
-                
-                <dt>
-                    <a href="./comparison_is_null.html">Is_null</a>
-                </dt>
-                <dd>Whether a value is null. NaN is not null.</dd>
-                
-                <dt>
-                    <a href="./comparison_lt.html">Lt</a>
-                </dt>
-                <dd>Less than.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./comparison_is_not_null.html';" style="cursor: pointer;">
+                                            <td class="title-column">Is_not_null</td>
+                                            <td>Whether a value is not null. NaN is not null.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./comparison_is_null.html';" style="cursor: pointer;">
+                                            <td class="title-column">Is_null</td>
+                                            <td>Whether a value is null. NaN is not null.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./comparison_lt.html';" style="cursor: pointer;">
+                                            <td class="title-column">Lt</td>
+                                            <td>Less than.
 lt(x, y) := (x < y)
 If either/both of `x` and `y` are `null`, `null` is returned.
-</dd>
-                
-                <dt>
-                    <a href="./comparison_lte.html">Lte</a>
-                </dt>
-                <dd>Less than or equal to.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./comparison_lte.html';" style="cursor: pointer;">
+                                            <td class="title-column">Lte</td>
+                                            <td>Less than or equal to.
 lte(x, y) := (x <= y)
 If either/both of `x` and `y` are `null`, `null` is returned.
-</dd>
-                
-                <dt>
-                    <a href="./comparison_not_equal.html">Not_equal</a>
-                </dt>
-                <dd>Whether two values are not_equal.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./comparison_not_equal.html';" style="cursor: pointer;">
+                                            <td class="title-column">Not_equal</td>
+                                            <td>Whether two values are not_equal.
 `not_equal(x, y) := (x != y)`
 If either/both of `x` and `y` are `null`, `null` is returned.
-</dd>
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./comparison_nullif.html';" style="cursor: pointer;">
+                                            <td class="title-column">Nullif</td>
+                                            <td>If two values are equal, return null. Otherwise, return the first value.</td>
+                                        </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </section>
+                    </article>
                 
-                <dt>
-                    <a href="./comparison_nullif.html">Nullif</a>
-                </dt>
-                <dd>If two values are equal, return null. Otherwise, return the first value.</dd>
-                
-                <dt>
-                    <a href="./datetime_add.html">Add</a>
-                </dt>
-                <dd>Add an interval to a date/time type.
-Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</dd>
-                
-                <dt>
-                    <a href="./datetime_add_intervals.html">Add_intervals</a>
-                </dt>
-                <dd>Add two intervals together.</dd>
-                
-                <dt>
-                    <a href="./datetime_assume_timezone.html">Assume_timezone</a>
-                </dt>
-                <dd>Convert local timestamp to UTC-relative timestamp_tz using given local time's timezone.
-Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</dd>
-                
-                <dt>
-                    <a href="./datetime_extract.html">Extract</a>
-                </dt>
-                <dd>Extract portion of a date/time value. * YEAR Return the year of the value. * ISO_YEAR Return the ISO 8601 week-numbering year. First week of an ISO year has the majority (4 or more) of its
+                    <article class="container hidden mt-4" id="datetime">
+                        <div class="fixed-container">
+                            <h2 class="category-title">Datetime Functions</h2>
+                        </div>
+                        <section>
+                            <table class="functions-table">
+                                <tbody>
+                                    
+                                        <tr onclick="window.location='./datetime_add.html';" style="cursor: pointer;">
+                                            <td class="title-column">Add</td>
+                                            <td>Add an interval to a date/time type.
+Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./datetime_add_intervals.html';" style="cursor: pointer;">
+                                            <td class="title-column">Add_intervals</td>
+                                            <td>Add two intervals together.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./datetime_assume_timezone.html';" style="cursor: pointer;">
+                                            <td class="title-column">Assume_timezone</td>
+                                            <td>Convert local timestamp to UTC-relative timestamp_tz using given local time's timezone.
+Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./datetime_extract.html';" style="cursor: pointer;">
+                                            <td class="title-column">Extract</td>
+                                            <td>Extract portion of a date/time value. * YEAR Return the year of the value. * ISO_YEAR Return the ISO 8601 week-numbering year. First week of an ISO year has the majority (4 or more) of its
   days in January.
 * US_YEAR Return US epidemiological year. First week of US epidemiological year has the majority (4 or more) of
   its days in January. Last week of US epidemiological year has the year's last Wednesday in it.
@@ -402,313 +558,1027 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
 * US_WEEK Return ISO-like week of year number (1-53). First US calendar week has the majority (4 or more) of its
   days in January. US week starts on Sunday.
 * HOUR Return the hour (0-23). * MINUTE Return the minute (0-59). * SECOND Return the second (0-59). * MILLISECOND Return number of milliseconds since the last full second. * MICROSECOND Return number of microseconds since the last full millisecond. * SUBSECOND Return number of microseconds since the last full second of the given timestamp. * UNIX_TIME Return number of seconds that have elapsed since 1970-01-01 00:00:00 UTC, ignoring leap seconds. * TIMEZONE_OFFSET Return number of seconds of timezone offset to UTC.
-Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</dd>
-                
-                <dt>
-                    <a href="./datetime_extract_boolean.html">Extract_boolean</a>
-                </dt>
-                <dd>Extract boolean values of a date/time value. * IS_LEAP_YEAR Return true if year of the given value is a leap year and false otherwise. * IS_DST Return true if DST (Daylight Savings Time) is observed at the given value
+Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./datetime_extract_boolean.html';" style="cursor: pointer;">
+                                            <td class="title-column">Extract_boolean</td>
+                                            <td>Extract boolean values of a date/time value. * IS_LEAP_YEAR Return true if year of the given value is a leap year and false otherwise. * IS_DST Return true if DST (Daylight Savings Time) is observed at the given value
   in the given timezone.
 
-Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</dd>
+Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./datetime_gt.html';" style="cursor: pointer;">
+                                            <td class="title-column">Gt</td>
+                                            <td>greater than</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./datetime_gte.html';" style="cursor: pointer;">
+                                            <td class="title-column">Gte</td>
+                                            <td>greater than or equal to</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./datetime_local_timestamp.html';" style="cursor: pointer;">
+                                            <td class="title-column">Local_timestamp</td>
+                                            <td>Convert UTC-relative timestamp_tz to local timestamp using given local time's timezone.
+Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./datetime_lt.html';" style="cursor: pointer;">
+                                            <td class="title-column">Lt</td>
+                                            <td>less than</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./datetime_lte.html';" style="cursor: pointer;">
+                                            <td class="title-column">Lte</td>
+                                            <td>less than or equal to</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./datetime_round_calendar.html';" style="cursor: pointer;">
+                                            <td class="title-column">Round_calendar</td>
+                                            <td>Round a given timestamp/date/time to a multiple of a time unit. If the given timestamp is not already an exact multiple from the last origin unit in the given timezone, the resulting point is chosen as one of the two nearest multiples. Which of these is chosen is governed by rounding: FLOOR means to use the earlier one, CEIL means to use the later one, ROUND_TIE_DOWN means to choose the nearest and tie to the earlier one if equidistant, ROUND_TIE_UP means to choose the nearest and tie to the later one if equidistant.
+Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./datetime_round_temporal.html';" style="cursor: pointer;">
+                                            <td class="title-column">Round_temporal</td>
+                                            <td>Round a given timestamp/date/time to a multiple of a time unit. If the given timestamp is not already an exact multiple from the origin in the given timezone, the resulting point is chosen as one of the two nearest multiples. Which of these is chosen is governed by rounding: FLOOR means to use the earlier one, CEIL means to use the later one, ROUND_TIE_DOWN means to choose the nearest and tie to the earlier one if equidistant, ROUND_TIE_UP means to choose the nearest and tie to the later one if equidistant.
+Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./datetime_strftime.html';" style="cursor: pointer;">
+                                            <td class="title-column">Strftime</td>
+                                            <td>Convert timestamp/date/time to string using provided format, see https://man7.org/linux/man-pages/man3/strftime.3.html for reference.
+Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./datetime_strptime.html';" style="cursor: pointer;">
+                                            <td class="title-column">Strptime</td>
+                                            <td>Parse string into timestamp/date/time using provided format, see https://man7.org/linux/man-pages/man3/strptime.3.html for reference. If timezone is present in timestamp and provided as parameter an error is thrown.
+Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is supplied as parameter and present in the parsed string the parsed timezone is used. If parameter supplied timezone is invalid an error is thrown.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./datetime_subtract.html';" style="cursor: pointer;">
+                                            <td class="title-column">Subtract</td>
+                                            <td>Subtract an interval from a date/time type.
+Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                        </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </section>
+                    </article>
                 
-                <dt>
-                    <a href="./datetime_gt.html">Gt</a>
-                </dt>
-                <dd>greater than</dd>
-                
-                <dt>
-                    <a href="./datetime_gte.html">Gte</a>
-                </dt>
-                <dd>greater than or equal to</dd>
-                
-                <dt>
-                    <a href="./datetime_local_timestamp.html">Local_timestamp</a>
-                </dt>
-                <dd>Convert UTC-relative timestamp_tz to local timestamp using given local time's timezone.
-Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</dd>
-                
-                <dt>
-                    <a href="./datetime_lt.html">Lt</a>
-                </dt>
-                <dd>less than</dd>
-                
-                <dt>
-                    <a href="./datetime_lte.html">Lte</a>
-                </dt>
-                <dd>less than or equal to</dd>
-                
-                <dt>
-                    <a href="./datetime_round_calendar.html">Round_calendar</a>
-                </dt>
-                <dd>Round a given timestamp/date/time to a multiple of a time unit. If the given timestamp is not already an exact multiple from the last origin unit in the given timezone, the resulting point is chosen as one of the two nearest multiples. Which of these is chosen is governed by rounding: FLOOR means to use the earlier one, CEIL means to use the later one, ROUND_TIE_DOWN means to choose the nearest and tie to the earlier one if equidistant, ROUND_TIE_UP means to choose the nearest and tie to the later one if equidistant.
-Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</dd>
-                
-                <dt>
-                    <a href="./datetime_round_temporal.html">Round_temporal</a>
-                </dt>
-                <dd>Round a given timestamp/date/time to a multiple of a time unit. If the given timestamp is not already an exact multiple from the origin in the given timezone, the resulting point is chosen as one of the two nearest multiples. Which of these is chosen is governed by rounding: FLOOR means to use the earlier one, CEIL means to use the later one, ROUND_TIE_DOWN means to choose the nearest and tie to the earlier one if equidistant, ROUND_TIE_UP means to choose the nearest and tie to the later one if equidistant.
-Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</dd>
-                
-                <dt>
-                    <a href="./datetime_strftime.html">Strftime</a>
-                </dt>
-                <dd>Convert timestamp/date/time to string using provided format, see https://man7.org/linux/man-pages/man3/strftime.3.html for reference.
-Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</dd>
-                
-                <dt>
-                    <a href="./datetime_strptime.html">Strptime</a>
-                </dt>
-                <dd>Parse string into timestamp/date/time using provided format, see https://man7.org/linux/man-pages/man3/strptime.3.html for reference. If timezone is present in timestamp and provided as parameter an error is thrown.
-Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is supplied as parameter and present in the parsed string the parsed timezone is used. If parameter supplied timezone is invalid an error is thrown.</dd>
-                
-                <dt>
-                    <a href="./datetime_subtract.html">Subtract</a>
-                </dt>
-                <dd>Subtract an interval from a date/time type.
-Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</dd>
-                
-                <dt>
-                    <a href="./logarithmic_ln.html">Ln</a>
-                </dt>
-                <dd>Natural logarithm of the value</dd>
-                
-                <dt>
-                    <a href="./logarithmic_log10.html">Log10</a>
-                </dt>
-                <dd>Logarithm to base 10 of the value</dd>
-                
-                <dt>
-                    <a href="./logarithmic_log1p.html">Log1p</a>
-                </dt>
-                <dd>Natural logarithm (base e) of 1 + x
+                    <article class="container hidden mt-4" id="logarithmic">
+                        <div class="fixed-container">
+                            <h2 class="category-title">Logarithmic Functions</h2>
+                        </div>
+                        <section>
+                            <table class="functions-table">
+                                <tbody>
+                                    
+                                        <tr onclick="window.location='./logarithmic_ln.html';" style="cursor: pointer;">
+                                            <td class="title-column">Ln</td>
+                                            <td>Natural logarithm of the value</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./logarithmic_log10.html';" style="cursor: pointer;">
+                                            <td class="title-column">Log10</td>
+                                            <td>Logarithm to base 10 of the value</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./logarithmic_log1p.html';" style="cursor: pointer;">
+                                            <td class="title-column">Log1p</td>
+                                            <td>Natural logarithm (base e) of 1 + x
 log1p(x) => log(1+x)
-</dd>
-                
-                <dt>
-                    <a href="./logarithmic_log2.html">Log2</a>
-                </dt>
-                <dd>Logarithm to base 2 of the value</dd>
-                
-                <dt>
-                    <a href="./logarithmic_logb.html">Logb</a>
-                </dt>
-                <dd>Logarithm of the value with the given base
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./logarithmic_log2.html';" style="cursor: pointer;">
+                                            <td class="title-column">Log2</td>
+                                            <td>Logarithm to base 2 of the value</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./logarithmic_logb.html';" style="cursor: pointer;">
+                                            <td class="title-column">Logb</td>
+                                            <td>Logarithm of the value with the given base
 logb(x, b) => log_{b} (x)
-</dd>
+</td>
+                                        </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </section>
+                    </article>
                 
-                <dt>
-                    <a href="./rounding_ceil.html">Ceil</a>
-                </dt>
-                <dd>Rounding to the ceiling of the value `x`.
-</dd>
+                    <article class="container hidden mt-4" id="rounding">
+                        <div class="fixed-container">
+                            <h2 class="category-title">Rounding Functions</h2>
+                        </div>
+                        <section>
+                            <table class="functions-table">
+                                <tbody>
+                                    
+                                        <tr onclick="window.location='./rounding_ceil.html';" style="cursor: pointer;">
+                                            <td class="title-column">Ceil</td>
+                                            <td>Rounding to the ceiling of the value `x`.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./rounding_floor.html';" style="cursor: pointer;">
+                                            <td class="title-column">Floor</td>
+                                            <td>Rounding to the floor of the value `x`.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./rounding_round.html';" style="cursor: pointer;">
+                                            <td class="title-column">Round</td>
+                                            <td>Rounding the value `x` to `s` decimal places.
+</td>
+                                        </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </section>
+                    </article>
                 
-                <dt>
-                    <a href="./rounding_floor.html">Floor</a>
-                </dt>
-                <dd>Rounding to the floor of the value `x`.
-</dd>
-                
-                <dt>
-                    <a href="./rounding_round.html">Round</a>
-                </dt>
-                <dd>Rounding the value `x` to `s` decimal places.
-</dd>
-                
-                <dt>
-                    <a href="./string_bit_length.html">Bit_length</a>
-                </dt>
-                <dd>Return the number of bits in the input string.</dd>
-                
-                <dt>
-                    <a href="./string_capitalize.html">Capitalize</a>
-                </dt>
-                <dd>Capitalize the first character of the input string. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</dd>
-                
-                <dt>
-                    <a href="./string_center.html">Center</a>
-                </dt>
-                <dd>Center the input string by padding the sides with a single `character` until the specified `length` of the string has been reached. By default, if the `length` will be reached with an uneven number of padding, the extra padding will be applied to the right side. The side with extra padding can be controlled with the `padding` option.
-Behavior is undefined if the number of characters passed to the `character` argument is not 1.</dd>
-                
-                <dt>
-                    <a href="./string_char_length.html">Char_length</a>
-                </dt>
-                <dd>Return the number of characters in the input string.  The length includes trailing spaces.</dd>
-                
-                <dt>
-                    <a href="./string_concat.html">Concat</a>
-                </dt>
-                <dd>Concatenate strings.</dd>
-                
-                <dt>
-                    <a href="./string_concat_ws.html">Concat_ws</a>
-                </dt>
-                <dd>Concatenate strings together separated by a separator.</dd>
-                
-                <dt>
-                    <a href="./string_contains.html">Contains</a>
-                </dt>
-                <dd>Whether the `input` string contains the `substring`.
-The `case_sensitivity` option applies to the `substring` argument.</dd>
-                
-                <dt>
-                    <a href="./string_count_substring.html">Count_substring</a>
-                </dt>
-                <dd>Return the number of non-overlapping occurrences of a substring in an input string.
-The `case_sensitivity` option applies to the `substring` argument.</dd>
-                
-                <dt>
-                    <a href="./string_ends_with.html">Ends_with</a>
-                </dt>
-                <dd>Whether `input` string ends with the substring.
-The `case_sensitivity` option applies to the `substring` argument.</dd>
-                
-                <dt>
-                    <a href="./string_left.html">Left</a>
-                </dt>
-                <dd>Extract `count` characters starting from the left of the string.</dd>
-                
-                <dt>
-                    <a href="./string_like.html">Like</a>
-                </dt>
-                <dd>Are two strings like each other.
-The `case_sensitivity` option applies to the `match` argument.</dd>
-                
-                <dt>
-                    <a href="./string_lower.html">Lower</a>
-                </dt>
-                <dd>Transform the string to lower case characters. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</dd>
-                
-                <dt>
-                    <a href="./string_lpad.html">Lpad</a>
-                </dt>
-                <dd>Left-pad the input string with the string of 'characters' until the specified length of the string has been reached. If the input string is longer than 'length', remove characters from the right-side to shorten it to 'length' characters. If the string of 'characters' is longer than the remaining 'length' needed to be filled, only pad until 'length' has been reached. If 'characters' is not specified, the default value is a single space.</dd>
-                
-                <dt>
-                    <a href="./string_ltrim.html">Ltrim</a>
-                </dt>
-                <dd>Remove any occurrence of the characters from the left side of the string. If no characters are specified, spaces are removed.</dd>
-                
-                <dt>
-                    <a href="./string_octet_length.html">Octet_length</a>
-                </dt>
-                <dd>Return the number of bytes in the input string.</dd>
-                
-                <dt>
-                    <a href="./string_regexp_count_substring.html">Regexp_count_substring</a>
-                </dt>
-                <dd>Return the number of non-overlapping occurrences of a regular expression pattern in an input string. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html). The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer.
+                    <article class="container hidden mt-4" id="string">
+                        <div class="fixed-container">
+                            <h2 class="category-title">String Functions</h2>
+                        </div>
+                        <section>
+                            <table class="functions-table">
+                                <tbody>
+                                    
+                                        <tr onclick="window.location='./string_bit_length.html';" style="cursor: pointer;">
+                                            <td class="title-column">Bit_length</td>
+                                            <td>Return the number of bits in the input string.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_capitalize.html';" style="cursor: pointer;">
+                                            <td class="title-column">Capitalize</td>
+                                            <td>Capitalize the first character of the input string. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_center.html';" style="cursor: pointer;">
+                                            <td class="title-column">Center</td>
+                                            <td>Center the input string by padding the sides with a single `character` until the specified `length` of the string has been reached. By default, if the `length` will be reached with an uneven number of padding, the extra padding will be applied to the right side. The side with extra padding can be controlled with the `padding` option.
+Behavior is undefined if the number of characters passed to the `character` argument is not 1.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_char_length.html';" style="cursor: pointer;">
+                                            <td class="title-column">Char_length</td>
+                                            <td>Return the number of characters in the input string.  The length includes trailing spaces.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_concat.html';" style="cursor: pointer;">
+                                            <td class="title-column">Concat</td>
+                                            <td>Concatenate strings.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_concat_ws.html';" style="cursor: pointer;">
+                                            <td class="title-column">Concat_ws</td>
+                                            <td>Concatenate strings together separated by a separator.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_contains.html';" style="cursor: pointer;">
+                                            <td class="title-column">Contains</td>
+                                            <td>Whether the `input` string contains the `substring`.
+The `case_sensitivity` option applies to the `substring` argument.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_count_substring.html';" style="cursor: pointer;">
+                                            <td class="title-column">Count_substring</td>
+                                            <td>Return the number of non-overlapping occurrences of a substring in an input string.
+The `case_sensitivity` option applies to the `substring` argument.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_ends_with.html';" style="cursor: pointer;">
+                                            <td class="title-column">Ends_with</td>
+                                            <td>Whether `input` string ends with the substring.
+The `case_sensitivity` option applies to the `substring` argument.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_left.html';" style="cursor: pointer;">
+                                            <td class="title-column">Left</td>
+                                            <td>Extract `count` characters starting from the left of the string.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_like.html';" style="cursor: pointer;">
+                                            <td class="title-column">Like</td>
+                                            <td>Are two strings like each other.
+The `case_sensitivity` option applies to the `match` argument.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_lower.html';" style="cursor: pointer;">
+                                            <td class="title-column">Lower</td>
+                                            <td>Transform the string to lower case characters. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_lpad.html';" style="cursor: pointer;">
+                                            <td class="title-column">Lpad</td>
+                                            <td>Left-pad the input string with the string of 'characters' until the specified length of the string has been reached. If the input string is longer than 'length', remove characters from the right-side to shorten it to 'length' characters. If the string of 'characters' is longer than the remaining 'length' needed to be filled, only pad until 'length' has been reached. If 'characters' is not specified, the default value is a single space.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_ltrim.html';" style="cursor: pointer;">
+                                            <td class="title-column">Ltrim</td>
+                                            <td>Remove any occurrence of the characters from the left side of the string. If no characters are specified, spaces are removed.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_octet_length.html';" style="cursor: pointer;">
+                                            <td class="title-column">Octet_length</td>
+                                            <td>Return the number of bytes in the input string.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_regexp_count_substring.html';" style="cursor: pointer;">
+                                            <td class="title-column">Regexp_count_substring</td>
+                                            <td>Return the number of non-overlapping occurrences of a regular expression pattern in an input string. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html). The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer.
 The `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines. This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.
-Behavior is undefined if the regex fails to compile or the position value is out of range.</dd>
-                
-                <dt>
-                    <a href="./string_regexp_match_substring.html">Regexp_match_substring</a>
-                </dt>
-                <dd>Extract a substring that matches the given regular expression pattern. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html). The occurrence of the pattern to be extracted is specified using the `occurrence` argument. Specifying `1` means the first occurrence will be extracted, `2` means the second occurrence, and so on. The `occurrence` argument should be a positive non-zero integer. The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer.
+Behavior is undefined if the regex fails to compile or the position value is out of range.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_regexp_match_substring.html';" style="cursor: pointer;">
+                                            <td class="title-column">Regexp_match_substring</td>
+                                            <td>Extract a substring that matches the given regular expression pattern. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html). The occurrence of the pattern to be extracted is specified using the `occurrence` argument. Specifying `1` means the first occurrence will be extracted, `2` means the second occurrence, and so on. The `occurrence` argument should be a positive non-zero integer. The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer.
 The `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines. This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.
-Behavior is undefined if the regex fails to compile, the occurrence value is out of range, or the position value is out of range.</dd>
-                
-                <dt>
-                    <a href="./string_regexp_replace.html">Regexp_replace</a>
-                </dt>
-                <dd>Search a string for a substring that matches a given regular expression pattern and replace it with a replacement string. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github .io/icu/userguide/strings/regexp.html). The occurrence of the pattern to be replaced is specified using the `occurrence` argument. Specifying `1` means only the first occurrence will be replaced, `2` means the second occurrence, and so on. Specifying `0` means all occurrences will be replaced. The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer. The replacement string can capture groups using numbered backreferences.
+Behavior is undefined if the regex fails to compile, the occurrence value is out of range, or the position value is out of range.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_regexp_replace.html';" style="cursor: pointer;">
+                                            <td class="title-column">Regexp_replace</td>
+                                            <td>Search a string for a substring that matches a given regular expression pattern and replace it with a replacement string. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github .io/icu/userguide/strings/regexp.html). The occurrence of the pattern to be replaced is specified using the `occurrence` argument. Specifying `1` means only the first occurrence will be replaced, `2` means the second occurrence, and so on. Specifying `0` means all occurrences will be replaced. The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer. The replacement string can capture groups using numbered backreferences.
 The `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines.  This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.
-Behavior is undefined if the regex fails to compile, the replacement contains an illegal back-reference, the occurrence value is out of range, or the position value is out of range.</dd>
-                
-                <dt>
-                    <a href="./string_regexp_string_split.html">Regexp_string_split</a>
-                </dt>
-                <dd>Split a string into a list of strings, based on a regular expression pattern.  The substrings matched by the pattern will be used as the separators to split the input string and will not be included in the resulting list. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html).
-The `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines. This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.</dd>
-                
-                <dt>
-                    <a href="./string_regexp_strpos.html">Regexp_strpos</a>
-                </dt>
-                <dd>Return the position of an occurrence of the given regular expression pattern in a string. The first character of the string is at position 1. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html). The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer. Which occurrence to return the position of is specified using the `occurrence` argument. Specifying `1` means the position first occurrence will be returned, `2` means the position of the second occurrence, and so on. The `occurrence` argument should be a positive non-zero integer. If no occurrence is found, 0 is returned.
+Behavior is undefined if the regex fails to compile, the replacement contains an illegal back-reference, the occurrence value is out of range, or the position value is out of range.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_regexp_string_split.html';" style="cursor: pointer;">
+                                            <td class="title-column">Regexp_string_split</td>
+                                            <td>Split a string into a list of strings, based on a regular expression pattern.  The substrings matched by the pattern will be used as the separators to split the input string and will not be included in the resulting list. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html).
+The `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines. This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_regexp_strpos.html';" style="cursor: pointer;">
+                                            <td class="title-column">Regexp_strpos</td>
+                                            <td>Return the position of an occurrence of the given regular expression pattern in a string. The first character of the string is at position 1. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html). The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer. Which occurrence to return the position of is specified using the `occurrence` argument. Specifying `1` means the position first occurrence will be returned, `2` means the position of the second occurrence, and so on. The `occurrence` argument should be a positive non-zero integer. If no occurrence is found, 0 is returned.
 The `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines. This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.
-Behavior is undefined if the regex fails to compile, the occurrence value is out of range, or the position value is out of range.</dd>
+Behavior is undefined if the regex fails to compile, the occurrence value is out of range, or the position value is out of range.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_repeat.html';" style="cursor: pointer;">
+                                            <td class="title-column">Repeat</td>
+                                            <td>Repeat a string `count` number of times.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_replace.html';" style="cursor: pointer;">
+                                            <td class="title-column">Replace</td>
+                                            <td>Replace all occurrences of the substring with the replacement string.
+The `case_sensitivity` option applies to the `substring` argument.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_replace_slice.html';" style="cursor: pointer;">
+                                            <td class="title-column">Replace_slice</td>
+                                            <td>Replace a slice of the input string.  A specified 'length' of characters will be deleted from the input string beginning at the 'start' position and will be replaced by a new string.  A start value of 1 indicates the first character of the input string. If start is negative or zero, or greater than the length of the input string, a null string is returned. If 'length' is negative, a null string is returned.  If 'length' is zero, inserting of the new string occurs at the specified 'start' position and no characters are deleted. If 'length' is greater than the input string, deletion will occur up to the last character of the input string.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_reverse.html';" style="cursor: pointer;">
+                                            <td class="title-column">Reverse</td>
+                                            <td>Returns the string in reverse order.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_right.html';" style="cursor: pointer;">
+                                            <td class="title-column">Right</td>
+                                            <td>Extract `count` characters starting from the right of the string.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_rpad.html';" style="cursor: pointer;">
+                                            <td class="title-column">Rpad</td>
+                                            <td>Right-pad the input string with the string of 'characters' until the specified length of the string has been reached. If the input string is longer than 'length', remove characters from the left-side to shorten it to 'length' characters. If the string of 'characters' is longer than the remaining 'length' needed to be filled, only pad until 'length' has been reached. If 'characters' is not specified, the default value is a single space.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_rtrim.html';" style="cursor: pointer;">
+                                            <td class="title-column">Rtrim</td>
+                                            <td>Remove any occurrence of the characters from the right side of the string. If no characters are specified, spaces are removed.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_starts_with.html';" style="cursor: pointer;">
+                                            <td class="title-column">Starts_with</td>
+                                            <td>Whether the `input` string starts with the `substring`.
+The `case_sensitivity` option applies to the `substring` argument.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_string_split.html';" style="cursor: pointer;">
+                                            <td class="title-column">String_split</td>
+                                            <td>Split a string into a list of strings, based on a specified `separator` character.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_strpos.html';" style="cursor: pointer;">
+                                            <td class="title-column">Strpos</td>
+                                            <td>Return the position of the first occurrence of a string in another string. The first character of the string is at position 1. If no occurrence is found, 0 is returned.
+The `case_sensitivity` option applies to the `substring` argument.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_substring.html';" style="cursor: pointer;">
+                                            <td class="title-column">Substring</td>
+                                            <td>Extract a substring of a specified `length` starting from position `start`. A `start` value of 1 refers to the first characters of the string.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_swapcase.html';" style="cursor: pointer;">
+                                            <td class="title-column">Swapcase</td>
+                                            <td>Transform the string's lowercase characters to uppercase and uppercase characters to lowercase. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_title.html';" style="cursor: pointer;">
+                                            <td class="title-column">Title</td>
+                                            <td>Converts the input string into titlecase. Capitalize the first character of each word in the input string except for articles (a, an, the). Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_trim.html';" style="cursor: pointer;">
+                                            <td class="title-column">Trim</td>
+                                            <td>Remove any occurrence of the characters from the left and right sides of the string. If no characters are specified, spaces are removed.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./string_upper.html';" style="cursor: pointer;">
+                                            <td class="title-column">Upper</td>
+                                            <td>Transform the string to upper case characters. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</td>
+                                        </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </section>
+                    </article>
                 
-                <dt>
-                    <a href="./string_repeat.html">Repeat</a>
-                </dt>
-                <dd>Repeat a string `count` number of times.</dd>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./assets/index/script.js"></script>
+
+    <script>
+        var functionsData = [
+            
                 
-                <dt>
-                    <a href="./string_replace.html">Replace</a>
-                </dt>
-                <dd>Replace all occurrences of the substring with the replacement string.
-The `case_sensitivity` option applies to the `substring` argument.</dd>
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_abs",
+                        brief: "Calculate the absolute value of the argument.\\nInteger values allow the specification of overflow behavior to handle the unevenness of the twos complement, e.g. Int8 range [-128 : 127].\\n"
+                    },
                 
-                <dt>
-                    <a href="./string_replace_slice.html">Replace_slice</a>
-                </dt>
-                <dd>Replace a slice of the input string.  A specified 'length' of characters will be deleted from the input string beginning at the 'start' position and will be replaced by a new string.  A start value of 1 indicates the first character of the input string. If start is negative or zero, or greater than the length of the input string, a null string is returned. If 'length' is negative, a null string is returned.  If 'length' is zero, inserting of the new string occurs at the specified 'start' position and no characters are deleted. If 'length' is greater than the input string, deletion will occur up to the last character of the input string.</dd>
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_acos",
+                        brief: "Get the arccosine of a value in radians."
+                    },
                 
-                <dt>
-                    <a href="./string_reverse.html">Reverse</a>
-                </dt>
-                <dd>Returns the string in reverse order.</dd>
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_acosh",
+                        brief: "Get the hyperbolic arccosine of a value in radians."
+                    },
                 
-                <dt>
-                    <a href="./string_right.html">Right</a>
-                </dt>
-                <dd>Extract `count` characters starting from the right of the string.</dd>
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_add",
+                        brief: "Add two values."
+                    },
                 
-                <dt>
-                    <a href="./string_rpad.html">Rpad</a>
-                </dt>
-                <dd>Right-pad the input string with the string of 'characters' until the specified length of the string has been reached. If the input string is longer than 'length', remove characters from the left-side to shorten it to 'length' characters. If the string of 'characters' is longer than the remaining 'length' needed to be filled, only pad until 'length' has been reached. If 'characters' is not specified, the default value is a single space.</dd>
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_asin",
+                        brief: "Get the arcsine of a value in radians."
+                    },
                 
-                <dt>
-                    <a href="./string_rtrim.html">Rtrim</a>
-                </dt>
-                <dd>Remove any occurrence of the characters from the right side of the string. If no characters are specified, spaces are removed.</dd>
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_asinh",
+                        brief: "Get the hyperbolic arcsine of a value in radians."
+                    },
                 
-                <dt>
-                    <a href="./string_starts_with.html">Starts_with</a>
-                </dt>
-                <dd>Whether the `input` string starts with the `substring`.
-The `case_sensitivity` option applies to the `substring` argument.</dd>
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_atan",
+                        brief: "Get the arctangent of a value in radians."
+                    },
                 
-                <dt>
-                    <a href="./string_string_split.html">String_split</a>
-                </dt>
-                <dd>Split a string into a list of strings, based on a specified `separator` character.</dd>
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_atan2",
+                        brief: "Get the arctangent of values given as x/y pairs."
+                    },
                 
-                <dt>
-                    <a href="./string_strpos.html">Strpos</a>
-                </dt>
-                <dd>Return the position of the first occurrence of a string in another string. The first character of the string is at position 1. If no occurrence is found, 0 is returned.
-The `case_sensitivity` option applies to the `substring` argument.</dd>
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_atanh",
+                        brief: "Get the hyperbolic arctangent of a value in radians."
+                    },
                 
-                <dt>
-                    <a href="./string_substring.html">Substring</a>
-                </dt>
-                <dd>Extract a substring of a specified `length` starting from position `start`. A `start` value of 1 refers to the first characters of the string.</dd>
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_bitwise_and",
+                        brief: "Return the bitwise AND result for two integer inputs.\\n"
+                    },
                 
-                <dt>
-                    <a href="./string_swapcase.html">Swapcase</a>
-                </dt>
-                <dd>Transform the string's lowercase characters to uppercase and uppercase characters to lowercase. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</dd>
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_bitwise_not",
+                        brief: "Return the bitwise NOT result for one integer input.\\n"
+                    },
                 
-                <dt>
-                    <a href="./string_title.html">Title</a>
-                </dt>
-                <dd>Converts the input string into titlecase. Capitalize the first character of each word in the input string except for articles (a, an, the). Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</dd>
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_bitwise_or",
+                        brief: "Return the bitwise OR result for two given integer inputs.\\n"
+                    },
                 
-                <dt>
-                    <a href="./string_trim.html">Trim</a>
-                </dt>
-                <dd>Remove any occurrence of the characters from the left and right sides of the string. If no characters are specified, spaces are removed.</dd>
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_bitwise_xor",
+                        brief: "Return the bitwise XOR result for two integer inputs.\\n"
+                    },
                 
-                <dt>
-                    <a href="./string_upper.html">Upper</a>
-                </dt>
-                <dd>Transform the string to upper case characters. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</dd>
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_cos",
+                        brief: "Get the cosine of a value in radians."
+                    },
                 
-            </dl>
-        </section>
-    </article>
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_cosh",
+                        brief: "Get the hyperbolic cosine of a value in radians."
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_divide",
+                        brief: "Divide x by y. In the case of integer division, partial values are truncated (i.e. rounded towards 0). The `on_division_by_zero` option governs behavior in cases where y is 0 and x is not 0. `LIMIT` means positive or negative infinity (depending on the sign of x and y). If x and y are both 0 or both +/-infinity, behavior will be governed by `on_domain_error`.\\n"
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_exp",
+                        brief: "The mathematical constant e, raised to the power of the value."
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_factorial",
+                        brief: "Return the factorial of a given integer input.\\nThe factorial of 0! is 1 by convention.\\nNegative inputs will raise an error.\\n"
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_modulus",
+                        brief: "Get the remainder when dividing one value by another."
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_multiply",
+                        brief: "Multiply two values."
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_negate",
+                        brief: "Negation of the value"
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_power",
+                        brief: "Take the power with x as the base and y as exponent."
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_sign",
+                        brief: "Return the signedness of the argument.\\nInteger values return signedness with the same type as the input. Possible return values are [-1, 0, 1]\\nFloating point values return signedness with the same type as the input. Possible return values are [-1.0, -0.0, 0.0, 1.0, NaN]\\n"
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_sin",
+                        brief: "Get the sine of a value in radians."
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_sinh",
+                        brief: "Get the hyperbolic sine of a value in radians."
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_sqrt",
+                        brief: "Square root of the value"
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_subtract",
+                        brief: "Subtract one value from another."
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_tan",
+                        brief: "Get the tangent of a value in radians."
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_tanh",
+                        brief: "Get the hyperbolic tangent of a value in radians."
+                    },
+                
+            
+                
+                    {
+                        category: "Boolean",
+                        name: "Boolean_and",
+                        brief: "The boolean `and` using Kleene logic.\\nThis function behaves as follows with nulls:\\n\\n    true and null = null\\n\\n    null and true = null\\n\\n    false and null = false\\n\\n    null and false = false\\n\\n    null and null = null\\n\\nIn other words, in this context a null value really means \\\"unknown\\\", and an unknown value `and` false is always false.\\nBehavior for 0 or 1 inputs is as follows:\\n  and() -\u003e true\\n  and(x) -\u003e x\\n"
+                    },
+                
+                    {
+                        category: "Boolean",
+                        name: "Boolean_and_not",
+                        brief: "The boolean `and` of one value and the negation of the other using Kleene logic.\\nThis function behaves as follows with nulls:\\n\\n    true and not null = null\\n\\n    null and not false = null\\n\\n    false and not null = false\\n\\n    null and not true = false\\n\\n    null and not null = null\\n\\nIn other words, in this context a null value really means \\\"unknown\\\", and an unknown value `and not` true is always false, as is false `and not` an unknown value.\\n"
+                    },
+                
+                    {
+                        category: "Boolean",
+                        name: "Boolean_not",
+                        brief: "The `not` of a boolean value.\\nWhen a null is input, a null is output.\\n"
+                    },
+                
+                    {
+                        category: "Boolean",
+                        name: "Boolean_or",
+                        brief: "The boolean `or` using Kleene logic.\\nThis function behaves as follows with nulls:\\n\\n    true or null = true\\n\\n    null or true = true\\n\\n    false or null = null\\n\\n    null or false = null\\n\\n    null or null = null\\n\\nIn other words, in this context a null value really means \\\"unknown\\\", and an unknown value `or` true is always true.\\nBehavior for 0 or 1 inputs is as follows:\\n  or() -\u003e false\\n  or(x) -\u003e x\\n"
+                    },
+                
+                    {
+                        category: "Boolean",
+                        name: "Boolean_xor",
+                        brief: "The boolean `xor` of two values using Kleene logic.\\nWhen a null is encountered in either input, a null is output.\\n"
+                    },
+                
+            
+                
+                    {
+                        category: "Comparison",
+                        name: "Comparison_between",
+                        brief: "Whether the `expression` is greater than or equal to `low` and less than or equal to `high`.\\n`expression` BETWEEN `low` AND `high`\\nIf `low`, `high`, or `expression` are `null`, `null` is returned."
+                    },
+                
+                    {
+                        category: "Comparison",
+                        name: "Comparison_coalesce",
+                        brief: "Evaluate arguments from left to right and return the first argument that is not null. Once a non-null argument is found, the remaining arguments are not evaluated.\\nIf all arguments are null, return null."
+                    },
+                
+                    {
+                        category: "Comparison",
+                        name: "Comparison_equal",
+                        brief: "Whether two values are equal.\\n`equal(x, y) := (x == y)`\\nIf either/both of `x` and `y` are `null`, `null` is returned.\\n"
+                    },
+                
+                    {
+                        category: "Comparison",
+                        name: "Comparison_gt",
+                        brief: "Greater than.\\ngt(x, y) := (x \u003e y)\\nIf either/both of `x` and `y` are `null`, `null` is returned.\\n"
+                    },
+                
+                    {
+                        category: "Comparison",
+                        name: "Comparison_gte",
+                        brief: "Greater than or equal to.\\ngte(x, y) := (x \u003e= y)\\nIf either/both of `x` and `y` are `null`, `null` is returned.\\n"
+                    },
+                
+                    {
+                        category: "Comparison",
+                        name: "Comparison_is_finite",
+                        brief: "Whether a value is finite (neither infinite nor NaN).\\nIf `x` is `null`, `null` is returned.\\n"
+                    },
+                
+                    {
+                        category: "Comparison",
+                        name: "Comparison_is_infinite",
+                        brief: "Whether a value is infinite.\\nIf `x` is `null`, `null` is returned.\\n"
+                    },
+                
+                    {
+                        category: "Comparison",
+                        name: "Comparison_is_nan",
+                        brief: "Whether a value is not a number.\\nIf `x` is `null`, `null` is returned.\\n"
+                    },
+                
+                    {
+                        category: "Comparison",
+                        name: "Comparison_is_not_distinct_from",
+                        brief: "Whether two values are equal.\\nThis function treats `null` values as comparable, so\\n`is_not_distinct_from(null, null) == True`\\nThis is in contrast to `equal`, in which `null` values do not compare.\\n"
+                    },
+                
+                    {
+                        category: "Comparison",
+                        name: "Comparison_is_not_null",
+                        brief: "Whether a value is not null. NaN is not null."
+                    },
+                
+                    {
+                        category: "Comparison",
+                        name: "Comparison_is_null",
+                        brief: "Whether a value is null. NaN is not null."
+                    },
+                
+                    {
+                        category: "Comparison",
+                        name: "Comparison_lt",
+                        brief: "Less than.\\nlt(x, y) := (x \u003c y)\\nIf either/both of `x` and `y` are `null`, `null` is returned.\\n"
+                    },
+                
+                    {
+                        category: "Comparison",
+                        name: "Comparison_lte",
+                        brief: "Less than or equal to.\\nlte(x, y) := (x \u003c= y)\\nIf either/both of `x` and `y` are `null`, `null` is returned.\\n"
+                    },
+                
+                    {
+                        category: "Comparison",
+                        name: "Comparison_not_equal",
+                        brief: "Whether two values are not_equal.\\n`not_equal(x, y) := (x != y)`\\nIf either/both of `x` and `y` are `null`, `null` is returned.\\n"
+                    },
+                
+                    {
+                        category: "Comparison",
+                        name: "Comparison_nullif",
+                        brief: "If two values are equal, return null. Otherwise, return the first value."
+                    },
+                
+            
+                
+                    {
+                        category: "Datetime",
+                        name: "Datetime_add",
+                        brief: "Add an interval to a date/time type.\\nTimezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: \\\"Pacific/Marquesas\\\", \\\"Etc/GMT+1\\\". If timezone is invalid an error is thrown."
+                    },
+                
+                    {
+                        category: "Datetime",
+                        name: "Datetime_add_intervals",
+                        brief: "Add two intervals together."
+                    },
+                
+                    {
+                        category: "Datetime",
+                        name: "Datetime_assume_timezone",
+                        brief: "Convert local timestamp to UTC-relative timestamp_tz using given local time\u0027s timezone.\\nTimezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: \\\"Pacific/Marquesas\\\", \\\"Etc/GMT+1\\\". If timezone is invalid an error is thrown."
+                    },
+                
+                    {
+                        category: "Datetime",
+                        name: "Datetime_extract",
+                        brief: "Extract portion of a date/time value. * YEAR Return the year of the value. * ISO_YEAR Return the ISO 8601 week-numbering year. First week of an ISO year has the majority (4 or more) of its\\n  days in January.\\n* US_YEAR Return US epidemiological year. First week of US epidemiological year has the majority (4 or more) of\\n  its days in January. Last week of US epidemiological year has the year\u0027s last Wednesday in it.\\n  US epidemiological week starts on Sunday.\\n* QUARTER Return the quarter from the value (1-4). * MONTH Return the month from value (1-12). * DAY Return the day of the month (1-31). * DAY_OF_YEAR Return the day of year (1 to 366). January 1st maps to day number 1, February 1st to 32, etc. * MONDAY_DAY_OF_WEEK Return the day of week from Monday (1) to Sunday (7). * SUNDAY_DAY_OF_WEEK Return the day of week from Sunday (1) to Saturday (7). * MONDAY_WEEK Return week of year number (1-53). First week starts on first Monday of January. * SUNDAY_WEEK Return week of year number (1-53). First week starts on first Sunday of January. * ISO_WEEK Return ISO week of year number (1-53). First ISO calendar week has the majority (4 or more) of its\\n  days in January. ISO week starts on Monday.\\n* US_WEEK Return ISO-like week of year number (1-53). First US calendar week has the majority (4 or more) of its\\n  days in January. US week starts on Sunday.\\n* HOUR Return the hour (0-23). * MINUTE Return the minute (0-59). * SECOND Return the second (0-59). * MILLISECOND Return number of milliseconds since the last full second. * MICROSECOND Return number of microseconds since the last full millisecond. * SUBSECOND Return number of microseconds since the last full second of the given timestamp. * UNIX_TIME Return number of seconds that have elapsed since 1970-01-01 00:00:00 UTC, ignoring leap seconds. * TIMEZONE_OFFSET Return number of seconds of timezone offset to UTC.\\nTimezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: \\\"Pacific/Marquesas\\\", \\\"Etc/GMT+1\\\". If timezone is invalid an error is thrown."
+                    },
+                
+                    {
+                        category: "Datetime",
+                        name: "Datetime_extract_boolean",
+                        brief: "Extract boolean values of a date/time value. * IS_LEAP_YEAR Return true if year of the given value is a leap year and false otherwise. * IS_DST Return true if DST (Daylight Savings Time) is observed at the given value\\n  in the given timezone.\\n\\nTimezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: \\\"Pacific/Marquesas\\\", \\\"Etc/GMT+1\\\". If timezone is invalid an error is thrown."
+                    },
+                
+                    {
+                        category: "Datetime",
+                        name: "Datetime_gt",
+                        brief: "greater than"
+                    },
+                
+                    {
+                        category: "Datetime",
+                        name: "Datetime_gte",
+                        brief: "greater than or equal to"
+                    },
+                
+                    {
+                        category: "Datetime",
+                        name: "Datetime_local_timestamp",
+                        brief: "Convert UTC-relative timestamp_tz to local timestamp using given local time\u0027s timezone.\\nTimezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: \\\"Pacific/Marquesas\\\", \\\"Etc/GMT+1\\\". If timezone is invalid an error is thrown."
+                    },
+                
+                    {
+                        category: "Datetime",
+                        name: "Datetime_lt",
+                        brief: "less than"
+                    },
+                
+                    {
+                        category: "Datetime",
+                        name: "Datetime_lte",
+                        brief: "less than or equal to"
+                    },
+                
+                    {
+                        category: "Datetime",
+                        name: "Datetime_round_calendar",
+                        brief: "Round a given timestamp/date/time to a multiple of a time unit. If the given timestamp is not already an exact multiple from the last origin unit in the given timezone, the resulting point is chosen as one of the two nearest multiples. Which of these is chosen is governed by rounding: FLOOR means to use the earlier one, CEIL means to use the later one, ROUND_TIE_DOWN means to choose the nearest and tie to the earlier one if equidistant, ROUND_TIE_UP means to choose the nearest and tie to the later one if equidistant.\\nTimezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: \\\"Pacific/Marquesas\\\", \\\"Etc/GMT+1\\\". If timezone is invalid an error is thrown."
+                    },
+                
+                    {
+                        category: "Datetime",
+                        name: "Datetime_round_temporal",
+                        brief: "Round a given timestamp/date/time to a multiple of a time unit. If the given timestamp is not already an exact multiple from the origin in the given timezone, the resulting point is chosen as one of the two nearest multiples. Which of these is chosen is governed by rounding: FLOOR means to use the earlier one, CEIL means to use the later one, ROUND_TIE_DOWN means to choose the nearest and tie to the earlier one if equidistant, ROUND_TIE_UP means to choose the nearest and tie to the later one if equidistant.\\nTimezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: \\\"Pacific/Marquesas\\\", \\\"Etc/GMT+1\\\". If timezone is invalid an error is thrown."
+                    },
+                
+                    {
+                        category: "Datetime",
+                        name: "Datetime_strftime",
+                        brief: "Convert timestamp/date/time to string using provided format, see https://man7.org/linux/man-pages/man3/strftime.3.html for reference.\\nTimezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: \\\"Pacific/Marquesas\\\", \\\"Etc/GMT+1\\\". If timezone is invalid an error is thrown."
+                    },
+                
+                    {
+                        category: "Datetime",
+                        name: "Datetime_strptime",
+                        brief: "Parse string into timestamp/date/time using provided format, see https://man7.org/linux/man-pages/man3/strptime.3.html for reference. If timezone is present in timestamp and provided as parameter an error is thrown.\\nTimezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: \\\"Pacific/Marquesas\\\", \\\"Etc/GMT+1\\\". If timezone is supplied as parameter and present in the parsed string the parsed timezone is used. If parameter supplied timezone is invalid an error is thrown."
+                    },
+                
+                    {
+                        category: "Datetime",
+                        name: "Datetime_subtract",
+                        brief: "Subtract an interval from a date/time type.\\nTimezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: \\\"Pacific/Marquesas\\\", \\\"Etc/GMT+1\\\". If timezone is invalid an error is thrown."
+                    },
+                
+            
+                
+                    {
+                        category: "Logarithmic",
+                        name: "Logarithmic_ln",
+                        brief: "Natural logarithm of the value"
+                    },
+                
+                    {
+                        category: "Logarithmic",
+                        name: "Logarithmic_log10",
+                        brief: "Logarithm to base 10 of the value"
+                    },
+                
+                    {
+                        category: "Logarithmic",
+                        name: "Logarithmic_log1p",
+                        brief: "Natural logarithm (base e) of 1 + x\\nlog1p(x) =\u003e log(1+x)\\n"
+                    },
+                
+                    {
+                        category: "Logarithmic",
+                        name: "Logarithmic_log2",
+                        brief: "Logarithm to base 2 of the value"
+                    },
+                
+                    {
+                        category: "Logarithmic",
+                        name: "Logarithmic_logb",
+                        brief: "Logarithm of the value with the given base\\nlogb(x, b) =\u003e log_{b} (x)\\n"
+                    },
+                
+            
+                
+                    {
+                        category: "Rounding",
+                        name: "Rounding_ceil",
+                        brief: "Rounding to the ceiling of the value `x`.\\n"
+                    },
+                
+                    {
+                        category: "Rounding",
+                        name: "Rounding_floor",
+                        brief: "Rounding to the floor of the value `x`.\\n"
+                    },
+                
+                    {
+                        category: "Rounding",
+                        name: "Rounding_round",
+                        brief: "Rounding the value `x` to `s` decimal places.\\n"
+                    },
+                
+            
+                
+                    {
+                        category: "String",
+                        name: "String_bit_length",
+                        brief: "Return the number of bits in the input string."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_capitalize",
+                        brief: "Capitalize the first character of the input string. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_center",
+                        brief: "Center the input string by padding the sides with a single `character` until the specified `length` of the string has been reached. By default, if the `length` will be reached with an uneven number of padding, the extra padding will be applied to the right side. The side with extra padding can be controlled with the `padding` option.\\nBehavior is undefined if the number of characters passed to the `character` argument is not 1."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_char_length",
+                        brief: "Return the number of characters in the input string.  The length includes trailing spaces."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_concat",
+                        brief: "Concatenate strings."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_concat_ws",
+                        brief: "Concatenate strings together separated by a separator."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_contains",
+                        brief: "Whether the `input` string contains the `substring`.\\nThe `case_sensitivity` option applies to the `substring` argument."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_count_substring",
+                        brief: "Return the number of non-overlapping occurrences of a substring in an input string.\\nThe `case_sensitivity` option applies to the `substring` argument."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_ends_with",
+                        brief: "Whether `input` string ends with the substring.\\nThe `case_sensitivity` option applies to the `substring` argument."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_left",
+                        brief: "Extract `count` characters starting from the left of the string."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_like",
+                        brief: "Are two strings like each other.\\nThe `case_sensitivity` option applies to the `match` argument."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_lower",
+                        brief: "Transform the string to lower case characters. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_lpad",
+                        brief: "Left-pad the input string with the string of \u0027characters\u0027 until the specified length of the string has been reached. If the input string is longer than \u0027length\u0027, remove characters from the right-side to shorten it to \u0027length\u0027 characters. If the string of \u0027characters\u0027 is longer than the remaining \u0027length\u0027 needed to be filled, only pad until \u0027length\u0027 has been reached. If \u0027characters\u0027 is not specified, the default value is a single space."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_ltrim",
+                        brief: "Remove any occurrence of the characters from the left side of the string. If no characters are specified, spaces are removed."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_octet_length",
+                        brief: "Return the number of bytes in the input string."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_regexp_count_substring",
+                        brief: "Return the number of non-overlapping occurrences of a regular expression pattern in an input string. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html). The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer.\\nThe `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines. This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.\\nBehavior is undefined if the regex fails to compile or the position value is out of range."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_regexp_match_substring",
+                        brief: "Extract a substring that matches the given regular expression pattern. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html). The occurrence of the pattern to be extracted is specified using the `occurrence` argument. Specifying `1` means the first occurrence will be extracted, `2` means the second occurrence, and so on. The `occurrence` argument should be a positive non-zero integer. The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer.\\nThe `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines. This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.\\nBehavior is undefined if the regex fails to compile, the occurrence value is out of range, or the position value is out of range."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_regexp_replace",
+                        brief: "Search a string for a substring that matches a given regular expression pattern and replace it with a replacement string. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github .io/icu/userguide/strings/regexp.html). The occurrence of the pattern to be replaced is specified using the `occurrence` argument. Specifying `1` means only the first occurrence will be replaced, `2` means the second occurrence, and so on. Specifying `0` means all occurrences will be replaced. The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer. The replacement string can capture groups using numbered backreferences.\\nThe `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines.  This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.\\nBehavior is undefined if the regex fails to compile, the replacement contains an illegal back-reference, the occurrence value is out of range, or the position value is out of range."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_regexp_string_split",
+                        brief: "Split a string into a list of strings, based on a regular expression pattern.  The substrings matched by the pattern will be used as the separators to split the input string and will not be included in the resulting list. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html).\\nThe `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines. This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_regexp_strpos",
+                        brief: "Return the position of an occurrence of the given regular expression pattern in a string. The first character of the string is at position 1. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html). The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer. Which occurrence to return the position of is specified using the `occurrence` argument. Specifying `1` means the position first occurrence will be returned, `2` means the position of the second occurrence, and so on. The `occurrence` argument should be a positive non-zero integer. If no occurrence is found, 0 is returned.\\nThe `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines. This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.\\nBehavior is undefined if the regex fails to compile, the occurrence value is out of range, or the position value is out of range."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_repeat",
+                        brief: "Repeat a string `count` number of times."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_replace",
+                        brief: "Replace all occurrences of the substring with the replacement string.\\nThe `case_sensitivity` option applies to the `substring` argument."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_replace_slice",
+                        brief: "Replace a slice of the input string.  A specified \u0027length\u0027 of characters will be deleted from the input string beginning at the \u0027start\u0027 position and will be replaced by a new string.  A start value of 1 indicates the first character of the input string. If start is negative or zero, or greater than the length of the input string, a null string is returned. If \u0027length\u0027 is negative, a null string is returned.  If \u0027length\u0027 is zero, inserting of the new string occurs at the specified \u0027start\u0027 position and no characters are deleted. If \u0027length\u0027 is greater than the input string, deletion will occur up to the last character of the input string."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_reverse",
+                        brief: "Returns the string in reverse order."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_right",
+                        brief: "Extract `count` characters starting from the right of the string."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_rpad",
+                        brief: "Right-pad the input string with the string of \u0027characters\u0027 until the specified length of the string has been reached. If the input string is longer than \u0027length\u0027, remove characters from the left-side to shorten it to \u0027length\u0027 characters. If the string of \u0027characters\u0027 is longer than the remaining \u0027length\u0027 needed to be filled, only pad until \u0027length\u0027 has been reached. If \u0027characters\u0027 is not specified, the default value is a single space."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_rtrim",
+                        brief: "Remove any occurrence of the characters from the right side of the string. If no characters are specified, spaces are removed."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_starts_with",
+                        brief: "Whether the `input` string starts with the `substring`.\\nThe `case_sensitivity` option applies to the `substring` argument."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_string_split",
+                        brief: "Split a string into a list of strings, based on a specified `separator` character."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_strpos",
+                        brief: "Return the position of the first occurrence of a string in another string. The first character of the string is at position 1. If no occurrence is found, 0 is returned.\\nThe `case_sensitivity` option applies to the `substring` argument."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_substring",
+                        brief: "Extract a substring of a specified `length` starting from position `start`. A `start` value of 1 refers to the first characters of the string."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_swapcase",
+                        brief: "Transform the string\u0027s lowercase characters to uppercase and uppercase characters to lowercase. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_title",
+                        brief: "Converts the input string into titlecase. Capitalize the first character of each word in the input string except for articles (a, an, the). Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_trim",
+                        brief: "Remove any occurrence of the characters from the left and right sides of the string. If no characters are specified, spaces are removed."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_upper",
+                        brief: "Transform the string to upper case characters. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/."
+                    },
+                
+            
+        ];
+    </script>
+
 </body>
 </html>
