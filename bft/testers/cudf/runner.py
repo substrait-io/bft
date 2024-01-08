@@ -27,8 +27,6 @@ def literal_to_str(lit: CaseLiteral):
         return "Infinity"
     elif lit == float("-inf"):
         return "-Infinity"
-    elif hasattr(lit, "value"):
-        return str(lit.value)
     else:
         return lit
 
