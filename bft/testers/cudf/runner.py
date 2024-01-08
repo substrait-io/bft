@@ -5,24 +5,6 @@ from bft.cases.runner import SqlCaseResult, SqlCaseRunner
 from bft.cases.types import Case, CaseLiteral
 from bft.dialects.types import SqlMapping
 
-unary_ops = {
-    "sqrt",
-    "exp",
-    "sin",
-    "cos",
-    "tan",
-    "cosh",
-    "sinh",
-    "tanh",
-    "arccos",
-    "arcsin",
-    "arctan",
-    "arccosh",
-    "arcsinh",
-    "arctanh",
-    "~",
-    "log",
-}
 
 type_map = {
     "i8": cudf.dtype("int8"),
@@ -69,21 +51,18 @@ class CudfRunner(SqlCaseRunner):
         if mapping.infix:
             raise Exception("Cudf runner does not understand infix mappings")
 
-        if mapping.local_name in unary_ops:
-            gdf = cudf.DataFrame({"a": arg_values}, dtype=dtype)
-            result = gdf.eval(f"{mapping.local_name}(a)")
-        else:
-            fn = getattr(arg_vectors[0], mapping.local_name)
-
-            try:
-                if len(arg_vectors) == 1:
-                    result = fn()
-                elif len(arg_vectors) == 2:
-                    result = fn(arg_vectors[1])
-                else:
-                    result = fn(arg_vectors[1:])
-            except RuntimeError as err:
-                return SqlCaseResult.error(str(err))
+        try:
+            if len(arg_vectors) == 1:
+                gdf = cudf.DataFrame({"a": arg_values}, dtype=dtype)
+                result = gdf.eval(f"{mapping.local_name}(a)")
+            elif len(arg_vectors) == 2:
+                fn = getattr(arg_vectors[0], mapping.local_name)
+                result = fn(arg_vectors[1])
+            else:
+                fn = getattr(arg_vectors[0], mapping.local_name)
+                result = fn(arg_vectors[1:])
+        except RuntimeError as err:
+            return SqlCaseResult.error(str(err))
 
         if result.empty and case.result.value is None:
             return SqlCaseResult.success()
