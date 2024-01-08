@@ -187,7 +187,16 @@
             
             <dl class="dialect-definition" id="dialect-cudf">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
+                        <dt>on_division_by_zero</dt>
+                        <dd>LIMIT</dd>
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
                 
             </dl>
             
@@ -334,11 +343,11 @@
                         <th>on_division_by_zero</th>
                         
                         
-                        <th>arg1 (i8)</th>
+                        <th>arg1 (i64)</th>
                         
-                        <th>arg2 (i8)</th>
+                        <th>arg2 (i64)</th>
                         
-                        <th>result (i8)</th>
+                        <th>result (fp64)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -371,6 +380,23 @@
                         
                         
                         <td>ERROR</td>
+                        
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>LIMIT</td>
+                        
+                        
+                        <td>5</td>
+                        
+                        <td>0</td>
+                        
+                        
+                        <td>inf</td>
                         
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
@@ -513,6 +539,10 @@
                 
                 
                 
+                  "The dialect duckdb expects on_division_by_zero=NAN but on_division_by_zero=LIMIT was requested",
+                
+                
+                
                   null,
                 
                 
@@ -574,6 +604,10 @@
                 
                 
                 
+                  "The dialect velox_presto expects on_division_by_zero=NAN but on_division_by_zero=LIMIT was requested",
+                
+                
+                
                   null,
                 
                 
@@ -611,59 +645,63 @@
             examples: [
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  "The dialect cudf expects on_division_by_zero=LIMIT but on_division_by_zero=NAN was requested",
                 
                 
                 
-                  "There is no dialect information for this function",
+                  "The dialect cudf expects on_division_by_zero=LIMIT but on_division_by_zero=ERROR was requested",
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
                 
                 
             ],
             kernels: [
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
             ]
         },
@@ -693,6 +731,10 @@
                 
                 
                   "The dialect sqlite expects on_division_by_zero=NAN but on_division_by_zero=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects on_division_by_zero=NAN but on_division_by_zero=LIMIT was requested",
                 
                 
                 
@@ -757,6 +799,10 @@
                 
                 
                 
+                  "The dialect datafusion expects on_division_by_zero=ERROR but on_division_by_zero=LIMIT was requested",
+                
+                
+                
                   null,
                 
                 
@@ -815,6 +861,10 @@
                 
                 
                   "The dialect postgres does not support the kernel divide(i8, i8) -> error",
+                
+                
+                
+                  "The dialect postgres expects on_division_by_zero=NAN but on_division_by_zero=LIMIT was requested",
                 
                 
                 
