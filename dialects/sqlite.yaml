@@ -38,6 +38,7 @@ scalar_functions:
     local_name: "%"
     infix: True
     required_options:
+      on_division_by_zero: NONE
       overflow: SILENT
   - name: power
   - name: sqrt
