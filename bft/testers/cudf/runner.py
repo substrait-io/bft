@@ -95,20 +95,17 @@ class CudfRunner(SqlCaseRunner):
         if case.result == "undefined":
             return SqlCaseResult.success()
         elif case.result == "error":
-            if str(result) == "nan":
-                return SqlCaseResult.success()
-            else:
-                return SqlCaseResult.unexpected_pass(str(result))
+            return SqlCaseResult.unexpected_pass(str(result))
         elif case.result == "nan":
             if math.isnan(result):
                 return SqlCaseResult.success()
         else:
             if case.result.value == result:
                 return SqlCaseResult.success()
+            elif case.result.value == str(result):
+                return SqlCaseResult.success()
             elif case.result.value is None:
                 if str(result) == "<NA>":
-                    return SqlCaseResult.success()
-                elif str(result) == "nan":
                     return SqlCaseResult.success()
                 elif result is None:
                     return SqlCaseResult.success()

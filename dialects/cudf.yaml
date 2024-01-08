@@ -22,6 +22,7 @@ scalar_functions:
   - name: modulus
     local_name: mod
     required_options:
+      on_division_by_zero: NAN
       overflow: SILENT
       rounding: TIE_TO_EVEN
   - name: power
