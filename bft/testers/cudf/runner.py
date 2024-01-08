@@ -22,15 +22,6 @@ def type_to_cudf_dtype(type: str):
     return type_map[type]
 
 
-def literal_to_str(lit: CaseLiteral):
-    if lit == float("inf"):
-        return "Infinity"
-    elif lit == float("-inf"):
-        return "-Infinity"
-    else:
-        return lit
-
-
 class CudfRunner(SqlCaseRunner):
     def __init__(self, dialect):
         super().__init__(dialect)
@@ -88,7 +79,5 @@ class CudfRunner(SqlCaseRunner):
                     return SqlCaseResult.success()
                 else:
                     return SqlCaseResult.mismatch(str(result))
-            elif case.result.value == literal_to_str(result):
-                return SqlCaseResult.success()
             else:
                 return SqlCaseResult.mismatch(str(result))

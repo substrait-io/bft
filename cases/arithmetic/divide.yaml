@@ -72,7 +72,7 @@ cases:
       on_division_by_zero: LIMIT
     result:
       value: Infinity
-      type: i8
+      type: fp64
   - group:
       id: overflow
       description: Examples demonstrating overflow behavior
