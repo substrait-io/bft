@@ -85,10 +85,6 @@ scalar_functions:
           - i8
         result: i8
       - args:
-          - i8
-          - i8
-        result: fp64
-      - args:
           - i16
           - i16
         result: i16

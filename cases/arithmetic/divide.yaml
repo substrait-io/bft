@@ -65,9 +65,9 @@ cases:
   - group: division_by_zero
     args:
       - value: 5
-        type: i8
+        type: i64
       - value: 0
-        type: i8
+        type: i64
     options:
       on_division_by_zero: LIMIT
     result:
