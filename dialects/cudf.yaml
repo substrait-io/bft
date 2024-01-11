@@ -75,6 +75,33 @@ scalar_functions:
     unsupported: true
   - name: bitwise_xor
     unsupported: true
+  - name: lt
+  - name: lte
+    local_name: "le"
+  - name: gt
+  - name: gte
+    local_name: "ge"
+  - name: equal
+    local_name: "eq"
+  - name: not_equal
+    local_name: "ne"
+  - name: is_not_distinct_from
+    unsupported: True
+  - name: is_null
+    local_name: "isnull"
+  - name: is_not_null
+    local_name: "notnull"
+  - name: nullif
+    unsupported: True
+  - name: coalesce
+    unsupported: True
+  - name: is_finite
+    unsupported: True
+  - name: is_infinite
+    unsupported: True
+  - name: is_nan
+    local_name: "isna"
+  - name: between
   - name: ln
     local_name: log
     required_options:
