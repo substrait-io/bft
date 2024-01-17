@@ -49,6 +49,8 @@ class CudfRunner(SqlCaseRunner):
 
         try:
             if len(arg_vectors) == 1:
+                # Some functions that only take a single arg are able to be executed against
+                # both a Series and a Dataframe whereas others are only able to be executed against a Dataframe.
                 try:
                     gdf = cudf.DataFrame({"a": arg_values}, dtype=dtype)
                     result = gdf.eval(f"{mapping.local_name}(a)")
@@ -63,7 +65,7 @@ class CudfRunner(SqlCaseRunner):
                 try:
                     result = fn(arg_vectors[1:])
                 except TypeError:
-                    result = fn(literal_to_str(arg_vectors[1]), literal_to_str(arg_vectors[2]))
+                    result = fn(arg_values[1], arg_values[2])
         except RuntimeError as err:
             return SqlCaseResult.error(str(err))
 
