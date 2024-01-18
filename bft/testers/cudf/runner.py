@@ -23,12 +23,6 @@ def type_to_cudf_dtype(type: str):
     return type_map[type]
 
 
-def literal_to_str(lit):
-    if lit.empty:
-        return None
-    return lit
-
-
 class CudfRunner(SqlCaseRunner):
     def __init__(self, dialect):
         super().__init__(dialect)
