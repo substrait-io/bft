@@ -13,6 +13,7 @@ type_map = {
     "i64": cudf.dtype("int64"),
     "fp32": cudf.dtype("float32"),
     "fp64": cudf.dtype("float64"),
+    "boolean": cudf.dtype("bool"),
 }
 
 
@@ -42,18 +43,27 @@ class CudfRunner(SqlCaseRunner):
 
         try:
             if len(arg_vectors) == 1:
-                gdf = cudf.DataFrame({"a": arg_values}, dtype=dtype)
-                result = gdf.eval(f"{mapping.local_name}(a)")
+                # Some functions that only take a single arg are able to be executed against
+                # both a Series and a Dataframe whereas others are only able to be executed against a Dataframe.
+                try:
+                    gdf = cudf.DataFrame({"a": arg_values}, dtype=dtype)
+                    result = gdf.eval(f"{mapping.local_name}(a)")
+                except ValueError:
+                    fn = getattr(arg_vectors[0], mapping.local_name)
+                    result = fn()
             elif len(arg_vectors) == 2:
                 fn = getattr(arg_vectors[0], mapping.local_name)
                 result = fn(arg_vectors[1])
             else:
                 fn = getattr(arg_vectors[0], mapping.local_name)
-                result = fn(arg_vectors[1:])
+                try:
+                    result = fn(arg_vectors[1:])
+                except TypeError:
+                    result = fn(arg_values[1], arg_values[2])
         except RuntimeError as err:
             return SqlCaseResult.error(str(err))
 
-        if result.empty and case.result.value is None:
+        if result.empty and (case.result.value is None or case.result.value is False):
             return SqlCaseResult.success()
         elif len(result) != 1:
             raise Exception("Scalar function with one row output more than one row")

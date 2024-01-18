@@ -23,7 +23,6 @@ cases:
     result:
       value: true
       type: boolean
-
   - group: basic
     args:
       - value: null
