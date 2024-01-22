@@ -69,12 +69,19 @@ scalar_functions:
   - name: bitwise_not
     local_name: "~"
   - name: bitwise_and
-    unsupported: true
-    infix: True
+    local_name: and_
   - name: bitwise_or
-    unsupported: true
+    local_name: or_
   - name: bitwise_xor
+    local_name: xor
+  - name: and
+    infix: True
+  - name: and_not
     unsupported: true
+  - name: or
+    infix: True
+  - name: xor
+  - name: not
   - name: lt
   - name: lte
     local_name: "le"

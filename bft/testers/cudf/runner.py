@@ -1,5 +1,6 @@
 import cudf
 import math
+import operator
 
 from bft.cases.runner import SqlCaseResult, SqlCaseRunner
 from bft.cases.types import Case, CaseLiteral
@@ -38,8 +39,6 @@ class CudfRunner(SqlCaseRunner):
                 )
             arg_vectors.append(cudf.Series(arg.value, dtype=dtype))
             arg_values.append(arg.value)
-        if mapping.infix:
-            raise Exception("Cudf runner does not understand infix mappings")
 
         try:
             if len(arg_vectors) == 1:
@@ -52,8 +51,16 @@ class CudfRunner(SqlCaseRunner):
                     fn = getattr(arg_vectors[0], mapping.local_name)
                     result = fn()
             elif len(arg_vectors) == 2:
-                fn = getattr(arg_vectors[0], mapping.local_name)
-                result = fn(arg_vectors[1])
+                if mapping.infix:
+                    gdf = cudf.DataFrame({"a": arg_values[0], "b": arg_values[1]}, dtype=dtype)
+                    result = gdf.eval(f"(a){mapping.local_name}(b)")
+                else:
+                    try:
+                        fn = getattr(arg_vectors[0], mapping.local_name)
+                        result = fn(arg_vectors[1])
+                    except AttributeError:
+                        fn = getattr(operator, mapping.local_name)
+                        result = fn(arg_vectors[0], arg_vectors[1])
             else:
                 fn = getattr(arg_vectors[0], mapping.local_name)
                 try:
