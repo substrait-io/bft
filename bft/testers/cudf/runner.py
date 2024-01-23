@@ -1,5 +1,6 @@
 import cudf
 import math
+import operator
 
 from bft.cases.runner import SqlCaseResult, SqlCaseRunner
 from bft.cases.types import Case, CaseLiteral
@@ -38,8 +39,6 @@ class CudfRunner(SqlCaseRunner):
                 )
             arg_vectors.append(cudf.Series(arg.value, dtype=dtype))
             arg_values.append(arg.value)
-        if mapping.infix:
-            raise Exception("Cudf runner does not understand infix mappings")
 
         try:
             if len(arg_vectors) == 1:
@@ -52,8 +51,21 @@ class CudfRunner(SqlCaseRunner):
                     fn = getattr(arg_vectors[0], mapping.local_name)
                     result = fn()
             elif len(arg_vectors) == 2:
-                fn = getattr(arg_vectors[0], mapping.local_name)
-                result = fn(arg_vectors[1])
+                if mapping.infix:
+                    # If there are only Null/Nan/None values in the column, they are set to False instead of <NA>.
+                    # We add extra data to ensure the <NA> value exists in the dataframe.
+                    gdf = cudf.DataFrame(
+                        {"a": [arg_values[0], True], "b": [arg_values[1], True]},
+                        dtype=dtype,
+                    )
+                    result = gdf.eval(f"(a){mapping.local_name}(b)")
+                else:
+                    try:
+                        fn = getattr(arg_vectors[0], mapping.local_name)
+                        result = fn(arg_vectors[1])
+                    except AttributeError:
+                        fn = getattr(operator, mapping.local_name)
+                        result = fn(arg_vectors[0], arg_vectors[1])
             else:
                 fn = getattr(arg_vectors[0], mapping.local_name)
                 try:
@@ -65,7 +77,7 @@ class CudfRunner(SqlCaseRunner):
 
         if result.empty and (case.result.value is None or case.result.value is False):
             return SqlCaseResult.success()
-        elif len(result) != 1:
+        elif len(result) != 1 and not mapping.infix:
             raise Exception("Scalar function with one row output more than one row")
         else:
             result = result[0]
