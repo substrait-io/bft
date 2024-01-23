@@ -52,7 +52,12 @@ class CudfRunner(SqlCaseRunner):
                     result = fn()
             elif len(arg_vectors) == 2:
                 if mapping.infix:
-                    gdf = cudf.DataFrame({"a": arg_values[0], "b": arg_values[1]}, dtype=dtype)
+                    # If there are only Null/Nan/None values in the column, they are set to False instead of <NA>.
+                    # We add extra data to ensure the <NA> value exists in the dataframe.
+                    gdf = cudf.DataFrame(
+                        {"a": [arg_values[0], True], "b": [arg_values[1], True]},
+                        dtype=dtype,
+                    )
                     result = gdf.eval(f"(a){mapping.local_name}(b)")
                 else:
                     try:
@@ -72,7 +77,7 @@ class CudfRunner(SqlCaseRunner):
 
         if result.empty and (case.result.value is None or case.result.value is False):
             return SqlCaseResult.success()
-        elif len(result) != 1:
+        elif len(result) != 1 and not mapping.infix:
             raise Exception("Scalar function with one row output more than one row")
         else:
             result = result[0]
