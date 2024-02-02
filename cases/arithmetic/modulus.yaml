@@ -83,7 +83,7 @@ cases:
       - value: 0
         type: i8
     options:
-      On_domain_error: "NULL"
+      on_domain_error: "NULL"
     result:
       value: null
       type: i8
@@ -94,7 +94,7 @@ cases:
       - value: 0
         type: i8
     options:
-      On_domain_error: ERROR
+      on_domain_error: ERROR
     result:
       special: error
   - group:
