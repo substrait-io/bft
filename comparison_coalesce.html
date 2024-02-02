@@ -58,33 +58,21 @@ If all arguments are null, return null.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
-                
-                <option>velox_presto</option>
-                
-                <option>cudf</option>
+                <option>postgres</option>
                 
                 <option>sqlite</option>
                 
+                <option>velox_presto</option>
+                
                 <option>datafusion</option>
                 
-                <option>postgres</option>
+                <option>cudf</option>
+                
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                     
                 
@@ -96,13 +84,25 @@ If all arguments are null, return null.
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     
                 
@@ -195,7 +195,30 @@ If all arguments are null, return null.
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'postgres': {
+            examples: [
+                
+                
+                  "The dialect postgres does not support the kernel coalesce(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel coalesce(i8, i8) -> i8",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'sqlite': {
             examples: [
                 
                 
@@ -241,52 +264,6 @@ If all arguments are null, return null.
             ]
         },
         
-        'cudf': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
         'datafusion': {
             examples: [
                 
@@ -310,15 +287,38 @@ If all arguments are null, return null.
             ]
         },
         
-        'postgres': {
+        'cudf': {
             examples: [
                 
                 
-                  "The dialect postgres does not support the kernel coalesce(i8, i8) -> i8",
+                  null,
                 
                 
                 
-                  "The dialect postgres does not support the kernel coalesce(i8, i8) -> i8",
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
                 

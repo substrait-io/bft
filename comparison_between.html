@@ -59,33 +59,21 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
-                
-                <option>velox_presto</option>
-                
-                <option>cudf</option>
+                <option>postgres</option>
                 
                 <option>sqlite</option>
                 
+                <option>velox_presto</option>
+                
                 <option>datafusion</option>
                 
-                <option>postgres</option>
+                <option>cudf</option>
+                
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                     
                 
@@ -97,13 +85,25 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     
                 
@@ -427,7 +427,78 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'postgres': {
+            examples: [
+                
+                
+                  "The dialect postgres does not support the kernel between(i8, i8, i8) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel between(i8, i8, i8) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel between(i8, i8, i8) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'sqlite': {
             examples: [
                 
                 
@@ -569,148 +640,6 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
             ]
         },
         
-        'cudf': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
         'datafusion': {
             examples: [
                 
@@ -782,27 +711,11 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
             ]
         },
         
-        'postgres': {
+        'cudf': {
             examples: [
                 
                 
-                  "The dialect postgres does not support the kernel between(i8, i8, i8) -> boolean",
-                
-                
-                
                   null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres does not support the kernel between(i8, i8, i8) -> boolean",
                 
                 
                 
@@ -834,7 +747,94 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                 
                 
                 
-                  "The dialect postgres does not support the kernel between(i8, i8, i8) -> boolean",
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
                 

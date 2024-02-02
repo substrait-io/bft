@@ -99,33 +99,21 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
-                
-                <option>velox_presto</option>
-                
-                <option>cudf</option>
+                <option>postgres</option>
                 
                 <option>sqlite</option>
                 
+                <option>velox_presto</option>
+                
                 <option>datafusion</option>
                 
-                <option>postgres</option>
+                <option>cudf</option>
+                
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                     
                 
@@ -137,13 +125,25 @@
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     
                 
@@ -241,7 +241,36 @@
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'postgres': {
+            examples: [
+                
+                
+                  "The dialect postgres does not support the kernel acosh(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                true,
+                
+            ]
+        },
+        
+        'sqlite': {
             examples: [
                 
                 
@@ -299,64 +328,6 @@
             ]
         },
         
-        'cudf': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
         'datafusion': {
             examples: [
                 
@@ -386,11 +357,11 @@
             ]
         },
         
-        'postgres': {
+        'cudf': {
             examples: [
                 
                 
-                  "The dialect postgres does not support the kernel acosh(fp32) -> fp32",
+                  null,
                 
                 
                 
@@ -408,7 +379,36 @@
             ],
             kernels: [
                 
-                false,
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
                 
                 true,
                 

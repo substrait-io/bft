@@ -85,21 +85,27 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
-                
-                <option>velox_presto</option>
-                
-                <option>cudf</option>
+                <option>postgres</option>
                 
                 <option>sqlite</option>
                 
+                <option>velox_presto</option>
+                
                 <option>datafusion</option>
                 
-                <option>postgres</option>
+                <option>cudf</option>
+                
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
                 
                     
                 
@@ -114,25 +120,19 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     
                 
@@ -359,137 +359,7 @@
     <script>
       var bftDialects = {
         
-        'duckdb': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i32) -> i32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i8) -> error",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i8) -> undefined",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                true,
-                
-                false,
-                
-                true,
-                
-            ]
-        },
-        
-        'cudf': {
+        'postgres': {
             examples: [
                 
                 
@@ -619,6 +489,71 @@
             ]
         },
         
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i32) -> i32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i8) -> error",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i8) -> undefined",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                true,
+                
+                false,
+                
+                true,
+                
+            ]
+        },
+        
         'datafusion': {
             examples: [
                 
@@ -684,7 +619,72 @@
             ]
         },
         
-        'postgres': {
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'duckdb': {
             examples: [
                 
                 

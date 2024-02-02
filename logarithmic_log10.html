@@ -117,33 +117,21 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
-                
-                <option>velox_presto</option>
-                
-                <option>cudf</option>
+                <option>postgres</option>
                 
                 <option>sqlite</option>
                 
+                <option>velox_presto</option>
+                
                 <option>datafusion</option>
                 
-                <option>postgres</option>
+                <option>cudf</option>
+                
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -155,13 +143,25 @@
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -192,33 +192,7 @@
     <script>
       var bftDialects = {
         
-        'duckdb': {
-            examples: [
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'cudf': {
+        'postgres': {
             examples: [
                 
             ],
@@ -244,6 +218,19 @@
             ]
         },
         
+        'velox_presto': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
         'datafusion': {
             examples: [
                 
@@ -257,7 +244,20 @@
             ]
         },
         
-        'postgres': {
+        'cudf': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'duckdb': {
             examples: [
                 
             ],

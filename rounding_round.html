@@ -114,21 +114,27 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
-                
-                <option>velox_presto</option>
-                
-                <option>cudf</option>
+                <option>postgres</option>
                 
                 <option>sqlite</option>
                 
+                <option>velox_presto</option>
+                
                 <option>datafusion</option>
                 
-                <option>postgres</option>
+                <option>cudf</option>
+                
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
                 
                     
                 
@@ -140,25 +146,19 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     
                 
@@ -328,7 +328,56 @@
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'postgres': {
+            examples: [
+                
+                
+                  "The dialect postgres does not support the kernel round(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel round(fp32, i8) -> fp32",
+                
+                
+                
+                  "The dialect postgres does not support the kernel round(fp64, i8) -> fp64",
+                
+                
+                
+                  "The dialect postgres does not support the kernel round(fp64, i32) -> fp64",
+                
+                
+                
+                  "The dialect postgres does not support the kernel round(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel round(i8, i32) -> i8",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'sqlite': {
             examples: [
                 
                 
@@ -336,7 +385,7 @@
                 
                 
                 
-                  "The dialect duckdb does not support the kernel round(fp32, i8) -> fp32",
+                  null,
                 
                 
                 
@@ -426,104 +475,6 @@
             ]
         },
         
-        'cudf': {
-            examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
         'datafusion': {
             examples: [
                 
@@ -573,31 +524,80 @@
             ]
         },
         
-        'postgres': {
+        'cudf': {
             examples: [
                 
                 
-                  "The dialect postgres does not support the kernel round(i8, i8) -> i8",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect postgres does not support the kernel round(fp32, i8) -> fp32",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect postgres does not support the kernel round(fp64, i8) -> fp64",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect postgres does not support the kernel round(fp64, i32) -> fp64",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect postgres does not support the kernel round(i8, i8) -> i8",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect postgres does not support the kernel round(i8, i32) -> i8",
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb does not support the kernel round(fp32, i8) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
                 
@@ -607,17 +607,17 @@
             ],
             kernels: [
                 
-                false,
-                
                 true,
                 
                 true,
                 
                 true,
                 
-                false,
+                true,
                 
-                false,
+                true,
+                
+                true,
                 
             ]
         },

@@ -68,49 +68,25 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
-                
-                <option>velox_presto</option>
-                
-                <option>cudf</option>
+                <option>postgres</option>
                 
                 <option>sqlite</option>
                 
+                <option>velox_presto</option>
+                
                 <option>datafusion</option>
                 
-                <option>postgres</option>
+                <option>cudf</option>
+                
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                     
                         <dt>overflow</dt>
                         <dd>ERROR</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
                     
                         <dt>rounding</dt>
                         <dd>TIE_TO_EVEN</dd>
@@ -130,6 +106,18 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>ERROR</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
@@ -142,7 +130,19 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     
                         <dt>overflow</dt>
@@ -553,11 +553,11 @@ guaranteed to be true for integer addition when overflow is SILENT.</p></dd>
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'postgres': {
             examples: [
                 
                 
-                  null,
+                  "The dialect postgres does not support the kernel add(i8, i8) -> i8",
                 
                 
                 
@@ -581,7 +581,7 @@ guaranteed to be true for integer addition when overflow is SILENT.</p></dd>
                 
                 
                 
-                  null,
+                  "The dialect postgres does not support the kernel add(i8, i8) -> error",
                 
                 
                 
@@ -597,193 +597,23 @@ guaranteed to be true for integer addition when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect duckdb expects overflow=ERROR but overflow=SATURATE was requested",
+                  "The dialect postgres does not support the kernel add(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect duckdb expects overflow=ERROR but overflow=SATURATE was requested",
+                  "The dialect postgres does not support the kernel add(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect duckdb expects overflow=ERROR but overflow=SILENT was requested",
+                  "The dialect postgres does not support the kernel add(i8, i8) -> undefined",
                 
                 
                 
-                  null,
+                  "The dialect postgres does not support the kernel add(fp32, fp32) -> fp32",
                 
                 
                 
-                  "The dialect duckdb expects rounding=TIE_TO_EVEN but rounding=FLOOR was requested",
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel add(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel add(i16, i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel add(i32, i32) -> i32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel add(i8, i8) -> error",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel add(i16, i16) -> error",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel add(i32, i32) -> error",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel add(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel add(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel add(i8, i8) -> undefined",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel add(fp32, fp32) -> fp32",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel add(fp32, fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'cudf': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects rounding=TIE_TO_EVEN but rounding=FLOOR was requested",
+                  "The dialect postgres does not support the kernel add(fp32, fp32) -> fp32",
                 
                 
                 
@@ -893,6 +723,91 @@ guaranteed to be true for integer addition when overflow is SILENT.</p></dd>
             ]
         },
         
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel add(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel add(i16, i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel add(i32, i32) -> i32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel add(i8, i8) -> error",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel add(i16, i16) -> error",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel add(i32, i32) -> error",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel add(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel add(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel add(i8, i8) -> undefined",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel add(fp32, fp32) -> fp32",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel add(fp32, fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
         'datafusion': {
             examples: [
                 
@@ -978,11 +893,112 @@ guaranteed to be true for integer addition when overflow is SILENT.</p></dd>
             ]
         },
         
-        'postgres': {
+        'cudf': {
             examples: [
                 
                 
-                  "The dialect postgres does not support the kernel add(i8, i8) -> i8",
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects rounding=TIE_TO_EVEN but rounding=FLOOR was requested",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
                 
@@ -1006,7 +1022,15 @@ guaranteed to be true for integer addition when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect postgres does not support the kernel add(i8, i8) -> error",
+                  "The dialect duckdb expects overflow=ERROR but overflow=SATURATE was requested",
+                
+                
+                
+                  "The dialect duckdb expects overflow=ERROR but overflow=SATURATE was requested",
+                
+                
+                
+                  "The dialect duckdb expects overflow=ERROR but overflow=SILENT was requested",
                 
                 
                 
@@ -1014,31 +1038,7 @@ guaranteed to be true for integer addition when overflow is SILENT.</p></dd>
                 
                 
                 
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres does not support the kernel add(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel add(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel add(i8, i8) -> undefined",
-                
-                
-                
-                  "The dialect postgres does not support the kernel add(fp32, fp32) -> fp32",
-                
-                
-                
-                  "The dialect postgres does not support the kernel add(fp32, fp32) -> fp32",
+                  "The dialect duckdb expects rounding=TIE_TO_EVEN but rounding=FLOOR was requested",
                 
                 
                 

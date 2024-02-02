@@ -59,21 +59,27 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
-                
-                <option>velox_presto</option>
-                
-                <option>cudf</option>
+                <option>postgres</option>
                 
                 <option>sqlite</option>
                 
+                <option>velox_presto</option>
+                
                 <option>datafusion</option>
                 
-                <option>postgres</option>
+                <option>cudf</option>
+                
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
                 
                     
                 
@@ -85,25 +91,19 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     
                 
@@ -258,7 +258,44 @@
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'postgres': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'sqlite': {
             examples: [
                 
                 
@@ -332,80 +369,6 @@
             ]
         },
         
-        'cudf': {
-            examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
         'datafusion': {
             examples: [
                 
@@ -443,7 +406,44 @@
             ]
         },
         
-        'postgres': {
+        'cudf': {
+            examples: [
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'duckdb': {
             examples: [
                 
                 

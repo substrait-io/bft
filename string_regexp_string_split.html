@@ -106,42 +106,33 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
-                
-                <option>velox_presto</option>
-                
-                <option>cudf</option>
+                <option>postgres</option>
                 
                 <option>sqlite</option>
                 
+                <option>velox_presto</option>
+                
                 <option>datafusion</option>
                 
-                <option>postgres</option>
+                <option>cudf</option>
+                
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                     
-                        <dt>lookaround</dt>
-                        <dd>False</dd>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
                     
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
                 
                     
                 
@@ -153,8 +144,17 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-cudf">
                 
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                        <dt>lookaround</dt>
+                        <dd>False</dd>
                     
                 
             </dl>
@@ -670,7 +670,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'postgres': {
             examples: [
                 
                 
@@ -686,11 +686,27 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                 
                 
                 
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                  null,
                 
                 
                 
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
                 
@@ -718,11 +734,88 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                 
                 
                 
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                  null,
                 
                 
                 
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
                 
@@ -764,192 +857,6 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
         },
         
         'velox_presto': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'cudf': {
-            examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'sqlite': {
             examples: [
                 
                 
@@ -1135,7 +1042,100 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
             ]
         },
         
-        'postgres': {
+        'cudf': {
+            examples: [
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'duckdb': {
             examples: [
                 
                 
@@ -1151,7 +1151,11 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                 
                 
                 
-                  null,
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
                 
                 
                 
@@ -1179,15 +1183,11 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                 
                 
                 
-                  null,
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
                 
                 
                 
-                  null,
-                
-                
-                
-                  null,
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
                 
                 
                 
