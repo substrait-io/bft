@@ -14,7 +14,7 @@ class CaseFileVisitor(BaseYamlVisitor[CaseFile]):
     def __resolve_proto_case(self, case: ProtoCase, function: str) -> Case:
         if case.group not in self.__groups:
             raise Exception(
-                "A case referred to group {case.group} which was not defined in the file"
+                "A case referred to group " + case.group +" which was not defined in the file"
             )
         grp = self.__groups[case.group]
         return Case(function, grp, case.args, case.result, case.options)

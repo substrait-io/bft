@@ -61,7 +61,6 @@ cases:
       on_division_by_zero: ERROR
     result:
       special: error
-      type: i8
   - group: division_by_zero
     args:
       - value: 5

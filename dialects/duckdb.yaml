@@ -30,9 +30,9 @@ scalar_functions:
     local_name: "%"
     infix: True
     required_options:
-      on_division_by_zero: NONE
+      division_type: TRUNCATE
       overflow: ERROR
-      rounding: TIE_TO_EVEN
+      on_domain_error: "NULL"
     unsupported_kernels:
       - args:
           - fp32
