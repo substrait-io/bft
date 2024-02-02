@@ -1,15 +1,31 @@
 # Modulus
 
 ## Options
-Not supported 
 
 ### Overflow
 
-Not supported
+The modulus operation typically occurs after finding the quotient,
+i.e., mod(x, y) = x - round_func(x/y), where the round_func can be
+to truncate, floor, or any such operation. Thus, the entire operation
+may trigger an overflow when the result is outside the representable
+range of the type class. This option controls what happens when this overflow occurs.
 
-### Rounding
+#### SILENT
 
-Not supported
+If an overflow occurs then an integer value will be returned. The value is
+undefined. It may be any integer and can change from engine to engine or
+even from row to row within the same query.  The only constraint is that it
+must be a valid value for the result type class (e.g. modulus of int16
+cannot yield an int32 on overflow)
+
+#### SATURATE
+
+If an overflow occurs then the largest (for positive overflow) or smallest
+(for negative overflow) possible value for the type class will be returned.
+
+#### ERROR
+
+If an overflow occurs then an error should be raised.
 
 ### Division_type
 
@@ -45,14 +61,15 @@ an error should be raised.
 
 ## Details
  
-### Overflow and rounding
-The Modulus function will not require options such as Overflow
-which are present in other arithmetic functions, because there will not be
-an event in the allowed kernels and data type where the modulus function can
-behave in one of such ways. Modulus function is defined for integer values only
-and they do not operate on floating values. Thus, they cannot have floats as
-remainders. Additionally, result of modulus on two operands will always result 
-a value within the range.
+### Overflow
+
+The Modulus function requires the Overflow option in situations
+where any or all of the involved operations result in overflow
+from the specified range. For example, in mod(-128, -1) within
+the int8 range, an overflow will occur as the operation will
+lead to (-128) - round_func(-128/-1). Since the division operation
+(-128/-1) results in an overflow (given that the range of int8
+is -127 to 128), the Overflow option becomes essential.
 
 ### Not commutative
 
