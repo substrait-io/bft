@@ -28,7 +28,7 @@ scalar_functions:
     required_options:
       division_type: FLOOR
       overflow: SILENT
-      on_domain_error: NULL
+      on_domain_error: "NULL"
   - name: power
     local_name: pow
   - name: sqrt

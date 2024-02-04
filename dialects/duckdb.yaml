@@ -32,7 +32,7 @@ scalar_functions:
     required_options:
       division_type: TRUNCATE
       overflow: ERROR
-      on_domain_error: NULL
+      on_domain_error: "NULL"
     unsupported_kernels:
       - args:
           - fp32
