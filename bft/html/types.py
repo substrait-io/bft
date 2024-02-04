@@ -3,8 +3,7 @@ from typing import Dict, List, Literal, NamedTuple
 from bft.core.function import Kernel
 
 
-# A potential choice for an option
-class ScalarFunctionOptionValueInfo(NamedTuple):
+class FunctionOptionValueInfo(NamedTuple):
     # The name of the value
     # Sourced from Substrait YAML
     name: str
@@ -14,7 +13,7 @@ class ScalarFunctionOptionValueInfo(NamedTuple):
 
 
 # An option that can control function behavior
-class ScalarFunctionOptionInfo(NamedTuple):
+class FunctionOptionInfo(NamedTuple):
     # The name of the option
     # Sourced from Substrait YAML
     name: str
@@ -24,11 +23,11 @@ class ScalarFunctionOptionInfo(NamedTuple):
     description: str
     # Possible values for the option
     # Sourced from Substrait YAML
-    values: List[ScalarFunctionOptionValueInfo]
+    values: List[FunctionOptionValueInfo]
 
 
 # Information about how the function behaves in different dialects
-class ScalarFunctionDialectInfo(NamedTuple):
+class FunctionDialectInfo(NamedTuple):
     # Name of the dialect (e.g. sqlite)
     # Sourced from dialect files
     name: str
@@ -40,7 +39,7 @@ class ScalarFunctionDialectInfo(NamedTuple):
 
 
 # Additional details or motivation for the function
-class ScalarFunctionDetailInfo(NamedTuple):
+class FunctionDetailInfo(NamedTuple):
     # Title of the detail section
     # Sourced from BFT markdown
     title: str
@@ -51,7 +50,7 @@ class ScalarFunctionDetailInfo(NamedTuple):
 
 # Invariants that the function respects
 # Mostly useful for property-based testing
-class ScalarFunctionPropertyInfo(NamedTuple):
+class FunctionPropertyInfo(NamedTuple):
     # The name of the invariant
     # Sourced from BFT markdown
     id: str
@@ -60,13 +59,13 @@ class ScalarFunctionPropertyInfo(NamedTuple):
     description: str
 
 
-class ScalarFunctionExampleResultInfo(NamedTuple):
+class FunctionExampleResultInfo(NamedTuple):
     # Value of the result
     # Sourced from case files
     value: str
 
 
-class ScalarFunctionExampleCaseInfo(NamedTuple):
+class FunctionExampleCaseInfo(NamedTuple):
     # Arguments to the function for this test case
     # Sourced from case files
     args: List[str]
@@ -75,10 +74,10 @@ class ScalarFunctionExampleCaseInfo(NamedTuple):
     options: List[str]
     # Result of the function run on the args
     # Sourced from case files
-    result: Literal["error"] | Literal["undefined"] | ScalarFunctionExampleResultInfo
+    result: Literal["error"] | Literal["undefined"] | FunctionExampleResultInfo
 
 
-class ScalarFunctionExampleGroupInfo(NamedTuple):
+class FunctionExampleGroupInfo(NamedTuple):
     # Description of the example group
     # Sourced from case files
     description: str
@@ -92,11 +91,11 @@ class ScalarFunctionExampleGroupInfo(NamedTuple):
     # Sourced from case files
     result_type: str
     # Example executions
-    cases: List[ScalarFunctionExampleCaseInfo]
+    cases: List[FunctionExampleCaseInfo]
 
 
 # Information describing a function
-class ScalarFunctionInfo(NamedTuple):
+class FunctionInfo(NamedTuple):
     # Name of the function (e.g. add)
     # Sourced from Substrait YAML
     name: str
@@ -111,17 +110,17 @@ class ScalarFunctionInfo(NamedTuple):
     # Sourced from Substrait YAML
     brief: str
     # Available options for the function
-    options: List[ScalarFunctionOptionInfo]
+    options: List[FunctionOptionInfo]
     # Available kernels for the function
     kernels: List[Kernel]
     # Dialect info for the function
-    dialects: List[ScalarFunctionDialectInfo]
+    dialects: List[FunctionDialectInfo]
     # Function details
-    details: List[ScalarFunctionDetailInfo]
+    details: List[FunctionDetailInfo]
     # Properties that hold true for the function
-    properties: List[ScalarFunctionPropertyInfo]
+    properties: List[FunctionPropertyInfo]
     # Example function executions
-    example_groups: List[ScalarFunctionExampleGroupInfo]
+    example_groups: List[FunctionExampleGroupInfo]
 
 
 class FunctionIndexItem(NamedTuple):

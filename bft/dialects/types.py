@@ -96,8 +96,10 @@ class Dialect(object):
         return None
 
     def required_options(self, function_name) -> Dict[str, str]:
-        scalar_dfunc = self.__scalar_functions_by_name.get(function_name, None)
-        return getattr(scalar_dfunc, "required_options", None)
+        dfunc = self.__scalar_functions_by_name.get(function_name, None)
+        if(not dfunc):
+            dfunc = self.__aggregate_functions_by_name.get(function_name, None)
+        return getattr(dfunc, "required_options", None)
 
     def supports_kernel(self, function_name: str, kernel: Kernel) -> bool:
         dfunc = self.__scalar_functions_by_name.get(function_name, None)

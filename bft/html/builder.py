@@ -12,16 +12,16 @@ from bft.core.index_parser import IndexFunctionsFile, load_index
 from bft.dialects.loader import load_dialects
 from bft.dialects.types import Dialect, DialectsLibrary
 from bft.html.types import (
+    FunctionDetailInfo,
+    FunctionDialectInfo,
+    FunctionExampleCaseInfo,
+    FunctionExampleGroupInfo,
     FunctionIndexInfo,
     FunctionIndexItem,
-    ScalarFunctionDetailInfo,
-    ScalarFunctionDialectInfo,
-    ScalarFunctionExampleCaseInfo,
-    ScalarFunctionExampleGroupInfo,
-    ScalarFunctionInfo,
-    ScalarFunctionOptionInfo,
-    ScalarFunctionOptionValueInfo,
-    ScalarFunctionPropertyInfo,
+    FunctionInfo,
+    FunctionOptionInfo,
+    FunctionOptionValueInfo,
+    FunctionPropertyInfo,
 )
 from bft.substrait.extension_file_parser import (
     ExtensionFileParser,
@@ -38,12 +38,12 @@ from bft.supplements.types import (
 
 env = Environment(loader=PackageLoader("bft"), autoescape=select_autoescape())
 
-scalar_func_template = env.get_template("scalar_function.j2")
+func_template = env.get_template("function_desc.j2")
 function_index_template = env.get_template("function_index.j2")
 
 
-def render_scalar_function(info: ScalarFunctionInfo):
-    return scalar_func_template.render(info._asdict())
+def render_function(info: FunctionInfo):
+    return func_template.render(info._asdict())
 
 
 def render_function_index(info: FunctionIndexInfo):
@@ -81,8 +81,8 @@ def replace_pattern_sequences(content, dir_path):
     return content
 
 def create_function_option_value(
-    val: str, supplement: OptionSupplement, dir_path: str
-) -> ScalarFunctionOptionValueInfo:
+    val: str, supplement: OptionSupplement
+) -> FunctionOptionValueInfo:
     name = val
     if supplement is None:
         matching_sup = []
@@ -91,34 +91,34 @@ def create_function_option_value(
     if len(matching_sup) == 0:
         description = "Missing supplementary description"
     else:
-        description = replace_pattern_sequences(matching_sup[0].description, dir_path)
-    return ScalarFunctionOptionValueInfo(name, description)
+        description = matching_sup[0].description
+    return FunctionOptionValueInfo(name, description)
 
 
 def create_function_option(
     opt: Option, supplement: SupplementsFile
-) -> ScalarFunctionOptionInfo:
+) -> FunctionOptionInfo:
     name = opt.name
     opt_supp = supplement.options.get(name, None)
     if opt_supp is None:
         description = f"No supplemental information for {name}"
     else:
-        description = replace_pattern_sequences(opt_supp.description, supplement.dir_path)
-    values = [create_function_option_value(val, opt_supp, supplement.dir_path) for val in opt.values]
-    return ScalarFunctionOptionInfo(name, description, values)
+        description = opt_supp.description
+    values = [create_function_option_value(val, opt_supp) for val in opt.values]
+    return FunctionOptionInfo(name, description, values)
 
 
-def create_examples(cases: List[Case]) -> List[ScalarFunctionExampleCaseInfo]:
-    examples: List[ScalarFunctionExampleCaseInfo] = []
+def create_examples(cases: List[Case]) -> List[FunctionExampleCaseInfo]:
+    examples: List[FunctionExampleCaseInfo] = []
     for case in cases:
         arg_vals = [arg.value for arg in case.args]
         opt_vals = [opt[1] for opt in case.options]
         result = case.result
-        examples.append(ScalarFunctionExampleCaseInfo(arg_vals, opt_vals, result))
+        examples.append(FunctionExampleCaseInfo(arg_vals, opt_vals, result))
     return examples
 
 
-def create_example_groups(cases: List[Case]) -> List[ScalarFunctionExampleGroupInfo]:
+def create_example_groups(cases: List[Case]) -> List[FunctionExampleGroupInfo]:
     groups: Dict[str, Case] = {}
     for case in cases:
         # This may clobber previous insertions.  We just need one prototypical case per group
@@ -126,7 +126,7 @@ def create_example_groups(cases: List[Case]) -> List[ScalarFunctionExampleGroupI
         if case.group.id not in groups or hasattr(case.result, "type"):
             groups[case.group.id] = case
 
-    example_groups: List[ScalarFunctionExampleGroupInfo] = []
+    example_groups: List[FunctionExampleGroupInfo] = []
     ordered_cases: List[Case] = []
     for group_id in sorted(groups.keys()):
         protocase = groups[group_id]
@@ -142,28 +142,28 @@ def create_example_groups(cases: List[Case]) -> List[ScalarFunctionExampleGroupI
         examples = create_examples(group_cases)
         description = protocase.group.description
         example_groups.append(
-            ScalarFunctionExampleGroupInfo(
+            FunctionExampleGroupInfo(
                 description, arg_types, opt_names, result_type, examples
             )
         )
     return example_groups, ordered_cases
 
 
-def create_detail(detail: BasicSupplement) -> ScalarFunctionDetailInfo:
+def create_detail(detail: BasicSupplement) -> FunctionDetailInfo:
     title = detail.title
     description = detail.description
-    return ScalarFunctionDetailInfo(title, description)
+    return FunctionDetailInfo(title, description)
 
 
-def create_property(prop: BasicSupplement, dir_path: str) -> ScalarFunctionPropertyInfo:
+def create_property(prop: BasicSupplement) -> FunctionPropertyInfo:
     id = prop.title
-    description = replace_pattern_sequences(prop.description, dir_path)
-    return ScalarFunctionPropertyInfo(id, description)
+    description = prop.description
+    return FunctionPropertyInfo(id, description)
 
 
 def create_dialect(
     function: str, dialect: Dialect, cases: List[Case], kernels: List[Kernel]
-) -> ScalarFunctionDialectInfo:
+) -> FunctionDialectInfo:
     name = dialect.name
     options = dialect.required_options(function)
     case_info = []
@@ -176,7 +176,7 @@ def create_dialect(
     kernel_info = []
     for kernel in kernels:
         kernel_info.append(dialect.supports_kernel(function, kernel))
-    return ScalarFunctionDialectInfo(name, options, case_info, kernel_info)
+    return FunctionDialectInfo(name, options, case_info, kernel_info)
 
 
 def create_function_info(
@@ -184,7 +184,7 @@ def create_function_info(
     cases: List[Case],
     supplements: SupplementsFile,
     dialects: DialectsLibrary,
-) -> ScalarFunctionInfo:
+) -> FunctionInfo:
     name = "_".join(func.name.split('_')[1:])
     uri_short = func.uri
     uri = "https://github.com/substrait-io/substrait/blob/main/extensions/" + uri_short
@@ -198,8 +198,8 @@ def create_function_info(
         for dialect in dialects.dialects.values()
     ]
     details = [create_detail(detail) for detail in supplements.details]
-    properties = [create_property(prop, supplements.dir_path) for prop in supplements.properties]
-    return ScalarFunctionInfo(
+    properties = [create_property(prop) for prop in supplements.properties]
+    return FunctionInfo(
         name,
         uri,
         uri_short,
@@ -270,7 +270,7 @@ def build_site(index_path: str, dest_dir):
         info = create_function_info(func, matching_cases, supplement, dialects_lib)
         out_path = pathlib.Path(dest_dir) / f"{func.name}.html"
         with open(out_path, mode="w") as out:
-            out.write(render_scalar_function(info))
+            out.write(render_function(info))
 
     function_index = create_function_index(functions)
     out_path = pathlib.Path(dest_dir) / f"index.html"

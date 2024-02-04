@@ -2,7 +2,7 @@ from typing import Dict, List, Literal, NamedTuple, Tuple
 
 
 class CaseLiteral(NamedTuple):
-    value: str | int | float
+    value: str | int | float | list
     type: str
 
 
