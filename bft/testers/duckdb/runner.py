@@ -31,16 +31,16 @@ def type_to_duckdb_type(type: str):
     return type_map[type]
 
 
-def literal_to_str(lit: CaseLiteral):
-    if lit.value is None:
+def literal_to_str(lit: str | int | float | list):
+    if lit is None:
         return "null"
-    if lit.value is math.nan:
+    if lit in [math.nan, "nan"]:
         return "'NaN'"
-    elif lit.value == float("inf"):
+    elif lit in [float("inf"), "inf"]:
         return "'Infinity'"
-    elif lit.value == float("-inf"):
+    elif lit in [float("-inf"), "-inf"]:
         return "'-Infinity'"
-    return str(lit.value)
+    return str(lit)
 
 
 def is_string_type(arg):
@@ -74,26 +74,26 @@ class DuckDBRunner(SqlCaseRunner):
             if mapping.aggregate:
                 arg_names = [arg_names[0]]
             joined_arg_names = ",".join(arg_names)
-
             arg_vals_list = list()
             for arg in case.args:
                 if is_string_type(arg):
-                    arg_vals_list.append("'" + literal_to_str(arg) + "'")
+                    arg_vals_list.append("'" + literal_to_str(arg.value) + "'")
                 else:
-                    arg_vals_list.append(literal_to_str(arg))
+                    arg_vals_list.append(literal_to_str(arg.value))
             arg_vals = ", ".join(arg_vals_list)
             if mapping.aggregate:
                 arg_vals_list = ""
                 for arg in case.args:
-                    if is_string_type(arg):
-                        if arg.value == "Null":
-                            arg_vals_list += f"({literal_to_str(arg)}),"
+                    for value in arg.value:
+                        if is_string_type(arg):
+                            if value:
+                                arg_vals_list += f"('{literal_to_str(value)}'),"
+                            else:
+                                arg_vals_list += f"({literal_to_str(value)}),"
                         else:
-                            arg_vals_list += f"('{literal_to_str(arg)}'),"
-                    else:
-                        arg_vals_list += f"({literal_to_str(arg)}),"
-
-                if arg_vals_list[:-1] != "([])":
+                            arg_vals_list += f"({literal_to_str(value)}),"
+                if len(arg_vals_list[:-1]):
+                    print(f"INSERT INTO my_table ({joined_arg_names}) VALUES {arg_vals_list[:-1]};")
                     self.conn.execute(
                         f"INSERT INTO my_table ({joined_arg_names}) VALUES {arg_vals_list[:-1]};"
                     )

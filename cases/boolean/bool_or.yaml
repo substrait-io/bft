@@ -4,21 +4,21 @@ cases:
       id: basic
       description: Basic examples without any special cases
     args:
-      - value: [true true]
+      - value: [true, true]
         type: boolean
     result:
       value: true
       type: boolean
   - group: basic
     args:
-      - value: [false false]
+      - value: [false, false]
         type: boolean
     result:
       value: false
       type: boolean
   - group: basic
     args:
-      - value: [true false]
+      - value: [true, false]
         type: boolean
     result:
       value: true
@@ -39,21 +39,21 @@ cases:
       type: boolean
   - group: basic
     args:
-      - value: [true null]
+      - value: [true, null]
         type: boolean
     result:
       value: true
       type: boolean
   - group: basic
     args:
-      - value: [null null]
+      - value: [null, null]
         type: boolean
     result:
       value: null
       type: boolean
   - group: basic
     args:
-      - value: [false null]
+      - value: [false, null]
         type: boolean
     result:
       value: false
