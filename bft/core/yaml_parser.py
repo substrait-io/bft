@@ -34,19 +34,17 @@ class BaseYamlVisitor(ABC, Generic[T]):
                 results.append(visitor(item))
                 self.__location_stack.pop()
             for result in results:
-                # if the yaml arg value is a list, split it up and create multiple
-                # CaseLiteral objects to be added to the result.
                 if isinstance(result, CaseLiteral) and isinstance(result.value, list):
                     if len(result.value) > 0:
-                        listed_result = str(result.value[0]).split(" ")
-                        for individual_result in listed_result:
-                            if individual_result.lower().startswith("'inf'"):
-                                individual_result = float("inf")
-                            elif individual_result.lower().startswith("'-inf'"):
-                                individual_result = float("-inf")
-                            elif individual_result.lower().startswith("'nan'"):
-                                individual_result = math.nan
-                            results.append(CaseLiteral(individual_result, result.type))
+                        for i, s in enumerate(result.value):
+                            lower_s = str(s).lower()
+                            if lower_s.startswith("'inf'"):
+                                result.value[i] = float("inf")
+                            elif lower_s.startswith("'-inf'"):
+                                result.value[i] = float("-inf")
+                            elif lower_s.startswith("'nan'"):
+                                result.value[i] = math.nan
+                        results.append(CaseLiteral(result.value, result.type))
                         results.remove(result)
             return results
         elif required:
