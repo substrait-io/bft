@@ -13,5 +13,5 @@ def tester(dialects):
 
 
 @pytest.mark.parametrize("case", cases())
-def test_scalar_functions(case, tester):
+def test_functions(case, tester):
     run_test(case, tester)
