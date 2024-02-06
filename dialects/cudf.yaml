@@ -12,19 +12,23 @@ scalar_functions:
       overflow: SILENT # cudf rolls over on overflow
       rounding: TIE_TO_EVEN
   - name: multiply
+    local_name: multiply
     required_options:
-      overflow: SILENT
-  - name: divide
-    required_options:
-      on_division_by_zero: LIMIT
-      overflow: SILENT
+      overflow: SILENT # cudf rolls over on overflow
       rounding: TIE_TO_EVEN
+  - name: divide
+    local_name: divide
+    required_options:
+      overflow: SILENT # cudf rolls over on overflow
+      rounding: TIE_TO_EVEN
+      on_division_by_zero: LIMIT
+      on_domain_error: NAN
   - name: modulus
     local_name: mod
     required_options:
-      on_division_by_zero: NAN
+      division_type: FLOOR
       overflow: SILENT
-      rounding: TIE_TO_EVEN
+      on_domain_error: "NULL"
   - name: power
     local_name: pow
   - name: sqrt

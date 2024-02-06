@@ -75,26 +75,49 @@ cases:
       value: null
       type: i64
   - group:
-      id: division_by_zero
-      description: Examples demonstrating division by zero
+      id: on_domain_error
+      description: Examples demonstrating operation when the divisor is 0
     args:
       - value: 5
         type: i8
       - value: 0
         type: i8
     options:
-      on_division_by_zero: NONE
+      on_domain_error: "NULL"
     result:
       value: null
       type: i8
-  - group: division_by_zero
+  - group: on_domain_error
     args:
       - value: 5
         type: i8
       - value: 0
         type: i8
     options:
-      on_division_by_zero: NAN
+      on_domain_error: ERROR
     result:
-      value: nan
+      special: error
+  - group:
+      id: division_type
+      description: Examples demonstrating truncate and floor division types
+    args:
+      - value: 8
+        type: i8
+      - value: -3
+        type: i8
+    options:
+      division_type: TRUNCATE
+    result:
+      value: 2
+      type: i8
+  - group: division_type
+    args:
+      - value: 8
+        type: i8
+      - value: -3
+        type: i8
+    options:
+      division_type: FLOOR
+    result:
+      value: -1
       type: i8

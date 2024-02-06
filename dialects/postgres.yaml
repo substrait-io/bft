@@ -68,8 +68,9 @@ scalar_functions:
     local_name: "%"
     infix: True
     required_options:
-      on_division_by_zero: NONE
+      division_type: TRUNCATE
       overflow: ERROR
+      on_domain_error: ERROR
     unsupported_kernels:
       - args:
           - i8

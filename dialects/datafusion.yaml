@@ -25,7 +25,7 @@ scalar_functions:
       overflow: ERROR
       rounding: TIE_TO_EVEN
   - name: modulus
-    unsupported: true
+    unsupported: True
   - name: power
   - name: sqrt
     required_options:
