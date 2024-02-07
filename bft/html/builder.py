@@ -58,7 +58,7 @@ def replace_pattern_sequences(content, dir_path):
         return content
 
     # Check if definition file exists
-    def_path = dir_path + "/definitions.yml"
+    def_path = dir_path + "/definitions.yaml"
     if not pathlib.Path(def_path).is_file():
         raise FileNotFoundError(f"Definitions file '{def_path}' not found while"
                                 "supplemental file requires it.")
