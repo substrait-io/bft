@@ -145,7 +145,7 @@ class SupplementsParser(object):
                 f"Unrecognized top-level element type in supplements file {type(child)}"
             )
 
-    def parse_supplements_doc(self, f: TextIO) -> SupplementsFile:
+    def parse_supplements_doc(self, f: TextIO, directory_path: str) -> SupplementsFile:
         self.__reset()
         doc = Document(f)
 
@@ -169,7 +169,7 @@ class SupplementsParser(object):
         self.__finish_last_task()
 
         return SupplementsFile(
-            function_name, self.options, self.details, self.properties
+            function_name, directory_path, self.options, self.details, self.properties
         )
 
 
@@ -178,6 +178,6 @@ def load_supplements(supplements_dir: str) -> Dict[str, SupplementsFile]:
     parser = SupplementsParser()
     for sup_path in pathlib.Path(supplements_dir).rglob("*.md"):
         with open(sup_path, "r") as sup_f:
-            sup = parser.parse_supplements_doc(sup_f)
+            sup = parser.parse_supplements_doc(sup_f, str(pathlib.Path(sup_path).parent))
             supplements[sup.function.lower()] = sup
     return supplements

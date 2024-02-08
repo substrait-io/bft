@@ -13,10 +13,11 @@ class OptionSupplement(NamedTuple):
 
 class SupplementsFile(NamedTuple):
     function: str
+    dir_path: str
     options: Dict[str, OptionSupplement]
     details: List[BasicSupplement]
     properties: List[BasicSupplement]
 
 
 def empty_supplements_file(function_name: str):
-    return SupplementsFile(function_name, {}, [], [])
+    return SupplementsFile(function_name, "", {}, [], [])

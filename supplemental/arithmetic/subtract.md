@@ -10,20 +10,16 @@ this overflow occurs.
 
 #### SILENT
 
-If an overflow occurs then an integer value will be returned. The value is
-undefined. It may be any integer and can change from engine to engine or
-even from row to row within the same query.  The only constraint is that it
-must be a valid value for the result type class (e.g. subtracting two int16
-cannot yield an int32 on overflow)
+/[%Overflow$SILENT%] For e.g. subtracting two int16 cannot
+yield an int32 on overflow.
 
 #### SATURATE
 
-If an overflow occurs then the largest (for positive overflow) or smallest
-(for negative overflow) possible value for the type class will be returned.
+/[%Overflow$SATURATE%]
 
 #### ERROR
 
-If an overflow occurs then an error should be raised.
+/[%Overflow$ERROR%]
 
 ### Rounding
 
@@ -33,29 +29,23 @@ Rounding behaviors are defined as part of the IEEE 754 standard.
 
 #### TIE_TO_EVEN
 
-Round to the nearest value. If the number is exactly halfway between two
-values then round to the number whose least significant digit is even. Or,
-because we are working with binary digits, round to the number whose last digit
-is 0. This is the default behavior in many systems because it helps to avoid
-bias in rounding.
+/[%Rounding$TIE_TO_EVEN%]
 
 #### TIE_AWAY_FROM_ZERO
 
-Round to the nearest value. If the number is exactly halfway between two values
-then round to the number furthest from zero.
+/[%Rounding$TIE_AWAY_FROM_ZERO%]
 
 #### TRUNCATE
 
-Round to the nearest value. If the number is exactly halfway between two values
-then round to the value closest to zero.
+/[%Rounding$TRUNCATE%]
 
 #### CEILING
 
-Round to the value closest to positive infinity.
+/[%Rounding$CEILING%]
 
 #### FLOOR
 
-Round to the value closest to negative infinity.
+/[%Rounding$FLOOR%]
 
 ## Details
 
@@ -80,14 +70,13 @@ will not.
 
 ### Null propagating
 
-If any of the inputs is null then the output will be null
+/[%Properties$Null_propagating%]
 
 ### NaN propagating
 
-If any of the inputs is NaN (and the other input is not null) then the output
-will be NaN
+/[%Properties$NaN_propagating%]
 
 ### Stateless
 
-The output will be the same regardless of the order of input rows. This is not
+/[%Properties$Stateless%] This is not
 guaranteed to be true for integer subtraction when overflow is SILENT.
