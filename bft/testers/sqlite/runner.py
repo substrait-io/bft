@@ -32,6 +32,18 @@ def literal_to_str(lit: str | int | float):
         return "-9e999"
     return str(lit)
 
+def extract_argument_values(case: Case, mapping: SqlMapping):
+    arg_vals = []
+    for arg in case.args:
+        if arg.type == "string" and arg.value is not None:
+            arg_vals.append("'" + literal_to_str(arg.value) + "'")
+        elif mapping.aggregate:
+            for value in arg.value:
+                arg_vals.append(literal_to_str(value))
+        else:
+            arg_vals.append(literal_to_str(arg.value))
+    return arg_vals
+
 class SqliteRunner(SqlCaseRunner):
     def __init__(self, dialect):
         super().__init__(dialect)
@@ -52,20 +64,11 @@ class SqliteRunner(SqlCaseRunner):
             if mapping.aggregate:
                 arg_names = [arg_names[0]]
             joined_arg_names = ",".join(arg_names)
-            arg_vals = []
-            for arg in case.args:
-                if arg.type == "string" and arg.value is not None:
-                    arg_vals.append("'" + literal_to_str(arg.value) + "'")
-                elif mapping.aggregate:
-                    for value in arg.value:
-                        arg_vals.append(literal_to_str(value))
-                else:
-                    arg_vals.append(literal_to_str(arg.value))
+            arg_vals =  ",".join(extract_argument_values(case, mapping))
 
-            arg_vals = ",".join(arg_vals)
             if mapping.aggregate:
                 arg_vals_list = ", ".join(f"({val})" for val in arg_vals.split(","))
-                if len(arg_vals):
+                if arg_vals:
                     self.conn.execute(
                         f"INSERT INTO my_table ({joined_arg_names}) VALUES {arg_vals_list};"
                     )
