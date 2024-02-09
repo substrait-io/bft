@@ -102,7 +102,6 @@ class PostgresRunner(SqlCaseRunner):
                         else:
                             arg_vals_list += f"({literal_to_str(value)}),"
                 if len(arg_vals_list[:-1]):
-                    print(f"INSERT INTO my_table ({joined_arg_names}) VALUES {arg_vals_list[:-1]};")
                     self.conn.execute(
                         f"INSERT INTO my_table ({joined_arg_names}) VALUES {arg_vals_list[:-1]};"
                     )
