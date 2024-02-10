@@ -30,16 +30,14 @@ def type_to_datafusion_type(type: str):
     return type_map[type]
 
 
-def literal_to_str(lit: CaseLiteral):
-    if lit.value is None:
-        return "null"
-    elif lit.value == "Null":
-        return None
-    elif lit.value == float("inf"):
-        return "'Infinity'"
-    elif lit.value == float("-inf"):
-        return "'-Infinity'"
-    return str(lit.value)
+def handle_special_cases(lit: CaseLiteral):
+    if lit == "nan":
+        return math.nan
+    elif lit == "inf":
+        return float("inf")
+    elif lit == "-inf":
+        return float("-inf")
+    return lit
 
 
 def is_string_type(arg):
@@ -51,7 +49,7 @@ def is_string_type(arg):
 
 def arg_with_type(arg):
     if is_string_type(arg):
-        arg_val = literal_to_str(arg)
+        arg_val = str(arg.value)
     elif isinstance(arg.value, list) or arg.value is None:
         arg_val = None
     elif arg.type.startswith("i"):
@@ -87,18 +85,23 @@ class DatafusionRunner(SqlCaseRunner):
             arg_vals_list = []
             orig_types = []
             arg_types_list = []
-            for arg_idx, arg in enumerate(case.args):
-                arg_val = arg_with_type(arg)
-                arg_type = type_to_datafusion_type(arg.type)
-                orig_types.append(arg.type)
-                arg_vals_list.append(arg_val)
-                arg_types_list.append(arg_type)
-                arg_names.append(f"arg{arg_idx}")
 
             if mapping.aggregate:
+                for arg_idx, arg in enumerate(case.args):
+                    arg_type = type_to_datafusion_type(arg.type)
+                    for val in arg.value:
+                        arg_vals_list.append(handle_special_cases(val))
+                    arg_names.append(f"arg{arg_idx}")
                 arg_vectors = [pa.array(arg_vals_list, arg_type)]
-                arg_names = [arg_names[0]]
             else:
+                for arg_idx, arg in enumerate(case.args):
+                    arg_val = arg_with_type(arg)
+                    arg_type = type_to_datafusion_type(arg.type)
+                    orig_types.append(arg.type)
+                    arg_vals_list.append(arg_val)
+                    arg_types_list.append(arg_type)
+                    arg_names.append(f"arg{arg_idx}")
+
                 for val, arg_type, orig_type in zip(
                     arg_vals_list, arg_types_list, orig_types
                 ):

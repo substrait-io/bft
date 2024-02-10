@@ -23,16 +23,26 @@ def type_to_sqlite_type(type: str):
     return type_map[type]
 
 
-def literal_to_str(lit: CaseLiteral):
-    if lit.value is None:
+def literal_to_str(lit: str | int | float):
+    if lit is None:
         return "null"
-    # The simplest way to get infinity into sqlite is to use an impossibly large/small value
-    elif lit.value == float("inf"):
+    elif lit in [float("inf"), "inf"]:
         return "9e999"
-    elif lit.value == float("-inf"):
+    elif lit in [float("-inf"), "-inf"]:
         return "-9e999"
-    return str(lit.value)
+    return str(lit)
 
+def extract_argument_values(case: Case, mapping: SqlMapping):
+    arg_vals = []
+    for arg in case.args:
+        if arg.type == "string" and arg.value is not None:
+            arg_vals.append("'" + literal_to_str(arg.value) + "'")
+        elif mapping.aggregate:
+            for value in arg.value:
+                arg_vals.append(literal_to_str(value))
+        else:
+            arg_vals.append(literal_to_str(arg.value))
+    return arg_vals
 
 class SqliteRunner(SqlCaseRunner):
     def __init__(self, dialect):
@@ -54,17 +64,11 @@ class SqliteRunner(SqlCaseRunner):
             if mapping.aggregate:
                 arg_names = [arg_names[0]]
             joined_arg_names = ",".join(arg_names)
-            arg_vals = ",".join(
-                [
-                    "'" + literal_to_str(arg) + "'"
-                    if arg.type == "string" and arg.value is not None
-                    else literal_to_str(arg)
-                    for arg in case.args
-                ]
-            )
+            arg_vals =  ",".join(extract_argument_values(case, mapping))
+
             if mapping.aggregate:
                 arg_vals_list = ", ".join(f"({val})" for val in arg_vals.split(","))
-                if arg_vals != "[]":
+                if arg_vals:
                     self.conn.execute(
                         f"INSERT INTO my_table ({joined_arg_names}) VALUES {arg_vals_list};"
                     )

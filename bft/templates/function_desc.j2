@@ -135,11 +135,7 @@
                         {% for arg in case.args %}
                         <td>{{ arg }}</td>
                         {% endfor %}
-                        {% if case.result.value %}
-                        <td>{{ case.result.value }}</td>
-                        {% else %}
-                        <td>{{ case.result | upper }}</td>
-                        {% endif %}
+                        <td>{{ case.result.value | default(case.result | upper) }}</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>

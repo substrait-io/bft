@@ -35,14 +35,14 @@ class Implementation(NamedTuple):
     variadic: int
 
 
-class ScalarFunction(NamedTuple):
+class Function(NamedTuple):
     name: str
     description: str
     implementations: List[Implementation]
 
 
 class ExtensionsFile(NamedTuple):
-    scalar_functions: List[ScalarFunction]
+    functions: List[Function]
 
 
 class ExtensionFileVisitor(object):
@@ -81,9 +81,12 @@ class ExtensionFileVisitor(object):
 
     def visit_ext_file(self, parsed_file):
         scalar_functions = self.__visit_list(
-            self.visit_scalar_function, parsed_file, "scalar_functions"
+            self.visit_function, parsed_file, "scalar_functions"
         )
-        return ExtensionsFile(scalar_functions)
+        aggregate_functions = self.__visit_list(
+            self.visit_function, parsed_file, "aggregate_functions"
+        )
+        return ExtensionsFile(scalar_functions + aggregate_functions)
 
     def visit_impl_arg(self, arg):
         name = self.__get_or_else(arg, "name", None)
@@ -112,11 +115,11 @@ class ExtensionFileVisitor(object):
         return_type = self.__get_or_die(impl, "return")
         return Implementation(args, opts, return_type, variadic)
 
-    def visit_scalar_function(self, func):
+    def visit_function(self, func):
         name = self.__get_or_die(func, "name")
         description = self.__get_or_else(func, "description", None)
         implementations = self.__visit_list(self.visit_implementation, func, "impls")
-        return ScalarFunction(name, description, implementations)
+        return Function(name, description, implementations)
 
 
 class ExtensionFileParser(object):
@@ -129,12 +132,12 @@ def add_extensions_file_to_library(
     location: str, ext_file: ExtensionsFile, library: LibraryBuilder
 ):
     function_category = pathlib.Path(location.name).stem.replace("functions_", "")
-    for scalar_func in ext_file.scalar_functions:
-        builder: FunctionBuilder = library.get_function(scalar_func.name, function_category)
+    for func in ext_file.functions:
+        builder: FunctionBuilder = library.get_function(func.name, function_category)
         builder.set_uri(pathlib.Path(location).name)
-        if scalar_func.description is not None:
-            builder.try_set_description(scalar_func.description)
-        for impl in scalar_func.implementations:
+        if func.description is not None:
+            builder.try_set_description(func.description)
+        for impl in func.implementations:
             for opt_name, opt_values in impl.options.items():
                 builder.note_option(opt_name, opt_values)
             arg_types = []

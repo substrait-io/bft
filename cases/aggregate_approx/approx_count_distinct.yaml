@@ -4,28 +4,28 @@ cases:
       id: basic
       description: Basic examples without any special cases
     args:
-      - value: [1 -2 3 -4 5 6]
+      - value: [1, -2, 3, -4, 5, 6]
         type: i8
     result:
       value: 6
       type: i64
   - group: basic
     args:
-      - value: [-32767 -20000 30000 5 32767]
+      - value: [-32767, -20000, 30000, 5, 32767]
         type: i16
     result:
       value: 5
       type: i64
   - group: basic
     args:
-      - value: [-2147483648 -10000000 30000000 2147483647]
+      - value: [-2147483648, -10000000, 30000000, 2147483647]
         type: i32
     result:
       value: 4
       type: i64
   - group: basic
     args:
-      - value: [-214748364800000 -1000000000 0 922337203685477580]
+      - value: [-214748364800000, -1000000000, 0, 922337203685477580]
         type: i64
     result:
       value: 4
@@ -39,14 +39,14 @@ cases:
       type: i64
   - group: basic
     args:
-      - value: [abc def ghi]
+      - value: ["abc", "def", "ghi"]
         type: string
     result:
       value: 3
       type: i64
   - group: basic
     args:
-      - value: [abc Null ghi]
+      - value: ["abc", Null, "ghi"]
         type: string
     result:
       value: 2
@@ -60,14 +60,14 @@ cases:
       type: i64
   - group: basic
     args:
-      - value: [Null Null Null]
+      - value: [Null, Null, Null]
         type: i8
     result:
       value: 0
       type: i64
   - group: basic
     args:
-      - value: [Null Null 4 3 Null 922337203685477580 12833888]
+      - value: [Null, Null, 4, 3, Null, 922337203685477580, 12833888]
         type: i64
     result:
       value: 4

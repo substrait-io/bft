@@ -4,7 +4,7 @@ cases:
       id: basic
       description: Basic examples without any special cases
     args:
-      - value: [1 -2 3 -4 5 6]
+      - value: [1, -2, 3, -4, 5, 6]
         type: i8
     result:
       value: 6
@@ -25,7 +25,7 @@ cases:
       type: i8
   - group: basic
     args:
-      - value: [Null Null Null]
+      - value: [Null, Null, Null]
         type: i8
     result:
       value: 0
