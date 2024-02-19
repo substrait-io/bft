@@ -44,7 +44,7 @@ The precision of the sinh function depends on the architecture in various dialec
 
 ### Output Range
 
-The hyperbolic sine function has an output range of [-Infinity, Infinity], where it results to 0
+The hyperbolic sine function has an output range of [-Infinity, Infinity], and it results to 0
 at 0 radians.
 
 ## Properties

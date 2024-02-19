@@ -143,7 +143,6 @@ scalar_functions:
     infix: False
     required_options:
       rounding: TIE_TO_EVEN
-      on_domain_error: NAN
   - name: atanh
     local_name: atanh
     infix: False

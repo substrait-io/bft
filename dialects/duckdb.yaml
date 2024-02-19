@@ -83,7 +83,6 @@ scalar_functions:
     local_name: asin
     required_options:
       rounding: TIE_TO_EVEN
-      on_domain_error: NAN
   - name: atan
     local_name: atan
     required_options:

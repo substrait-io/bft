@@ -44,7 +44,7 @@ The precision of the atan function depends on the architecture in various dialec
 
 ### Output Range
 
-The arctangent function has an output range of [-pi/2, pi/2], where it results to 0
+The arctangent function has an output range of [-pi/2, pi/2], and it results to 0
 at 0.
 
 ## Properties

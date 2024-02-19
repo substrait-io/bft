@@ -56,7 +56,7 @@ The precision of the acosh function depends on the architecture in various diale
 
 ### Output Range
 
-The acosh function has an output range of [0, Infinity], where it results to 0
+The acosh function has an output range of [0, Infinity], and it results to 0
 at 1.
 
 ## Properties
