@@ -37,6 +37,7 @@ scalar_functions:
       rounding: TIE_TO_EVEN
   - name: exp
   - name: cos
+    local_name: cos
     required_options:
       rounding: TIE_TO_EVEN
   - name: sin

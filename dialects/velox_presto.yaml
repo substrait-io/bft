@@ -133,10 +133,9 @@ scalar_functions:
           - fp32
         result: fp32
   - name: cos
-    unsupported_kernels:
-      - args:
-          - fp32
-        result: fp32
+    local_name: cos
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: sin
     unsupported_kernels:
       - args:

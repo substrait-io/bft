@@ -86,6 +86,10 @@ scalar_functions:
       on_domain_error: ERROR
   - name: exp
   - name: cos
+    local_name: cos
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: sin
   - name: tan
   - name: cosh

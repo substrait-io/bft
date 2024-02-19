@@ -36,6 +36,9 @@ scalar_functions:
           - fp32
         result: fp32
   - name: cos
+    local_name: cos
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: sin
   - name: tan
   - name: cosh

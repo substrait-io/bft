@@ -55,6 +55,10 @@ scalar_functions:
       overflow: ERROR
       rounding: TIE_TO_EVEN
   - name: cos
+    local_name: cos
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: sin
   - name: tan
   - name: cosh
