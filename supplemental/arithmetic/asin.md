@@ -1,10 +1,10 @@
-# Acos
+# Asin
 
 ## Options
 
 ### Rounding
 
-Arccosine of an input can yield a result that is not exactly
+Arcsine of an input can yield a result that is not exactly
 representable in the given type class. In this case the value will be rounded.
 Rounding behaviors are defined as part of the IEEE 754 standard.
 
@@ -30,7 +30,7 @@ Rounding behaviors are defined as part of the IEEE 754 standard.
 
 ### On_domain_error
 
-Arccosine function has a domain of [-1,1], i.e. values of only this range are allowed. This option controls the behavior when the function is called with values outside of this range.
+Arcsine function has a domain of [-1,1], i.e. values of only this range are allowed. This option controls the behavior when the function is called with values outside of this range.
 
 #### NAN
 
@@ -52,12 +52,12 @@ information on what happens in these cases refer to the IEEE 754 standard.
 
 ### Numerical Precision
 
-The precision of the acos function depends on the architecture in various dialects.
+The precision of the asin function depends on the architecture in various dialects.
 
 ### Output Range
 
-The arccosine cosine function has an output range of [0, pi], where it results to 0
-at 1.
+The arcsine function has an output range of [-pi/2, pi/2], where it results to 0
+at 0.
 
 ## Properties
 
