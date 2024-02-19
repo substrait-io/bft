@@ -74,7 +74,6 @@ scalar_functions:
     local_name: arctan
     required_options:
       rounding: TIE_TO_EVEN
-      on_domain_error: NAN
   - name: acosh
     local_name: arccosh
     required_options:
