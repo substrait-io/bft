@@ -93,6 +93,14 @@ mentions reference methods:
   $ sqlite3 data.db
   sqlite> select pow(2,4);
   ```
+- **Velox**  
+  PyVelox, the python interface of Velox can be used for its testing, that can be installed via pip[https://pypi.org/project/pyvelox/].
+  ```
+  import pyvelox.pyvelox as pv
+  expr = pv.Expression.from_string("power(a,4)")
+  a = pv.from_list([1, 3])
+  eval = expr.evaluate({"a":a})
+  ```
 
 #### CI environment
 We perform continuous integration on a variety of systems to verify the integrity
