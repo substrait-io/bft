@@ -79,9 +79,11 @@ scalar_functions:
   - name: factorial
     unsupported: true
   - name: abs
+    local_name: abs
     required_options:
       overflow: ERROR
-      rounding: TIE_TO_EVEN
+  - name: sign
+    local_name: sign
   - name: negate
     unsupported: true
   - name: bitwise_not

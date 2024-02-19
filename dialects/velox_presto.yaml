@@ -145,6 +145,11 @@ scalar_functions:
   - name: factorial
     unsupported: True
   - name: abs
+    local_name: abs
+    required_options:
+      overflow: ERROR
+  - name: sign
+    local_name: sign
     required_options:
       overflow: ERROR
   - name: negate

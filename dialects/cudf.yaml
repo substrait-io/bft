@@ -74,6 +74,8 @@ scalar_functions:
     local_name: abs
     required_options:
       overflow: SILENT
+  - name: sign
+    unsupported: true
   - name: negate
     unsupported: true
   - name: bitwise_not

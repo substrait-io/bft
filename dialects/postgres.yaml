@@ -132,6 +132,9 @@ scalar_functions:
     infix: False
     required_options:
       overflow: SILENT
+  - name: sign
+    local_name: sign
+    infix: False
   - name: negate
     unsupported: true
   - name: bitwise_not
