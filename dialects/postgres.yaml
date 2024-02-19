@@ -127,6 +127,10 @@ scalar_functions:
   - name: atanh
   - name: atan2
   - name: factorial
+    local_name: factorial
+    infix: False
+    required_options:
+      overflow: SILENT
   - name: abs
     local_name: abs
     infix: False
