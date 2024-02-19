@@ -71,7 +71,10 @@ scalar_functions:
     required_options:
       overflow: SILENT
   - name: negate
-    unsupported: true
+    local_name: "neg"
+    infix: True
+    required_options:
+      overflow: SILENT
   - name: bitwise_not
     unsupported: true
   - name: bitwise_and
