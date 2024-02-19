@@ -22,11 +22,20 @@ scalar_functions:
     infix: True
     required_options:
       on_division_by_zero: ERROR
-      overflow: ERROR
+      overflow: SILENT
       rounding: TIE_TO_EVEN
   - name: modulus
-    unsupported: True
+    local_name: "%"
+    infix: True
+    required_options:
+      division_type: TRUNCATE
+      overflow: SILENT
+      on_domain_error: ERROR
   - name: power
+    local_name: "power"
+    infix: False
+    required_options:
+      overflow: SILENT
   - name: sqrt
     required_options:
       on_domain_error: NAN

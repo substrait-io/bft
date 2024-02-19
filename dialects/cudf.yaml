@@ -31,6 +31,8 @@ scalar_functions:
       on_domain_error: "NULL"
   - name: power
     local_name: pow
+    required_options:
+      overflow: SILENT
   - name: sqrt
     required_options:
       on_domain_error: NAN

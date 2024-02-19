@@ -5,7 +5,7 @@ scalar_functions:
     local_name: +
     infix: True
     required_options:
-      overflow: ERROR
+      overflow: SILENT
       rounding: TIE_TO_EVEN
     unsupported_kernels:
       - args:
@@ -20,7 +20,7 @@ scalar_functions:
     local_name: "-"
     infix: True
     required_options:
-      overflow: ERROR
+      overflow: SILENT
       rounding: TIE_TO_EVEN
     unsupported_kernels:
       - args:
@@ -39,7 +39,7 @@ scalar_functions:
     local_name: "*"
     infix: True
     required_options:
-      overflow: ERROR
+      overflow: SILENT
     unsupported_kernels:
       - args:
           - i8
@@ -54,7 +54,7 @@ scalar_functions:
     infix: True
     required_options:
       on_division_by_zero: NAN
-      overflow: ERROR
+      overflow: SILENT
     unsupported_kernels:
       - args:
           - i8
@@ -69,7 +69,7 @@ scalar_functions:
     infix: True
     required_options:
       division_type: TRUNCATE
-      overflow: ERROR
+      overflow: SILENT
       on_domain_error: ERROR
     unsupported_kernels:
       - args:
@@ -81,6 +81,19 @@ scalar_functions:
           - fp32
         result: fp32
   - name: power
+    local_name: "pow"
+    infix: False
+    required_options:
+      overflow: SILENT
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - fp32
+          - fp32
+        result: fp32
   - name: sqrt
     required_options:
       on_domain_error: ERROR

@@ -42,6 +42,10 @@ scalar_functions:
       overflow: SILENT
       on_domain_error: "NULL"
   - name: power
+    local_name: "power"
+    infix: False
+    required_options:
+      overflow: SILENT
   - name: sqrt
     required_options:
       on_domain_error: NONE

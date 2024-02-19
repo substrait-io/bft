@@ -120,6 +120,9 @@ scalar_functions:
           - fp32
         result: fp32
   - name: power
+    local_name: pow
+    required_options:
+      overflow: ERROR
     unsupported_kernels:
       - args:
           - fp32

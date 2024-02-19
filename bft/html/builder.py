@@ -81,7 +81,7 @@ def replace_pattern_sequences(content, dir_path):
     return content
 
 def create_function_option_value(
-    val: str, supplement: OptionSupplement
+    val: str, supplement: OptionSupplement, dir_path: str
 ) -> FunctionOptionValueInfo:
     name = val
     if supplement is None:
@@ -91,8 +91,9 @@ def create_function_option_value(
     if len(matching_sup) == 0:
         description = "Missing supplementary description"
     else:
-        description = matching_sup[0].description
+        description = replace_pattern_sequences(matching_sup[0].description, dir_path)
     return FunctionOptionValueInfo(name, description)
+
 
 
 def create_function_option(
@@ -103,8 +104,8 @@ def create_function_option(
     if opt_supp is None:
         description = f"No supplemental information for {name}"
     else:
-        description = opt_supp.description
-    values = [create_function_option_value(val, opt_supp) for val in opt.values]
+        description = replace_pattern_sequences(opt_supp.description, supplement.dir_path)
+    values = [create_function_option_value(val, opt_supp, supplement.dir_path) for val in opt.values]
     return FunctionOptionInfo(name, description, values)
 
 
@@ -155,9 +156,9 @@ def create_detail(detail: BasicSupplement) -> FunctionDetailInfo:
     return FunctionDetailInfo(title, description)
 
 
-def create_property(prop: BasicSupplement) -> FunctionPropertyInfo:
+def create_property(prop: BasicSupplement, dir_path: str) -> FunctionPropertyInfo:
     id = prop.title
-    description = prop.description
+    description = replace_pattern_sequences(prop.description, dir_path)
     return FunctionPropertyInfo(id, description)
 
 
@@ -198,7 +199,7 @@ def create_function_info(
         for dialect in dialects.dialects.values()
     ]
     details = [create_detail(detail) for detail in supplements.details]
-    properties = [create_property(prop) for prop in supplements.properties]
+    properties = [create_property(prop, supplements.dir_path) for prop in supplements.properties]
     return FunctionInfo(
         name,
         uri,
