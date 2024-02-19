@@ -96,6 +96,10 @@ scalar_functions:
     required_options:
       rounding: TIE_TO_EVEN
   - name: tan
+    local_name: tan
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: cosh
   - name: sinh
   - name: tanh

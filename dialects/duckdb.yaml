@@ -65,6 +65,9 @@ scalar_functions:
     required_options:
       rounding: TIE_TO_EVEN
   - name: tan
+    local_name: tan
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: cosh
     unsupported: true
   - name: sinh

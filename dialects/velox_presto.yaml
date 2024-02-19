@@ -149,6 +149,9 @@ scalar_functions:
           - fp32
         result: fp32
   - name: tan
+    local_name: tan
+    required_options:
+      rounding: TIE_TO_EVEN
     unsupported_kernels:
       - args:
           - fp32
