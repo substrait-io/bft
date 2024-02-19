@@ -216,16 +216,7 @@ scalar_functions:
           - fp32
         result: fp32
   - name: bitwise_not
-    unsupported_kernels:
-      - args:
-          - i8
-        result: i8
-      - args:
-          - i16
-        result: i16
-      - args:
-          - i32
-        result: i32
+    local_name: bitwise_not
   - name: bitwise_and
     unsupported_kernels:
       - args:
