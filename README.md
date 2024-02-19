@@ -53,6 +53,48 @@ These workflows describe how this information is used.
 
 ### Dialect Testing
 
+#### Local environment
+Testing the dialects locally will require different frameworks/libraries. Following steps
+mentions reference methods:
+- **cuDF**  
+   For testing functions in cuDF, we need a GPU powered system having RAPIDS/cuDF installed.
+   Instructions on RAPIDS installation can be found [here](https://docs.rapids.ai/install)
+
+   Alternatively, we may use a Google Colab notebook with GPU for testing. RAPIDS provides 
+   a [template notebook](https://colab.research.google.com/drive/13sspqiEZwso4NYTbsflpPyNFaVAAxUgr) for installation and further usage. 
+
+   ```
+   import cudf
+   a = cudf.Series([1, 2, 3])
+   a.pow(2)  # Power function
+   ```
+
+- **Datafusion**  
+  We may install a CLI SQL console for testing Datafusion functions. Installation instructions for various architectures can be found [here](https://arrow.apache.org/datafusion/user-guide/cli.html).
+  ```
+  $ datafusion-cli
+  > select power(2,3);
+  ```
+- **DuckDB**  
+  We may install a CLI console or a Python interface for testing with DuckDB. Installation instructions for various architectures and configuration can be found [here](https://duckdb.org/docs/installation/).
+  ```
+  $ duckdb
+  D select pow(1,2);
+  ```
+- **Postgres**  
+  We may use the Postgres CLI for testing, instructions for installation in various architectures through installers, packages or source code can be found [here](https://www.postgresql.org/download/).
+  ```
+  $ psql postgres
+  postgres=# SELECT 2147483647::integer % 5;
+  ```
+- **SQLite**  
+  SQLite testing can be conducted on the [CLI](https://sqlite.org/cli.html) after its [installation](https://www.sqlite.org/download.html).
+  ```
+  $ sqlite3 data.db
+  sqlite> select pow(2,4);
+  ```
+
+#### CI environment
 We perform continuous integration on a variety of systems to verify the integrity
 of our dialect files and test cases.  For each test case a dialect file should
 tell us how that system is expected to behave.  We then run the test case
