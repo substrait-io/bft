@@ -98,6 +98,7 @@ scalar_functions:
     local_name: atan2
     required_options:
       rounding: TIE_TO_EVEN
+      on_domain_error: NAN
   - name: factorial
     unsupported: true
   - name: abs

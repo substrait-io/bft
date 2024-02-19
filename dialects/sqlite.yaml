@@ -99,10 +99,12 @@ scalar_functions:
     local_name: atanh
     required_options:
       rounding: TIE_TO_EVEN
+      on_domain_error: NAN
   - name: atan2
     local_name: atan2
     required_options:
       rounding: TIE_TO_EVEN
+      on_domain_error: NAN
   - name: factorial
     unsupported: True
   - name: abs

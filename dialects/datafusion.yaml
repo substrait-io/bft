@@ -89,6 +89,7 @@ scalar_functions:
     local_name: acosh
     required_options:
       rounding: TIE_TO_EVEN
+      on_domain_error: NAN
     unsupported_kernels:
       - args:
           - fp32
@@ -97,6 +98,7 @@ scalar_functions:
     local_name: asinh
     required_options:
       rounding: TIE_TO_EVEN
+      on_domain_error: NAN
     unsupported_kernels:
       - args:
           - fp32
@@ -105,6 +107,7 @@ scalar_functions:
     local_name: atanh
     required_options:
       rounding: TIE_TO_EVEN
+      on_domain_error: NAN
     unsupported_kernels:
       - args:
           - fp32
@@ -113,6 +116,7 @@ scalar_functions:
     local_name: atan2
     required_options:
       rounding: TIE_TO_EVEN
+      on_domain_error: NAN
     unsupported_kernels:
       - args:
           - fp32
