@@ -1,10 +1,10 @@
-# Sqrt
+# Exp
 
 ## Options
 
 ### Rounding
 
-Taking the square root of an input can yield a result that is not exactly
+Exponential of an input can yield a result that is not exactly
 representable in the given type class. In this case the value will be rounded.
 Rounding behaviors are defined as part of the IEEE 754 standard.
 
@@ -28,18 +28,6 @@ Rounding behaviors are defined as part of the IEEE 754 standard.
 
 /[%Rounding$FLOOR%]
 
-### On_domain_error
-
-Square root operation is typically allowed only for non-negative real numbers. This option controls the behavior when the function is called with values not adhering to this rule.
-
-#### NAN
-
-/[%On_domain_error$NAN%]
-
-#### ERROR
-
-/[%On_domain_error$ERROR%]
-
 ## Details
 
 ### Other floating point exceptions
@@ -50,10 +38,10 @@ have default behaviors defined by IEEE 754 and, since no known engine deviates
 from these default values, these exceptions are not exposed as options. For more
 information on what happens in these cases refer to the IEEE 754 standard.
 
-### Domain restrictions
+### Numerical Precision
 
-Mathematically, square root function for negative real numbers results to complex numbers, and thus in function usage, typically only positive real numbers are allowed. Applying the function on a negative real number may raise an Error or result in a NaN value.
-
+The precision of the exponential function depends on the precision of the input types
+and the way the operation is carried out in various dialects.
 
 ## Properties
 

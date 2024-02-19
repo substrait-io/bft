@@ -102,6 +102,9 @@ scalar_functions:
       rounding: TIE_TO_EVEN
       on_domain_error: ERROR
   - name: exp
+    local_name: exp
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: cos
   - name: sin
   - name: tan

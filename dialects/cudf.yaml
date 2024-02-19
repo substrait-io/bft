@@ -39,6 +39,9 @@ scalar_functions:
       on_domain_error: NAN
       rounding: TIE_TO_EVEN
   - name: exp
+    local_name: exp
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: cos
     required_options:
       rounding: TIE_TO_EVEN

@@ -54,8 +54,8 @@ scalar_functions:
       on_domain_error: ERROR
       rounding: TIE_TO_EVEN
   - name: exp
+    local_name: exp
     required_options:
-      overflow: ERROR
       rounding: TIE_TO_EVEN
   - name: cos
   - name: sin

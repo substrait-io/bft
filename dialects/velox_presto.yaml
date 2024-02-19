@@ -149,10 +149,13 @@ scalar_functions:
           - fp32
         result: fp32
   - name: exp
+    local_name: sqrt
     unsupported_kernels:
       - args:
           - fp32
         result: fp32
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: cos
     unsupported_kernels:
       - args:
