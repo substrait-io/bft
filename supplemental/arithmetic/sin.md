@@ -1,10 +1,10 @@
-# Cos
+# Sin
 
 ## Options
 
 ### Rounding
 
-Cosine of an input can yield a result that is not exactly
+Sine of an input can yield a result that is not exactly
 representable in the given type class. In this case the value will be rounded.
 Rounding behaviors are defined as part of the IEEE 754 standard.
 
@@ -40,11 +40,11 @@ information on what happens in these cases refer to the IEEE 754 standard.
 
 ### Numerical Precision
 
-The precision of the cosine function depends on the architecture in various dialects.
+The precision of the sin function depends on the architecture in various dialects.
 
 ### Output Range
 
-Being a sinusoidal trigonometric function, the output of the cos function is restricted to [-1,1].
+Being a sinusoidal trigonometric function, the output of the sin function is restricted to [-1,1].
 
 ## Properties
 

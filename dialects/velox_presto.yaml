@@ -136,7 +136,14 @@ scalar_functions:
     local_name: cos
     required_options:
       rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
   - name: sin
+    local_name: sin
+    required_options:
+      rounding: TIE_TO_EVEN
     unsupported_kernels:
       - args:
           - fp32

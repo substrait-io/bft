@@ -48,10 +48,14 @@ scalar_functions:
   - name: exp
   - name: cos
     local_name: cos
-    infix: True
+    infix: False
     required_options:
       rounding: TIE_TO_EVEN
   - name: sin
+    local_name: sin
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: tan
   - name: cosh
   - name: sinh
