@@ -77,14 +77,17 @@ scalar_functions:
     local_name: acos
     required_options:
       rounding: TIE_TO_EVEN
+      on_domain_error: NAN
   - name: asin
     local_name: asin
     required_options:
       rounding: TIE_TO_EVEN
+      on_domain_error: NAN
   - name: atan
     local_name: atan
     required_options:
       rounding: TIE_TO_EVEN
+      on_domain_error: NAN
   - name: acosh
     local_name: acosh
     required_options:

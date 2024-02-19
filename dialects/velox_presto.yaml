@@ -196,6 +196,7 @@ scalar_functions:
     local_name: acos
     required_options:
       rounding: TIE_TO_EVEN
+      on_domain_error: NAN
     unsupported_kernels:
       - args:
           - i8
@@ -216,6 +217,7 @@ scalar_functions:
     local_name: asin
     required_options:
       rounding: TIE_TO_EVEN
+      on_domain_error: NAN
     unsupported_kernels:
       - args:
           - i8
@@ -236,6 +238,7 @@ scalar_functions:
     local_name: atan
     required_options:
       rounding: TIE_TO_EVEN
+      on_domain_error: NAN
     unsupported_kernels:
       - args:
           - i8

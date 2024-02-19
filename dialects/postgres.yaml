@@ -120,16 +120,19 @@ scalar_functions:
     infix: False
     required_options:
       rounding: TIE_TO_EVEN
+      on_domain_error: ERROR
   - name: asin
     local_name: asin
     infix: False
     required_options:
       rounding: TIE_TO_EVEN
+      on_domain_error: ERROR
   - name: atan
     local_name: atan
     infix: False
     required_options:
       rounding: TIE_TO_EVEN
+      on_domain_error: ERROR
   - name: acosh
     local_name: acosh
     infix: False

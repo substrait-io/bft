@@ -44,7 +44,7 @@ The precision of the cosh function depends on the architecture in various dialec
 
 ### Output Range
 
-The hyperbolic cosine functions has an output range of [1, Infinity], where it results to 1
+The hyperbolic cosine function has an output range of [1, Infinity], where it results to 1
 at 0 radians.
 
 ## Properties
