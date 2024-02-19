@@ -48,22 +48,74 @@ scalar_functions:
     required_options:
       rounding: TIE_TO_EVEN
   - name: cosh
+    local_name: cosh
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: sinh
+    local_name: sinh
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: tanh
+    local_name: tanh
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: acos
+    local_name: acos
+    required_options:
+      rounding: TIE_TO_EVEN
     unsupported_kernels:
       - args:
           - fp32
         result: fp32
   - name: asin
+    local_name: asin
+    required_options:
+      rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
   - name: atan
+    local_name: atan
+    required_options:
+      rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
   - name: acosh
-    unsupported: true
+    local_name: acosh
+    required_options:
+      rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
   - name: asinh
-    unsupported: true
+    local_name: asinh
+    required_options:
+      rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
   - name: atanh
-    unsupported: true
+    local_name: atanh
+    required_options:
+      rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
   - name: atan2
+    local_name: atan2
+    required_options:
+      rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - fp32
+          - fp32
+        result: fp32
   - name: factorial
     unsupported: True
   - name: abs

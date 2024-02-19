@@ -101,23 +101,55 @@ scalar_functions:
     required_options:
       rounding: TIE_TO_EVEN
   - name: cosh
+    local_name: cosh
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: sinh
+    local_name: sinh
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: tanh
+    local_name: tanh
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: acos
+    local_name: acos
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: asin
+    local_name: asin
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: atan
+    local_name: atan
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: acosh
-    unsupported_kernels:
-      - args:
-          - fp32
-        result: fp32
+    local_name: acosh
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: asinh
-    unsupported_kernels:
-      - args:
-          - fp32
-        result: fp32
+    local_name: asinh
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: atanh
+    local_name: atanh
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: atan2
+    local_name: atan2
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: factorial
   - name: abs
     required_options:

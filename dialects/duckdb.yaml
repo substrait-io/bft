@@ -75,8 +75,17 @@ scalar_functions:
   - name: tanh
     unsupported: true
   - name: acos
+    local_name: acos
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: asin
+    local_name: asin
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: atan
+    local_name: atan
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: acosh
     unsupported: true
   - name: asinh
@@ -84,6 +93,9 @@ scalar_functions:
   - name: atanh
     unsupported: true
   - name: atan2
+    local_name: atan2
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: factorial
     unsupported: true
   - name: abs

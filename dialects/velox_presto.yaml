@@ -138,6 +138,18 @@ scalar_functions:
       rounding: TIE_TO_EVEN
     unsupported_kernels:
       - args:
+          - i8
+        result: i8
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
+          - i64
+        result: i64
+      - args:
           - fp32
         result: fp32
   - name: sin
@@ -145,6 +157,18 @@ scalar_functions:
     required_options:
       rounding: TIE_TO_EVEN
     unsupported_kernels:
+      - args:
+          - i8
+        result: i8
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
+          - i64
+        result: i64
       - args:
           - fp32
         result: fp32
@@ -154,29 +178,122 @@ scalar_functions:
       rounding: TIE_TO_EVEN
     unsupported_kernels:
       - args:
+          - i8
+        result: i8
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
+          - i64
+        result: i64
+      - args:
           - fp32
         result: fp32
   - name: acos
+    local_name: acos
+    required_options:
+      rounding: TIE_TO_EVEN
     unsupported_kernels:
+      - args:
+          - i8
+        result: i8
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
+          - i64
+        result: i64
       - args:
           - fp32
         result: fp32
   - name: asin
+    local_name: asin
+    required_options:
+      rounding: TIE_TO_EVEN
     unsupported_kernels:
+      - args:
+          - i8
+        result: i8
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
+          - i64
+        result: i64
       - args:
           - fp32
         result: fp32
   - name: atan
+    local_name: atan
+    required_options:
+      rounding: TIE_TO_EVEN
     unsupported_kernels:
+      - args:
+          - i8
+        result: i8
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
+          - i64
+        result: i64
       - args:
           - fp32
         result: fp32
   - name: cosh
-    unsupported: true
+    local_name: cosh
+    required_options:
+      rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i8
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
+          - i64
+        result: i64
+      - args:
+          - fp32
+        result: fp32
   - name: sinh
     unsupported: true
   - name: tanh
-    unsupported: true
+    local_name: tanh
+    required_options:
+      rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i8
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
+          - i64
+        result: i64
+      - args:
+          - fp32
+        result: fp32
   - name: acosh
     unsupported: true
   - name: asinh
@@ -184,7 +301,26 @@ scalar_functions:
   - name: atanh
     unsupported: true
   - name: atan2
+    local_name: atan2
+    required_options:
+      rounding: TIE_TO_EVEN
     unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - i32
+          - i32
+        result: i32
+      - args:
+          - i64
+          - i64
+        result: i64
       - args:
           - fp32
           - fp32
