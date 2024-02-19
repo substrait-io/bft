@@ -21,17 +21,17 @@ cases:
       - value: -9223372036854775800
         type: i64
     options:
-      on_domain_error: ERROR
+      on_domain_error: NAN
     result:
-      special: error
+      special: nan
   - group: basic
     args:
       - value: -9223372036854775800
         type: i64
     options:
-      on_domain_error: NONE
+      on_domain_error: NAN
     result:
-      value: null
+      value: nan
       type: i64
   - group: basic
     args:

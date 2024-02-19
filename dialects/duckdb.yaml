@@ -26,6 +26,7 @@ scalar_functions:
       on_division_by_zero: NAN
       overflow: ERROR
       rounding: TIE_TO_EVEN
+      on_domain_error: NAN
   - name: modulus
     local_name: "%"
     infix: True
@@ -43,10 +44,12 @@ scalar_functions:
           - fp64
         result: fp64
   - name: power
+    local_name: pow
     required_options:
       overflow: ERROR
       rounding: TIE_TO_EVEN
   - name: sqrt
+    local_name: sqrt
     required_options:
       on_domain_error: ERROR
       rounding: TIE_TO_EVEN

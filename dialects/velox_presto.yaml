@@ -79,6 +79,8 @@ scalar_functions:
     required_options:
       on_division_by_zero: NAN
       overflow: ERROR
+      on_domain_error: ERROR
+      rounding: TIE_TO_EVEN
     unsupported_kernels:
       - args:
           - i8
@@ -129,7 +131,23 @@ scalar_functions:
           - fp32
         result: fp32
   - name: sqrt
-    unsupported: true
+    local_name: sqrt
+    required_options:
+      on_domain_error: NAN
+      rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i8
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
+          - fp32
+        result: fp32
   - name: exp
     unsupported_kernels:
       - args:
@@ -205,6 +223,7 @@ scalar_functions:
   - name: negate
     required_options:
       overflow: ERROR
+      rounding: TIE_TO_EVEN
     unsupported_kernels:
       - args:
           - i8

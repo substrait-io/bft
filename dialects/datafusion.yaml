@@ -24,6 +24,7 @@ scalar_functions:
       on_division_by_zero: ERROR
       overflow: SILENT
       rounding: TIE_TO_EVEN
+      on_domain_error: ERROR
   - name: modulus
     local_name: "%"
     infix: True
@@ -32,13 +33,15 @@ scalar_functions:
       overflow: SILENT
       on_domain_error: ERROR
   - name: power
-    local_name: "power"
+    local_name: power
     infix: False
     required_options:
       overflow: SILENT
   - name: sqrt
+    local_name: sqrt
     required_options:
-      on_domain_error: NAN
+      rounding: TIE_TO_EVEN
+      on_domain_error: ERROR
   - name: exp
     unsupported_kernels:
       - args:
@@ -75,6 +78,7 @@ scalar_functions:
     infix: True
     required_options:
       overflow: SILENT
+      rounding: TIE_TO_EVEN
   - name: bitwise_not
     unsupported: true
   - name: bitwise_and

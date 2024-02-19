@@ -64,13 +64,11 @@ are either both 0 or both ±infinity.
 
 #### NAN
 
-Return a Not a Number value if the dividend and the divisor are either both 0 or
-both ±infinity.
+/[%On_domain_error$NAN%]
 
 #### ERROR
 
-If the dividend and the divisor are either both 0 or both ±infinity an error should 
-be raised.
+/[%On_domain_error$ERROR%]
 
 ### On_division_by_zero
 

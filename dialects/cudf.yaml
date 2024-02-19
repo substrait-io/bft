@@ -34,6 +34,7 @@ scalar_functions:
     required_options:
       overflow: SILENT
   - name: sqrt
+    local_name: sqrt
     required_options:
       on_domain_error: NAN
       rounding: TIE_TO_EVEN

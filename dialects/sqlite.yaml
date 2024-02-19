@@ -34,6 +34,8 @@ scalar_functions:
     required_options:
       on_division_by_zero: NAN
       overflow: SILENT
+      rounding: TIE_TO_EVEN
+      on_domain_error: NAN
   - name: modulus
     local_name: "%"
     infix: True
@@ -42,13 +44,16 @@ scalar_functions:
       overflow: SILENT
       on_domain_error: "NULL"
   - name: power
-    local_name: "power"
+    local_name: power
     infix: False
     required_options:
       overflow: SILENT
   - name: sqrt
+    infix: False
+    local_name: sqrt
     required_options:
-      on_domain_error: NONE
+      on_domain_error: NAN
+      rounding: TIE_TO_EVEN
   - name: exp
   - name: cos
   - name: sin
