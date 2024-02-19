@@ -128,16 +128,10 @@ scalar_functions:
   - name: atan2
   - name: factorial
   - name: abs
+    local_name: abs
+    infix: False
     required_options:
-      on_domain_error: ERROR
-      rounding: TIE_TO_EVEN
-    unsupported_kernels:
-      - args:
-          - i8
-        result: i8
-      - args:
-          - fp32
-        result: fp32
+      overflow: SILENT
   - name: negate
     unsupported: true
   - name: bitwise_not
