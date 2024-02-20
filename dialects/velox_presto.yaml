@@ -220,33 +220,9 @@ scalar_functions:
   - name: bitwise_and
     local_name: bitwise_and
   - name: bitwise_or
-    unsupported_kernels:
-      - args:
-          - i8
-          - i8
-        result: i8
-      - args:
-          - i16
-          - i16
-        result: i16
-      - args:
-          - i32
-          - i32
-        result: i32
+    local_name: bitwise_or
   - name: bitwise_xor
-    unsupported_kernels:
-      - args:
-          - i8
-          - i8
-        result: i8
-      - args:
-          - i16
-          - i16
-        result: i16
-      - args:
-          - i32
-          - i32
-        result: i32
+    local_name: bitwise_xor
   - name: and
     local_name: and
     infix: True

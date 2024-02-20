@@ -29,5 +29,4 @@ The bitwise_not of a valid integer is equivalent to negating the number and subt
 
 ### Stateless
 
-/[%Properties$Stateless%] This is not
-guaranteed to be true for integer subtraction when overflow is SILENT.
+/[%Properties$Stateless%]

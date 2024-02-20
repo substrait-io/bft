@@ -35,5 +35,4 @@ x and its bitwise_not is always 0.
 
 ### Stateless
 
-/[%Properties$Stateless%] This is not
-guaranteed to be true for integer subtraction when overflow is SILENT.
+/[%Properties$Stateless%]
