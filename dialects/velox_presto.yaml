@@ -224,18 +224,14 @@ scalar_functions:
     unsupported_kernels:
       - args:
           - i8
-          - i8
         result: i8
       - args:
-          - i16
           - i16
         result: i16
       - args:
           - i32
-          - i32
         result: i32
       - args:
-          - fp32
           - fp32
         result: fp32
   - name: sign
@@ -249,18 +245,14 @@ scalar_functions:
     unsupported_kernels:
       - args:
           - i8
-          - i8
         result: i8
       - args:
-          - i16
           - i16
         result: i16
       - args:
           - i32
-          - i32
         result: i32
       - args:
-          - fp32
           - fp32
         result: fp32
   - name: bitwise_not
