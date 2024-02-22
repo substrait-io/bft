@@ -44,7 +44,7 @@ The precision of the tanh function depends on the architecture in various dialec
 
 ### Output Range
 
-The hyperbolic cosine function has an output range of [-1, 1], and it results to 0
+The Hyperbolic cosine function has an output range of [-1, 1], and it results to 0
 at 0 radians.
 
 ## Properties

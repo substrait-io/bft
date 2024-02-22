@@ -4,7 +4,7 @@
 
 ### Rounding
 
-Hyperbolic Arcsine of an input can yield a result that is not exactly
+Hyperbolic arcsine of an input can yield a result that is not exactly
 representable in the given type class. In this case the value will be rounded.
 Rounding behaviors are defined as part of the IEEE 754 standard.
 
