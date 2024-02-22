@@ -137,7 +137,7 @@ cases:
       description: Examples demonstrating behavior of different data types
     args:
       - value: 4.5
-        type: fp64
+        type: fp32
       - value: 2.5000007152557373046875
         type: fp64
     result:
