@@ -73,18 +73,10 @@ scalar_functions:
     required_options:
       rounding: TIE_TO_EVEN
       on_domain_error: NAN
-    unsupported_kernels:
-      - args:
-          - fp32
-        result: fp32
   - name: atan
     local_name: atan
     required_options:
       rounding: TIE_TO_EVEN
-    unsupported_kernels:
-      - args:
-          - fp32
-        result: fp32
   - name: acosh
     local_name: acosh
     required_options:
@@ -107,20 +99,11 @@ scalar_functions:
     required_options:
       rounding: TIE_TO_EVEN
       on_domain_error: NAN
-    unsupported_kernels:
-      - args:
-          - fp32
-        result: fp32
   - name: atan2
     local_name: atan2
     required_options:
       rounding: TIE_TO_EVEN
       on_domain_error: NAN
-    unsupported_kernels:
-      - args:
-          - fp32
-          - fp32
-        result: fp32
   - name: factorial
     unsupported: True
   - name: abs
