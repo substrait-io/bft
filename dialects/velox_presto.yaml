@@ -61,6 +61,14 @@ scalar_functions:
           - i32
           - i32
         result: i32
+      - args:
+          - fp32
+          - fp32
+        result: fp32
+      - args:
+          - fp32
+          - fp64
+        result: fp64
   - name: divide
     local_name: "/"
     infix: True
