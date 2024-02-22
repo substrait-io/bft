@@ -91,7 +91,7 @@ scalar_functions:
     local_name: acosh
     required_options:
       rounding: TIE_TO_EVEN
-      on_domain_error: ERROR
+      on_domain_error: NAN
   - name: asinh
     local_name: asinh
     required_options:
