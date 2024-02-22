@@ -34,3 +34,12 @@ cases:
       On_domain_error: ERROR
     result:
       special: error
+
+  - group: On_domain_error
+    args:
+      - value: 0.5
+        type: fp32
+    options:
+      On_domain_error: NAN
+    result:
+      special: nan
