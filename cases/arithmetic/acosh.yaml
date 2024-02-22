@@ -30,3 +30,13 @@ cases:
     result:
       value: null
       type: fp64
+  - group:
+      id: On_domain_error
+      description: Examples demonstrating On_domain_error behavior
+    args:
+      - value: 0.01
+        type: fp32
+    options:
+      On_domain_error: ERROR
+    result:
+      special: error
