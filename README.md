@@ -57,10 +57,10 @@ These workflows describe how this information is used.
 Testing the dialects locally will require different frameworks/libraries. Following steps
 mentions reference methods:
 - **cuDF**  
-   For testing functions in cuDF, we need a GPU powered system having RAPIDS/cuDF installed.
+   For testing functions in cuDF, a GPU powered system having RAPIDS/cuDF needs to be installed.
    Instructions on RAPIDS installation can be found [here](https://docs.rapids.ai/install)
 
-   Alternatively, we may use a Google Colab notebook with GPU for testing. RAPIDS provides 
+   Alternatively, a Google Colab notebook with GPU can be used for testing. RAPIDS provides 
    a [template notebook](https://colab.research.google.com/drive/13sspqiEZwso4NYTbsflpPyNFaVAAxUgr) for installation and further usage. 
 
    ```
@@ -70,19 +70,19 @@ mentions reference methods:
    ```
 
 - **Datafusion**  
-  We may install a CLI SQL console for testing Datafusion functions. Installation instructions for various architectures can be found [here](https://arrow.apache.org/datafusion/user-guide/cli.html).
+   For testing with Datafusion, its CLI SQL console can be used. Installation instructions for various architectures can be found [here](https://arrow.apache.org/datafusion/user-guide/cli.html).
   ```
   $ datafusion-cli
   > select power(2,3);
   ```
 - **DuckDB**  
-  We may install a CLI console or a Python interface for testing with DuckDB. Installation instructions for various architectures and configuration can be found [here](https://duckdb.org/docs/installation/).
+  For testing with DuckDB, its CLI console or Python interface can be used. Installation instructions for various architectures and configuration can be found [here](https://duckdb.org/docs/installation/).
   ```
   $ duckdb
   D select pow(1,2);
   ```
 - **Postgres**  
-  We may use the Postgres CLI for testing, instructions for installation in various architectures through installers, packages or source code can be found [here](https://www.postgresql.org/download/).
+  The Postgres CLI can be utilized for testing. Instructions for installation on various architectures through installers, packages, or source code can be found [here](https://www.postgresql.org/download/).
   ```
   $ psql postgres
   postgres=# SELECT 2147483647::integer % 5;
@@ -94,7 +94,7 @@ mentions reference methods:
   sqlite> select pow(2,4);
   ```
 - **Velox**  
-  PyVelox, the python interface of Velox can be used for its testing, that can be installed via pip[https://pypi.org/project/pyvelox/].
+ For testing with Velox, its Python interface can be installed via pip[https://pypi.org/project/pyvelox/].
   ```
   import pyvelox.pyvelox as pv
   expr = pv.Expression.from_string("power(a,4)")
