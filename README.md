@@ -94,7 +94,7 @@ mentions reference methods:
   sqlite> select pow(2,4);
   ```
 - **Velox**  
- For testing with Velox, its Python interface can be installed via pip[https://pypi.org/project/pyvelox/].
+ For testing with Velox, its Python interface can be installed via [pip](https://pypi.org/project/pyvelox/).
   ```
   import pyvelox.pyvelox as pv
   expr = pv.Expression.from_string("power(a,4)")
