@@ -81,6 +81,16 @@ scalar_functions:
     infix: False
     required_options:
       overflow: ERROR
+    unsupported_kernels:
+      - args:
+          - i64
+        result: i64
+      - args:
+          - fp32
+        result: fp32
+      - args:
+          - fp64
+        result: fp64
   - name: abs
     local_name: abs
     required_options:
