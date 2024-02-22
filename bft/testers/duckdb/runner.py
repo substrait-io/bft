@@ -5,7 +5,7 @@ from typing import Dict, NamedTuple
 import duckdb
 
 from bft.cases.runner import SqlCaseResult, SqlCaseRunner
-from bft.cases.types import Case, CaseLiteral
+from bft.cases.types import Case
 from bft.dialects.types import SqlMapping
 
 type_map = {

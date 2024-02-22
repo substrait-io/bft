@@ -45,16 +45,14 @@ scalar_functions:
           - i8
           - i8
         result: i8
-      - args:
-          - fp32
-          - fp32
-        result: fp32
   - name: divide
     local_name: "/"
     infix: True
     required_options:
       on_division_by_zero: NAN
       overflow: ERROR
+      rounding: TIE_TO_EVEN
+      on_domain_error: ERROR
     unsupported_kernels:
       - args:
           - i8
@@ -69,7 +67,7 @@ scalar_functions:
     infix: True
     required_options:
       division_type: TRUNCATE
-      overflow: ERROR
+      overflow: SILENT
       on_domain_error: ERROR
     unsupported_kernels:
       - args:
@@ -81,10 +79,24 @@ scalar_functions:
           - fp32
         result: fp32
   - name: power
-  - name: sqrt
+    local_name: pow
+    infix: False
     required_options:
+      overflow: SILENT
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+  - name: sqrt
+    local_name: sqrt
+    required_options:
+      rounding: TIE_TO_EVEN
       on_domain_error: ERROR
   - name: exp
+    local_name: exp
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: cos
   - name: sin
   - name: tan
@@ -107,17 +119,22 @@ scalar_functions:
   - name: atanh
   - name: atan2
   - name: factorial
-  - name: abs
+    local_name: factorial
+    infix: False
     required_options:
-      on_domain_error: ERROR
-      rounding: TIE_TO_EVEN
+      overflow: ERROR
+  - name: abs
+    local_name: abs
+    infix: False
+    required_options:
+      overflow: SILENT
     unsupported_kernels:
       - args:
           - i8
         result: i8
-      - args:
-          - fp32
-        result: fp32
+  - name: sign
+    local_name: sign
+    infix: False
   - name: negate
     unsupported: true
   - name: bitwise_not

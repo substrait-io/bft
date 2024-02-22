@@ -13,18 +13,18 @@ cases:
       type: i64
   - group: basic
     args:
-      - value: 1
+      - value: 1.0
         type: fp32
-      - value: -1
+      - value: -1.0
         type: fp32
     result:
-      value: 1
+      value: 1.0
       type: fp32
   - group: basic
     args:
-      - value: 2
+      - value: 2.0
         type: fp64
-      - value: -2
+      - value: -2.0
         type: fp64
     result:
       value: 0.25

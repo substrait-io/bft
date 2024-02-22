@@ -26,6 +26,7 @@ scalar_functions:
       on_division_by_zero: NAN
       overflow: ERROR
       rounding: TIE_TO_EVEN
+      on_domain_error: NAN
   - name: modulus
     local_name: "%"
     infix: True
@@ -43,16 +44,18 @@ scalar_functions:
           - fp64
         result: fp64
   - name: power
+    local_name: pow
     required_options:
       overflow: ERROR
       rounding: TIE_TO_EVEN
   - name: sqrt
+    local_name: sqrt
     required_options:
       on_domain_error: ERROR
       rounding: TIE_TO_EVEN
   - name: exp
+    local_name: exp
     required_options:
-      overflow: ERROR
       rounding: TIE_TO_EVEN
   - name: cos
   - name: sin
@@ -74,11 +77,23 @@ scalar_functions:
     unsupported: true
   - name: atan2
   - name: factorial
-    unsupported: true
-  - name: abs
+    local_name: factorial
+    infix: False
     required_options:
       overflow: ERROR
-      rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
+      - args:
+          - fp64
+        result: fp64
+  - name: abs
+    local_name: abs
+    required_options:
+      overflow: ERROR
+  - name: sign
+    local_name: sign
   - name: negate
     unsupported: true
   - name: bitwise_not

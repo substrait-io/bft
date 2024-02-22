@@ -43,10 +43,6 @@ scalar_functions:
           - i32
           - i32
         result: i32
-      - args:
-          - fp32
-          - fp32
-        result: fp32
   - name: multiply
     local_name: "*"
     infix: True
@@ -79,6 +75,8 @@ scalar_functions:
     required_options:
       on_division_by_zero: NAN
       overflow: ERROR
+      on_domain_error: ERROR
+      rounding: TIE_TO_EVEN
     unsupported_kernels:
       - args:
           - i8
@@ -92,10 +90,6 @@ scalar_functions:
           - i32
           - i32
         result: i32
-      - args:
-          - fp32
-          - fp32
-        result: fp32
   - name: modulus
     local_name: mod
     required_options:
@@ -115,23 +109,68 @@ scalar_functions:
           - i32
           - i32
         result: i32
-      - args:
-          - fp32
-          - fp32
-        result: fp32
   - name: power
+    local_name: pow
+    required_options:
+      overflow: ERROR
     unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - i32
+          - i32
+        result: i32
       - args:
           - fp32
           - fp32
         result: fp32
   - name: sqrt
-    unsupported: true
-  - name: exp
+    local_name: sqrt
+    required_options:
+      on_domain_error: NAN
+      rounding: TIE_TO_EVEN
     unsupported_kernels:
+      - args:
+          - i8
+        result: i8
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
+          - i64
+        result: i64
       - args:
           - fp32
         result: fp32
+  - name: exp
+    local_name: exp
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i8
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
+          - i64
+        result: i64
+      - args:
+          - fp32
+        result: fp32
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: cos
     unsupported_kernels:
       - args:
@@ -183,9 +222,9 @@ scalar_functions:
   - name: factorial
     unsupported: True
   - name: abs
+    local_name: abs
     required_options:
       overflow: ERROR
-      rounding: TIE_TO_EVEN
     unsupported_kernels:
       - args:
           - i8
@@ -199,9 +238,14 @@ scalar_functions:
       - args:
           - fp32
         result: fp32
+  - name: sign
+    local_name: sign
+    required_options:
+      overflow: ERROR
   - name: negate
     required_options:
       overflow: ERROR
+      rounding: TIE_TO_EVEN
     unsupported_kernels:
       - args:
           - i8

@@ -44,3 +44,9 @@ Properties:
 
   Stateless: >
     The output will be the same regardless of the order of input rows.
+
+On_domain_error:
+  NAN: >
+    Return a Not a Number value if any or all of the input values are either 0 or ±infinity.
+  ERROR: >
+    If any or all of the input values are either 0 or ±infinity an error should be raised.

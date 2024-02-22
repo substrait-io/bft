@@ -31,11 +31,17 @@ scalar_functions:
       on_domain_error: "NULL"
   - name: power
     local_name: pow
+    required_options:
+      overflow: SILENT
   - name: sqrt
+    local_name: sqrt
     required_options:
       on_domain_error: NAN
       rounding: TIE_TO_EVEN
   - name: exp
+    local_name: exp
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: cos
     required_options:
       rounding: TIE_TO_EVEN
@@ -65,9 +71,11 @@ scalar_functions:
   - name: factorial
     unsupported: true
   - name: abs
+    local_name: abs
     required_options:
-      rounding: TIE_TO_EVEN
       overflow: SILENT
+  - name: sign
+    unsupported: true
   - name: negate
     unsupported: true
   - name: bitwise_not
