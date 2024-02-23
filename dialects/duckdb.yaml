@@ -58,8 +58,19 @@ scalar_functions:
     required_options:
       rounding: TIE_TO_EVEN
   - name: cos
+    local_name: cos
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: sin
+    local_name: sin
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: tan
+    local_name: tan
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: cosh
     unsupported: true
   - name: sinh
@@ -67,8 +78,18 @@ scalar_functions:
   - name: tanh
     unsupported: true
   - name: acos
+    local_name: acos
+    required_options:
+      rounding: TIE_TO_EVEN
+      on_domain_error: NAN
   - name: asin
+    local_name: asin
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: atan
+    local_name: atan
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: acosh
     unsupported: true
   - name: asinh
@@ -76,6 +97,10 @@ scalar_functions:
   - name: atanh
     unsupported: true
   - name: atan2
+    local_name: atan2
+    required_options:
+      rounding: TIE_TO_EVEN
+      on_domain_error: NAN
   - name: factorial
     local_name: factorial
     infix: False

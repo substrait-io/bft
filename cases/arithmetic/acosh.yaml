@@ -4,13 +4,6 @@ cases:
       id: basic
       description: Basic examples without any special cases
     args:
-      - value: 0.01
-        type: fp32
-    result:
-      value: null
-      type: fp32
-  - group: basic
-    args:
       - value: 1.0
         type: fp64
     result:
@@ -30,3 +23,23 @@ cases:
     result:
       value: null
       type: fp64
+
+  - group:
+      id: On_domain_error
+      description: Examples demonstrating On_domain_error behavior
+    args:
+      - value: 0.01
+        type: fp32
+    options:
+      On_domain_error: ERROR
+    result:
+      special: error
+
+  - group: On_domain_error
+    args:
+      - value: 0.5
+        type: fp32
+    options:
+      On_domain_error: NAN
+    result:
+      special: nan

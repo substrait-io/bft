@@ -60,18 +60,65 @@ scalar_functions:
     required_options:
       rounding: TIE_TO_EVEN
   - name: cos
+    local_name: cos
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: sin
+    local_name: sin
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: tan
+    local_name: tan
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: cosh
+    local_name: cosh
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: sinh
+    local_name: sinh
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: tanh
+    local_name: tanh
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: acos
+    local_name: acos
+    required_options:
+      rounding: TIE_TO_EVEN
+      on_domain_error: NAN
   - name: asin
+    local_name: asin
+    required_options:
+      rounding: TIE_TO_EVEN
+      on_domain_error: NAN
   - name: atan
+    local_name: atan
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: acosh
+    local_name: acosh
+    required_options:
+      rounding: TIE_TO_EVEN
+      on_domain_error: NAN
   - name: asinh
+    local_name: asinh
+    required_options:
+      rounding: TIE_TO_EVEN
   - name: atanh
+    local_name: atanh
+    required_options:
+      rounding: TIE_TO_EVEN
+      on_domain_error: NAN
   - name: atan2
+    local_name: atan2
+    required_options:
+      rounding: TIE_TO_EVEN
+      on_domain_error: NAN
   - name: factorial
     unsupported: True
   - name: abs
