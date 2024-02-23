@@ -219,6 +219,15 @@ scalar_functions:
     local_name: bitwise_not
     unsupported_kernels:
       - args:
+          - i8
+        result: i8
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
           - fp32
         result: fp32
       - args:
@@ -227,6 +236,18 @@ scalar_functions:
   - name: bitwise_and
     local_name: bitwise_and
     unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - i32
+          - i32
+        result: i32
       - args:
           - fp32
           - fp32
@@ -239,6 +260,18 @@ scalar_functions:
     local_name: bitwise_or
     unsupported_kernels:
       - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - i32
+          - i32
+        result: i32
+      - args:
           - fp32
           - fp32
         result: fp32
@@ -249,6 +282,18 @@ scalar_functions:
   - name: bitwise_xor
     local_name: bitwise_xor
     unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - i32
+          - i32
+        result: i32
       - args:
           - fp32
           - fp32
