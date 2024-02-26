@@ -192,6 +192,12 @@ scalar_functions:
       - args:
           - i8
         result: i8
+      - args:
+          - fp32
+        result: fp32
+      - args:
+          - fp64
+        result: fp64
   - name: bitwise_and
     local_name: "&"
     infix: True
@@ -200,6 +206,14 @@ scalar_functions:
           - i8
           - i8
         result: i8
+      - args:
+          - fp32
+          - fp32
+        result: fp32
+      - args:
+          - fp64
+          - fp64
+        result: fp64
   - name: bitwise_or
     local_name: "|"
     infix: True
@@ -208,6 +222,14 @@ scalar_functions:
           - i8
           - i8
         result: i8
+      - args:
+          - fp32
+          - fp32
+        result: fp32
+      - args:
+          - fp64
+          - fp64
+        result: fp64
   - name: bitwise_xor
     local_name: "#"
     infix: True
@@ -216,6 +238,14 @@ scalar_functions:
           - i8
           - i8
         result: i8
+      - args:
+          - fp32
+          - fp32
+        result: fp32
+      - args:
+          - fp64
+          - fp64
+        result: fp64
   - name: and
     local_name: and
     infix: True

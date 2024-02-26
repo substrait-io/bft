@@ -139,11 +139,14 @@ scalar_functions:
   - name: bitwise_not
     unsupported: true
   - name: bitwise_and
-    unsupported: true
+    local_name: "&"
+    infix: True
   - name: bitwise_or
-    unsupported: true
+    local_name: "|"
+    infix: True
   - name: bitwise_xor
-    unsupported: true
+    local_name: "^"
+    infix: True
   - name: and
     local_name: and
     infix: True
