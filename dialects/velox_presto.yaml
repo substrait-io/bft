@@ -137,18 +137,6 @@ scalar_functions:
       rounding: TIE_TO_EVEN
     unsupported_kernels:
       - args:
-          - i8
-        result: i8
-      - args:
-          - i16
-        result: i16
-      - args:
-          - i32
-        result: i32
-      - args:
-          - i64
-        result: i64
-      - args:
           - fp32
         result: fp32
   - name: exp
