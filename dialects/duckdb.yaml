@@ -108,9 +108,6 @@ scalar_functions:
       overflow: ERROR
     unsupported_kernels:
       - args:
-          - i64
-        result: i64
-      - args:
           - fp32
         result: fp32
       - args:
