@@ -8,14 +8,14 @@ cases:
         type: i64
     result:
       value: 5
-      type: i64
+      type: fp64
   - group: basic
     args:
       - value: 0
         type: i64
     result:
       value: 0
-      type: i64
+      type: fp64
   - group: basic
     args:
       - value: -9223372036854775800
@@ -24,7 +24,7 @@ cases:
       on_domain_error: NAN
     result:
       value: null
-      type: i64
+      type: fp64
   - group: basic
     args:
       - value: -9223372036854775800
@@ -33,7 +33,7 @@ cases:
       on_domain_error: NAN
     result:
       value: null
-      type: i64
+      type: fp64
   - group: basic
     args:
       - value: -9223372036854775800
@@ -42,21 +42,21 @@ cases:
       on_domain_error: NAN
     result:
       value: null
-      type: i64
+      type: fp64
   - group: basic
     args:
       - value: 9223372036854775800
         type: i64
     result:
       value: 3037000499.97605
-      type: i64
+      type: fp64
   - group: basic
     args:
       - value: null
         type: i64
     result:
       value: null
-      type: i64
+      type: fp64
   - group: basic
     args:
       - value: 6.25
