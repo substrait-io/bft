@@ -113,3 +113,5 @@ against the system and verify the behavior is what we expected.
 All of this information is rolled up into a website that serves as reference
 documentation for these compute functions.  This is intended for consumption by
 humans that wish to learn more details about specific functions.
+
+The site is available [here](https://voltrondata.github.io/bft/).
