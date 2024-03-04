@@ -149,6 +149,9 @@ scalar_functions:
   - name: is_nan
     local_name: "isna"
   - name: between
+  - name: ceil
+  - name: floor
+  - name: round
   - name: ln
     local_name: log
     required_options:

@@ -1,11 +1,12 @@
-import cudf
 import math
 import operator
 
-from bft.cases.runner import SqlCaseResult, SqlCaseRunner
-from bft.cases.types import Case, CaseLiteral
-from bft.dialects.types import SqlMapping
+import cudf
+import numpy
 
+from bft.cases.runner import SqlCaseResult, SqlCaseRunner
+from bft.cases.types import Case
+from bft.dialects.types import SqlMapping
 
 type_map = {
     "i8": cudf.dtype("int8"),
@@ -66,6 +67,9 @@ class CudfRunner(SqlCaseRunner):
                     except AttributeError:
                         fn = getattr(operator, mapping.local_name)
                         result = fn(arg_vectors[0], arg_vectors[1])
+                    except ValueError:  # Case for round function
+                        fn = getattr(arg_vectors[0], mapping.local_name)
+                        result = fn(arg_values[1])
             else:
                 fn = getattr(arg_vectors[0], mapping.local_name)
                 try:
@@ -93,6 +97,8 @@ class CudfRunner(SqlCaseRunner):
             if case.result.value == result:
                 return SqlCaseResult.success()
             elif case.result.value == str(result):
+                return SqlCaseResult.success()
+            elif numpy.float32(case.result.value) == result:
                 return SqlCaseResult.success()
             elif case.result.value is None:
                 if str(result) == "<NA>":
