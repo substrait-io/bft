@@ -152,6 +152,49 @@ scalar_functions:
   - name: ceil
   - name: floor
   - name: round
+  - name: substring
+    unsupported: True
+  - name: concat
+  - name: concat_ws
+    local_name: "cat"
+  - name: like
+  - name: lower
+  - name: upper
+  - name: reverse
+    unsupported: True
+  - name: repeat
+  - name: replace
+  - name: regexp_replace
+    required_options:
+      lookaround: TRUE
+  - name: regexp_string_split
+    local_name: "regexp_split_to_array"
+  - name: regexp_count_substring
+    local_name: "regexp_count"
+  - name: regexp_match_substring
+    local_name: "regexp_substr"
+  - name: bit_length
+    unsupported: True
+  - name: char_length
+    local_name: "len"
+  - name: octet_length
+    unsupported: True
+  - name: ltrim
+    local_name: "lstrip"
+  - name: rtrim
+    local_name: "rstrip"
+  - name: trim
+    local_name: "strip"
+  - name: lpad
+    local_name: "rjust"
+  - name: rpad
+    local_name: "ljust"
+  - name: left
+    unsupported: true
+  - name: right
+    unsupported: true
+  - name: string_split
+    local_name: "split"
   - name: ln
     local_name: log
     required_options:

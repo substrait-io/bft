@@ -16,6 +16,7 @@ type_map = {
     "fp32": cudf.dtype("float32"),
     "fp64": cudf.dtype("float64"),
     "boolean": cudf.dtype("bool"),
+    "string": cudf.dtype("string"),
 }
 
 
@@ -25,6 +26,26 @@ def type_to_cudf_dtype(type: str):
     return type_map[type]
 
 
+def is_string_function(data_types):
+    return cudf.dtype("string") in data_types
+
+
+def get_str_fn_result(fn_name, arg_vectors, arg_values):
+    if len(arg_vectors) == 1:
+        fn = getattr(arg_vectors[0].str, fn_name)
+        return fn()
+    elif len(arg_vectors) == 2:
+        fn = getattr(arg_vectors[0].str, fn_name)
+        return fn(arg_values[1])
+    else:
+        fn = getattr(arg_vectors[0].str, fn_name)
+        opt_arg = arg_values[2]
+        if opt_arg:
+            return fn(arg_values[1], arg_values[2])
+        else:
+            return fn(arg_values[1])
+
+
 class CudfRunner(SqlCaseRunner):
     def __init__(self, dialect):
         super().__init__(dialect)
@@ -32,6 +53,8 @@ class CudfRunner(SqlCaseRunner):
     def run_sql_case(self, case: Case, mapping: SqlMapping) -> SqlCaseResult:
         arg_vectors = []
         arg_values = []
+        data_types = []
+        fn_name = mapping.local_name
         for arg in case.args:
             dtype = type_to_cudf_dtype(arg.type)
             if dtype is None:
@@ -40,16 +63,19 @@ class CudfRunner(SqlCaseRunner):
                 )
             arg_vectors.append(cudf.Series(arg.value, dtype=dtype))
             arg_values.append(arg.value)
+            data_types.append(dtype)
 
         try:
-            if len(arg_vectors) == 1:
+            if is_string_function(data_types):
+                result = get_str_fn_result(fn_name, arg_vectors, arg_values)
+            elif len(arg_vectors) == 1:
                 # Some functions that only take a single arg are able to be executed against
                 # both a Series and a Dataframe whereas others are only able to be executed against a Dataframe.
                 try:
                     gdf = cudf.DataFrame({"a": arg_values}, dtype=dtype)
-                    result = gdf.eval(f"{mapping.local_name}(a)")
+                    result = gdf.eval(f"{fn_name}(a)")
                 except ValueError:
-                    fn = getattr(arg_vectors[0], mapping.local_name)
+                    fn = getattr(arg_vectors[0], fn_name)
                     result = fn()
             elif len(arg_vectors) == 2:
                 if mapping.infix:
@@ -59,19 +85,19 @@ class CudfRunner(SqlCaseRunner):
                         {"a": [arg_values[0], True], "b": [arg_values[1], True]},
                         dtype=dtype,
                     )
-                    result = gdf.eval(f"(a){mapping.local_name}(b)")
+                    result = gdf.eval(f"(a){fn_name}(b)")
                 else:
                     try:
-                        fn = getattr(arg_vectors[0], mapping.local_name)
+                        fn = getattr(arg_vectors[0], fn_name)
                         result = fn(arg_vectors[1])
                     except AttributeError:
-                        fn = getattr(operator, mapping.local_name)
+                        fn = getattr(operator, fn_name)
                         result = fn(arg_vectors[0], arg_vectors[1])
                     except ValueError:  # Case for round function
-                        fn = getattr(arg_vectors[0], mapping.local_name)
+                        fn = getattr(arg_vectors[0], fn_name)
                         result = fn(arg_values[1])
             else:
-                fn = getattr(arg_vectors[0], mapping.local_name)
+                fn = getattr(arg_vectors[0], fn_name)
                 try:
                     result = fn(arg_vectors[1:])
                 except TypeError:
@@ -94,18 +120,18 @@ class CudfRunner(SqlCaseRunner):
             if math.isnan(result):
                 return SqlCaseResult.success()
         else:
-            if case.result.value == result:
-                return SqlCaseResult.success()
-            elif case.result.value == str(result):
-                return SqlCaseResult.success()
-            elif numpy.float32(case.result.value) == result:
-                return SqlCaseResult.success()
-            elif case.result.value is None:
+            if case.result.value is None:
                 if str(result) == "<NA>":
                     return SqlCaseResult.success()
                 elif result is None:
                     return SqlCaseResult.success()
                 else:
                     return SqlCaseResult.mismatch(str(result))
+            elif case.result.value == result:
+                return SqlCaseResult.success()
+            elif case.result.value == str(result):
+                return SqlCaseResult.success()
+            elif numpy.float32(case.result.value) == result:
+                return SqlCaseResult.success()
             else:
                 return SqlCaseResult.mismatch(str(result))
