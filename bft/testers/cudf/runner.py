@@ -30,7 +30,7 @@ def is_string_function(data_types):
     return cudf.dtype("string") in data_types
 
 
-def get_str_fn_result(fn_name, arg_vectors, arg_values, is_regexp):
+def get_str_fn_result(fn_name: str, arg_vectors: list[cudf.Series], arg_values: list[str], is_regexp: bool):
     if len(arg_vectors) == 1:
         fn = getattr(arg_vectors[0].str, fn_name)
         return fn()
