@@ -667,7 +667,7 @@ scalar_functions:
       - args:
           - i16
           - i32
-        result: i8
+        result: i16
       - args:
           - fp32
           - i8
