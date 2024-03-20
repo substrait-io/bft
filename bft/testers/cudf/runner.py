@@ -30,17 +30,22 @@ def is_string_function(data_types):
     return cudf.dtype("string") in data_types
 
 
-def get_str_fn_result(fn_name, arg_vectors, arg_values):
+def get_str_fn_result(fn_name, arg_vectors, arg_values, is_regexp):
     if len(arg_vectors) == 1:
         fn = getattr(arg_vectors[0].str, fn_name)
         return fn()
     elif len(arg_vectors) == 2:
         fn = getattr(arg_vectors[0].str, fn_name)
-        return fn(arg_values[1])
+        if is_regexp:
+            return fn(arg_values[1], regex=True)
+        else:
+            return fn(arg_values[1])
     else:
         fn = getattr(arg_vectors[0].str, fn_name)
         opt_arg = arg_values[2]
-        if opt_arg:
+        if opt_arg and is_regexp:
+            return fn(arg_values[1], arg_values[2], regex=True)
+        elif opt_arg:
             return fn(arg_values[1], arg_values[2])
         else:
             return fn(arg_values[1])
@@ -55,6 +60,7 @@ class CudfRunner(SqlCaseRunner):
         arg_values = []
         data_types = []
         fn_name = mapping.local_name
+        is_regexp = True if "regexp" in case.function else False
         for arg in case.args:
             dtype = type_to_cudf_dtype(arg.type)
             if dtype is None:
@@ -67,7 +73,7 @@ class CudfRunner(SqlCaseRunner):
 
         try:
             if is_string_function(data_types):
-                result = get_str_fn_result(fn_name, arg_vectors, arg_values)
+                result = get_str_fn_result(fn_name, arg_vectors, arg_values, is_regexp)
             elif len(arg_vectors) == 1:
                 # Some functions that only take a single arg are able to be executed against
                 # both a Series and a Dataframe whereas others are only able to be executed against a Dataframe.

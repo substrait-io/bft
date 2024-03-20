@@ -165,14 +165,15 @@ scalar_functions:
   - name: repeat
   - name: replace
   - name: regexp_replace
+    local_name: "replace"
     required_options:
       lookaround: TRUE
   - name: regexp_string_split
-    local_name: "regexp_split_to_array"
+    local_name: "split"
   - name: regexp_count_substring
-    local_name: "regexp_count"
+    unsupported: True
   - name: regexp_match_substring
-    local_name: "regexp_substr"
+    unsupported: True
   - name: bit_length
     unsupported: True
   - name: char_length
