@@ -42,7 +42,7 @@ def get_str_fn_result(fn_name, arg_vectors, arg_values, is_regexp):
             return fn(arg_values[1])
     else:
         fn = getattr(arg_vectors[0].str, fn_name)
-        opt_arg = arg_values[2]
+        opt_arg = True if arg_values[2] is not None else False
         if opt_arg and is_regexp:
             return fn(arg_values[1], arg_values[2], regex=True)
         elif opt_arg:

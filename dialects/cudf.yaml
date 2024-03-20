@@ -167,9 +167,11 @@ scalar_functions:
   - name: regexp_replace
     local_name: "replace"
     required_options:
-      lookaround: TRUE
+      lookaround: FALSE
   - name: regexp_string_split
     local_name: "split"
+    required_options:
+      lookaround: FALSE
   - name: regexp_count_substring
     unsupported: True
   - name: regexp_match_substring
