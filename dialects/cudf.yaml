@@ -208,13 +208,13 @@ scalar_functions:
     unsupported: true
 aggregate_functions:
   - name: min
-    unsupported: true
+    aggregate: True
   - name: max
-    unsupported: true
+    aggregate: True
   - name: sum
-    unsupported: true
+    aggregate: True
   - name: count
-    unsupported: true
+    aggregate: True
   - name: approx_count_distinct
     unsupported: true
   - name: bool_and

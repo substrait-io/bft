@@ -30,7 +30,13 @@ def is_string_function(data_types):
     return cudf.dtype("string") in data_types
 
 
-def get_str_fn_result(fn_name: str, arg_vectors: list[cudf.Series], arg_values: list[str], is_regexp: bool):
+def is_numpy_type(data_type):
+    return type(data_type).__module__ == numpy.__name__
+
+
+def get_str_fn_result(
+    fn_name: str, arg_vectors: list[cudf.Series], arg_values: list[str], is_regexp: bool
+):
     if len(arg_vectors) == 1:
         fn = getattr(arg_vectors[0].str, fn_name)
         return fn()
@@ -77,6 +83,8 @@ class CudfRunner(SqlCaseRunner):
             elif len(arg_vectors) == 1:
                 # Some functions that only take a single arg are able to be executed against
                 # both a Series and a Dataframe whereas others are only able to be executed against a Dataframe.
+                if mapping.aggregate:
+                    arg_values = arg_values[0]
                 try:
                     gdf = cudf.DataFrame({"a": arg_values}, dtype=dtype)
                     result = gdf.eval(f"{fn_name}(a)")
@@ -111,12 +119,18 @@ class CudfRunner(SqlCaseRunner):
         except RuntimeError as err:
             return SqlCaseResult.error(str(err))
 
-        if result.empty and (case.result.value is None or case.result.value is False):
-            return SqlCaseResult.success()
-        elif len(result) != 1 and not mapping.infix:
-            raise Exception("Scalar function with one row output more than one row")
+        if mapping.aggregate:
+            if is_numpy_type(result):
+                result = result.item()
         else:
-            result = result[0]
+            if result.empty and (
+                case.result.value is None or case.result.value is False
+            ):
+                return SqlCaseResult.success()
+            elif len(result) != 1 and not mapping.infix:
+                raise Exception("Scalar function with one row output more than one row")
+            else:
+                result = result[0]
 
         if case.result == "undefined":
             return SqlCaseResult.success()
@@ -127,9 +141,7 @@ class CudfRunner(SqlCaseRunner):
                 return SqlCaseResult.success()
         else:
             if case.result.value is None:
-                if str(result) == "<NA>":
-                    return SqlCaseResult.success()
-                elif result is None:
+                if str(result) == "<NA>" or math.isnan(result) or result is None:
                     return SqlCaseResult.success()
                 else:
                     return SqlCaseResult.mismatch(str(result))
