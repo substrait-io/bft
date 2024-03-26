@@ -17,6 +17,8 @@ type_map = {
     "fp64": cudf.dtype("float64"),
     "boolean": cudf.dtype("bool"),
     "string": cudf.dtype("string"),
+    "timestamp": cudf.dtype("datetime64[s]"),
+    "date": cudf.dtype("datetime64[s]"),
 }
 
 
@@ -28,6 +30,10 @@ def type_to_cudf_dtype(type: str):
 
 def is_string_function(data_types):
     return cudf.dtype("string") in data_types
+
+
+def is_datetime_function(data_types):
+    return cudf.dtype("datetime64[s]") in data_types
 
 
 def is_numpy_type(data_type):
@@ -57,6 +63,23 @@ def get_str_fn_result(
             return fn(arg_values[1])
 
 
+def get_dt_fn_result(
+    mapping: str, dtype, arg_vectors: list[cudf.Series], arg_values: list[str]
+):
+    fn_name = mapping.local_name
+    if len(arg_vectors) == 2:
+        if mapping.infix:
+            gdf = cudf.DataFrame(
+                {"a": arg_values[0], "b": arg_values[1]},
+                dtype=dtype,
+            )
+            result = gdf.eval(f"(a){fn_name}(b)")
+        elif mapping.extract:
+            extract_property = arg_values[0].lower()
+            result = getattr(arg_vectors[1].dt, extract_property)
+    return result
+
+
 class CudfRunner(SqlCaseRunner):
     def __init__(self, dialect):
         super().__init__(dialect)
@@ -78,7 +101,9 @@ class CudfRunner(SqlCaseRunner):
             data_types.append(dtype)
 
         try:
-            if is_string_function(data_types):
+            if is_datetime_function(data_types):
+                result = get_dt_fn_result(mapping, dtype, arg_vectors, arg_values)
+            elif is_string_function(data_types):
                 result = get_str_fn_result(fn_name, arg_vectors, arg_values, is_regexp)
             elif len(arg_vectors) == 1:
                 # Some functions that only take a single arg are able to be executed against
