@@ -127,11 +127,7 @@ scalar_functions:
   - name: sign
     local_name: sign
   - name: negate
-    local_name: neg
-    infix: False
-    required_options:
-      overflow: ERROR
-      rounding: TIE_TO_EVEN
+    unsupported: true
   - name: bitwise_not
     unsupported: true
   - name: bitwise_and
@@ -218,17 +214,17 @@ scalar_functions:
     required_options:
       negative_start: LEFT_OF_BEGINNING
   - name: concat
-    local_name: "||"
-    infix: True
+    required_options:
+      null_handling: IGNORE_NULLS
   - name: concat_ws
   - name: like
     infix: True
   - name: lower
     required_options:
-      full_unicode: FALSE
+      full_unicode: TRUE
   - name: upper
     required_options:
-      full_unicode: FALSE
+      full_unicode: TRUE
   - name: reverse
   - name: repeat
   - name: replace

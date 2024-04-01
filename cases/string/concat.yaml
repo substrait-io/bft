@@ -19,6 +19,8 @@ cases:
         type: string
       - value: null
         type: string
+    options:
+      null_handling: ACCEPT_NULLS
     result:
       value: null
       type: string
@@ -28,6 +30,8 @@ cases:
         type: string
       - value: 'abcd'
         type: string
+    options:
+      null_handling: ACCEPT_NULLS
     result:
       value: null
       type: string
@@ -37,6 +41,8 @@ cases:
         type: string
       - value: null
         type: string
+    options:
+      null_handling: ACCEPT_NULLS
     result:
       value: null
       type: string
