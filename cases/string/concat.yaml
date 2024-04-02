@@ -26,6 +26,17 @@ cases:
       type: string
   - group: null_input
     args:
+      - value: 'abcd'
+        type: string
+      - value: null
+        type: string
+    options:
+      null_handling: IGNORE_NULLS
+    result:
+      value: 'abcd'
+      type: string
+  - group: null_input
+    args:
       - value: null
         type: string
       - value: 'abcd'
@@ -39,10 +50,32 @@ cases:
     args:
       - value: null
         type: string
+      - value: 'abcd'
+        type: string
+    options:
+      null_handling: IGNORE_NULLS
+    result:
+      value: 'abcd'
+      type: string
+  - group: null_input
+    args:
+      - value: null
+        type: string
       - value: null
         type: string
     options:
       null_handling: ACCEPT_NULLS
     result:
       value: null
+      type: string
+  - group: null_input
+    args:
+      - value: null
+        type: string
+      - value: null
+        type: string
+    options:
+      null_handling: IGNORE_NULLS
+    result:
+      value: ''
       type: string
