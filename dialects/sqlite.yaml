@@ -220,6 +220,8 @@ scalar_functions:
       negative_start: WRAP_FROM_END
   - name: concat
     local_name: "||"
+    required_options:
+      null_handling: ACCEPT_NULLS
     infix: True
   - name: concat_ws
     unsupported: True

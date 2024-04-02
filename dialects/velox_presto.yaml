@@ -707,6 +707,8 @@ scalar_functions:
           - i32
         result: string
   - name: concat
+    required_options:
+      null_handling: ACCEPT_NULLS
   - name: concat_ws
     unsupported: True
   - name: like

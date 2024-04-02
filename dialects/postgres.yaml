@@ -449,6 +449,8 @@ scalar_functions:
         result: string
   - name: concat
     local_name: "||"
+    required_options:
+      null_handling: ACCEPT_NULLS
     infix: True
   - name: concat_ws
   - name: like
