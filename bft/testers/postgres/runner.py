@@ -141,7 +141,7 @@ class PostgresRunner(SqlCaseRunner):
                 print(f"Expected NAN but received {result}")
                 return SqlCaseResult.error(str(result))
             elif case.result.type.startswith("fp") and case.result.value:
-                if math.isclose(result, case.result.value, rel_tol=1e-6):
+                if math.isclose(result, case.result.value, rel_tol=1e-9):
                     return SqlCaseResult.success()
             else:
                 if result == case.result.value:
