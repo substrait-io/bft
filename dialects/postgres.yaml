@@ -6,7 +6,6 @@ scalar_functions:
     infix: True
     required_options:
       overflow: ERROR
-      rounding: TIE_TO_EVEN
     unsupported_kernels:
       - args:
           - i8
