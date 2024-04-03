@@ -12,10 +12,6 @@ scalar_functions:
           - i8
           - i8
         result: i8
-      - args:
-          - fp32
-          - fp32
-        result: fp32
   - name: subtract
     local_name: "-"
     infix: True
