@@ -6,7 +6,6 @@ scalar_functions:
     infix: True
     required_options:
       overflow: SILENT
-      rounding: TIE_TO_EVEN
   - name: subtract
     local_name: "-"
     infix: True
@@ -44,10 +43,6 @@ scalar_functions:
       on_domain_error: ERROR
   - name: exp
     local_name: exp
-    unsupported_kernels:
-      - args:
-          - fp32
-        result: fp32
     required_options:
       rounding: TIE_TO_EVEN
   - name: cos
@@ -79,10 +74,6 @@ scalar_functions:
     required_options:
       rounding: TIE_TO_EVEN
       on_domain_error: NAN
-    unsupported_kernels:
-      - args:
-          - fp32
-        result: fp32
   - name: asin
     local_name: asin
     required_options:
@@ -101,10 +92,6 @@ scalar_functions:
     local_name: asinh
     required_options:
       rounding: TIE_TO_EVEN
-    unsupported_kernels:
-      - args:
-          - fp32
-        result: fp32
   - name: atanh
     local_name: atanh
     required_options:

@@ -150,6 +150,9 @@ class DatafusionRunner(SqlCaseRunner):
             elif case.result == "nan":
                 if math.isnan(result):
                     return SqlCaseResult.success()
+            elif case.result.type.startswith('fp') and case.result.value:
+                if math.isclose(result, case.result.value, rel_tol=1e-6):
+                    return SqlCaseResult.success()
             else:
                 if result == case.result.value:
                     return SqlCaseResult.success()
