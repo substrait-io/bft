@@ -1,11 +1,11 @@
 import datetime
+import math
 import os
-from typing import Dict, NamedTuple
 
 import psycopg
 
 from bft.cases.runner import SqlCaseResult, SqlCaseRunner
-from bft.cases.types import Case, CaseLiteral
+from bft.cases.types import Case
 from bft.dialects.types import SqlMapping
 
 type_map = {
@@ -38,7 +38,6 @@ def literal_to_str(lit: str | int | float):
     elif lit in [float("-inf"), "-inf"]:
         return "'-Infinity'"
     return str(lit)
-
 
 
 def is_string_type(arg):
@@ -141,6 +140,9 @@ class PostgresRunner(SqlCaseRunner):
             elif case.result == "nan":
                 print(f"Expected NAN but received {result}")
                 return SqlCaseResult.error(str(result))
+            elif case.result.type.startswith("fp") and case.result.value:
+                if math.isclose(result, case.result.value, rel_tol=1e-6):
+                    return SqlCaseResult.success()
             else:
                 if result == case.result.value:
                     return SqlCaseResult.success()
