@@ -140,6 +140,9 @@ class PostgresRunner(SqlCaseRunner):
             elif case.result == "nan":
                 print(f"Expected NAN but received {result}")
                 return SqlCaseResult.error(str(result))
+            # Issues with python float comparison:
+            # https://tutorpython.com/python-mathisclose/#The_problem_with_using_for_float_comparison
+            # https://stackoverflow.com/questions/5595425/what-is-the-best-way-to-compare-floats-for-almost-equality-in-python
             elif case.result.type.startswith("fp") and case.result.value:
                 if math.isclose(result, case.result.value, rel_tol=1e-7):
                     return SqlCaseResult.success()
