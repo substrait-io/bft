@@ -1,11 +1,11 @@
 import datetime
+import math
 import os
-from typing import Dict, NamedTuple
 
 import psycopg
 
 from bft.cases.runner import SqlCaseResult, SqlCaseRunner
-from bft.cases.types import Case, CaseLiteral
+from bft.cases.types import Case
 from bft.dialects.types import SqlMapping
 
 type_map = {
@@ -38,7 +38,6 @@ def literal_to_str(lit: str | int | float):
     elif lit in [float("-inf"), "-inf"]:
         return "'-Infinity'"
     return str(lit)
-
 
 
 def is_string_type(arg):
@@ -141,6 +140,12 @@ class PostgresRunner(SqlCaseRunner):
             elif case.result == "nan":
                 print(f"Expected NAN but received {result}")
                 return SqlCaseResult.error(str(result))
+            # Issues with python float comparison:
+            # https://tutorpython.com/python-mathisclose/#The_problem_with_using_for_float_comparison
+            # https://stackoverflow.com/questions/5595425/what-is-the-best-way-to-compare-floats-for-almost-equality-in-python
+            elif case.result.type.startswith("fp") and case.result.value:
+                if math.isclose(result, case.result.value, rel_tol=1e-7):
+                    return SqlCaseResult.success()
             else:
                 if result == case.result.value:
                     return SqlCaseResult.success()

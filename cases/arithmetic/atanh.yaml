@@ -19,14 +19,14 @@ cases:
   - group: basic
     args:
       - value: 0.009
-        type: fp64
+        type: fp32
     result:
       value: 0.009000243011810481
       type: fp64
   - group: basic
     args:
       - value: -0.009
-        type: fp64
+        type: fp32
     result:
       value: -0.009000243011810481
       type: fp64

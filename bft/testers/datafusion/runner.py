@@ -150,6 +150,14 @@ class DatafusionRunner(SqlCaseRunner):
             elif case.result == "nan":
                 if math.isnan(result):
                     return SqlCaseResult.success()
+            # Issues with python float comparison:
+            # https://tutorpython.com/python-mathisclose/#The_problem_with_using_for_float_comparison
+            # https://stackoverflow.com/questions/5595425/what-is-the-best-way-to-compare-floats-for-almost-equality-in-python
+            # Datafusion bug with float when converting from a dataframe to a pylist:
+            # https://github.com/apache/arrow-datafusion/issues/9950
+            elif case.result.type.startswith('fp') and case.result.value:
+                if math.isclose(result, case.result.value, rel_tol=1e-6):
+                    return SqlCaseResult.success()
             else:
                 if result == case.result.value:
                     return SqlCaseResult.success()
