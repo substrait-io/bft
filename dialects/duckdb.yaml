@@ -199,8 +199,6 @@ scalar_functions:
   - name: add_datetime
     local_name: +
     infix: True
-    required_options:
-      with_time: FALSE
   - name: add_intervals
     local_name: +
     infix: True
