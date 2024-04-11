@@ -5,31 +5,31 @@ cases:
       description: Basic examples without any special cases
     args:
       - value: 0
-        type: i8
+        type: i32
     result:
       value: 1
-      type: i8
+      type: i32
   - group: basic
     args:
       - value: 1
-        type: i8
+        type: i32
     result:
       value: 1
-      type: i8
+      type: i32
   - group: basic
     args:
       - value: 20
-        type: i8
+        type: i64
     result:
       value: 2432902008176640000
       type: i64
   - group: basic
     args:
       - value: null
-        type: i8
+        type: i32
     result:
       value: null
-      type: i8
+      type: i32
   - group:
       id: overflow
       description: Examples demonstrating overflow behavior
