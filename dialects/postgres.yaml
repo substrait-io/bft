@@ -171,6 +171,9 @@ scalar_functions:
       - args:
           - i8
         result: i8
+      - args:
+          - i8
+        result: i64
   - name: abs
     local_name: abs
     infix: False
