@@ -167,6 +167,10 @@ scalar_functions:
     infix: False
     required_options:
       overflow: ERROR
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i8
   - name: abs
     local_name: abs
     infix: False
