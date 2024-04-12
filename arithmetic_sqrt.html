@@ -43,41 +43,50 @@
             <h3>Options&nbsp;<a href="#options">&para;</a></h3>
             
                 <h4>Rounding</h4>
-                No supplemental information for rounding
+                <p>Taking the square root of an input can yield a result that is not exactly
+representable in the given type class. In this case the value will be rounded.
+Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 <dl>
                     
                     <dt>TIE_TO_EVEN</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the number whose least significant digit is even. Or, because we are working with binary digits, round to the number whose last digit is 0. This is the default behavior in many systems because it helps to avoid bias in rounding.
+</p>
                     </dd>
                     
                     <dt>TIE_AWAY_FROM_ZERO</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the number furthest from zero.
+</p>
                     </dd>
                     
                     <dt>TRUNCATE</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the value closest to zero.
+</p>
                     </dd>
                     
                     <dt>CEILING</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>Round to the value closest to positive infinity.
+</p>
                     </dd>
                     
                     <dt>FLOOR</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>Round to the value closest to negative infinity.
+</p>
                     </dd>
                     
                 </dl>
             
                 <h4>On_domain_error</h4>
-                No supplemental information for on_domain_error
+                <p>Square root operation is typically allowed only for non-negative real numbers. This option controls the behavior when the function is called with values not adhering to this rule.</p>
                 <dl>
                     
                     <dt>NAN</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>Return a Not a Number value if any or all of the input values are either 0 or ±infinity.
+</p>
                     </dd>
                     
                     <dt>ERROR</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>If any or all of the input values are either 0 or ±infinity an error should be raised.
+</p>
                     </dd>
                     
                 </dl>
@@ -101,54 +110,21 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
             
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>ERROR</dd>
-                    
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NONE</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-datafusion">
-                
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NAN</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
                 
                     
                         <dt>on_domain_error</dt>
@@ -172,19 +148,91 @@
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>NAN</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>ERROR</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>ERROR</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>NAN</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
         </section>
         <hr>
         <section id="details">
             <h3>Details&nbsp;<a href="#details">&para;</a></h3>
             
-                <p>No supplemental information about the details available</p>
+                
+                    <h4>Other floating point exceptions</h4>
+                    <p>The IEEE 754 standard defines a number of exceptions beyond rounding. For
+example, division by zero, overflow, and underflow. However, these exceptions
+have default behaviors defined by IEEE 754 and, since no known engine deviates
+from these default values, these exceptions are not exposed as options. For more
+information on what happens in these cases refer to the IEEE 754 standard.</p>
+                
+                    <h4>Domain restrictions</h4>
+                    <p>Mathematically, square root function for negative real numbers results to complex numbers, and thus in function usage, typically only positive real numbers are allowed. Applying the function on a negative real number may raise an Error or result in a NaN value.</p>
+                
             
         </section>
         <hr>
         <section id="properties">
             <h3>Properties&nbsp;<a href="#properties">&para;</a></h3>
             
-                <p>No supplemental information about the properties available</p>
+                <dl>
+                    
+                        <dt>NaN propagating</dt>
+                        <dd><p>If any of the inputs is NaN (and the other input is not null) then the output will be NaN
+</p></dd>
+                    
+                        <dt>Null propagating</dt>
+                        <dd><p>If any of the inputs is null then the output will be null
+</p></dd>
+                    
+                        <dt>Stateless</dt>
+                        <dd><p>The output will be the same regardless of the order of input rows.
+</p></dd>
+                    
+                </dl>
             
         </section>
         <hr>
@@ -209,9 +257,7 @@
                         
                         <td>25</td>
                         
-                        
                         <td>5</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -222,39 +268,7 @@
                         
                         <td>0</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=0, TYPE='I64')</td>
-                        
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>ERROR</td>
-                        
-                        
-                        <td>-9223372036854775800</td>
-                        
-                        
-                        <td>ERROR</td>
-                        
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>NONE</td>
-                        
-                        
-                        <td>-9223372036854775800</td>
-                        
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='I64')</td>
-                        
+                        <td>0</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -267,9 +281,33 @@
                         
                         <td>-9223372036854775800</td>
                         
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
                         
                         <td>NAN</td>
                         
+                        
+                        <td>-9223372036854775800</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>NAN</td>
+                        
+                        
+                        <td>-9223372036854775800</td>
+                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -280,9 +318,7 @@
                         
                         <td>9223372036854775800</td>
                         
-                        
                         <td>3037000499.97605</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -293,9 +329,7 @@
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='I64')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -306,9 +340,7 @@
                         
                         <td>6.25</td>
                         
-                        
                         <td>2.5</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -319,9 +351,7 @@
                         
                         <td>2.0000007152557373</td>
                         
-                        
                         <td>1.4142138152541635</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -335,57 +365,6 @@
     <script>
       var bftDialects = {
         
-        'postgres': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres expects on_domain_error=ERROR but on_domain_error=NONE was requested",
-                
-                
-                
-                  "The dialect postgres expects on_domain_error=ERROR but on_domain_error=NAN was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
         'sqlite': {
             examples: [
                 
@@ -398,7 +377,7 @@
                 
                 
                 
-                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=ERROR was requested",
+                  null,
                 
                 
                 
@@ -406,7 +385,7 @@
                 
                 
                 
-                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=NAN was requested",
+                  null,
                 
                 
                 
@@ -437,7 +416,58 @@
             ]
         },
         
-        'velox_presto': {
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb expects on_domain_error=ERROR but on_domain_error=NAN was requested",
+                
+                
+                
+                  "The dialect duckdb expects on_domain_error=ERROR but on_domain_error=NAN was requested",
+                
+                
+                
+                  "The dialect duckdb expects on_domain_error=ERROR but on_domain_error=NAN was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'cudf': {
             examples: [
                 
                 
@@ -500,66 +530,15 @@
                 
                 
                 
-                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=ERROR was requested",
+                  "The dialect datafusion expects on_domain_error=ERROR but on_domain_error=NAN was requested",
                 
                 
                 
-                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=NONE was requested",
+                  "The dialect datafusion expects on_domain_error=ERROR but on_domain_error=NAN was requested",
                 
                 
                 
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'cudf': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects on_domain_error=NAN but on_domain_error=ERROR was requested",
-                
-                
-                
-                  "The dialect cudf expects on_domain_error=NAN but on_domain_error=NONE was requested",
-                
-                
-                
-                  null,
+                  "The dialect datafusion expects on_domain_error=ERROR but on_domain_error=NAN was requested",
                 
                 
                 
@@ -590,7 +569,7 @@
             ]
         },
         
-        'duckdb': {
+        'postgres': {
             examples: [
                 
                 
@@ -602,15 +581,15 @@
                 
                 
                 
-                  null,
+                  "The dialect postgres expects on_domain_error=ERROR but on_domain_error=NAN was requested",
                 
                 
                 
-                  "The dialect duckdb expects on_domain_error=ERROR but on_domain_error=NONE was requested",
+                  "The dialect postgres expects on_domain_error=ERROR but on_domain_error=NAN was requested",
                 
                 
                 
-                  "The dialect duckdb expects on_domain_error=ERROR but on_domain_error=NAN was requested",
+                  "The dialect postgres expects on_domain_error=ERROR but on_domain_error=NAN was requested",
                 
                 
                 
@@ -635,6 +614,57 @@
                 true,
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel sqrt(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
                 
                 true,
                 

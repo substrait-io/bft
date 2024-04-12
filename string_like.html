@@ -78,25 +78,19 @@ The `case_sensitivity` option applies to the `match` argument.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
@@ -104,7 +98,13 @@ The `case_sensitivity` option applies to the `match` argument.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
                 
                     
                 
@@ -116,13 +116,13 @@ The `case_sensitivity` option applies to the `match` argument.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -169,9 +169,7 @@ The `case_sensitivity` option applies to the `match` argument.
                         
                         <td>abcdefg</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -184,9 +182,7 @@ The `case_sensitivity` option applies to the `match` argument.
                         
                         <td>abc</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=FALSE, TYPE='BOOLEAN')</td>
-                        
+                        <td>False</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -216,9 +212,7 @@ The `case_sensitivity` option applies to the `match` argument.
                         
                         <td>abc%</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -231,9 +225,7 @@ The `case_sensitivity` option applies to the `match` argument.
                         
                         <td>%efg</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -246,9 +238,7 @@ The `case_sensitivity` option applies to the `match` argument.
                         
                         <td>_bcdefg</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -261,9 +251,7 @@ The `case_sensitivity` option applies to the `match` argument.
                         
                         <td>abc_efg</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -276,43 +264,6 @@ The `case_sensitivity` option applies to the `match` argument.
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'postgres': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
         
         'sqlite': {
             examples: [
@@ -351,7 +302,44 @@ The `case_sensitivity` option applies to the `match` argument.
             ]
         },
         
-        'velox_presto': {
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'cudf': {
             examples: [
                 
                 
@@ -425,44 +413,44 @@ The `case_sensitivity` option applies to the `match` argument.
             ]
         },
         
-        'cudf': {
+        'postgres': {
             examples: [
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
             ],
             kernels: [
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
             ]
         },
         
-        'duckdb': {
+        'velox_presto': {
             examples: [
                 
                 

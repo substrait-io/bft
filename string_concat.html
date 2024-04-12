@@ -59,34 +59,43 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
                     
+                        <dt>null_handling</dt>
+                        <dd>ACCEPT_NULLS</dd>
+                    
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
+                    
+                        <dt>null_handling</dt>
+                        <dd>ACCEPT_NULLS</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                        <dt>null_handling</dt>
+                        <dd>ACCEPT_NULLS</dd>
                     
                 
             </dl>
@@ -94,17 +103,26 @@
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
+                        <dt>null_handling</dt>
+                        <dd>IGNORE_NULLS</dd>
+                    
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
+                        <dt>null_handling</dt>
+                        <dd>ACCEPT_NULLS</dd>
+                    
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
+                    
+                        <dt>null_handling</dt>
+                        <dd>ACCEPT_NULLS</dd>
                     
                 
             </dl>
@@ -150,9 +168,7 @@
                         
                         <td>efg</td>
                         
-                        
                         <td>abcdefg</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -164,6 +180,8 @@
                 <caption>Examples with null as input</caption>
                 <thead>
                     <tr>
+                        
+                        <th>null_handling</th>
                         
                         
                         <th>arg1 (string)</th>
@@ -177,14 +195,14 @@
                     
                     <tr class="bft-case">
                         
+                        <td>ACCEPT_NULLS</td>
+                        
                         
                         <td>abcd</td>
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='STRING')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -192,14 +210,14 @@
                     
                     <tr class="bft-case">
                         
+                        <td>IGNORE_NULLS</td>
+                        
+                        
+                        <td>abcd</td>
                         
                         <td>None</td>
                         
                         <td>abcd</td>
-                        
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='STRING')</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -207,14 +225,59 @@
                     
                     <tr class="bft-case">
                         
+                        <td>ACCEPT_NULLS</td>
+                        
+                        
+                        <td>None</td>
+                        
+                        <td>abcd</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>IGNORE_NULLS</td>
+                        
+                        
+                        <td>None</td>
+                        
+                        <td>abcd</td>
+                        
+                        <td>abcd</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>ACCEPT_NULLS</td>
+                        
                         
                         <td>None</td>
                         
                         <td>None</td>
                         
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
                         
-                        <td>CASELITERAL(VALUE=NONE, TYPE='STRING')</td>
+                        <td>IGNORE_NULLS</td>
                         
+                        
+                        <td>None</td>
+                        
+                        <td>None</td>
+                        
+                        <td></td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -228,7 +291,7 @@
     <script>
       var bftDialects = {
         
-        'postgres': {
+        'sqlite': {
             examples: [
                 
                 
@@ -240,7 +303,142 @@
                 
                 
                 
+                  "The dialect sqlite expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
+                
+                
+                
                   null,
+                
+                
+                
+                  "The dialect sqlite expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect sqlite expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects null_handling=IGNORE_NULLS but null_handling=ACCEPT_NULLS was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects null_handling=IGNORE_NULLS but null_handling=ACCEPT_NULLS was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects null_handling=IGNORE_NULLS but null_handling=ACCEPT_NULLS was requested",
                 
                 
                 
@@ -257,7 +455,7 @@
             ]
         },
         
-        'sqlite': {
+        'postgres': {
             examples: [
                 
                 
@@ -269,11 +467,23 @@
                 
                 
                 
-                  null,
+                  "The dialect postgres expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
                 
                 
                 
                   null,
+                
+                
+                
+                  "The dialect postgres expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
                 
                 
             ],
@@ -298,28 +508,7 @@
                 
                 
                 
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'datafusion': {
-            examples: [
-                
-                
-                  null,
+                  "The dialect velox_presto expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
                 
                 
                 
@@ -327,57 +516,7 @@
                 
                 
                 
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'cudf': {
-            examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'duckdb': {
-            examples: [
-                
-                
-                  null,
+                  "The dialect velox_presto expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
                 
                 
                 
@@ -385,11 +524,7 @@
                 
                 
                 
-                  null,
-                
-                
-                
-                  null,
+                  "The dialect velox_presto expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
                 
                 
             ],

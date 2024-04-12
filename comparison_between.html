@@ -59,25 +59,19 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
@@ -85,13 +79,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     
                 
@@ -103,7 +91,19 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -154,9 +154,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                         
                         <td>127</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -171,9 +169,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                         
                         <td>30000</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -188,9 +184,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                         
                         <td>2000000000</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -205,9 +199,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                         
                         <td>9223372036854775807</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -222,9 +214,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                         
                         <td>-120</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=FALSE, TYPE='BOOLEAN')</td>
-                        
+                        <td>False</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -239,9 +229,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                         
                         <td>-30000</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=FALSE, TYPE='BOOLEAN')</td>
-                        
+                        <td>False</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -256,9 +244,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                         
                         <td>-2000000000</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=FALSE, TYPE='BOOLEAN')</td>
-                        
+                        <td>False</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -273,9 +259,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                         
                         <td>-9223372036854775807</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=FALSE, TYPE='BOOLEAN')</td>
-                        
+                        <td>False</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -290,9 +274,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                         
                         <td>88.0</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=FALSE, TYPE='BOOLEAN')</td>
-                        
+                        <td>False</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -307,9 +289,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                         
                         <td>inf</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -324,9 +304,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                         
                         <td>100.09</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=FALSE, TYPE='BOOLEAN')</td>
-                        
+                        <td>False</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -341,9 +319,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                         
                         <td>0.0</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -377,9 +353,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                         
                         <td>10</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='BOOLEAN')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -394,9 +368,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                         
                         <td>10</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='BOOLEAN')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -411,9 +383,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='BOOLEAN')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -426,77 +396,6 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'postgres': {
-            examples: [
-                
-                
-                  "The dialect postgres does not support the kernel between(i8, i8, i8) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres does not support the kernel between(i8, i8, i8) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres does not support the kernel between(i8, i8, i8) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
         
         'sqlite': {
             examples: [
@@ -569,78 +468,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
             ]
         },
         
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel between(i8, i8, i8) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel between(i16, i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel between(i32, i32, i32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel between(i8, i8, i8) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel between(i16, i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel between(i32, i32, i32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel between(fp32, fp32, fp32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel between(i8, i8, i8) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
-        'datafusion': {
+        'duckdb': {
             examples: [
                 
                 
@@ -782,7 +610,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
             ]
         },
         
-        'duckdb': {
+        'datafusion': {
             examples: [
                 
                 
@@ -835,6 +663,148 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                 
                 
                   null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  "The dialect postgres does not support the kernel between(i8, i8, i8) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel between(i8, i8, i8) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel between(i8, i8, i8) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel between(i8, i8, i8) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel between(i16, i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel between(i32, i32, i32) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel between(i8, i8, i8) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel between(i16, i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel between(i32, i32, i32) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel between(fp32, fp32, fp32) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel between(i8, i8, i8) -> boolean",
                 
                 
                 

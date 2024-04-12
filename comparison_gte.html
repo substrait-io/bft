@@ -60,25 +60,19 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
@@ -86,13 +80,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     
                 
@@ -104,7 +92,19 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -151,9 +151,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                         
                         <td>2</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=FALSE, TYPE='BOOLEAN')</td>
-                        
+                        <td>False</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -166,9 +164,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                         
                         <td>2</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -181,9 +177,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                         
                         <td>199</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -196,9 +190,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                         
                         <td>2.5</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -211,9 +203,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                         
                         <td>7.25</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -226,9 +216,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                         
                         <td>1.5e+308</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -241,9 +229,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                         
                         <td>inf</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -256,9 +242,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                         
                         <td>-1.5e+308</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=FALSE, TYPE='BOOLEAN')</td>
-                        
+                        <td>False</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -288,9 +272,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                         
                         <td>1</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='BOOLEAN')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -303,9 +285,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='BOOLEAN')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -318,9 +298,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='BOOLEAN')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -333,61 +311,6 @@ If either/both of `x` and `y` are `null`, `null` is returned.
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'postgres': {
-            examples: [
-                
-                
-                  "The dialect postgres does not support the kernel gte(i8, i8) -> boolean",
-                
-                
-                
-                  "The dialect postgres does not support the kernel gte(i8, i8) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
         
         'sqlite': {
             examples: [
@@ -444,62 +367,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             ]
         },
         
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel gte(i8, i8) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel gte(i8, i8) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel gte(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel gte(fp32, fp32) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel gte(fp32, fp32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel gte(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel gte(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel gte(i16, i16) -> boolean",
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
-        'datafusion': {
+        'duckdb': {
             examples: [
                 
                 
@@ -609,7 +477,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             ]
         },
         
-        'duckdb': {
+        'datafusion': {
             examples: [
                 
                 
@@ -654,6 +522,116 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                   null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  "The dialect postgres does not support the kernel gte(i8, i8) -> boolean",
+                
+                
+                
+                  "The dialect postgres does not support the kernel gte(i8, i8) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel gte(i8, i8) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel gte(i8, i8) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel gte(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel gte(fp32, fp32) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel gte(fp32, fp32) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel gte(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel gte(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel gte(i16, i16) -> boolean",
                 
                 
             ],

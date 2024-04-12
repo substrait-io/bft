@@ -61,25 +61,19 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
@@ -87,7 +81,13 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
                 
                     
                 
@@ -99,13 +99,13 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -148,9 +148,7 @@
                         
                         <td>abc</td>
                         
-                        
                         <td>3</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -161,9 +159,7 @@
                         
                         <td></td>
                         
-                        
-                        <td>CASELITERAL(VALUE=0, TYPE='I64')</td>
-                        
+                        <td>0</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -174,9 +170,7 @@
                         
                         <td> </td>
                         
-                        
                         <td>1</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -187,9 +181,7 @@
                         
                         <td>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
                         
-                        
                         <td>48</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -200,9 +192,7 @@
                         
                         <td>   456</td>
                         
-                        
                         <td>6</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -228,9 +218,7 @@
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='I64')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -256,9 +244,7 @@
                         
                         <td>à</td>
                         
-                        
                         <td>1</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -269,9 +255,7 @@
                         
                         <td>😄</td>
                         
-                        
                         <td>1</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -284,53 +268,6 @@
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'postgres': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
         
         'sqlite': {
             examples: [
@@ -379,7 +316,54 @@
             ]
         },
         
-        'velox_presto': {
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'cudf': {
             examples: [
                 
                 
@@ -473,54 +457,54 @@
             ]
         },
         
-        'cudf': {
+        'postgres': {
             examples: [
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
             ],
             kernels: [
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
             ]
         },
         
-        'duckdb': {
+        'velox_presto': {
             examples: [
                 
                 

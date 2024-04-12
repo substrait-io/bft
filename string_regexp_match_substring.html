@@ -107,25 +107,19 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
@@ -133,7 +127,16 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                        <dt>lookaround</dt>
+                        <dd>False</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
                 
                     
                 
@@ -145,17 +148,14 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
-                    
-                        <dt>lookaround</dt>
-                        <dd>False</dd>
                     
                 
             </dl>
@@ -201,9 +201,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>o{1,}</td>
                         
-                        
                         <td>oo</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -216,9 +214,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>o{1}</td>
                         
-                        
                         <td>o</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -231,9 +227,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>[bc]</td>
                         
-                        
                         <td>b</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -246,9 +240,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>(.*)c</td>
                         
-                        
                         <td>abc</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -261,9 +253,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>(.*)c?</td>
                         
-                        
                         <td>abcdefghi</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -297,9 +287,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>\d+(?= dollars)</td>
                         
-                        
                         <td>100</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -333,9 +321,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>(?<=USD)\d{3}</td>
                         
-                        
                         <td>100</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -365,9 +351,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>\d</td>
                         
-                        
                         <td>1</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -380,9 +364,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>\D</td>
                         
-                        
                         <td>a</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -395,9 +377,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>\s</td>
                         
-                        
                         <td> </td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -410,9 +390,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>\S</td>
                         
-                        
                         <td>a</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -425,9 +403,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>\S+</td>
                         
-                        
                         <td>abc</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -440,9 +416,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>\w</td>
                         
-                        
                         <td>a</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -455,9 +429,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>\w+</td>
                         
-                        
                         <td>abc</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -470,9 +442,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>\W</td>
                         
-                        
                         <td> </td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -506,9 +476,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>\d+(?!\d| dollars)</td>
                         
-                        
                         <td>100</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -542,9 +510,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>\d{3}(?<!USD\d{3})</td>
                         
-                        
                         <td>100</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -574,9 +540,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='STRING')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -589,9 +553,7 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                         
                         <td> </td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='STRING')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -604,95 +566,6 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'postgres': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
         
         'sqlite': {
             examples: [
@@ -783,7 +656,96 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
             ]
         },
         
-        'velox_presto': {
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'cudf': {
             examples: [
                 
                 
@@ -961,96 +923,96 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
             ]
         },
         
-        'cudf': {
+        'postgres': {
             examples: [
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
             ],
             kernels: [
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
             ]
         },
         
-        'duckdb': {
+        'velox_presto': {
             examples: [
                 
                 
@@ -1074,14 +1036,6 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                 
                 
                 
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
-                
-                
-                
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
-                
-                
-                
                   null,
                 
                 
@@ -1114,11 +1068,19 @@ Behavior is undefined if the regex fails to compile, the occurrence value is out
                 
                 
                 
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                  null,
                 
                 
                 
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
                 

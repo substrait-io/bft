@@ -64,45 +64,21 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
             
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-datafusion">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
                 
                     
                 
@@ -114,19 +90,69 @@
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                
+            </dl>
+            
         </section>
         <hr>
         <section id="details">
             <h3>Details&nbsp;<a href="#details">&para;</a></h3>
             
-                <p>No supplemental information about the details available</p>
+                
+                    <h4>Complementary</h4>
+                    <p>The bitwise not function behaves complimentary with itself, i.e.
+bitwise_not(bitwise_not(x)) will be equal to x, for any integer.</p>
+                
+                    <h4>XOR Relationship</h4>
+                    <p>Bitwise_not has a relationship with the XOR function, where the XORing of
+a valid integer with the bit pattern of all 1s results in the bitwise_not of
+that integer.</p>
+                
+                    <h4>Two's complement</h4>
+                    <p>The bitwise_not of a valid integer is equivalent to negating the number and subtracting 1.</p>
+                
             
         </section>
         <hr>
         <section id="properties">
             <h3>Properties&nbsp;<a href="#properties">&para;</a></h3>
             
-                <p>No supplemental information about the properties available</p>
+                <dl>
+                    
+                        <dt>NaN propagating</dt>
+                        <dd><p>If any of the inputs is NaN (and the other input is not null) then the output will be NaN
+</p></dd>
+                    
+                        <dt>Null propagating</dt>
+                        <dd><p>If any of the inputs is null then the output will be null
+</p></dd>
+                    
+                        <dt>Stateless</dt>
+                        <dd><p>The output will be the same regardless of the order of input rows.
+</p></dd>
+                    
+                </dl>
             
         </section>
         <hr>
@@ -151,9 +177,7 @@
                         
                         <td>0</td>
                         
-                        
                         <td>-1</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -164,9 +188,7 @@
                         
                         <td>1</td>
                         
-                        
                         <td>-2</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -177,9 +199,7 @@
                         
                         <td>-127</td>
                         
-                        
                         <td>126</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -190,9 +210,7 @@
                         
                         <td>31766</td>
                         
-                        
                         <td>-31767</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -203,9 +221,7 @@
                         
                         <td>-31766</td>
                         
-                        
                         <td>31765</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -216,9 +232,7 @@
                         
                         <td>2147483647</td>
                         
-                        
                         <td>-2147483648</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -229,9 +243,7 @@
                         
                         <td>2147483647</td>
                         
-                        
                         <td>-2147483648</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -242,9 +254,7 @@
                         
                         <td>9223372036854775807</td>
                         
-                        
                         <td>-9223372036854775808</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -255,9 +265,7 @@
                         
                         <td>-9223372036854775807</td>
                         
-                        
                         <td>9223372036854775806</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -268,9 +276,7 @@
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='I64')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -283,63 +289,6 @@
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'postgres': {
-            examples: [
-                
-                
-                  "The dialect postgres does not support the kernel bitwise_not(i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel bitwise_not(i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel bitwise_not(i8) -> i8",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
         
         'sqlite': {
             examples: [
@@ -398,64 +347,7 @@
             ]
         },
         
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_not(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_not(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_not(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_not(i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_not(i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_not(i32) -> i32",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_not(i32) -> i32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                true,
-                
-            ]
-        },
-        
-        'datafusion': {
+        'duckdb': {
             examples: [
                 
                 
@@ -569,7 +461,7 @@
             ]
         },
         
-        'duckdb': {
+        'datafusion': {
             examples: [
                 
                 
@@ -620,6 +512,120 @@
                 true,
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  "The dialect postgres does not support the kernel bitwise_not(i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel bitwise_not(i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel bitwise_not(i8) -> i8",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_not(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_not(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_not(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_not(i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_not(i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_not(i32) -> i32",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_not(i32) -> i32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
                 
                 true,
                 

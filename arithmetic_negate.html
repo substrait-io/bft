@@ -43,19 +43,25 @@
             <h3>Options&nbsp;<a href="#options">&para;</a></h3>
             
                 <h4>Overflow</h4>
-                No supplemental information for overflow
+                <p>Negating a number on the limit of the allowed range of the type class may lead to
+overflowing. For example, if we have consider for i8, negate(-128), then the result
+will overflow since the range for the int8 type class is [-128,127]. This option helps
+control the behavior upon overflow in the negate function.</p>
                 <dl>
                     
                     <dt>SILENT</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>If an overflow occurs then an integer value will be returned. The value is undefined. It may be any integer and can change from engine to engine or even from row to row within the same query.  The only constraint is that it must be a valid value for the result type class.
+</p>
                     </dd>
                     
                     <dt>SATURATE</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest (for negative overflow) possible value for the type class will be returned.
+</p>
                     </dd>
                     
                     <dt>ERROR</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>If an overflow occurs then an error should be raised.
+</p>
                     </dd>
                     
                 </dl>
@@ -85,48 +91,21 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
             
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-datafusion">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
                 
                     
                 
@@ -138,19 +117,74 @@
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>ERROR</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
         </section>
         <hr>
         <section id="details">
             <h3>Details&nbsp;<a href="#details">&para;</a></h3>
             
-                <p>No supplemental information about the details available</p>
+                
+                    <h4>Not Idempotent</h4>
+                    <p>While the algebraic operation is Idempotent, but the function is not, because of Overflow.
+For example, with in8, the result of negate(negate(-128)) will not be -128 as this will overflow.</p>
+                
+                    <h4>Not commutative</h4>
+                    <p>Negation, the algebraic operation, is commutative.  So it may be tempting to
+believe the add function is commutative as well.  However, this is not true because
+of overflow.  For example, when working with int8 the result of
+negate(124 + 4) will yield a different result than negate(124) + negate(4)
+because the first will overflow and the second will not.</p>
+                
             
         </section>
         <hr>
         <section id="properties">
             <h3>Properties&nbsp;<a href="#properties">&para;</a></h3>
             
-                <p>No supplemental information about the properties available</p>
+                <dl>
+                    
+                        <dt>NaN propagating</dt>
+                        <dd><p>If any of the inputs is NaN (and the other input is not null) then the output will be NaN
+</p></dd>
+                    
+                        <dt>Null propagating</dt>
+                        <dd><p>If any of the inputs is null then the output will be null
+</p></dd>
+                    
+                        <dt>Stateless</dt>
+                        <dd><p>The output will be the same regardless of the order of input rows.
+</p></dd>
+                    
+                </dl>
             
         </section>
         <hr>
@@ -175,9 +209,7 @@
                         
                         <td>25</td>
                         
-                        
                         <td>-25</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -188,9 +220,7 @@
                         
                         <td>-200</td>
                         
-                        
                         <td>200</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -201,9 +231,7 @@
                         
                         <td>30000</td>
                         
-                        
                         <td>-30000</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -214,9 +242,7 @@
                         
                         <td>9223372036854775800</td>
                         
-                        
                         <td>-9223372036854775800</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -227,9 +253,7 @@
                         
                         <td>2.5</td>
                         
-                        
                         <td>-2.5</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -240,9 +264,7 @@
                         
                         <td>2.000002861022949</td>
                         
-                        
                         <td>-2.000002861022949</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -253,9 +275,7 @@
                         
                         <td>inf</td>
                         
-                        
                         <td>-inf</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -281,9 +301,7 @@
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='I8')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -313,9 +331,7 @@
                         
                         <td>-128</td>
                         
-                        
                         <td>ERROR</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -328,9 +344,7 @@
                         
                         <td>-128</td>
                         
-                        
                         <td>127</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -343,9 +357,7 @@
                         
                         <td>-128</td>
                         
-                        
                         <td>UNDEFINED</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -358,71 +370,6 @@
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'postgres': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
         
         'sqlite': {
             examples: [
@@ -489,72 +436,7 @@
             ]
         },
         
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i32) -> i32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i8) -> error",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i8) -> undefined",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                true,
-                
-                false,
-                
-                true,
-                
-            ]
-        },
-        
-        'datafusion': {
+        'duckdb': {
             examples: [
                 
                 
@@ -684,7 +566,7 @@
             ]
         },
         
-        'duckdb': {
+        'datafusion': {
             examples: [
                 
                 
@@ -743,6 +625,136 @@
                 true,
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i32) -> i32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i8) -> error",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i8) -> undefined",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                true,
+                
+                false,
                 
                 true,
                 

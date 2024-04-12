@@ -73,25 +73,19 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
@@ -99,7 +93,13 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
                 
                     
                 
@@ -111,13 +111,13 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -164,9 +164,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2020-12-31</td>
                         
-                        
                         <td>2020</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -179,9 +177,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2020-12-31</td>
                         
-                        
                         <td>12</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -194,9 +190,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2020-12-31</td>
                         
-                        
                         <td>31</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -226,9 +220,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>01:02:03+1559</td>
                         
-                        
                         <td>1</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -241,9 +233,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>01:02:03+1559</td>
                         
-                        
                         <td>2</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -256,9 +246,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>01:02:03+1559</td>
                         
-                        
                         <td>3</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -271,9 +259,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>01:02:03+1559</td>
                         
-                        
                         <td>3000</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -286,9 +272,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>01:02:03.45</td>
                         
-                        
                         <td>3450000</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -318,9 +302,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2016-12-31 13:30:15</td>
                         
-                        
                         <td>2016</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -333,9 +315,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2016-01-01 13:30:15</td>
                         
-                        
                         <td>2015</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -348,9 +328,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2016-12-31 13:30:15</td>
                         
-                        
                         <td>4</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -363,9 +341,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2016-12-31 13:30:15</td>
                         
-                        
                         <td>12</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -378,9 +354,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2016-12-31 13:30:15</td>
                         
-                        
                         <td>52</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -393,9 +367,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2016-12-31 13:30:15</td>
                         
-                        
                         <td>31</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -408,9 +380,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2016-12-25 13:30:15</td>
                         
-                        
                         <td>7</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -423,9 +393,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2016-12-25 13:30:15</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=0, TYPE='I64')</td>
-                        
+                        <td>0</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -438,9 +406,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2016-12-25 13:30:15</td>
                         
-                        
                         <td>360</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -453,9 +419,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2016-12-31 13:30:15</td>
                         
-                        
                         <td>13</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -468,9 +432,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>1999-01-08 04:05:06 PST</td>
                         
-                        
                         <td>12</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -483,9 +445,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2016-12-31 13:30:15-10</td>
                         
-                        
                         <td>23</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -498,9 +458,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2016-12-31 13:30:15</td>
                         
-                        
                         <td>30</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -513,9 +471,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2016-12-31 13:30:15</td>
                         
-                        
                         <td>15</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -528,9 +484,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2016-12-31 13:30:15</td>
                         
-                        
                         <td>15000</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -543,9 +497,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2016-12-31 13:30:15.22</td>
                         
-                        
                         <td>15220000</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -558,9 +510,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>1999-01-08 04:05:06 PST</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=0, TYPE='I64')</td>
-                        
+                        <td>0</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -573,9 +523,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                         
                         <td>2016-12-31 13:30:15</td>
                         
-                        
                         <td>1483191015</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -588,127 +536,6 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'postgres': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
         
         'sqlite': {
             examples: [
@@ -831,7 +658,128 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
             ]
         },
         
-        'velox_presto': {
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'cudf': {
             examples: [
                 
                 
@@ -1073,128 +1021,128 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
             ]
         },
         
-        'cudf': {
+        'postgres': {
             examples: [
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
             ],
             kernels: [
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
             ]
         },
         
-        'duckdb': {
+        'velox_presto': {
             examples: [
                 
                 

@@ -43,19 +43,24 @@
             <h3>Options&nbsp;<a href="#options">&para;</a></h3>
             
                 <h4>Overflow</h4>
-                No supplemental information for overflow
+                <p>The power operation may lead to overflowing when the result is
+outside the representable range of the type class.
+This option controls what happens when this overflow occurs.</p>
                 <dl>
                     
                     <dt>SILENT</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>If an overflow occurs then an integer value will be returned. The value is undefined. It may be any integer and can change from engine to engine or even from row to row within the same query.  The only constraint is that it must be a valid value for the result type class.
+</p>
                     </dd>
                     
                     <dt>SATURATE</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest (for negative overflow) possible value for the type class will be returned.
+</p>
                     </dd>
                     
                     <dt>ERROR</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>If an overflow occurs then an error should be raised.
+</p>
                     </dd>
                     
                 </dl>
@@ -79,46 +84,25 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
                     
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-datafusion">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
-                
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
                     
                 
             </dl>
@@ -135,19 +119,79 @@
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>ERROR</dd>
+                    
+                
+            </dl>
+            
         </section>
         <hr>
         <section id="details">
             <h3>Details&nbsp;<a href="#details">&para;</a></h3>
             
-                <p>No supplemental information about the details available</p>
+                
+                    <h4>Overflow</h4>
+                    <p>The power function requires the Overflow control for situations where
+the resulting value exceeds the type class limit. For example, in
+pow(2, 65), although the input values are in the allowed int64 range,
+but the result goes out of range.</p>
+                
+                    <h4>Numerical Precision</h4>
+                    <p>The precision of the power function depends on the precision of the input types
+and the way the operation is carried out in various dialects.</p>
+                
             
         </section>
         <hr>
         <section id="properties">
             <h3>Properties&nbsp;<a href="#properties">&para;</a></h3>
             
-                <p>No supplemental information about the properties available</p>
+                <dl>
+                    
+                        <dt>NaN propagating</dt>
+                        <dd><p>If any of the inputs is NaN (and the other input is not null) then the output will be NaN
+</p></dd>
+                    
+                        <dt>Null propagating</dt>
+                        <dd><p>If any of the inputs is null then the output will be null
+</p></dd>
+                    
+                        <dt>Stateless</dt>
+                        <dd><p>The output will be the same regardless of the order of input rows.
+</p></dd>
+                    
+                </dl>
             
         </section>
         <hr>
@@ -176,9 +220,7 @@
                         
                         <td>2</td>
                         
-                        
                         <td>64</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -187,13 +229,11 @@
                     <tr class="bft-case">
                         
                         
-                        <td>1</td>
+                        <td>1.0</td>
                         
-                        <td>-1</td>
+                        <td>-1.0</td>
                         
-                        
-                        <td>1</td>
-                        
+                        <td>1.0</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -202,13 +242,11 @@
                     <tr class="bft-case">
                         
                         
-                        <td>2</td>
+                        <td>2.0</td>
                         
-                        <td>-2</td>
-                        
+                        <td>-2.0</td>
                         
                         <td>0.25</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -221,9 +259,7 @@
                         
                         <td>10</td>
                         
-                        
                         <td>137858491849</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -253,9 +289,7 @@
                         
                         <td>1.5e+208</td>
                         
-                        
                         <td>inf</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -268,41 +302,6 @@
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'postgres': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
         
         'sqlite': {
             examples: [
@@ -339,42 +338,7 @@
             ]
         },
         
-        'velox_presto': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel power(fp32, fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                false,
-                
-                true,
-                
-            ]
-        },
-        
-        'datafusion': {
+        'duckdb': {
             examples: [
                 
                 
@@ -444,7 +408,7 @@
             ]
         },
         
-        'duckdb': {
+        'datafusion': {
             examples: [
                 
                 
@@ -473,6 +437,76 @@
                 true,
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel power(fp32, fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                false,
                 
                 true,
                 

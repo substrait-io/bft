@@ -109,25 +109,19 @@ Behavior is undefined if the regex fails to compile or the position value is out
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
@@ -135,7 +129,13 @@ Behavior is undefined if the regex fails to compile or the position value is out
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
                 
                     
                 
@@ -147,13 +147,13 @@ Behavior is undefined if the regex fails to compile or the position value is out
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -200,9 +200,7 @@ Behavior is undefined if the regex fails to compile or the position value is out
                         
                         <td>o{1,}</td>
                         
-                        
                         <td>3</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -215,9 +213,7 @@ Behavior is undefined if the regex fails to compile or the position value is out
                         
                         <td>o{1}</td>
                         
-                        
                         <td>6</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -230,9 +226,7 @@ Behavior is undefined if the regex fails to compile or the position value is out
                         
                         <td>[bc]</td>
                         
-                        
                         <td>6</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -245,9 +239,7 @@ Behavior is undefined if the regex fails to compile or the position value is out
                         
                         <td>(.*)c</td>
                         
-                        
                         <td>1</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -260,9 +252,7 @@ Behavior is undefined if the regex fails to compile or the position value is out
                         
                         <td>(.*)c?</td>
                         
-                        
                         <td>2</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -296,9 +286,7 @@ Behavior is undefined if the regex fails to compile or the position value is out
                         
                         <td>\d+(?= dollars)</td>
                         
-                        
                         <td>2</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -332,9 +320,7 @@ Behavior is undefined if the regex fails to compile or the position value is out
                         
                         <td>(?<=USD)\d{3}</td>
                         
-                        
                         <td>1</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -364,9 +350,7 @@ Behavior is undefined if the regex fails to compile or the position value is out
                         
                         <td>\d</td>
                         
-                        
                         <td>1</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -379,9 +363,7 @@ Behavior is undefined if the regex fails to compile or the position value is out
                         
                         <td>\D</td>
                         
-                        
                         <td>6</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -394,9 +376,7 @@ Behavior is undefined if the regex fails to compile or the position value is out
                         
                         <td>\s</td>
                         
-                        
                         <td>2</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -409,9 +389,7 @@ Behavior is undefined if the regex fails to compile or the position value is out
                         
                         <td>\S</td>
                         
-                        
                         <td>9</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -424,9 +402,7 @@ Behavior is undefined if the regex fails to compile or the position value is out
                         
                         <td>\w</td>
                         
-                        
                         <td>9</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -439,9 +415,7 @@ Behavior is undefined if the regex fails to compile or the position value is out
                         
                         <td>\W</td>
                         
-                        
                         <td>3</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -475,9 +449,7 @@ Behavior is undefined if the regex fails to compile or the position value is out
                         
                         <td>\d+(?!\d| dollars)</td>
                         
-                        
                         <td>3</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -511,9 +483,7 @@ Behavior is undefined if the regex fails to compile or the position value is out
                         
                         <td>\d{3}(?<!USD\d{3})</td>
                         
-                        
                         <td>2</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -543,9 +513,7 @@ Behavior is undefined if the regex fails to compile or the position value is out
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='I64')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -558,9 +526,7 @@ Behavior is undefined if the regex fails to compile or the position value is out
                         
                         <td> </td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='I64')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -573,89 +539,6 @@ Behavior is undefined if the regex fails to compile or the position value is out
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'postgres': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
         
         'sqlite': {
             examples: [
@@ -740,7 +623,90 @@ Behavior is undefined if the regex fails to compile or the position value is out
             ]
         },
         
-        'velox_presto': {
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'cudf': {
             examples: [
                 
                 
@@ -906,90 +872,90 @@ Behavior is undefined if the regex fails to compile or the position value is out
             ]
         },
         
-        'cudf': {
+        'postgres': {
             examples: [
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
             ],
             kernels: [
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
             ]
         },
         
-        'duckdb': {
+        'velox_presto': {
             examples: [
                 
                 

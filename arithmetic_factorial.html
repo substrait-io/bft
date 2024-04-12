@@ -46,19 +46,24 @@ Negative inputs will raise an error.
             <h3>Options&nbsp;<a href="#options">&para;</a></h3>
             
                 <h4>Overflow</h4>
-                No supplemental information for overflow
+                <p>Factorial being a function that may return a large value out of the permissible limit
+of the type class can cause an overflow. This option helps
+control the behavior upon overflow in the Factorial function.</p>
                 <dl>
                     
                     <dt>SILENT</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>If an overflow occurs then an integer value will be returned. The value is undefined. It may be any integer and can change from engine to engine or even from row to row within the same query.  The only constraint is that it must be a valid value for the result type class.
+</p>
                     </dd>
                     
                     <dt>SATURATE</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest (for negative overflow) possible value for the type class will be returned.
+</p>
                     </dd>
                     
                     <dt>ERROR</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>If an overflow occurs then an error should be raised.
+</p>
                     </dd>
                     
                 </dl>
@@ -80,25 +85,19 @@ Negative inputs will raise an error.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
@@ -106,14 +105,11 @@ Negative inputs will raise an error.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-datafusion">
-                
+                        <dt>overflow</dt>
+                        <dd>ERROR</dd>
                     
                 
             </dl>
@@ -124,7 +120,25 @@ Negative inputs will raise an error.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>ERROR</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -135,14 +149,32 @@ Negative inputs will raise an error.
         <section id="details">
             <h3>Details&nbsp;<a href="#details">&para;</a></h3>
             
-                <p>No supplemental information about the details available</p>
+                
+                    <h4>Input restrictions</h4>
+                    <p>Mathematically, factorial is not defined for negative integers or non-integer values, since it is essentially
+the reducing product of a given positive integer.</p>
+                
             
         </section>
         <hr>
         <section id="properties">
             <h3>Properties&nbsp;<a href="#properties">&para;</a></h3>
             
-                <p>No supplemental information about the properties available</p>
+                <dl>
+                    
+                        <dt>NaN propagating</dt>
+                        <dd><p>If any of the inputs is NaN (and the other input is not null) then the output will be NaN
+</p></dd>
+                    
+                        <dt>Null propagating</dt>
+                        <dd><p>If any of the inputs is null then the output will be null
+</p></dd>
+                    
+                        <dt>Stateless</dt>
+                        <dd><p>The output will be the same regardless of the order of input rows.
+</p></dd>
+                    
+                </dl>
             
         </section>
         <hr>
@@ -167,9 +199,7 @@ Negative inputs will raise an error.
                         
                         <td>0</td>
                         
-                        
                         <td>1</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -180,9 +210,7 @@ Negative inputs will raise an error.
                         
                         <td>1</td>
                         
-                        
                         <td>1</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -193,9 +221,7 @@ Negative inputs will raise an error.
                         
                         <td>20</td>
                         
-                        
                         <td>2432902008176640000</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -206,9 +232,7 @@ Negative inputs will raise an error.
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='I64')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -238,9 +262,7 @@ Negative inputs will raise an error.
                         
                         <td>1000000</td>
                         
-                        
                         <td>ERROR</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -253,39 +275,6 @@ Negative inputs will raise an error.
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'postgres': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
         
         'sqlite': {
             examples: [
@@ -320,7 +309,40 @@ Negative inputs will raise an error.
             ]
         },
         
-        'velox_presto': {
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb does not support the kernel factorial(i64) -> i64",
+                
+                
+                
+                  "The dialect duckdb does not support the kernel factorial(i64) -> i64",
+                
+                
+                
+                  "The dialect duckdb does not support the kernel factorial(i64) -> i64",
+                
+                
+                
+                  "The dialect duckdb does not support the kernel factorial(i64) -> error",
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                false,
+                
+            ]
+        },
+        
+        'cudf': {
             examples: [
                 
                 
@@ -373,7 +395,7 @@ Negative inputs will raise an error.
                 
                 
                 
-                  null,
+                  "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
                 
                 
             ],
@@ -386,7 +408,7 @@ Negative inputs will raise an error.
             ]
         },
         
-        'cudf': {
+        'postgres': {
             examples: [
                 
                 
@@ -419,7 +441,7 @@ Negative inputs will raise an error.
             ]
         },
         
-        'duckdb': {
+        'velox_presto': {
             examples: [
                 
                 

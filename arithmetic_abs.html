@@ -45,19 +45,24 @@ Integer values allow the specification of overflow behavior to handle the uneven
             <h3>Options&nbsp;<a href="#options">&para;</a></h3>
             
                 <h4>Overflow</h4>
-                No supplemental information for overflow
+                <p>Computing the absolute of integer values may result in overflow due to unevenness of two's complement.
+This option helps control the behavior of the function when the input goes out of permissible range
+of the type class.</p>
                 <dl>
                     
                     <dt>SILENT</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>If an overflow occurs then an integer value will be returned. The value is undefined. It may be any integer and can change from engine to engine or even from row to row within the same query.  The only constraint is that it must be a valid value for the result type class.
+</p>
                     </dd>
                     
                     <dt>SATURATE</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest (for negative overflow) possible value for the type class will be returned.
+</p>
                     </dd>
                     
                     <dt>ERROR</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>If an overflow occurs then an error should be raised.
+</p>
                     </dd>
                     
                 </dl>
@@ -87,70 +92,22 @@ Integer values allow the specification of overflow behavior to handle the uneven
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>ERROR</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-datafusion">
-                
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
                     
                         <dt>overflow</dt>
                         <dd>SILENT</dd>
@@ -164,8 +121,41 @@ Integer values allow the specification of overflow behavior to handle the uneven
                         <dt>overflow</dt>
                         <dd>ERROR</dd>
                     
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>ERROR</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>ERROR</dd>
                     
                 
             </dl>
@@ -175,14 +165,39 @@ Integer values allow the specification of overflow behavior to handle the uneven
         <section id="details">
             <h3>Details&nbsp;<a href="#details">&para;</a></h3>
             
-                <p>No supplemental information about the details available</p>
+                
+                    <h4>Non multiplicative</h4>
+                    <p>Although the mathematical operation for Absolute value is multiplicative, but the function is not
+due to overflow. For example, for int8, abs(-1 * -128) will not be the same as
+abs(-1) * abs(-128), since the former will cause an overflow.</p>
+                
+                    <h4>Triangular Inequality</h4>
+                    <p>Mathematically, the absolute operation has the triangular inequality, i.e. for two real numbers,
+x &amp; y, abs(x+y) &lt;= abs(x) + abs(y). This might not hold true for the abs function due to overflow.
+For example, for int8, abs(-127 + 1) will not be the same as abs(-127) + abs(1), since the
+latter will overflow.</p>
+                
             
         </section>
         <hr>
         <section id="properties">
             <h3>Properties&nbsp;<a href="#properties">&para;</a></h3>
             
-                <p>No supplemental information about the properties available</p>
+                <dl>
+                    
+                        <dt>NaN propagating</dt>
+                        <dd><p>If any of the inputs is NaN (and the other input is not null) then the output will be NaN
+</p></dd>
+                    
+                        <dt>Null propagating</dt>
+                        <dd><p>If any of the inputs is null then the output will be null
+</p></dd>
+                    
+                        <dt>Stateless</dt>
+                        <dd><p>The output will be the same regardless of the order of input rows.
+</p></dd>
+                    
+                </dl>
             
         </section>
         <hr>
@@ -207,9 +222,7 @@ Integer values allow the specification of overflow behavior to handle the uneven
                         
                         <td>25</td>
                         
-                        
                         <td>25</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -220,9 +233,7 @@ Integer values allow the specification of overflow behavior to handle the uneven
                         
                         <td>-200</td>
                         
-                        
                         <td>200</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -233,9 +244,7 @@ Integer values allow the specification of overflow behavior to handle the uneven
                         
                         <td>30000</td>
                         
-                        
                         <td>30000</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -246,9 +255,7 @@ Integer values allow the specification of overflow behavior to handle the uneven
                         
                         <td>-9223372036854775800</td>
                         
-                        
                         <td>9223372036854775800</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -257,11 +264,9 @@ Integer values allow the specification of overflow behavior to handle the uneven
                     <tr class="bft-case">
                         
                         
-                        <td>2.549999952316284</td>
+                        <td>2.55</td>
                         
-                        
-                        <td>2.549999952316284</td>
-                        
+                        <td>2.55</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -272,9 +277,7 @@ Integer values allow the specification of overflow behavior to handle the uneven
                         
                         <td>-2.0000007152557373</td>
                         
-                        
                         <td>2.0000007152557373</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -300,9 +303,7 @@ Integer values allow the specification of overflow behavior to handle the uneven
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='I8')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -332,9 +333,7 @@ Integer values allow the specification of overflow behavior to handle the uneven
                         
                         <td>-128</td>
                         
-                        
                         <td>ERROR</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -347,9 +346,7 @@ Integer values allow the specification of overflow behavior to handle the uneven
                         
                         <td>-128</td>
                         
-                        
                         <td>127</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -362,9 +359,7 @@ Integer values allow the specification of overflow behavior to handle the uneven
                         
                         <td>-128</td>
                         
-                        
                         <td>UNDEFINED</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -377,67 +372,6 @@ Integer values allow the specification of overflow behavior to handle the uneven
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'postgres': {
-            examples: [
-                
-                
-                  "The dialect postgres does not support the kernel abs(i8) -> i8",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres does not support the kernel abs(fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres does not support the kernel abs(i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel abs(i8) -> error",
-                
-                
-                
-                  "The dialect postgres does not support the kernel abs(i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel abs(i8) -> undefined",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                false,
-                
-                true,
-                
-            ]
-        },
         
         'sqlite': {
             examples: [
@@ -500,68 +434,7 @@ Integer values allow the specification of overflow behavior to handle the uneven
             ]
         },
         
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel abs(i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel abs(i32) -> i32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel abs(fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel abs(i8) -> error",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel abs(i8) -> undefined",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                true,
-                
-                false,
-                
-                true,
-                
-            ]
-        },
-        
-        'datafusion': {
+        'duckdb': {
             examples: [
                 
                 
@@ -593,15 +466,15 @@ Integer values allow the specification of overflow behavior to handle the uneven
                 
                 
                 
-                  "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect datafusion expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
                   null,
+                
+                
+                
+                  "The dialect duckdb expects overflow=ERROR but overflow=SATURATE was requested",
+                
+                
+                
+                  "The dialect duckdb expects overflow=ERROR but overflow=SILENT was requested",
                 
                 
             ],
@@ -683,7 +556,7 @@ Integer values allow the specification of overflow behavior to handle the uneven
             ]
         },
         
-        'duckdb': {
+        'datafusion': {
             examples: [
                 
                 
@@ -719,11 +592,11 @@ Integer values allow the specification of overflow behavior to handle the uneven
                 
                 
                 
-                  "The dialect duckdb expects overflow=ERROR but overflow=SATURATE was requested",
+                  "The dialect datafusion expects overflow=ERROR but overflow=SATURATE was requested",
                 
                 
                 
-                  "The dialect duckdb expects overflow=ERROR but overflow=SILENT was requested",
+                  "The dialect datafusion expects overflow=ERROR but overflow=SILENT was requested",
                 
                 
             ],
@@ -738,6 +611,128 @@ Integer values allow the specification of overflow behavior to handle the uneven
                 true,
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  "The dialect postgres does not support the kernel abs(i8) -> i8",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel abs(i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel abs(i8) -> error",
+                
+                
+                
+                  "The dialect postgres does not support the kernel abs(i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel abs(i8) -> undefined",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(i32) -> i32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(i8) -> error",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(i8) -> undefined",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                true,
+                
+                false,
                 
                 true,
                 

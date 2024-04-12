@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>max Function - BFT</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Reference for the  function">
+    <link rel="stylesheet" href="./assets/supplementary/terminal.css">
+    <link rel="stylesheet" href="./assets/supplementary/style.css">
+</head>
+
+<body class="terminal">
+    <header class="container terminal-nav">
+        <div class="terminal-logo">
+            <div class="logo terminal-prompt">
+                <a href="#">The BFT</a>
+            </div>
+        </div>
+        <nav class="terminal-menu">
+            <ul>
+                <li>
+                    <a href="./index.html" class="menu-item">Function Index</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <article class="container">
+        <h2>Max</h2>
+        <section>
+            <p>
+                Defined in <a href="https://github.com/substrait-io/substrait/blob/main/extensions/functions_arithmetic.yaml">functions_arithmetic.yaml</a>
+            </p>
+            <hr>
+            <p>
+                Max a set of values.
+            </p>
+        </section>
+        <hr>
+        <section id="options">
+            <h3>Options&nbsp;<a href="#options">&para;</a></h3>
+            
+        </section>
+        <hr>
+        <section id="kernels">
+            <h3>Kernels&nbsp;<a href="#kernels">&para;</a></h3>
+            <ul>
+                
+                <li class="bft-kernel"><span>max(i8) -> i8? : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>max(i16) -> i16? : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>max(i32) -> i32? : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>max(i64) -> i64? : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>max(fp32) -> fp32? : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>max(fp64) -> fp64? : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+            </ul>
+        </section>
+        <hr>
+        <section id="dialects">
+            <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
+            <select id="dialect">
+                
+                <option>sqlite</option>
+                
+                <option>duckdb</option>
+                
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
+            </select>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                
+            </dl>
+            
+        </section>
+        <hr>
+        <section id="details">
+            <h3>Details&nbsp;<a href="#details">&para;</a></h3>
+            
+                <p>No supplemental information about the details available</p>
+            
+        </section>
+        <hr>
+        <section id="properties">
+            <h3>Properties&nbsp;<a href="#properties">&para;</a></h3>
+            
+                <p>No supplemental information about the properties available</p>
+            
+        </section>
+        <hr>
+        <section id="examples">
+            <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
+            
+            <table>
+                <caption>Basic examples without any special cases</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (fp64)</th>
+                        
+                        <th>result (fp64)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[None, None, None]</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[]</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[2000000000, -3217908979, 629000000, -100000000, 0, 987654321]</td>
+                        
+                        <td>2000000000</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[None, -3217908979, 629000000, -100000000, None, 987654321]</td>
+                        
+                        <td>987654321</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[2.5, 0, 5.0, -2.5, -7.5]</td>
+                        
+                        <td>5.0</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[1.5e+30, 15000000000.0, -150000000.0, -15000000.0, -1.5e+70]</td>
+                        
+                        <td>1.5e+30</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[None, None, -150000000.0, -15000000.0, -1.5e+70]</td>
+                        
+                        <td>-15000000.0</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[None, 'inf', -150000000.0, -15000000.0, -1.5e+70]</td>
+                        
+                        <td>inf</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[None, '-inf']</td>
+                        
+                        <td>-inf</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+        </section>
+    </article>
+    <script src="./assets/supplementary/script.js"></script>
+    <script>
+      var bftDialects = {
+        
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+      };
+      window.addEventListener('load', function() {
+        window.bftInitialize(bftDialects);
+      });
+    </script>
+</body>
+</html>

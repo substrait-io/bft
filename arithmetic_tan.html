@@ -43,27 +43,34 @@
             <h3>Options&nbsp;<a href="#options">&para;</a></h3>
             
                 <h4>Rounding</h4>
-                No supplemental information for rounding
+                <p>Tangent of an input can yield a result that is not exactly
+representable in the given type class. In this case the value will be rounded.
+Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 <dl>
                     
                     <dt>TIE_TO_EVEN</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the number whose least significant digit is even. Or, because we are working with binary digits, round to the number whose last digit is 0. This is the default behavior in many systems because it helps to avoid bias in rounding.
+</p>
                     </dd>
                     
                     <dt>TIE_AWAY_FROM_ZERO</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the number furthest from zero.
+</p>
                     </dd>
                     
                     <dt>TRUNCATE</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the value closest to zero.
+</p>
                     </dd>
                     
                     <dt>CEILING</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>Round to the value closest to positive infinity.
+</p>
                     </dd>
                     
                     <dt>FLOOR</dt>
-                    <dd>Missing supplementary description
+                    <dd><p>Round to the value closest to negative infinity.
+</p>
                     </dd>
                     
                 </dl>
@@ -85,40 +92,34 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
                     
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
                     
                 
             </dl>
@@ -132,8 +133,29 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
                     
                 
             </dl>
@@ -143,14 +165,44 @@
         <section id="details">
             <h3>Details&nbsp;<a href="#details">&para;</a></h3>
             
-                <p>No supplemental information about the details available</p>
+                
+                    <h4>Other floating point exceptions</h4>
+                    <p>The IEEE 754 standard defines a number of exceptions beyond rounding. For
+example, division by zero, overflow, and underflow. However, these exceptions
+have default behaviors defined by IEEE 754 and, since no known engine deviates
+from these default values, these exceptions are not exposed as options. For more
+information on what happens in these cases refer to the IEEE 754 standard.</p>
+                
+                    <h4>Numerical Precision</h4>
+                    <p>The precision of the tan function depends on the architecture in various dialects.</p>
+                
+                    <h4>Output Range</h4>
+                    <p>Mathematically, the tangent function has a range [-Inf, Inf], since it is undefined and approaches
+infinity in input values of (pi/2) + k*pi, where k is any integer. Computationally, the inputs
+where the tangent function is not defined results in approximately 1255.76 or -1255.76. Thus,
+the output range becomes [-1255.76, 1255.76].</p>
+                
             
         </section>
         <hr>
         <section id="properties">
             <h3>Properties&nbsp;<a href="#properties">&para;</a></h3>
             
-                <p>No supplemental information about the properties available</p>
+                <dl>
+                    
+                        <dt>NaN propagating</dt>
+                        <dd><p>If any of the inputs is NaN (and the other input is not null) then the output will be NaN
+</p></dd>
+                    
+                        <dt>Null propagating</dt>
+                        <dd><p>If any of the inputs is null then the output will be null
+</p></dd>
+                    
+                        <dt>Stateless</dt>
+                        <dd><p>The output will be the same regardless of the order of input rows.
+</p></dd>
+                    
+                </dl>
             
         </section>
         <hr>
@@ -175,9 +227,7 @@
                         
                         <td>0.0</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=0.0, TYPE='FP32')</td>
-                        
+                        <td>0.0</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -188,9 +238,7 @@
                         
                         <td>0.5</td>
                         
-                        
                         <td>0.5463024898437905</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -201,9 +249,7 @@
                         
                         <td>7.01</td>
                         
-                        
                         <td>0.8891974677731088</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -214,9 +260,7 @@
                         
                         <td>-7.01</td>
                         
-                        
                         <td>-0.8891974677731088</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -227,9 +271,7 @@
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='FP64')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -242,39 +284,6 @@
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'postgres': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
         
         'sqlite': {
             examples: [
@@ -309,40 +318,7 @@
             ]
         },
         
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel tan(fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                true,
-                
-            ]
-        },
-        
-        'datafusion': {
+        'duckdb': {
             examples: [
                 
                 
@@ -408,7 +384,7 @@
             ]
         },
         
-        'duckdb': {
+        'datafusion': {
             examples: [
                 
                 
@@ -435,6 +411,72 @@
             kernels: [
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel tan(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
                 
                 true,
                 

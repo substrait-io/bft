@@ -74,25 +74,19 @@ Behavior for 0 or 1 inputs is as follows:
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
@@ -100,13 +94,7 @@ Behavior for 0 or 1 inputs is as follows:
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     
                 
@@ -118,7 +106,19 @@ Behavior for 0 or 1 inputs is as follows:
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -165,9 +165,7 @@ Behavior for 0 or 1 inputs is as follows:
                         
                         <td>True</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -180,9 +178,7 @@ Behavior for 0 or 1 inputs is as follows:
                         
                         <td>False</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=FALSE, TYPE='BOOLEAN')</td>
-                        
+                        <td>False</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -195,9 +191,7 @@ Behavior for 0 or 1 inputs is as follows:
                         
                         <td>False</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=FALSE, TYPE='BOOLEAN')</td>
-                        
+                        <td>False</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -227,9 +221,7 @@ Behavior for 0 or 1 inputs is as follows:
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='BOOLEAN')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -242,9 +234,7 @@ Behavior for 0 or 1 inputs is as follows:
                         
                         <td>True</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='BOOLEAN')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -257,9 +247,7 @@ Behavior for 0 or 1 inputs is as follows:
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=FALSE, TYPE='BOOLEAN')</td>
-                        
+                        <td>False</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -272,9 +260,7 @@ Behavior for 0 or 1 inputs is as follows:
                         
                         <td>False</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=FALSE, TYPE='BOOLEAN')</td>
-                        
+                        <td>False</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -287,9 +273,7 @@ Behavior for 0 or 1 inputs is as follows:
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='BOOLEAN')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -302,49 +286,6 @@ Behavior for 0 or 1 inputs is as follows:
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'postgres': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
         
         'sqlite': {
             examples: [
@@ -389,50 +330,7 @@ Behavior for 0 or 1 inputs is as follows:
             ]
         },
         
-        'velox_presto': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
-        'datafusion': {
+        'duckdb': {
             examples: [
                 
                 
@@ -518,7 +416,93 @@ Behavior for 0 or 1 inputs is as follows:
             ]
         },
         
-        'duckdb': {
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
             examples: [
                 
                 

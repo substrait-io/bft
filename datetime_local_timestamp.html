@@ -58,25 +58,19 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
@@ -84,13 +78,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -102,7 +90,19 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -133,17 +133,6 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
     <script>
       var bftDialects = {
         
-        'postgres': {
-            examples: [
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
         'sqlite': {
             examples: [
                 
@@ -155,18 +144,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
             ]
         },
         
-        'velox_presto': {
-            examples: [
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
-        'datafusion': {
+        'duckdb': {
             examples: [
                 
             ],
@@ -188,7 +166,29 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
             ]
         },
         
-        'duckdb': {
+        'datafusion': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'velox_presto': {
             examples: [
                 
             ],

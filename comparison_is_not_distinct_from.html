@@ -61,25 +61,19 @@ This is in contrast to `equal`, in which `null` values do not compare.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
@@ -87,13 +81,7 @@ This is in contrast to `equal`, in which `null` values do not compare.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     
                 
@@ -105,7 +93,19 @@ This is in contrast to `equal`, in which `null` values do not compare.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -152,9 +152,7 @@ This is in contrast to `equal`, in which `null` values do not compare.
                         
                         <td>1</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -167,9 +165,7 @@ This is in contrast to `equal`, in which `null` values do not compare.
                         
                         <td>1</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=FALSE, TYPE='BOOLEAN')</td>
-                        
+                        <td>False</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -199,9 +195,7 @@ This is in contrast to `equal`, in which `null` values do not compare.
                         
                         <td>1</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=FALSE, TYPE='BOOLEAN')</td>
-                        
+                        <td>False</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -214,9 +208,7 @@ This is in contrast to `equal`, in which `null` values do not compare.
                         
                         <td>None</td>
                         
-                        
                         <td>True</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -229,33 +221,6 @@ This is in contrast to `equal`, in which `null` values do not compare.
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'postgres': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
         
         'sqlite': {
             examples: [
@@ -284,34 +249,7 @@ This is in contrast to `equal`, in which `null` values do not compare.
             ]
         },
         
-        'velox_presto': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
-        'datafusion': {
+        'duckdb': {
             examples: [
                 
                 
@@ -365,7 +303,61 @@ This is in contrast to `equal`, in which `null` values do not compare.
             ]
         },
         
-        'duckdb': {
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
             examples: [
                 
                 

@@ -63,73 +63,31 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                        <dt>on_division_by_zero</dt>
-                        <dd>NONE</dd>
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
                     
-                        <dt>on_division_by_zero</dt>
-                        <dd>NONE</dd>
+                        <dt>division_type</dt>
+                        <dd>TRUNCATE</dd>
                     
                         <dt>overflow</dt>
                         <dd>SILENT</dd>
                     
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                        <dt>on_division_by_zero</dt>
-                        <dd>NONE</dd>
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-datafusion">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    
-                        <dt>on_division_by_zero</dt>
-                        <dd>NAN</dd>
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
+                        <dt>on_domain_error</dt>
+                        <dd>NULL</dd>
                     
                 
             </dl>
@@ -137,14 +95,74 @@
             <dl class="dialect-definition" id="dialect-duckdb">
                 
                     
-                        <dt>on_division_by_zero</dt>
-                        <dd>NONE</dd>
+                        <dt>division_type</dt>
+                        <dd>TRUNCATE</dd>
                     
                         <dt>overflow</dt>
                         <dd>ERROR</dd>
                     
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
+                        <dt>on_domain_error</dt>
+                        <dd>NULL</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                        <dt>division_type</dt>
+                        <dd>FLOOR</dd>
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>NULL</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                        <dt>division_type</dt>
+                        <dd>TRUNCATE</dd>
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>ERROR</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                        <dt>division_type</dt>
+                        <dd>TRUNCATE</dd>
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>ERROR</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                        <dt>division_type</dt>
+                        <dd>TRUNCATE</dd>
+                    
+                        <dt>overflow</dt>
+                        <dd>ERROR</dd>
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>ERROR</dd>
                     
                 
             </dl>
@@ -154,14 +172,39 @@
         <section id="details">
             <h3>Details&nbsp;<a href="#details">&para;</a></h3>
             
-                <p>No supplemental information about the details available</p>
+                
+                    <h4>Overflow</h4>
+                    <p>The Modulus function requires the Overflow option in situations
+where any or all of the involved operations result in overflow
+from the specified range. For example, in mod(-128, -1) within
+the int8 range, an overflow will occur as the operation will
+lead to (-128) - round_func(-128/-1). Since the division operation
+(-128/-1) results in an overflow (given that the range of int8
+is -127 to 128), the Overflow option becomes essential.</p>
+                
+                    <h4>Not commutative</h4>
+                    <p>Modulus as an arithmetic operation is not commutative by nature.</p>
+                
             
         </section>
         <hr>
         <section id="properties">
             <h3>Properties&nbsp;<a href="#properties">&para;</a></h3>
             
-                <p>No supplemental information about the properties available</p>
+                <dl>
+                    
+                        <dt>NaN propagating</dt>
+                        <dd><p>If any of the inputs is NaN (and the other input is not null) then the output
+will be NaN</p></dd>
+                    
+                        <dt>Null propagating</dt>
+                        <dd><p>If any of the inputs is null then the output will be null</p></dd>
+                    
+                        <dt>Stateless</dt>
+                        <dd><p>The output will be the same regardless of the order of input rows. This is not
+guaranteed to be true for integer division when overflow is SILENT.</p></dd>
+                    
+                </dl>
             
         </section>
         <hr>
@@ -190,9 +233,7 @@
                         
                         <td>3</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=0, TYPE='I8')</td>
-                        
+                        <td>0</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -205,9 +246,7 @@
                         
                         <td>-3</td>
                         
-                        
                         <td>1</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -220,9 +259,7 @@
                         
                         <td>1000</td>
                         
-                        
                         <td>767</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -235,9 +272,7 @@
                         
                         <td>300000000</td>
                         
-                        
                         <td>-47483647</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -250,9 +285,7 @@
                         
                         <td>-80000000000000</td>
                         
-                        
                         <td>-12036854775800</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -265,9 +298,7 @@
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='I8')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -280,9 +311,7 @@
                         
                         <td>1</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='I64')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -295,9 +324,7 @@
                         
                         <td>None</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='I64')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -306,11 +333,11 @@
             </table>
             
             <table>
-                <caption>Examples demonstrating division by zero</caption>
+                <caption>Examples demonstrating truncate and floor division types</caption>
                 <thead>
                     <tr>
                         
-                        <th>on_division_by_zero</th>
+                        <th>division_type</th>
                         
                         
                         <th>arg1 (i8)</th>
@@ -324,16 +351,14 @@
                     
                     <tr class="bft-case">
                         
-                        <td>NONE</td>
+                        <td>TRUNCATE</td>
                         
                         
-                        <td>5</td>
+                        <td>8</td>
                         
-                        <td>0</td>
+                        <td>-3</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='I8')</td>
-                        
+                        <td>2</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -341,16 +366,63 @@
                     
                     <tr class="bft-case">
                         
-                        <td>NAN</td>
+                        <td>FLOOR</td>
+                        
+                        
+                        <td>8</td>
+                        
+                        <td>-3</td>
+                        
+                        <td>-1</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>Examples demonstrating operation when the divisor is 0</caption>
+                <thead>
+                    <tr>
+                        
+                        <th>on_domain_error</th>
+                        
+                        
+                        <th>arg1 (i8)</th>
+                        
+                        <th>arg2 (i8)</th>
+                        
+                        <th>result (i8)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>NULL</td>
                         
                         
                         <td>5</td>
                         
                         <td>0</td>
                         
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
                         
-                        <td>nan</td>
+                        <td>ERROR</td>
                         
+                        
+                        <td>5</td>
+                        
+                        <td>0</td>
+                        
+                        <td>ERROR</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -363,63 +435,6 @@
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'postgres': {
-            examples: [
-                
-                
-                  "The dialect postgres does not support the kernel modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel modulus(i8, i8) -> i8",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres does not support the kernel modulus(i8, i8) -> i8",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres does not support the kernel modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel modulus(i8, i8) -> i8",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
         
         'sqlite': {
             examples: [
@@ -461,40 +476,7 @@
                 
                 
                 
-                  "The dialect sqlite expects on_division_by_zero=NONE but on_division_by_zero=NAN was requested",
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel modulus(i16, i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel modulus(i32, i32) -> i32",
+                  "The dialect sqlite expects division_type=TRUNCATE but division_type=FLOOR was requested",
                 
                 
                 
@@ -502,137 +484,7 @@
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                true,
-                
-            ]
-        },
-        
-        'datafusion': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'cudf': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects on_division_by_zero=NAN but on_division_by_zero=NONE was requested",
-                
-                
-                
-                  null,
+                  "The dialect sqlite expects on_domain_error=NULL but on_domain_error=ERROR was requested",
                 
                 
             ],
@@ -689,7 +541,15 @@
                 
                 
                 
-                  "The dialect duckdb expects on_division_by_zero=NONE but on_division_by_zero=NAN was requested",
+                  "The dialect duckdb expects division_type=TRUNCATE but division_type=FLOOR was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb expects on_domain_error=NULL but on_domain_error=ERROR was requested",
                 
                 
             ],
@@ -700,6 +560,266 @@
                 true,
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects division_type=FLOOR but division_type=TRUNCATE was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects on_domain_error=NULL but on_domain_error=ERROR was requested",
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects division_type=TRUNCATE but division_type=FLOOR was requested",
+                
+                
+                
+                  "The dialect datafusion expects on_domain_error=ERROR but on_domain_error=NULL was requested",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  "The dialect postgres does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel modulus(i8, i8) -> error",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i16, i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i32, i32) -> i32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> error",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
                 
                 true,
                 

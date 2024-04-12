@@ -106,25 +106,19 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
@@ -132,8 +126,20 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
+                    
+                        <dt>lookaround</dt>
+                        <dd>False</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                        <dt>lookaround</dt>
+                        <dd>False</dd>
                     
                 
             </dl>
@@ -144,17 +150,14 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
-                    
-                        <dt>lookaround</dt>
-                        <dd>False</dd>
                     
                 
             </dl>
@@ -200,9 +203,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>Hel+</td>
                         
-                        
                         <td>['HH', 'oooo']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -232,9 +233,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>Hel+?</td>
                         
-                        
                         <td>['', 'lo']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -247,9 +246,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>Hel+</td>
                         
-                        
                         <td>['', 'o']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -283,9 +280,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>\d+(?= dollars)</td>
                         
-                        
                         <td>['', ' dollars']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -319,9 +314,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>(?<=USD)\d{3}</td>
                         
-                        
                         <td>['USD', '']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -351,9 +344,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>\d</td>
                         
-                        
                         <td>['abc', 'abc']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -366,9 +357,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>\D</td>
                         
-                        
                         <td>['111', '111']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -381,9 +370,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>\s</td>
                         
-                        
                         <td>['abc', 'def']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -396,9 +383,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>\S</td>
                         
-                        
                         <td>['', ' ', '', '', '', '', '']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -411,9 +396,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>\w</td>
                         
-                        
                         <td>[' ', '', '', '', '', '', '']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -426,9 +409,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>\W</td>
                         
-                        
                         <td>['a', 'bcdef']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -462,9 +443,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>\d+(?!\d| dollars)</td>
                         
-                        
                         <td>['', ' pesos']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -498,9 +477,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>\d{3}(?<!USD\d{3})</td>
                         
-                        
                         <td>['JPY', '']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -530,9 +507,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>Hel+</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='STRING')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -562,9 +537,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>[0-9]+</td>
                         
-                        
                         <td>['abc', 'abc']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -577,9 +550,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>[bc]</td>
                         
-                        
                         <td>['a', '', '123a', '', '']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -592,9 +563,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>(.*)c</td>
                         
-                        
                         <td>['', 'de']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -607,9 +576,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>[b]{2,3}</td>
                         
-                        
                         <td>['a', 'bc']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -639,9 +606,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>\Aabc</td>
                         
-                        
                         <td>['', 'defg']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -654,9 +619,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                         
                         <td>efg$</td>
                         
-                        
                         <td>['abcd', '']</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -670,7 +633,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
     <script>
       var bftDialects = {
         
-        'postgres': {
+        'sqlite': {
             examples: [
                 
                 
@@ -763,7 +726,286 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
             ]
         },
         
-        'sqlite': {
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  "The dialect cudf expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  "The dialect cudf expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'postgres': {
             examples: [
                 
                 
@@ -909,285 +1151,6 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                 
                 
                   null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'datafusion': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'cudf': {
-            examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'duckdb': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
-                
-                
-                
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
-                
-                
-                
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
                 
                 
                 

@@ -40,6 +40,8 @@
                     <li class="menu-item" onclick="showContent('home')">Home</li>
                     
                     
+                        <li class="menu-item" onclick="showContent('aggregate')">Aggregate Functions</li>
+                    
                         <li class="menu-item" onclick="showContent('arithmetic')">Arithmetic Functions</li>
                     
                         <li class="menu-item" onclick="showContent('boolean')">Boolean Functions</li>
@@ -74,6 +76,14 @@
                         </p>
                     <section>
                         <div class="row">
+                            
+                                <div class="col-md-6 mb-3" onclick="showContent('aggregate')" style="cursor: pointer;">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Aggregate Functions</h5>
+                                        </div>
+                                    </div>
+                                </div>
                             
                                 <div class="col-md-6 mb-3" onclick="showContent('arithmetic')" style="cursor: pointer;">
                                     <div class="card">
@@ -141,6 +151,36 @@
                 </article>
 
                 
+                    <article class="container hidden mt-4" id="aggregate">
+                        <div class="fixed-container">
+                            <h2 class="category-title">Aggregate Functions</h2>
+                        </div>
+                        <section>
+                            <table class="functions-table">
+                                <tbody>
+                                    
+                                        <tr onclick="window.location='./aggregate_approx_approx_count_distinct.html';" style="cursor: pointer;">
+                                            <td class="title-column">Approx_approx_count_distinct</td>
+                                            <td>Calculates the approximate number of rows that contain distinct values of the expression argument using HyperLogLog. This function provides an alternative to the COUNT (DISTINCT expression) function, which returns the exact number of rows that contain distinct values of an expression. APPROX_COUNT_DISTINCT processes large amounts of data significantly faster than COUNT, with negligible deviation from the exact result.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./aggregate_generic_any_value.html';" style="cursor: pointer;">
+                                            <td class="title-column">Generic_any_value</td>
+                                            <td>Selects an arbitrary value from a group of values.
+If the input is empty, the function returns null.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./aggregate_generic_count.html';" style="cursor: pointer;">
+                                            <td class="title-column">Generic_count</td>
+                                            <td>Count a set of records (not field referenced)</td>
+                                        </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </section>
+                    </article>
+                
                     <article class="container hidden mt-4" id="arithmetic">
                         <div class="fixed-container">
                             <h2 class="category-title">Arithmetic Functions</h2>
@@ -196,6 +236,11 @@ Integer values allow the specification of overflow behavior to handle the uneven
                                             <td>Get the hyperbolic arctangent of a value in radians.</td>
                                         </tr>
                                     
+                                        <tr onclick="window.location='./arithmetic_avg.html';" style="cursor: pointer;">
+                                            <td class="title-column">Avg</td>
+                                            <td>Average a set of values. For integral types, this truncates partial values.</td>
+                                        </tr>
+                                    
                                         <tr onclick="window.location='./arithmetic_bitwise_and.html';" style="cursor: pointer;">
                                             <td class="title-column">Bitwise_and</td>
                                             <td>Return the bitwise AND result for two integer inputs.
@@ -217,6 +262,12 @@ Integer values allow the specification of overflow behavior to handle the uneven
                                         <tr onclick="window.location='./arithmetic_bitwise_xor.html';" style="cursor: pointer;">
                                             <td class="title-column">Bitwise_xor</td>
                                             <td>Return the bitwise XOR result for two integer inputs.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_corr.html';" style="cursor: pointer;">
+                                            <td class="title-column">Corr</td>
+                                            <td>Calculates the value of Pearson's correlation coefficient between `x` and `y`. If there is no input, null is returned.
 </td>
                                         </tr>
                                     
@@ -249,6 +300,29 @@ Negative inputs will raise an error.
 </td>
                                         </tr>
                                     
+                                        <tr onclick="window.location='./arithmetic_max.html';" style="cursor: pointer;">
+                                            <td class="title-column">Max</td>
+                                            <td>Max a set of values.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_median.html';" style="cursor: pointer;">
+                                            <td class="title-column">Median</td>
+                                            <td>Calculate the median for a set of values.
+Returns null if applied to zero records. For the integer implementations, the rounding option determines how the median should be rounded if it ends up midway between two values. For the floating point implementations, they specify the usual floating point rounding mode.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_min.html';" style="cursor: pointer;">
+                                            <td class="title-column">Min</td>
+                                            <td>Min a set of values.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_mode.html';" style="cursor: pointer;">
+                                            <td class="title-column">Mode</td>
+                                            <td>Calculates mode for a set of values. If there is no input, null is returned.
+</td>
+                                        </tr>
+                                    
                                         <tr onclick="window.location='./arithmetic_modulus.html';" style="cursor: pointer;">
                                             <td class="title-column">Modulus</td>
                                             <td>Get the remainder when dividing one value by another.</td>
@@ -267,6 +341,25 @@ Negative inputs will raise an error.
                                         <tr onclick="window.location='./arithmetic_power.html';" style="cursor: pointer;">
                                             <td class="title-column">Power</td>
                                             <td>Take the power with x as the base and y as exponent.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_product.html';" style="cursor: pointer;">
+                                            <td class="title-column">Product</td>
+                                            <td>Product of a set of values. Returns 1 for empty input.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_quantile.html';" style="cursor: pointer;">
+                                            <td class="title-column">Quantile</td>
+                                            <td>Calculates quantiles for a set of values.
+This function will divide the aggregated values (passed via the distribution argument) over N equally-sized bins, where N is passed via a constant argument. It will then return the values at the boundaries of these bins in list form. If the input is appropriately sorted, this computes the quantiles of the distribution.
+The function can optionally return the first and/or last element of the input, as specified by the `boundaries` argument. If the input is appropriately sorted, this will thus be the minimum and/or maximum values of the distribution.
+When the boundaries do not lie exactly on elements of the incoming distribution, the function will interpolate between the two nearby elements. If the interpolated value cannot be represented exactly, the `rounding` option controls how the value should be selected or computed.
+The function fails and returns null in the following cases:
+  - `n` is null or less than one;
+  - any value in `distribution` is null.
+
+The function returns an empty list if `n` equals 1 and `boundaries` is set to `NEITHER`.
+</td>
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_sign.html';" style="cursor: pointer;">
@@ -292,9 +385,19 @@ Floating point values return signedness with the same type as the input. Possibl
                                             <td>Square root of the value</td>
                                         </tr>
                                     
+                                        <tr onclick="window.location='./arithmetic_std_dev.html';" style="cursor: pointer;">
+                                            <td class="title-column">Std_dev</td>
+                                            <td>Calculates standard-deviation for a set of values.</td>
+                                        </tr>
+                                    
                                         <tr onclick="window.location='./arithmetic_subtract.html';" style="cursor: pointer;">
                                             <td class="title-column">Subtract</td>
                                             <td>Subtract one value from another.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_sum.html';" style="cursor: pointer;">
+                                            <td class="title-column">Sum</td>
+                                            <td>Sum a set of values. The sum of zero elements yields null.</td>
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_tan.html';" style="cursor: pointer;">
@@ -305,6 +408,11 @@ Floating point values return signedness with the same type as the input. Possibl
                                         <tr onclick="window.location='./arithmetic_tanh.html';" style="cursor: pointer;">
                                             <td class="title-column">Tanh</td>
                                             <td>Get the hyperbolic tangent of a value in radians.</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./arithmetic_variance.html';" style="cursor: pointer;">
+                                            <td class="title-column">Variance</td>
+                                            <td>Calculates variance for a set of values.</td>
                                         </tr>
                                     
                                 </tbody>
@@ -358,6 +466,18 @@ This function behaves as follows with nulls:
     null and not null = null
 
 In other words, in this context a null value really means "unknown", and an unknown value `and not` true is always false, as is false `and not` an unknown value.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./boolean_bool_and.html';" style="cursor: pointer;">
+                                            <td class="title-column">Bool_and</td>
+                                            <td>If any value in the input is false, false is returned. If the input is empty or only contains nulls, null is returned. Otherwise, true is returned.
+</td>
+                                        </tr>
+                                    
+                                        <tr onclick="window.location='./boolean_bool_or.html';" style="cursor: pointer;">
+                                            <td class="title-column">Bool_or</td>
+                                            <td>If any value in the input is true, true is returned. If the input is empty or only contains nulls, null is returned. Otherwise, false is returned.
 </td>
                                         </tr>
                                     
@@ -867,6 +987,11 @@ The `case_sensitivity` option applies to the `substring` argument.</td>
 The `case_sensitivity` option applies to the `substring` argument.</td>
                                         </tr>
                                     
+                                        <tr onclick="window.location='./string_string_agg.html';" style="cursor: pointer;">
+                                            <td class="title-column">String_agg</td>
+                                            <td>Concatenates a column of string values with a separator.</td>
+                                        </tr>
+                                    
                                         <tr onclick="window.location='./string_string_split.html';" style="cursor: pointer;">
                                             <td class="title-column">String_split</td>
                                             <td>Split a string into a list of strings, based on a specified `separator` character.</td>
@@ -920,6 +1045,26 @@ The `case_sensitivity` option applies to the `substring` argument.</td>
 
     <script>
         var functionsData = [
+            
+                
+                    {
+                        category: "Aggregate",
+                        name: "Aggregate_approx_approx_count_distinct",
+                        brief: "Calculates the approximate number of rows that contain distinct values of the expression argument using HyperLogLog. This function provides an alternative to the COUNT (DISTINCT expression) function, which returns the exact number of rows that contain distinct values of an expression. APPROX_COUNT_DISTINCT processes large amounts of data significantly faster than COUNT, with negligible deviation from the exact result."
+                    },
+                
+                    {
+                        category: "Aggregate",
+                        name: "Aggregate_generic_any_value",
+                        brief: "Selects an arbitrary value from a group of values.\\nIf the input is empty, the function returns null.\\n"
+                    },
+                
+                    {
+                        category: "Aggregate",
+                        name: "Aggregate_generic_count",
+                        brief: "Count a set of records (not field referenced)"
+                    },
+                
             
                 
                     {
@@ -978,6 +1123,12 @@ The `case_sensitivity` option applies to the `substring` argument.</td>
                 
                     {
                         category: "Arithmetic",
+                        name: "Arithmetic_avg",
+                        brief: "Average a set of values. For integral types, this truncates partial values."
+                    },
+                
+                    {
+                        category: "Arithmetic",
                         name: "Arithmetic_bitwise_and",
                         brief: "Return the bitwise AND result for two integer inputs.\\n"
                     },
@@ -998,6 +1149,12 @@ The `case_sensitivity` option applies to the `substring` argument.</td>
                         category: "Arithmetic",
                         name: "Arithmetic_bitwise_xor",
                         brief: "Return the bitwise XOR result for two integer inputs.\\n"
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_corr",
+                        brief: "Calculates the value of Pearson\u0027s correlation coefficient between `x` and `y`. If there is no input, null is returned.\\n"
                     },
                 
                     {
@@ -1032,6 +1189,30 @@ The `case_sensitivity` option applies to the `substring` argument.</td>
                 
                     {
                         category: "Arithmetic",
+                        name: "Arithmetic_max",
+                        brief: "Max a set of values."
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_median",
+                        brief: "Calculate the median for a set of values.\\nReturns null if applied to zero records. For the integer implementations, the rounding option determines how the median should be rounded if it ends up midway between two values. For the floating point implementations, they specify the usual floating point rounding mode.\\n"
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_min",
+                        brief: "Min a set of values."
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_mode",
+                        brief: "Calculates mode for a set of values. If there is no input, null is returned.\\n"
+                    },
+                
+                    {
+                        category: "Arithmetic",
                         name: "Arithmetic_modulus",
                         brief: "Get the remainder when dividing one value by another."
                     },
@@ -1052,6 +1233,18 @@ The `case_sensitivity` option applies to the `substring` argument.</td>
                         category: "Arithmetic",
                         name: "Arithmetic_power",
                         brief: "Take the power with x as the base and y as exponent."
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_product",
+                        brief: "Product of a set of values. Returns 1 for empty input."
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_quantile",
+                        brief: "Calculates quantiles for a set of values.\\nThis function will divide the aggregated values (passed via the distribution argument) over N equally-sized bins, where N is passed via a constant argument. It will then return the values at the boundaries of these bins in list form. If the input is appropriately sorted, this computes the quantiles of the distribution.\\nThe function can optionally return the first and/or last element of the input, as specified by the `boundaries` argument. If the input is appropriately sorted, this will thus be the minimum and/or maximum values of the distribution.\\nWhen the boundaries do not lie exactly on elements of the incoming distribution, the function will interpolate between the two nearby elements. If the interpolated value cannot be represented exactly, the `rounding` option controls how the value should be selected or computed.\\nThe function fails and returns null in the following cases:\\n  - `n` is null or less than one;\\n  - any value in `distribution` is null.\\n\\nThe function returns an empty list if `n` equals 1 and `boundaries` is set to `NEITHER`.\\n"
                     },
                 
                     {
@@ -1080,8 +1273,20 @@ The `case_sensitivity` option applies to the `substring` argument.</td>
                 
                     {
                         category: "Arithmetic",
+                        name: "Arithmetic_std_dev",
+                        brief: "Calculates standard-deviation for a set of values."
+                    },
+                
+                    {
+                        category: "Arithmetic",
                         name: "Arithmetic_subtract",
                         brief: "Subtract one value from another."
+                    },
+                
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_sum",
+                        brief: "Sum a set of values. The sum of zero elements yields null."
                     },
                 
                     {
@@ -1096,6 +1301,12 @@ The `case_sensitivity` option applies to the `substring` argument.</td>
                         brief: "Get the hyperbolic tangent of a value in radians."
                     },
                 
+                    {
+                        category: "Arithmetic",
+                        name: "Arithmetic_variance",
+                        brief: "Calculates variance for a set of values."
+                    },
+                
             
                 
                     {
@@ -1108,6 +1319,18 @@ The `case_sensitivity` option applies to the `substring` argument.</td>
                         category: "Boolean",
                         name: "Boolean_and_not",
                         brief: "The boolean `and` of one value and the negation of the other using Kleene logic.\\nThis function behaves as follows with nulls:\\n\\n    true and not null = null\\n\\n    null and not false = null\\n\\n    false and not null = false\\n\\n    null and not true = false\\n\\n    null and not null = null\\n\\nIn other words, in this context a null value really means \\\"unknown\\\", and an unknown value `and not` true is always false, as is false `and not` an unknown value.\\n"
+                    },
+                
+                    {
+                        category: "Boolean",
+                        name: "Boolean_bool_and",
+                        brief: "If any value in the input is false, false is returned. If the input is empty or only contains nulls, null is returned. Otherwise, true is returned.\\n"
+                    },
+                
+                    {
+                        category: "Boolean",
+                        name: "Boolean_bool_or",
+                        brief: "If any value in the input is true, true is returned. If the input is empty or only contains nulls, null is returned. Otherwise, false is returned.\\n"
                     },
                 
                     {
@@ -1532,6 +1755,12 @@ The `case_sensitivity` option applies to the `substring` argument.</td>
                         category: "String",
                         name: "String_starts_with",
                         brief: "Whether the `input` string starts with the `substring`.\\nThe `case_sensitivity` option applies to the `substring` argument."
+                    },
+                
+                    {
+                        category: "String",
+                        name: "String_string_agg",
+                        brief: "Concatenates a column of string values with a separator."
                     },
                 
                     {

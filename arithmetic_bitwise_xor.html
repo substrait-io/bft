@@ -64,25 +64,19 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>postgres</option>
-                
                 <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
-                <option>datafusion</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>postgres</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
@@ -90,13 +84,7 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     
                 
@@ -108,7 +96,19 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -155,9 +155,7 @@
                         
                         <td>1</td>
                         
-                        
                         <td>1</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -170,9 +168,7 @@
                         
                         <td>127</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=0, TYPE='I8')</td>
-                        
+                        <td>0</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -185,9 +181,7 @@
                         
                         <td>-10</td>
                         
-                        
                         <td>119</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -200,9 +194,7 @@
                         
                         <td>900</td>
                         
-                        
                         <td>32658</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -215,9 +207,7 @@
                         
                         <td>900</td>
                         
-                        
                         <td>-32658</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -230,9 +220,7 @@
                         
                         <td>123456789</td>
                         
-                        
                         <td>2024026858</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -245,9 +233,7 @@
                         
                         <td>123456789</td>
                         
-                        
                         <td>2024026858</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -260,9 +246,7 @@
                         
                         <td>127</td>
                         
-                        
                         <td>9223372036854775680</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -275,9 +259,7 @@
                         
                         <td>127</td>
                         
-                        
                         <td>-9223372036854775682</td>
-                        
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -290,9 +272,7 @@
                         
                         <td>127</td>
                         
-                        
-                        <td>CASELITERAL(VALUE=NONE, TYPE='I64')</td>
-                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -305,63 +285,6 @@
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'postgres': {
-            examples: [
-                
-                
-                  "The dialect postgres does not support the kernel bitwise_xor(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel bitwise_xor(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel bitwise_xor(i8, i8) -> i8",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
         
         'sqlite': {
             examples: [
@@ -420,64 +343,7 @@
             ]
         },
         
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_xor(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_xor(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_xor(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_xor(i16, i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_xor(i16, i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_xor(i32, i32) -> i32",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_xor(i32, i32) -> i32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                true,
-                
-            ]
-        },
-        
-        'datafusion': {
+        'duckdb': {
             examples: [
                 
                 
@@ -591,7 +457,7 @@
             ]
         },
         
-        'duckdb': {
+        'datafusion': {
             examples: [
                 
                 
@@ -642,6 +508,120 @@
                 true,
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  "The dialect postgres does not support the kernel bitwise_xor(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel bitwise_xor(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel bitwise_xor(i8, i8) -> i8",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_xor(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_xor(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_xor(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_xor(i16, i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_xor(i16, i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_xor(i32, i32) -> i32",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_xor(i32, i32) -> i32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
                 
                 true,
                 
