@@ -110,12 +110,6 @@ scalar_functions:
       - args:
           - i64
         result: i64
-      - args:
-          - fp32
-        result: fp32
-      - args:
-          - fp64
-        result: fp64
   - name: abs
     local_name: abs
     required_options:
@@ -189,18 +183,11 @@ scalar_functions:
   - name: ceil
   - name: floor
   - name: round
-    unsupported_kernels:
-      - args:
-          - fp32
-          - i8
-        result: fp32
   - name: extract
     extract: True
   - name: add_datetime
     local_name: +
     infix: True
-    required_options:
-      with_time: FALSE
   - name: add_intervals
     local_name: +
     infix: True
