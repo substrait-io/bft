@@ -518,21 +518,6 @@ because the first will overflow and the second will not.</p>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
                     </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>FLOOR</td>
-                        
-                        
-                        <td>4.5</td>
-                        
-                        <td>2.5000007152557373</td>
-                        
-                        <td>7.000000476837158</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
                     </tbody>
             </table>
             
@@ -632,10 +617,6 @@ because the first will overflow and the second will not.</p>
                 
                 
                 
-                  "The dialect sqlite does not support the kernel add(fp32, fp32) -> fp32",
-                
-                
-                
                   null,
                 
                 
@@ -714,10 +695,6 @@ because the first will overflow and the second will not.</p>
                 
                 
                   null,
-                
-                
-                
-                  "The dialect duckdb expects rounding=TIE_TO_EVEN but rounding=FLOOR was requested",
                 
                 
                 
@@ -802,10 +779,6 @@ because the first will overflow and the second will not.</p>
                 
                 
                 
-                  "The dialect cudf expects rounding=TIE_TO_EVEN but rounding=FLOOR was requested",
-                
-                
-                
                   null,
                 
                 
@@ -876,10 +849,6 @@ because the first will overflow and the second will not.</p>
                 
                 
                   "The dialect datafusion expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  null,
                 
                 
                 
@@ -975,10 +944,6 @@ because the first will overflow and the second will not.</p>
                   null,
                 
                 
-                
-                  null,
-                
-                
             ],
             kernels: [
                 
@@ -1050,10 +1015,6 @@ because the first will overflow and the second will not.</p>
                 
                 
                   "The dialect velox_presto does not support the kernel add(i8, i8) -> undefined",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel add(fp32, fp32) -> fp32",
                 
                 
                 
