@@ -42,7 +42,7 @@ cases:
     args:
       - value: 1.5e+308
         type: fp64
-      - value: Infinity
+      - value: inf
         type: fp64
     result:
       value: true
@@ -51,7 +51,7 @@ cases:
     args:
       - value: -1.5e+308
         type: fp64
-      - value: -Infinity
+      - value: -inf
         type: fp64
     result:
       value: false

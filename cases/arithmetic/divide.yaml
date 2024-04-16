@@ -70,7 +70,7 @@ cases:
     options:
       on_division_by_zero: LIMIT
     result:
-      value: Infinity
+      value: inf
       type: fp64
   - group:
       id: overflow
@@ -104,7 +104,7 @@ cases:
       - value: 1.5e-200
         type: fp64
     result:
-      value: Infinity
+      value: inf
       type: fp64
   - group: floating_exception
     args:
@@ -113,5 +113,5 @@ cases:
       - value: -1.5e-208
         type: fp64
     result:
-      value: -Infinity
+      value: -inf
       type: fp64

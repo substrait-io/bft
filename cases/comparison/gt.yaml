@@ -42,7 +42,7 @@ cases:
       id: null_input
       description: Examples with null as input
     args:
-      - value: Infinity
+      - value: inf
         type: fp64
       - value: 1.5e+308
         type: fp64
@@ -53,7 +53,7 @@ cases:
     args:
       - value: -1.5e+308
         type: fp64
-      - value: -Infinity
+      - value: -inf
         type: fp64
     result:
       value: true

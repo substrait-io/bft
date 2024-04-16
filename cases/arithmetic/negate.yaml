@@ -46,10 +46,10 @@ cases:
       type: fp64
   - group: basic
     args:
-      - value: Infinity
+      - value: inf
         type: fp64
     result:
-      value: -Infinity
+      value: -inf
       type: fp64
   - group:
       id: null_input
