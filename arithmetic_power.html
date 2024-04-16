@@ -84,21 +84,48 @@ This option controls what happens when this overflow occurs.</p>
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>sqlite</option>
-                
-                <option>duckdb</option>
-                
-                <option>cudf</option>
+                <option>velox_presto</option>
                 
                 <option>datafusion</option>
                 
-                <option>postgres</option>
+                <option>sqlite</option>
                 
-                <option>velox_presto</option>
+                <option>cudf</option>
+                
+                <option>duckdb</option>
+                
+                <option>postgres</option>
                 
             </select>
             
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>ERROR</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
                 
                     
                         <dt>overflow</dt>
@@ -119,38 +146,11 @@ This option controls what happens when this overflow occurs.</p>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-datafusion">
-                
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-postgres">
                 
                     
                         <dt>overflow</dt>
                         <dd>SILENT</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
                     
                 
             </dl>
@@ -303,7 +303,42 @@ and the way the operation is carried out in various dialects.</p>
     <script>
       var bftDialects = {
         
-        'sqlite': {
+        'velox_presto': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel power(fp32, fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                false,
+                
+                true,
+                
+            ]
+        },
+        
+        'datafusion': {
             examples: [
                 
                 
@@ -338,7 +373,7 @@ and the way the operation is carried out in various dialects.</p>
             ]
         },
         
-        'duckdb': {
+        'sqlite': {
             examples: [
                 
                 
@@ -408,7 +443,7 @@ and the way the operation is carried out in various dialects.</p>
             ]
         },
         
-        'datafusion': {
+        'duckdb': {
             examples: [
                 
                 
@@ -472,41 +507,6 @@ and the way the operation is carried out in various dialects.</p>
                 true,
                 
                 true,
-                
-                true,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel power(fp32, fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                false,
                 
                 true,
                 

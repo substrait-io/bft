@@ -71,33 +71,21 @@ In other words, in this context a null value really means "unknown", and an unkn
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>sqlite</option>
-                
-                <option>duckdb</option>
-                
-                <option>cudf</option>
+                <option>velox_presto</option>
                 
                 <option>datafusion</option>
                 
-                <option>postgres</option>
+                <option>sqlite</option>
                 
-                <option>velox_presto</option>
+                <option>cudf</option>
+                
+                <option>duckdb</option>
+                
+                <option>postgres</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-duckdb">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -109,13 +97,25 @@ In other words, in this context a null value really means "unknown", and an unkn
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-sqlite">
                 
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                     
                 
@@ -297,101 +297,7 @@ In other words, in this context a null value really means "unknown", and an unkn
     <script>
       var bftDialects = {
         
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
-        'duckdb': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
-        'cudf': {
+        'velox_presto': {
             examples: [
                 
                 
@@ -485,7 +391,7 @@ In other words, in this context a null value really means "unknown", and an unkn
             ]
         },
         
-        'postgres': {
+        'sqlite': {
             examples: [
                 
                 
@@ -532,7 +438,101 @@ In other words, in this context a null value really means "unknown", and an unkn
             ]
         },
         
-        'velox_presto': {
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'postgres': {
             examples: [
                 
                 

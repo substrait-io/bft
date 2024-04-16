@@ -107,40 +107,22 @@ Behavior is undefined if the regex fails to compile, the replacement contains an
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>sqlite</option>
-                
-                <option>duckdb</option>
-                
-                <option>cudf</option>
+                <option>velox_presto</option>
                 
                 <option>datafusion</option>
                 
-                <option>postgres</option>
+                <option>sqlite</option>
                 
-                <option>velox_presto</option>
+                <option>cudf</option>
+                
+                <option>duckdb</option>
+                
+                <option>postgres</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-sqlite">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-duckdb">
-                
-                    
-                        <dt>lookaround</dt>
-                        <dd>False</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    
-                        <dt>lookaround</dt>
-                        <dd>False</dd>
                     
                 
             </dl>
@@ -154,17 +136,35 @@ Behavior is undefined if the regex fails to compile, the replacement contains an
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                        <dt>lookaround</dt>
+                        <dd>False</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                        <dt>lookaround</dt>
+                        <dd>False</dd>
+                    
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-postgres">
                 
                     
                         <dt>lookaround</dt>
                         <dd>True</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
                     
                 
             </dl>
@@ -809,7 +809,7 @@ Behavior is undefined if the regex fails to compile, the replacement contains an
     <script>
       var bftDialects = {
         
-        'sqlite': {
+        'velox_presto': {
             examples: [
                 
                 
@@ -874,240 +874,6 @@ Behavior is undefined if the regex fails to compile, the replacement contains an
                 
                 
                   null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'duckdb': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
-                
-                
-                
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
-                
-                
-                
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'cudf': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects lookaround=False but lookaround=True was requested",
-                
-                
-                
-                  "The dialect cudf expects lookaround=False but lookaround=True was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects lookaround=False but lookaround=True was requested",
-                
-                
-                
-                  "The dialect cudf expects lookaround=False but lookaround=True was requested",
                 
                 
                 
@@ -1277,7 +1043,7 @@ Behavior is undefined if the regex fails to compile, the replacement contains an
             ]
         },
         
-        'postgres': {
+        'sqlite': {
             examples: [
                 
                 
@@ -1394,7 +1160,241 @@ Behavior is undefined if the regex fails to compile, the replacement contains an
             ]
         },
         
-        'velox_presto': {
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  "The dialect cudf expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  "The dialect cudf expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'postgres': {
             examples: [
                 
                 

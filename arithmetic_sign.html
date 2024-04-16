@@ -70,27 +70,36 @@ Floating point values return signedness with the same type as the input. Possibl
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>sqlite</option>
-                
-                <option>duckdb</option>
-                
-                <option>cudf</option>
+                <option>velox_presto</option>
                 
                 <option>datafusion</option>
                 
-                <option>postgres</option>
+                <option>sqlite</option>
                 
-                <option>velox_presto</option>
+                <option>cudf</option>
+                
+                <option>duckdb</option>
+                
+                <option>postgres</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-sqlite">
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>ERROR</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-sqlite">
                 
                     
                 
@@ -102,7 +111,7 @@ Floating point values return signedness with the same type as the input. Possibl
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     
                 
@@ -110,15 +119,6 @@ Floating point values return signedness with the same type as the input. Possibl
             
             <dl class="dialect-definition" id="dialect-postgres">
                 
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
                     
                 
             </dl>
@@ -166,49 +166,7 @@ sign(-2 * 3) will be the same as sign(-2) * sign(3).</p>
     <script>
       var bftDialects = {
         
-        'sqlite': {
-            examples: [
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'duckdb': {
-            examples: [
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'cudf': {
+        'velox_presto': {
             examples: [
                 
             ],
@@ -250,7 +208,7 @@ sign(-2 * 3) will be the same as sign(-2) * sign(3).</p>
             ]
         },
         
-        'postgres': {
+        'sqlite': {
             examples: [
                 
             ],
@@ -271,7 +229,49 @@ sign(-2 * 3) will be the same as sign(-2) * sign(3).</p>
             ]
         },
         
-        'velox_presto': {
+        'cudf': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'duckdb': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'postgres': {
             examples: [
                 
             ],

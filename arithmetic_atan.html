@@ -92,39 +92,21 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>sqlite</option>
-                
-                <option>duckdb</option>
-                
-                <option>cudf</option>
+                <option>velox_presto</option>
                 
                 <option>datafusion</option>
                 
-                <option>postgres</option>
+                <option>sqlite</option>
                 
-                <option>velox_presto</option>
+                <option>cudf</option>
+                
+                <option>duckdb</option>
+                
+                <option>postgres</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-duckdb">
-                
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                         <dt>rounding</dt>
@@ -142,7 +124,7 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-sqlite">
                 
                     
                         <dt>rounding</dt>
@@ -151,7 +133,25 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                     
                         <dt>rounding</dt>
@@ -283,7 +283,40 @@ at 0.</p>
     <script>
       var bftDialects = {
         
-        'sqlite': {
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel atan(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                true,
+                
+            ]
+        },
+        
+        'datafusion': {
             examples: [
                 
                 
@@ -316,7 +349,7 @@ at 0.</p>
             ]
         },
         
-        'duckdb': {
+        'sqlite': {
             examples: [
                 
                 
@@ -382,7 +415,7 @@ at 0.</p>
             ]
         },
         
-        'datafusion': {
+        'duckdb': {
             examples: [
                 
                 
@@ -442,39 +475,6 @@ at 0.</p>
             kernels: [
                 
                 true,
-                
-                true,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel atan(fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
                 
                 true,
                 

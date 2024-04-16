@@ -61,33 +61,21 @@ If `x` is `null`, `null` is returned.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>sqlite</option>
-                
-                <option>duckdb</option>
-                
-                <option>cudf</option>
+                <option>velox_presto</option>
                 
                 <option>datafusion</option>
                 
-                <option>postgres</option>
+                <option>sqlite</option>
                 
-                <option>velox_presto</option>
+                <option>cudf</option>
+                
+                <option>duckdb</option>
+                
+                <option>postgres</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-duckdb">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -99,13 +87,25 @@ If `x` is `null`, `null` is returned.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-sqlite">
                 
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                     
                 
@@ -228,7 +228,48 @@ If `x` is `null`, `null` is returned.
     <script>
       var bftDialects = {
         
-        'sqlite': {
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel is_nan(fp32) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel is_nan(fp32) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                true,
+                
+            ]
+        },
+        
+        'datafusion': {
             examples: [
                 
                 
@@ -269,7 +310,7 @@ If `x` is `null`, `null` is returned.
             ]
         },
         
-        'duckdb': {
+        'sqlite': {
             examples: [
                 
                 
@@ -351,7 +392,7 @@ If `x` is `null`, `null` is returned.
             ]
         },
         
-        'datafusion': {
+        'duckdb': {
             examples: [
                 
                 
@@ -427,47 +468,6 @@ If `x` is `null`, `null` is returned.
             kernels: [
                 
                 true,
-                
-                true,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel is_nan(fp32) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel is_nan(fp32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
                 
                 true,
                 

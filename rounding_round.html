@@ -114,33 +114,21 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>sqlite</option>
-                
-                <option>duckdb</option>
-                
-                <option>cudf</option>
+                <option>velox_presto</option>
                 
                 <option>datafusion</option>
                 
-                <option>postgres</option>
+                <option>sqlite</option>
                 
-                <option>velox_presto</option>
+                <option>cudf</option>
+                
+                <option>duckdb</option>
+                
+                <option>postgres</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-duckdb">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -152,13 +140,25 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-sqlite">
                 
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                     
                 
@@ -314,7 +314,56 @@
     <script>
       var bftDialects = {
         
-        'sqlite': {
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel round(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel round(fp32, i8) -> fp32",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel round(fp64, i8) -> fp64",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel round(fp64, i32) -> fp64",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel round(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel round(i8, i32) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel round(i16, i32) -> i16",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                false,
+                
+            ]
+        },
+        
+        'datafusion': {
             examples: [
                 
                 
@@ -363,7 +412,7 @@
             ]
         },
         
-        'duckdb': {
+        'sqlite': {
             examples: [
                 
                 
@@ -461,7 +510,7 @@
             ]
         },
         
-        'datafusion': {
+        'duckdb': {
             examples: [
                 
                 
@@ -553,55 +602,6 @@
                 true,
                 
                 false,
-                
-                false,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel round(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel round(fp32, i8) -> fp32",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel round(fp64, i8) -> fp64",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel round(fp64, i32) -> fp64",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel round(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel round(i8, i32) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel round(i16, i32) -> i16",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                true,
-                
-                true,
-                
-                true,
                 
                 false,
                 

@@ -65,33 +65,21 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>sqlite</option>
-                
-                <option>duckdb</option>
-                
-                <option>cudf</option>
+                <option>velox_presto</option>
                 
                 <option>datafusion</option>
                 
-                <option>postgres</option>
+                <option>sqlite</option>
                 
-                <option>velox_presto</option>
+                <option>cudf</option>
+                
+                <option>duckdb</option>
+                
+                <option>postgres</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-duckdb">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -103,13 +91,25 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-sqlite">
                 
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                     
                 
@@ -291,7 +291,62 @@
     <script>
       var bftDialects = {
         
-        'sqlite': {
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel lt(i8, i8) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel lt(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel lt(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel lt(fp32, fp32) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel lt(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel lt(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel lt(i16, i16) -> boolean",
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'datafusion': {
             examples: [
                 
                 
@@ -346,7 +401,7 @@
             ]
         },
         
-        'duckdb': {
+        'sqlite': {
             examples: [
                 
                 
@@ -456,7 +511,7 @@
             ]
         },
         
-        'datafusion': {
+        'duckdb': {
             examples: [
                 
                 
@@ -548,61 +603,6 @@
                 
                 
                   null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel lt(i8, i8) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel lt(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel lt(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel lt(fp32, fp32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel lt(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel lt(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel lt(i16, i16) -> boolean",
                 
                 
             ],
