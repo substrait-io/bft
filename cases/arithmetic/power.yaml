@@ -47,5 +47,5 @@ cases:
       - value: 1.5e+208
         type: fp64
     result:
-      value: Infinity
+      value: inf
       type: fp64

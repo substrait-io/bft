@@ -22,16 +22,16 @@ cases:
       type: boolean
   - group: basic
     args:
-      - value: Infinity
+      - value: inf
         type: fp64
-      - value: Infinity
+      - value: inf
         type: fp64
     result:
       value: false
       type: boolean
   - group: basic
     args:
-      - value: Infinity
+      - value: inf
         type: fp64
       - value: 1.5e+308
         type: fp64
