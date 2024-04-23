@@ -157,6 +157,9 @@ scalar_functions:
       - args:
           - fp32
         result: fp32
+      - args:
+          - i64
+        result: fp64
     required_options:
       rounding: TIE_TO_EVEN
   - name: cos
