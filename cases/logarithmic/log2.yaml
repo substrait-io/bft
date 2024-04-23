@@ -4,6 +4,13 @@ cases:
       id: basic
       description: Basic examples without any special cases
     args:
+      - value: 100000
+        type: i64
+    result:
+      value: 16.609640474436812
+      type: fp64
+  - group: basic
+    args:
       - value: 1.0
         type: fp32
     result:
