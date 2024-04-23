@@ -29,3 +29,47 @@ cases:
     result:
       value: null
       type: i16
+  - group: basic
+    args:
+      - value: null
+        type: i32
+      - value: null
+        type: i32
+      - value: 2000000
+        type: i32
+      - value: null
+        type: i32
+    result:
+      value: 2000000
+      type: i32
+  - group: basic
+    args:
+      - value: null
+        type: i64
+      - value: null
+        type: i64
+      - value: null
+        type: i64
+      - value: 9223372036854775807
+        type: i64
+    result:
+      value: 9223372036854775807
+      type: i64
+  - group: basic
+    args:
+      - value: null
+        type: fp32
+      - value: -65.500000
+        type: fp32
+    result:
+      value: -65.500000
+      type: fp32
+  - group: basic
+    args:
+      - value: inf
+        type: fp64
+      - value: -inf
+        type: fp64
+    result:
+      value: inf
+      type: fp64
