@@ -781,6 +781,9 @@ scalar_functions:
       on_domain_error: NAN
     unsupported_kernels:
       - args:
+          - i64
+        result: fp64
+      - args:
           - fp32
         result: fp32
   - name: log
@@ -790,6 +793,9 @@ scalar_functions:
       on_domain_error: NAN
     unsupported_kernels:
       - args:
+          - i64
+        result: fp64
+      - args:
           - fp32
         result: fp32
   - name: log2
@@ -797,6 +803,9 @@ scalar_functions:
       on_log_zero: MINUS_INFINITY
       on_domain_error: NAN
     unsupported_kernels:
+      - args:
+          - i64
+        result: fp64
       - args:
           - fp32
         result: fp32
