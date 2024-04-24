@@ -7,11 +7,6 @@ scalar_functions:
     required_options:
       overflow: SILENT
       rounding: TIE_TO_EVEN
-    unsupported_kernels:
-      - args:
-          - fp32
-          - fp32
-        result: fp32
   - name: subtract
     local_name: "-"
     infix: True

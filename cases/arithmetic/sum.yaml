@@ -11,31 +11,10 @@ cases:
       type: i8
   - group: basic
     args:
-      - value: [Null, Null, Null]
-        type: i16
-    result:
-      value: Null
-      type: i16
-  - group: basic
-    args:
-      - value: []
-        type: i16
-    result:
-      value: Null
-      type: i16
-  - group: basic
-    args:
       - value: [2000000, -3217908, 629000, -100000, 0, 987654]
         type: i32
     result:
       value: 298746
-      type: i32
-  - group: basic
-    args:
-      - value: [200000, Null, 629000, -10000, 0, 987621]
-        type: i32
-    result:
-      value: 1806621
       type: i32
   - group: basic
     args:
@@ -44,6 +23,13 @@ cases:
     result:
       value: -2.5
       type: fp32
+  - group: basic
+    args:
+      - value: [2.5000007152557373046875, 7.0000007152557373046875, 0, 7.0000007152557373046875]
+        type: fp64
+    result:
+      value: 16.500002145767212
+      type: fp64
   - group:
       id: overflow
       description: Examples demonstrating overflow behavior
@@ -63,26 +49,47 @@ cases:
     result:
       value: inf
       type: fp64
-  - group:
-      id: floating_exception
-      description: Examples demonstrating exceptional floating point cases
+  - group: floating_exception
     args:
       - value: [-1.5e+308, -1.5e+308, -1.5e+308]
         type: fp64
     result:
       value: -inf
       type: fp64
-  - group: basic
+  - group: floating_exception
     args:
       - value: [2.500000715, inf, 2.500000715]
         type: fp64
     result:
       value: inf
       type: fp64
-  - group: basic
+  - group: floating_exception
     args:
       - value: [2.5000007, -inf, 2.5000007, 10.0]
         type: fp64
     result:
       value: -inf
       type: fp64
+  - group:
+      id: null_handling
+      description: Examples with null as unput or output
+    args:
+      - value: [Null, Null, Null]
+        type: i16
+    result:
+      value: Null
+      type: i16
+  - group: null_handling
+    args:
+      - value: []
+        type: i16
+    result:
+      value: Null
+      type: i16
+  - group: null_handling
+    args:
+      - value: [200000, Null, 629000, -10000, 0, 987621]
+        type: i32
+    result:
+      value: 1806621
+      type: i32

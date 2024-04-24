@@ -22,6 +22,24 @@ cases:
       type: boolean
   - group: basic
     args:
+      - value: -2147483648
+        type: i32
+      - value: -2147483648
+        type: i32
+    result:
+      value: false
+      type: boolean
+  - group: basic
+    args:
+      - value: 9223372036854775807
+        type: i64
+      - value: 9223372036854775804
+        type: i64
+    result:
+      value: true
+      type: boolean
+  - group: basic
+    args:
       - value: inf
         type: fp64
       - value: inf

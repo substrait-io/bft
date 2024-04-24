@@ -31,6 +31,24 @@ cases:
       type: boolean
   - group: basic
     args:
+      - value: 2000000000
+        type: i32
+      - value: 1000000000
+        type: i32
+    result:
+      value: true
+      type: boolean
+  - group: basic
+    args:
+      - value: -922337203685775808
+        type: i64
+      - value: -922337203685775807
+        type: i64
+    result:
+      value: false
+      type: boolean
+  - group: basic
+    args:
       - value: 7.25
         type: fp32
       - value: 2.50

@@ -495,8 +495,16 @@ scalar_functions:
 aggregate_functions:
   - name: min
     aggregate: True
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i8
   - name: max
     aggregate: True
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i8
   - name: sum
     aggregate: True
     unsupported_kernels:

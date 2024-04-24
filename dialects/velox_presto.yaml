@@ -155,11 +155,11 @@ scalar_functions:
           - i32
         result: i32
       - args:
-          - i64
-        result: i64
-      - args:
           - fp32
         result: fp32
+      - args:
+          - i64
+        result: fp64
     required_options:
       rounding: TIE_TO_EVEN
   - name: cos
@@ -513,6 +513,10 @@ scalar_functions:
           - i16
         result: boolean
       - args:
+          - i32
+          - i32
+        result: boolean
+      - args:
           - fp32
           - fp32
         result: boolean
@@ -527,6 +531,10 @@ scalar_functions:
       - args:
           - i16
           - i16
+        result: boolean
+      - args:
+          - i32
+          - i32
         result: boolean
       - args:
           - fp32
@@ -545,6 +553,10 @@ scalar_functions:
           - i16
         result: boolean
       - args:
+          - i32
+          - i32
+        result: boolean
+      - args:
           - fp32
           - fp32
         result: boolean
@@ -559,6 +571,10 @@ scalar_functions:
       - args:
           - i16
           - i16
+        result: boolean
+      - args:
+          - i32
+          - i32
         result: boolean
       - args:
           - fp32
@@ -576,6 +592,10 @@ scalar_functions:
           - i16
           - i16
         result: boolean
+      - args:
+          - i32
+          - i32
+        result: boolean
   - name: not_equal
     local_name: "!="
     infix: True
@@ -587,6 +607,10 @@ scalar_functions:
       - args:
           - i16
           - i16
+        result: boolean
+      - args:
+          - i32
+          - i32
         result: boolean
   - name: is_not_distinct_from
     unsupported: True
@@ -781,6 +805,9 @@ scalar_functions:
       on_domain_error: NAN
     unsupported_kernels:
       - args:
+          - i64
+        result: fp64
+      - args:
           - fp32
         result: fp32
   - name: log
@@ -790,6 +817,9 @@ scalar_functions:
       on_domain_error: NAN
     unsupported_kernels:
       - args:
+          - i64
+        result: fp64
+      - args:
           - fp32
         result: fp32
   - name: log2
@@ -797,6 +827,9 @@ scalar_functions:
       on_log_zero: MINUS_INFINITY
       on_domain_error: NAN
     unsupported_kernels:
+      - args:
+          - i64
+        result: fp64
       - args:
           - fp32
         result: fp32
