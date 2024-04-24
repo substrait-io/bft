@@ -173,6 +173,32 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                     <tr class="bft-case">
                         
                         
+                        <td>-2147483648</td>
+                        
+                        <td>-2147483648</td>
+                        
+                        <td>False</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>9223372036854775807</td>
+                        
+                        <td>9223372036854775804</td>
+                        
+                        <td>True</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
                         <td>inf</td>
                         
                         <td>inf</td>
@@ -272,6 +298,14 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                 
+                  "The dialect velox_presto does not support the kernel not_equal(i32, i32) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
                   null,
                 
                 
@@ -301,6 +335,14 @@ If either/both of `x` and `y` are `null`, `null` is returned.
         
         'datafusion': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
                 
                 
                   null,
@@ -369,6 +411,14 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                   null,
                 
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -379,6 +429,14 @@ If either/both of `x` and `y` are `null`, `null` is returned.
         
         'cudf': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
                 
                 
                   null,
@@ -447,6 +505,14 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                   null,
                 
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -460,6 +526,14 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                   "The dialect postgres does not support the kernel not_equal(i8, i8) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
                 

@@ -210,12 +210,23 @@ and the way the operation is carried out in various dialects.</p>
                     <tr>
                         
                         
-                        <th>arg1 (fp64)</th>
+                        <th>arg1 (i64)</th>
                         
                         <th>result (fp64)</th>
                     </tr>
                 </thead>
                 <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>100</td>
+                        
+                        <td>2.6881171418161356e+43</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
                     
                     <tr class="bft-case">
                         
@@ -271,6 +282,17 @@ and the way the operation is carried out in various dialects.</p>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
                     </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>1000</td>
+                        
+                        <td>inf</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
                     </tbody>
             </table>
             
@@ -282,6 +304,10 @@ and the way the operation is carried out in various dialects.</p>
         
         'velox_presto': {
             examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel exp(i64) -> fp64",
+                
                 
                 
                   "The dialect velox_presto does not support the kernel exp(fp32) -> fp32",
@@ -303,6 +329,10 @@ and the way the operation is carried out in various dialects.</p>
                   null,
                 
                 
+                
+                  "The dialect velox_presto does not support the kernel exp(i64) -> fp64",
+                
+                
             ],
             kernels: [
                 
@@ -315,6 +345,14 @@ and the way the operation is carried out in various dialects.</p>
         
         'datafusion': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
                 
                 
                   null,
@@ -369,6 +407,14 @@ and the way the operation is carried out in various dialects.</p>
                   null,
                 
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -381,6 +427,14 @@ and the way the operation is carried out in various dialects.</p>
         
         'cudf': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
                 
                 
                   null,
@@ -435,6 +489,14 @@ and the way the operation is carried out in various dialects.</p>
                   null,
                 
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -447,6 +509,14 @@ and the way the operation is carried out in various dialects.</p>
         
         'postgres': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
                 
                 
                   null,

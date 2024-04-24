@@ -133,11 +133,11 @@ If all arguments are null, return null.
                     <tr>
                         
                         
-                        <th>arg1 (i16)</th>
+                        <th>arg1 (fp64)</th>
                         
-                        <th>arg2 (i16)</th>
+                        <th>arg2 (fp64)</th>
                         
-                        <th>result (i16)</th>
+                        <th>result (fp64)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -180,6 +180,58 @@ If all arguments are null, return null.
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
                     </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2000000</td>
+                        
+                        <td>None</td>
+                        
+                        <td>2000000</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>None</td>
+                        
+                        <td>9223372036854775807</td>
+                        
+                        <td>9223372036854775807</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>None</td>
+                        
+                        <td>-65.5</td>
+                        
+                        <td>-65.5</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>inf</td>
+                        
+                        <td>-inf</td>
+                        
+                        <td>inf</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
                     </tbody>
             </table>
             
@@ -204,6 +256,22 @@ If all arguments are null, return null.
                   null,
                 
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -214,6 +282,22 @@ If all arguments are null, return null.
         
         'datafusion': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
                 
                 
                   null,
@@ -250,6 +334,22 @@ If all arguments are null, return null.
                   null,
                 
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -260,6 +360,22 @@ If all arguments are null, return null.
         
         'cudf': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
                 
                 
                   null,
@@ -296,6 +412,22 @@ If all arguments are null, return null.
                   null,
                 
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -313,6 +445,22 @@ If all arguments are null, return null.
                 
                 
                   "The dialect postgres does not support the kernel coalesce(i8, i8) -> i8",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
                 

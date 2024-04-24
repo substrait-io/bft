@@ -135,9 +135,9 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                     <tr>
                         
                         
-                        <th>arg1 (i16)</th>
+                        <th>arg1 (fp64)</th>
                         
-                        <th>arg2 (i16)</th>
+                        <th>arg2 (fp64)</th>
                         
                         <th>result (boolean)</th>
                     </tr>
@@ -160,19 +160,6 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                     <tr class="bft-case">
                         
                         
-                        <td>2</td>
-                        
-                        <td>1</td>
-                        
-                        <td>False</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
                         <td>300</td>
                         
                         <td>200</td>
@@ -186,9 +173,9 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                     <tr class="bft-case">
                         
                         
-                        <td>-inf</td>
+                        <td>-2147483648</td>
                         
-                        <td>-inf</td>
+                        <td>-2147483648</td>
                         
                         <td>True</td>
                     </tr>
@@ -199,9 +186,9 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                     <tr class="bft-case">
                         
                         
-                        <td>-inf</td>
+                        <td>9223372036854775807</td>
                         
-                        <td>inf</td>
+                        <td>9223372036854775804</td>
                         
                         <td>False</td>
                     </tr>
@@ -212,11 +199,37 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                     <tr class="bft-case">
                         
                         
-                        <td>None</td>
+                        <td>inf</td>
                         
-                        <td>1</td>
+                        <td>inf</td>
                         
-                        <td>None</td>
+                        <td>True</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>inf</td>
+                        
+                        <td>1.5e+308</td>
+                        
+                        <td>False</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>inf</td>
+                        
+                        <td>-inf</td>
+                        
+                        <td>False</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -242,11 +255,11 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                     <tr class="bft-case">
                         
                         
-                        <td>inf</td>
+                        <td>None</td>
                         
-                        <td>inf</td>
+                        <td>1</td>
                         
-                        <td>True</td>
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -281,14 +294,22 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel equal(i8, i8) -> boolean",
-                
-                
-                
                   "The dialect velox_presto does not support the kernel equal(i16, i16) -> boolean",
                 
                 
                 
+                  "The dialect velox_presto does not support the kernel equal(i32, i32) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
                   null,
                 
                 
@@ -298,10 +319,6 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                   "The dialect velox_presto does not support the kernel equal(i16, i16) -> boolean",
-                
-                
-                
-                  null,
                 
                 
                 
@@ -318,6 +335,10 @@ If either/both of `x` and `y` are `null`, `null` is returned.
         
         'datafusion': {
             examples: [
+                
+                
+                  null,
+                
                 
                 
                   null,
@@ -394,6 +415,10 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                   null,
                 
                 
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -404,6 +429,10 @@ If either/both of `x` and `y` are `null`, `null` is returned.
         
         'cudf': {
             examples: [
+                
+                
+                  null,
+                
                 
                 
                   null,
@@ -480,6 +509,10 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                   null,
                 
                 
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -496,7 +529,11 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                 
-                  "The dialect postgres does not support the kernel equal(i8, i8) -> boolean",
+                  null,
+                
+                
+                
+                  null,
                 
                 
                 

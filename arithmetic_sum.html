@@ -220,42 +220,9 @@ DECLARED_OUTPUT nullability.</p></dd>
                     <tr class="bft-case">
                         
                         
-                        <td>[None, None, None]</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>[]</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
                         <td>[2000000, -3217908, 629000, -100000, 0, 987654]</td>
                         
                         <td>298746</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>[200000, None, 629000, -10000, 0, 987621]</td>
-                        
-                        <td>1806621</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -275,20 +242,9 @@ DECLARED_OUTPUT nullability.</p></dd>
                     <tr class="bft-case">
                         
                         
-                        <td>[2.500000715, 'inf', 2.500000715]</td>
+                        <td>[2.5000007152557373, 7.000000715255737, 0, 7.000000715255737]</td>
                         
-                        <td>inf</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>[2.5000007, '-inf', 2.5000007, 10.0]</td>
-                        
-                        <td>-inf</td>
+                        <td>16.500002145767212</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -326,6 +282,76 @@ DECLARED_OUTPUT nullability.</p></dd>
                         <td>[-1.5e+308, -1.5e+308, -1.5e+308]</td>
                         
                         <td>-inf</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[2.500000715, 'inf', 2.500000715]</td>
+                        
+                        <td>inf</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[2.5000007, '-inf', 2.5000007, 10.0]</td>
+                        
+                        <td>-inf</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>Examples with null as unput or output</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (i32)</th>
+                        
+                        <th>result (i32)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[None, None, None]</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[]</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[200000, None, 629000, -10000, 0, 987621]</td>
+                        
+                        <td>1806621</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -416,6 +442,10 @@ DECLARED_OUTPUT nullability.</p></dd>
                   null,
                 
                 
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -436,6 +466,10 @@ DECLARED_OUTPUT nullability.</p></dd>
         
         'datafusion': {
             examples: [
+                
+                
+                  null,
+                
                 
                 
                   null,
@@ -546,6 +580,10 @@ DECLARED_OUTPUT nullability.</p></dd>
                   null,
                 
                 
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -566,6 +604,10 @@ DECLARED_OUTPUT nullability.</p></dd>
         
         'cudf': {
             examples: [
+                
+                
+                  null,
+                
                 
                 
                   null,
@@ -673,6 +715,10 @@ DECLARED_OUTPUT nullability.</p></dd>
                 
                 
                 
+                  null,
+                
+                
+                
                   "The dialect duckdb does not support the kernel sum(i64) -> error",
                 
                 
@@ -699,6 +745,10 @@ DECLARED_OUTPUT nullability.</p></dd>
                 
                 
                   "The dialect postgres does not support the kernel sum(i8) -> i8",
+                
+                
+                
+                  null,
                 
                 
                 

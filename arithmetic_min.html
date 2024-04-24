@@ -152,9 +152,9 @@
                     <tr class="bft-case">
                         
                         
-                        <td>[None, None, None]</td>
+                        <td>[20, -3, 1, -10, 0, 5]</td>
                         
-                        <td>None</td>
+                        <td>-10</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -163,9 +163,20 @@
                     <tr class="bft-case">
                         
                         
-                        <td>[]</td>
+                        <td>[-32768, 32767, 20000, -30000]</td>
                         
-                        <td>None</td>
+                        <td>-32768</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[-214748648, 214748647, 21470048, 4000000]</td>
+                        
+                        <td>-214748648</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -177,17 +188,6 @@
                         <td>[2000000000, -3217908979, 629000000, -100000000, 0, 987654321]</td>
                         
                         <td>-3217908979</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>[2000000000, None, 629000000, -100000000, None, 987654321]</td>
-                        
-                        <td>-100000000</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -218,9 +218,57 @@
                     <tr class="bft-case">
                         
                         
-                        <td>[1.5e+308, 15000000000.0, None, -15000000.0, None]</td>
+                        <td>[None, 'inf']</td>
                         
-                        <td>-15000000.0</td>
+                        <td>inf</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>Examples with null as unput or output</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (fp64)</th>
+                        
+                        <th>result (fp64)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[None, None, None]</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[]</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[2000000000, None, 629000000, -100000000, None, 987654321]</td>
+                        
+                        <td>-100000000</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -240,9 +288,9 @@
                     <tr class="bft-case">
                         
                         
-                        <td>[None, 'inf']</td>
+                        <td>[1.5e+308, 15000000000.0, None, -15000000.0, None]</td>
                         
-                        <td>inf</td>
+                        <td>-15000000.0</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -258,6 +306,18 @@
         
         'velox_presto': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
                 
                 
                   null,
@@ -352,6 +412,18 @@
                   null,
                 
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -372,6 +444,18 @@
         
         'sqlite': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
                 
                 
                   null,
@@ -466,6 +550,18 @@
                   null,
                 
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -523,6 +619,18 @@
                   null,
                 
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -543,6 +651,18 @@
         
         'postgres': {
             examples: [
+                
+                
+                  "The dialect postgres does not support the kernel min(i8) -> i8",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
                 
                 
                   null,
