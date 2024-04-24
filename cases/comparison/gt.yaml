@@ -31,9 +31,9 @@ cases:
       type: boolean
   - group: basic
     args:
-      - value: 200000000000
+      - value: 2000000000
         type: i32
-      - value: 100000000000
+      - value: 1000000000
         type: i32
     result:
       value: true
