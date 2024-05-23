@@ -92,10 +92,10 @@ class DuckDBRunner(SqlCaseRunner):
                         else:
                             arg_vals += f"({literal_to_str(value)}),"
                     arg_vals_list.append([arg_vals[:-1]])
-                for arg_name, arg_vals_list in zip(arg_names, arg_vals_list):
-                    if len(arg_vals_list[0]):
+                for arg_name, arg_vals in zip(arg_names, arg_vals_list):
+                    if len(arg_vals[0]):
                         self.conn.execute(
-                            f"INSERT INTO my_table ({arg_name}) VALUES {arg_vals_list[0]};"
+                            f"INSERT INTO my_table ({arg_name}) VALUES {arg_vals[0]};"
                         )
             else:
                 self.conn.execute(
