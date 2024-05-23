@@ -277,6 +277,9 @@ aggregate_functions:
         result: i64
   - name: count
     aggregate: True
+  - name: count_star
+    local_name: 'count(*)'
+    aggregate: True
   - name: approx_count_distinct
     aggregate: True
   - name: bool_and

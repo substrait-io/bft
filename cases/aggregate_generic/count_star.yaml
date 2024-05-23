@@ -1,0 +1,63 @@
+function: count_star
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: [1, -2, 3, -4, 5, 6]
+        type: i8
+      - value: [1, -2, 6]
+        type: i8
+    result:
+      value: 9
+      type: i8
+  - group: basic
+    args:
+      - value: [1]
+        type: i8
+    result:
+      value: 1
+      type: i8
+  - group: basic
+    args:
+      - value: []
+        type: i8
+    result:
+      value: 0
+      type: i8
+  - group: basic
+    args:
+      - value: []
+        type: i8
+      - value: [1, 2, 3, 4, 5]
+        type: i8
+    result:
+      value: 5
+      type: i8
+  - group: basic
+    args:
+      - value: [Null, Null, Null]
+        type: i8
+    result:
+      value: 3
+      type: i8
+  - group: basic
+    args:
+      - value: [1, Null, Null]
+        type: i8
+      - value: [Null, Null, 8 ]
+        type: i8
+    result:
+      value: 6
+      type: i8
+  - group: basic
+    args:
+      - value: [1, Null, Null]
+        type: i8
+      - value: [Null, Null, 8, Null]
+        type: i8
+      - value: []
+        type: i8
+    result:
+      value: 7
+      type: i8
