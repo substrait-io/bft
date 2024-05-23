@@ -33,9 +33,15 @@ def literal_to_str(lit: str | int | float):
         return "-9e999"
     return str(lit)
 
+
+def flatten(l: list):
+    return [item for sublist in l for item in sublist]
+
+
 def extract_argument_values(case: Case, mapping: SqlMapping):
-    arg_vals = []
+    arg_vals_list = []
     for arg in case.args:
+        arg_vals = []
         if arg.type == "string" and arg.value is not None:
             arg_vals.append("'" + literal_to_str(arg.value) + "'")
         elif mapping.aggregate:
@@ -43,7 +49,9 @@ def extract_argument_values(case: Case, mapping: SqlMapping):
                 arg_vals.append(literal_to_str(value))
         else:
             arg_vals.append(literal_to_str(arg.value))
-    return arg_vals
+        arg_vals_list.append(arg_vals)
+    return arg_vals_list
+
 
 class SqliteRunner(SqlCaseRunner):
     def __init__(self, dialect):
@@ -62,17 +70,18 @@ class SqliteRunner(SqlCaseRunner):
             self.conn.execute(f"CREATE TABLE my_table({schema});")
 
             arg_names = [f"arg{idx}" for idx in range(len(case.args))]
-            if mapping.aggregate:
-                arg_names = [arg_names[0]]
+
             joined_arg_names = ",".join(arg_names)
-            arg_vals =  ",".join(extract_argument_values(case, mapping))
+            arg_vals_list = extract_argument_values(case, mapping)
+            arg_vals = ', '.join(flatten(arg_vals_list))
 
             if mapping.aggregate:
-                arg_vals_list = ", ".join(f"({val})" for val in arg_vals.split(","))
-                if arg_vals:
-                    self.conn.execute(
-                        f"INSERT INTO my_table ({joined_arg_names}) VALUES {arg_vals_list};"
-                    )
+                for arg_name, arg_vals in zip(arg_names, arg_vals_list):
+                    str_arg_vals = ",".join(f"({val})" for val in arg_vals)
+                    if arg_vals:
+                        self.conn.execute(
+                            f"INSERT INTO my_table ({arg_name}) VALUES {str_arg_vals};"
+                        )
             else:
                 self.conn.execute(
                     f"INSERT INTO my_table ({joined_arg_names}) VALUES ({arg_vals});"
@@ -90,6 +99,10 @@ class SqliteRunner(SqlCaseRunner):
                 if len(arg_names) != 3:
                     raise Exception(f"Between function with {len(arg_names)} args")
                 expr = f"SELECT {arg_names[0]} BETWEEN {arg_names[1]} AND {arg_names[2]} FROM my_table;"
+            elif mapping.local_name == 'count(*)':
+                if len(arg_names) < 1:
+                    raise Exception(f"Aggregate function with {len(arg_names)} args")
+                expr = f"SELECT {mapping.local_name} FROM my_table;"
             elif mapping.aggregate:
                 if len(arg_names) < 1:
                     raise Exception(f"Aggregate function with {len(arg_names)} args")
