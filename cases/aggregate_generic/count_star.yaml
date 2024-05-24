@@ -4,37 +4,37 @@ cases:
       id: basic
       description: Basic examples without any special cases
     args:
-      - value: [1, -2, 3, -4, 5]
-        type: i8
+      - value: [100, -200, 300, -4, 5]
+        type: i16
     result:
       value: 5
-      type: i8
+      type: i16
   - group: basic
     args:
       - value: [1]
-        type: i8
+        type: i16
     result:
       value: 1
-      type: i8
+      type: i16
   - group: basic
     args:
       - value: []
-        type: i8
+        type: i16
     result:
       value: 0
-      type: i8
+      type: i16
   - group: basic
     args:
       - value: [Null, Null, Null]
-        type: i8
+        type: i16
     result:
       value: 3
-      type: i8
+      type: i16
   - group: basic
     args:
-      - value: [1, Null, Null]
-        type: i8
+      - value: [1000, Null, Null]
+        type: i16
     result:
       value: 3
-      type: i8
+      type: i16
 
