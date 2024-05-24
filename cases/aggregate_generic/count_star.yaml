@@ -6,10 +6,8 @@ cases:
     args:
       - value: [1, -2, 3, -4, 5]
         type: i8
-      - value: [1, -2, 6, 8, 1]
-        type: i8
     result:
-      value: 10
+      value: 5
       type: i8
   - group: basic
     args:
@@ -27,15 +25,6 @@ cases:
       type: i8
   - group: basic
     args:
-      - value: []
-        type: i8
-      - value: [1, 2, 3, 4, 5]
-        type: i8
-    result:
-      value: 5
-      type: i8
-  - group: basic
-    args:
       - value: [Null, Null, Null]
         type: i8
     result:
@@ -45,17 +34,7 @@ cases:
     args:
       - value: [1, Null, Null]
         type: i8
-      - value: [Null, Null, Null]
-        type: i8
     result:
-      value: 6
+      value: 3
       type: i8
-  - group: basic
-    args:
-      - value: [1, Null, Null]
-        type: i8
-      - value: [Null, Null, 8]
-        type: i8
-    result:
-      value: 6
-      type: i8
+

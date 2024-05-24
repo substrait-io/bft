@@ -520,6 +520,9 @@ aggregate_functions:
       - args:
           - i8
         result: i8
+  - name: count_star
+    local_name: 'count(*)'
+    aggregate: True
   - name: approx_count_distinct
     unsupported: True
   - name: bool_and
