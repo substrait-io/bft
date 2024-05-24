@@ -843,7 +843,6 @@ aggregate_functions:
   - name: count
     unsupported: True
   - name: count_star
-    local_name: 'count(*)'
     unsupported: True
   - name: approx_count_distinct
     unsupported: True
