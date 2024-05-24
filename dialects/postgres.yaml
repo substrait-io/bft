@@ -516,10 +516,6 @@ aggregate_functions:
         result: i64
   - name: count
     aggregate: True
-    unsupported_kernels:
-      - args:
-          - i8
-        result: i8
   - name: count_star
     local_name: 'count(*)'
     aggregate: True
