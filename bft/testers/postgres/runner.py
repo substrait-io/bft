@@ -79,8 +79,6 @@ class PostgresRunner(SqlCaseRunner):
             self.conn.execute(f"CREATE TABLE my_table({schema});")
 
             arg_names = [f"arg{idx}" for idx in range(len(case.args))]
-            if mapping.aggregate:
-                arg_names = [arg_names[0]]
             joined_arg_names = ",".join(arg_names)
             arg_vals_list = list()
             for arg in case.args:
@@ -125,6 +123,10 @@ class PostgresRunner(SqlCaseRunner):
                 if len(arg_names) != 3:
                     raise Exception(f"Between function with {len(arg_names)} args")
                 expr = f"SELECT {arg_names[0]} BETWEEN {arg_names[1]} AND {arg_names[2]} FROM my_table;"
+            elif mapping.local_name == 'count(*)':
+                if len(arg_names) < 1:
+                    raise Exception(f"Aggregate function with {len(arg_names)} args")
+                expr = f"SELECT {mapping.local_name} FROM my_table;"
             elif mapping.aggregate:
                 if len(arg_names) < 1:
                     raise Exception(f"Aggregate function with {len(arg_names)} args")
