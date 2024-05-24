@@ -842,6 +842,9 @@ aggregate_functions:
     unsupported: True
   - name: count
     unsupported: True
+  - name: count_star
+    local_name: 'count(*)'
+    unsupported: True
   - name: approx_count_distinct
     unsupported: True
   - name: bool_and
