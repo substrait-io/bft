@@ -88,20 +88,23 @@ class PostgresRunner(SqlCaseRunner):
                     arg_vals_list.append(literal_to_str(arg.value))
             arg_vals = ", ".join(arg_vals_list)
             if mapping.aggregate:
-                arg_vals_list = ""
+                arg_vals_list = list()
                 for arg in case.args:
+                    arg_vals = ""
                     for value in arg.value:
                         if is_string_type(arg):
                             if value:
-                                arg_vals_list += f"('{literal_to_str(value)}'),"
+                                arg_vals += f"('{literal_to_str(value)}'),"
                             else:
-                                arg_vals_list += f"({literal_to_str(value)}),"
+                                arg_vals += f"({literal_to_str(value)}),"
                         else:
-                            arg_vals_list += f"({literal_to_str(value)}),"
-                if len(arg_vals_list[:-1]):
-                    self.conn.execute(
-                        f"INSERT INTO my_table ({joined_arg_names}) VALUES {arg_vals_list[:-1]};"
-                    )
+                            arg_vals += f"({literal_to_str(value)}),"
+                    arg_vals_list.append([arg_vals[:-1]])
+                for arg_name, arg_vals in zip(arg_names, arg_vals_list):
+                    if len(arg_vals[0]):
+                        self.conn.execute(
+                            f"INSERT INTO my_table ({arg_name}) VALUES {arg_vals[0]};"
+                        )
             else:
                 self.conn.execute(
                     f"INSERT INTO my_table ({joined_arg_names}) VALUES ({arg_vals});"
