@@ -261,6 +261,9 @@ aggregate_functions:
       overflow: SILENT
   - name: count
     aggregate: True
+  - name: count_star
+    local_name: 'count(*)'
+    aggregate: True
   - name: approx_count_distinct
     local_name: "approx_distinct"
     aggregate: True
