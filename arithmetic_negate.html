@@ -91,45 +91,21 @@ control the behavior upon overflow in the negate function.</p>
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>velox_presto</option>
-                
                 <option>datafusion</option>
-                
-                <option>sqlite</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>sqlite</option>
+                
                 <option>postgres</option>
+                
+                <option>velox_presto</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-datafusion">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
                 
                     
                 
@@ -141,8 +117,32 @@ control the behavior upon overflow in the negate function.</p>
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-postgres">
                 
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>ERROR</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
                     
                 
             </dl>
@@ -371,202 +371,7 @@ because the first will overflow and the second will not.</p>
     <script>
       var bftDialects = {
         
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i32) -> i32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i8) -> error",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel negate(i8) -> undefined",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                true,
-                
-                false,
-                
-                true,
-                
-            ]
-        },
-        
         'datafusion': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'cudf': {
             examples: [
                 
                 
@@ -696,6 +501,136 @@ because the first will overflow and the second will not.</p>
             ]
         },
         
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
         'postgres': {
             examples: [
                 
@@ -755,6 +690,71 @@ because the first will overflow and the second will not.</p>
                 true,
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i32) -> i32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i8) -> error",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel negate(i8) -> undefined",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                true,
+                
+                false,
                 
                 true,
                 

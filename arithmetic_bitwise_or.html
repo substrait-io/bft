@@ -64,39 +64,21 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>velox_presto</option>
-                
                 <option>datafusion</option>
-                
-                <option>sqlite</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>sqlite</option>
+                
                 <option>postgres</option>
+                
+                <option>velox_presto</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-datafusion">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
                 
                     
                 
@@ -108,7 +90,25 @@
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-postgres">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -121,13 +121,17 @@
             
                 
                     <h4>Associative</h4>
-                    <p>The bitwise_xor function is associative, i.e.
+                    <p>The bitwise_or function is associative, i.e.
 the grouping of operands does not affect the result. For example,
-bitwise_xor(bitwise_xor(a,b), c) will be same as bitwise_xor(a, bitwise_xor(b,c)).</p>
+bitwise_or(bitwise_or(a,b), c) will be same as bitwise_or(a, bitwise_or(b,c)).</p>
                 
                     <h4>Commutative</h4>
-                    <p>The order of operands does not affect the result in Bitwise_xor. For example,
-bitwise_xor(a,b) will be the same as bitwise_xor(b,a).</p>
+                    <p>The order of operands does not affect the result in Bitwise_or. For example,
+bitwise_or(a,b) will be the same as bitwise_or(b,a).</p>
+                
+                    <h4>Identity</h4>
+                    <p>For any valid integer, the bitwise_or with zero will result
+to itself. For example, bitwise_or(123, 000) = 123</p>
                 
             
         </section>
@@ -309,178 +313,7 @@ bitwise_xor(a,b) will be the same as bitwise_xor(b,a).</p>
     <script>
       var bftDialects = {
         
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_or(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_or(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_or(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_or(i16, i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_or(i16, i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_or(i32, i32) -> i32",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel bitwise_or(i32, i32) -> i32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                true,
-                
-            ]
-        },
-        
         'datafusion': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'cudf': {
             examples: [
                 
                 
@@ -594,6 +427,120 @@ bitwise_xor(a,b) will be the same as bitwise_xor(b,a).</p>
             ]
         },
         
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
         'postgres': {
             examples: [
                 
@@ -645,6 +592,63 @@ bitwise_xor(a,b) will be the same as bitwise_xor(b,a).</p>
                 true,
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_or(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_or(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_or(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_or(i16, i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_or(i16, i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_or(i32, i32) -> i32",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel bitwise_or(i32, i32) -> i32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
                 
                 true,
                 

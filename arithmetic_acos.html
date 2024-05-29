@@ -108,57 +108,21 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>velox_presto</option>
-                
                 <option>datafusion</option>
-                
-                <option>sqlite</option>
-                
-                <option>cudf</option>
                 
                 <option>duckdb</option>
                 
+                <option>cudf</option>
+                
+                <option>sqlite</option>
+                
                 <option>postgres</option>
+                
+                <option>velox_presto</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NAN</dd>
-                    
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-datafusion">
-                
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NAN</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NAN</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
                 
                     
                         <dt>rounding</dt>
@@ -182,6 +146,30 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>NAN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>NAN</dd>
+                    
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-postgres">
                 
                     
@@ -190,6 +178,18 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                     
                         <dt>on_domain_error</dt>
                         <dd>ERROR</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>NAN</dd>
                     
                 
             </dl>
@@ -306,94 +306,7 @@ at 1.</p>
     <script>
       var bftDialects = {
         
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel acos(fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                true,
-                
-            ]
-        },
-        
         'datafusion': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'cudf': {
             examples: [
                 
                 
@@ -451,6 +364,64 @@ at 1.</p>
             ]
         },
         
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
         'postgres': {
             examples: [
                 
@@ -474,6 +445,35 @@ at 1.</p>
             kernels: [
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel acos(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
                 
                 true,
                 
