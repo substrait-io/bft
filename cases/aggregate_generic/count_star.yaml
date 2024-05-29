@@ -1,17 +1,17 @@
-function: count
+function: count_star
 cases:
   - group:
       id: basic
       description: Basic examples without any special cases
     args:
-      - value: [100, -200, 300, -400, 5, 6]
+      - value: [100, -200, 300, -4, 5]
         type: i16
     result:
-      value: 6
+      value: 5
       type: i16
   - group: basic
     args:
-      - value: [1000]
+      - value: [1]
         type: i16
     result:
       value: 1
@@ -28,12 +28,13 @@ cases:
       - value: [Null, Null, Null]
         type: i16
     result:
-      value: 0
+      value: 3
       type: i16
   - group: basic
     args:
-      - value: [Null, Null, Null, 1000]
+      - value: [1000, Null, Null]
         type: i16
     result:
-      value: 1
+      value: 3
       type: i16
+

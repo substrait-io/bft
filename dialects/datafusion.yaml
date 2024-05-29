@@ -230,8 +230,6 @@ scalar_functions:
   - name: ltrim
   - name: rtrim
   - name: trim
-    required_options:
-      spaces_only: TRUE
   - name: lpad
   - name: rpad
   - name: left
@@ -260,6 +258,9 @@ aggregate_functions:
     required_options:
       overflow: SILENT
   - name: count
+    aggregate: True
+  - name: count_star
+    local_name: 'count(*)'
     aggregate: True
   - name: approx_count_distinct
     local_name: "approx_distinct"

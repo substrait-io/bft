@@ -281,6 +281,9 @@ aggregate_functions:
     aggregate: True
   - name: count
     aggregate: True
+  - name: count_star
+    local_name: 'count(*)'
+    aggregate: True
   - name: approx_count_distinct
     unsupported: True
   - name: bool_and

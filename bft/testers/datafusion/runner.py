@@ -2,6 +2,7 @@ import math
 from datetime import datetime
 
 import datafusion
+import numpy
 import pyarrow as pa
 
 from bft.cases.runner import SqlCaseResult, SqlCaseRunner
@@ -87,12 +88,14 @@ class DatafusionRunner(SqlCaseRunner):
             arg_types_list = []
 
             if mapping.aggregate:
+                arg_vectors = []
                 for arg_idx, arg in enumerate(case.args):
+                    arg_vals = []
                     arg_type = type_to_datafusion_type(arg.type)
                     for val in arg.value:
-                        arg_vals_list.append(handle_special_cases(val))
+                        arg_vals.append(handle_special_cases(val))
                     arg_names.append(f"arg{arg_idx}")
-                arg_vectors = [pa.array(arg_vals_list, arg_type)]
+                    arg_vectors.append(pa.array(arg_vals, arg_type))
             else:
                 for arg_idx, arg in enumerate(case.args):
                     arg_val = arg_with_type(arg)
@@ -114,7 +117,6 @@ class DatafusionRunner(SqlCaseRunner):
                 arg_vectors,
                 names=arg_names,
             )
-
             self.ctx.register_record_batches("my_table", [[batch]])
             if mapping.infix:
                 if len(case.args) != 2:
@@ -128,6 +130,8 @@ class DatafusionRunner(SqlCaseRunner):
                 if len(arg_names) != 2:
                     raise Exception(f"Extract function with {len(arg_names)} args")
                 expr_str = f"SELECT {mapping.local_name}({arg_vals_list[0]} FROM {arg_names[1]}) FROM my_table;"
+            elif mapping.local_name == 'count(*)':
+                expr_str = f"SELECT {mapping.local_name} FROM my_table;"
             elif mapping.aggregate:
                 if len(arg_names) < 1:
                     raise Exception(f"Aggregate function with {len(arg_names)} args")

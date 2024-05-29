@@ -60,7 +60,7 @@ cases:
       - value: 'a'
         type: string
     options:
-      spaces_only: FALSE
+      spaces_only: False
     result:
       value: 'bccccc'
       type: string
@@ -71,7 +71,7 @@ cases:
       - value: 'def'
         type: string
     options:
-      spaces_only: FALSE
+      spaces_only: False
     result:
       value: 'abcabc'
       type: string
@@ -82,7 +82,7 @@ cases:
       - value: 'abc'
         type: string
     options:
-      spaces_only: FALSE
+      spaces_only: False
     result:
       value: 'def'
       type: string
