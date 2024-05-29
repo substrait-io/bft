@@ -127,8 +127,6 @@ class PostgresRunner(SqlCaseRunner):
                     raise Exception(f"Between function with {len(arg_names)} args")
                 expr = f"SELECT {arg_names[0]} BETWEEN {arg_names[1]} AND {arg_names[2]} FROM my_table;"
             elif mapping.local_name == 'count(*)':
-                if len(arg_names) < 1:
-                    raise Exception(f"Aggregate function with {len(arg_names)} args")
                 expr = f"SELECT {mapping.local_name} FROM my_table;"
             elif mapping.aggregate:
                 if len(arg_names) < 1:

@@ -131,8 +131,6 @@ class DatafusionRunner(SqlCaseRunner):
                     raise Exception(f"Extract function with {len(arg_names)} args")
                 expr_str = f"SELECT {mapping.local_name}({arg_vals_list[0]} FROM {arg_names[1]}) FROM my_table;"
             elif mapping.local_name == 'count(*)':
-                if len(arg_names) < 1:
-                    raise Exception(f"Aggregate function with {len(arg_names)} args")
                 expr_str = f"SELECT {mapping.local_name} FROM my_table;"
             elif mapping.aggregate:
                 if len(arg_names) < 1:
