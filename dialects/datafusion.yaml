@@ -230,8 +230,6 @@ scalar_functions:
   - name: ltrim
   - name: rtrim
   - name: trim
-    required_options:
-      spaces_only: TRUE
   - name: lpad
   - name: rpad
   - name: left
