@@ -47,6 +47,14 @@ engines that help us to understand how that system behaves.  For example, we lis
 which type classes a system supports and which options are implicitly specified when
 a function is called in that system.
 
+#### Supported Dialects
+BFT currently supports testing of the following dialects:
+* cuDF
+* Datafusion
+* DuckDB
+* Postgres
+* SQLite
+
 ## Workflows
 
 These workflows describe how this information is used.
