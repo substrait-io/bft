@@ -47,13 +47,47 @@ engines that help us to understand how that system behaves.  For example, we lis
 which type classes a system supports and which options are implicitly specified when
 a function is called in that system.
 
+#### Supported Dialects
+BFT currently supports testing of the following dialects:
+* cuDF
+* Datafusion
+* DuckDB
+* Postgres
+* SQLite
+
 ## Workflows
 
 These workflows describe how this information is used.
 
-### Dialect Testing
+### Environment Setup
+```
+cd bft
+conda create -n bft -c rapidsai -c conda-forge -c nvidia rapids=24.04 python=3.11 cuda-version=12.2
+conda activate bft
+pip install -r requirements.txt
+```
 
-#### Local environment
+#### Running Python Tests
+
+Tests are located in the `bft/tests` folder and can be run with the following:
+
+    ```
+    cd bft
+    pytest bft/tests/test_duckdb.py
+
+    bft/tests/test_duckdb.py ........sssssssssssssssssssssssss...............xxxx.......................xx....... [  9%]
+    .............................................xxxx............................................................ [ 22%]
+    ...........xxxx.........x.x.x................................................................................ [ 35%]
+    ....................x..x...........................xx..xx.....xx..xx.....xx..xx.............................. [ 48%]
+    ............................................................................................................. [ 60%]
+    ...sssssssssssssss.......................................................................ssssss.............. [ 73%]
+    ......xx..xxx......x...............xxx..............sssss..........sssss........xxx.....................x.x.. [ 86%]
+    ........sssss...........................ssssssssss....x..............sssss........xxx..ssss.....sssssssssss.. [ 98%]
+    ...xx.x..                                                                                                     [100%]
+    ==================================== 713 passed, 91 skipped, 52 xfailed in 2.56s ===================================
+    ```
+
+#### Local Dialect Testing
 Testing the dialects locally will require different frameworks/libraries. Following steps
 mentions reference methods:
 - **cuDF**  
