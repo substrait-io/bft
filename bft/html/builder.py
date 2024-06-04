@@ -186,10 +186,7 @@ def create_function_info(
     supplements: SupplementsFile,
     dialects: DialectsLibrary,
 ) -> FunctionInfo:
-    if func.name.startswith('aggregate'):
-        name = "_".join(func.name.split('_')[2:])
-    else:
-        name = "_".join(func.name.split('_')[1:])
+    name = find_simplified_name(func.name)
     uri_short = func.uri
     uri = "https://github.com/substrait-io/substrait/blob/main/extensions/" + uri_short
     brief = func.description
@@ -231,6 +228,14 @@ def create_function_index(
     return FunctionIndexInfo(items)
 
 
+def find_simplified_name(name: str) -> str:
+    if name.startswith('aggregate'):
+        func_name_full = "_".join(name.split('_')[2:])
+    else:
+        func_name_full = "_".join(name.split('_')[1:])
+    return func_name_full
+
+
 def build_site(index_path: str, dest_dir):
     root = pathlib.Path(index_path).parent
     index_contents = load_index(index_path)
@@ -265,10 +270,7 @@ def build_site(index_path: str, dest_dir):
         f"There are {len(functions)} functions and {len(cases)} cases and {len(supplements)} supplements and {(len(dialects_lib.dialects))} dialects"
     )
     for func in functions:
-        if func.name.startswith('aggregate'):
-            func_name_full = "_".join(func.name.split('_')[2:])
-        else:
-            func_name_full = "_".join(func.name.split('_')[1:])
+        func_name_full = find_simplified_name(func.name)
         matching_cases = [case for case in cases if case.function == func_name_full]
         supplement = supplements.get(func_name_full, None)
         if supplement is None:
