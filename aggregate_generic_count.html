@@ -3,10 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-    <title>generic_count Function - BFT</title>
+    <title>count Function - BFT</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Reference for the count function">
+    
+        <meta name="description" content="Reference for the  function">
+    
     <link rel="stylesheet" href="./assets/supplementary/terminal.css">
     <link rel="stylesheet" href="./assets/supplementary/style.css">
 </head>
@@ -28,7 +30,7 @@
     </header>
 
     <article class="container">
-        <h2>Generic_count</h2>
+        <h2>Count</h2>
         <section>
             <p>
                 Defined in <a href="https://github.com/substrait-io/substrait/blob/main/extensions/functions_aggregate_generic.yaml">functions_aggregate_generic.yaml</a>
@@ -66,7 +68,7 @@
             <h3>Kernels&nbsp;<a href="#kernels">&para;</a></h3>
             <ul>
                 
-                <li class="bft-kernel"><span>generic_count() -> i64 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>count() -> i64 : [overflow]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
             </ul>
         </section>
@@ -91,37 +93,37 @@
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-cudf">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-postgres">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-velox_presto">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
@@ -144,6 +146,76 @@
         <section id="examples">
             <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
             
+            <table>
+                <caption>Basic examples without any special cases</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (i16)</th>
+                        
+                        <th>result (i64)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[100, -200, 300, -400, 5, 6]</td>
+                        
+                        <td>6</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[1000]</td>
+                        
+                        <td>1</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[]</td>
+                        
+                        <td>0</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[None, None, None]</td>
+                        
+                        <td>0</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[None, None, None, 1000]</td>
+                        
+                        <td>1</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
         </section>
     </article>
     <script src="./assets/supplementary/script.js"></script>
@@ -152,6 +224,26 @@
         
         'datafusion': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
                 
             ],
             kernels: [
@@ -164,6 +256,26 @@
         'duckdb': {
             examples: [
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -174,6 +286,26 @@
         
         'cudf': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
                 
             ],
             kernels: [
@@ -186,6 +318,26 @@
         'sqlite': {
             examples: [
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -197,6 +349,26 @@
         'postgres': {
             examples: [
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -207,6 +379,26 @@
         
         'velox_presto': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
                 
             ],
             kernels: [

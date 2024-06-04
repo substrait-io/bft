@@ -160,20 +160,26 @@
                                 <tbody>
                                     
                                         <tr onclick="window.location='./aggregate_approx_approx_count_distinct.html';" style="cursor: pointer;">
-                                            <td class="title-column">Approx_approx_count_distinct</td>
-                                            <td>Calculates the approximate number of rows that contain distinct values of the expression argument using HyperLogLog. This function provides an alternative to the COUNT (DISTINCT expression) function, which returns the exact number of rows that contain distinct values of an expression. APPROX_COUNT_DISTINCT processes large amounts of data significantly faster than COUNT, with negligible deviation from the exact result.</td>
+                                            
+                                                <td class="title-column">Approx_count_distinct</td>
+                                                <td>Calculates the approximate number of rows that contain distinct values of the expression argument using HyperLogLog. This function provides an alternative to the COUNT (DISTINCT expression) function, which returns the exact number of rows that contain distinct values of an expression. APPROX_COUNT_DISTINCT processes large amounts of data significantly faster than COUNT, with negligible deviation from the exact result.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./aggregate_generic_any_value.html';" style="cursor: pointer;">
-                                            <td class="title-column">Generic_any_value</td>
-                                            <td>Selects an arbitrary value from a group of values.
+                                            
+                                                <td class="title-column">Any_value</td>
+                                                <td>Selects an arbitrary value from a group of values.
 If the input is empty, the function returns null.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./aggregate_generic_count.html';" style="cursor: pointer;">
-                                            <td class="title-column">Generic_count</td>
-                                            <td>Count a set of records (not field referenced)</td>
+                                            
+                                                <td class="title-column">Count</td>
+                                                <td>Count a set of records (not field referenced)</td>
+                                            
                                         </tr>
                                     
                                 </tbody>
@@ -190,167 +196,226 @@ If the input is empty, the function returns null.
                                 <tbody>
                                     
                                         <tr onclick="window.location='./arithmetic_abs.html';" style="cursor: pointer;">
-                                            <td class="title-column">Abs</td>
-                                            <td>Calculate the absolute value of the argument.
+                                            
+                                                <td class="title-column">Abs</td>
+                                                <td>Calculate the absolute value of the argument.
 Integer values allow the specification of overflow behavior to handle the unevenness of the twos complement, e.g. Int8 range [-128 : 127].
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_acos.html';" style="cursor: pointer;">
-                                            <td class="title-column">Acos</td>
-                                            <td>Get the arccosine of a value in radians.</td>
+                                            
+                                                <td class="title-column">Acos</td>
+                                                <td>Get the arccosine of a value in radians.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_acosh.html';" style="cursor: pointer;">
-                                            <td class="title-column">Acosh</td>
-                                            <td>Get the hyperbolic arccosine of a value in radians.</td>
+                                            
+                                                <td class="title-column">Acosh</td>
+                                                <td>Get the hyperbolic arccosine of a value in radians.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_add.html';" style="cursor: pointer;">
-                                            <td class="title-column">Add</td>
-                                            <td>Add two values.</td>
+                                            
+                                                <td class="title-column">Add</td>
+                                                <td>Add two values.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_asin.html';" style="cursor: pointer;">
-                                            <td class="title-column">Asin</td>
-                                            <td>Get the arcsine of a value in radians.</td>
+                                            
+                                                <td class="title-column">Asin</td>
+                                                <td>Get the arcsine of a value in radians.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_asinh.html';" style="cursor: pointer;">
-                                            <td class="title-column">Asinh</td>
-                                            <td>Get the hyperbolic arcsine of a value in radians.</td>
+                                            
+                                                <td class="title-column">Asinh</td>
+                                                <td>Get the hyperbolic arcsine of a value in radians.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_atan.html';" style="cursor: pointer;">
-                                            <td class="title-column">Atan</td>
-                                            <td>Get the arctangent of a value in radians.</td>
+                                            
+                                                <td class="title-column">Atan</td>
+                                                <td>Get the arctangent of a value in radians.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_atan2.html';" style="cursor: pointer;">
-                                            <td class="title-column">Atan2</td>
-                                            <td>Get the arctangent of values given as x/y pairs.</td>
+                                            
+                                                <td class="title-column">Atan2</td>
+                                                <td>Get the arctangent of values given as x/y pairs.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_atanh.html';" style="cursor: pointer;">
-                                            <td class="title-column">Atanh</td>
-                                            <td>Get the hyperbolic arctangent of a value in radians.</td>
+                                            
+                                                <td class="title-column">Atanh</td>
+                                                <td>Get the hyperbolic arctangent of a value in radians.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_avg.html';" style="cursor: pointer;">
-                                            <td class="title-column">Avg</td>
-                                            <td>Average a set of values. For integral types, this truncates partial values.</td>
+                                            
+                                                <td class="title-column">Avg</td>
+                                                <td>Average a set of values. For integral types, this truncates partial values.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_bitwise_and.html';" style="cursor: pointer;">
-                                            <td class="title-column">Bitwise_and</td>
-                                            <td>Return the bitwise AND result for two integer inputs.
+                                            
+                                                <td class="title-column">Bitwise_and</td>
+                                                <td>Return the bitwise AND result for two integer inputs.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_bitwise_not.html';" style="cursor: pointer;">
-                                            <td class="title-column">Bitwise_not</td>
-                                            <td>Return the bitwise NOT result for one integer input.
+                                            
+                                                <td class="title-column">Bitwise_not</td>
+                                                <td>Return the bitwise NOT result for one integer input.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_bitwise_or.html';" style="cursor: pointer;">
-                                            <td class="title-column">Bitwise_or</td>
-                                            <td>Return the bitwise OR result for two given integer inputs.
+                                            
+                                                <td class="title-column">Bitwise_or</td>
+                                                <td>Return the bitwise OR result for two given integer inputs.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_bitwise_xor.html';" style="cursor: pointer;">
-                                            <td class="title-column">Bitwise_xor</td>
-                                            <td>Return the bitwise XOR result for two integer inputs.
+                                            
+                                                <td class="title-column">Bitwise_xor</td>
+                                                <td>Return the bitwise XOR result for two integer inputs.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_corr.html';" style="cursor: pointer;">
-                                            <td class="title-column">Corr</td>
-                                            <td>Calculates the value of Pearson's correlation coefficient between `x` and `y`. If there is no input, null is returned.
+                                            
+                                                <td class="title-column">Corr</td>
+                                                <td>Calculates the value of Pearson's correlation coefficient between `x` and `y`. If there is no input, null is returned.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_cos.html';" style="cursor: pointer;">
-                                            <td class="title-column">Cos</td>
-                                            <td>Get the cosine of a value in radians.</td>
+                                            
+                                                <td class="title-column">Cos</td>
+                                                <td>Get the cosine of a value in radians.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_cosh.html';" style="cursor: pointer;">
-                                            <td class="title-column">Cosh</td>
-                                            <td>Get the hyperbolic cosine of a value in radians.</td>
+                                            
+                                                <td class="title-column">Cosh</td>
+                                                <td>Get the hyperbolic cosine of a value in radians.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_divide.html';" style="cursor: pointer;">
-                                            <td class="title-column">Divide</td>
-                                            <td>Divide x by y. In the case of integer division, partial values are truncated (i.e. rounded towards 0). The `on_division_by_zero` option governs behavior in cases where y is 0 and x is not 0. `LIMIT` means positive or negative infinity (depending on the sign of x and y). If x and y are both 0 or both +/-infinity, behavior will be governed by `on_domain_error`.
+                                            
+                                                <td class="title-column">Divide</td>
+                                                <td>Divide x by y. In the case of integer division, partial values are truncated (i.e. rounded towards 0). The `on_division_by_zero` option governs behavior in cases where y is 0 and x is not 0. `LIMIT` means positive or negative infinity (depending on the sign of x and y). If x and y are both 0 or both +/-infinity, behavior will be governed by `on_domain_error`.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_exp.html';" style="cursor: pointer;">
-                                            <td class="title-column">Exp</td>
-                                            <td>The mathematical constant e, raised to the power of the value.</td>
+                                            
+                                                <td class="title-column">Exp</td>
+                                                <td>The mathematical constant e, raised to the power of the value.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_factorial.html';" style="cursor: pointer;">
-                                            <td class="title-column">Factorial</td>
-                                            <td>Return the factorial of a given integer input.
+                                            
+                                                <td class="title-column">Factorial</td>
+                                                <td>Return the factorial of a given integer input.
 The factorial of 0! is 1 by convention.
 Negative inputs will raise an error.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_max.html';" style="cursor: pointer;">
-                                            <td class="title-column">Max</td>
-                                            <td>Max a set of values.</td>
+                                            
+                                                <td class="title-column">Max</td>
+                                                <td>Max a set of values.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_median.html';" style="cursor: pointer;">
-                                            <td class="title-column">Median</td>
-                                            <td>Calculate the median for a set of values.
+                                            
+                                                <td class="title-column">Median</td>
+                                                <td>Calculate the median for a set of values.
 Returns null if applied to zero records. For the integer implementations, the rounding option determines how the median should be rounded if it ends up midway between two values. For the floating point implementations, they specify the usual floating point rounding mode.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_min.html';" style="cursor: pointer;">
-                                            <td class="title-column">Min</td>
-                                            <td>Min a set of values.</td>
+                                            
+                                                <td class="title-column">Min</td>
+                                                <td>Min a set of values.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_mode.html';" style="cursor: pointer;">
-                                            <td class="title-column">Mode</td>
-                                            <td>Calculates mode for a set of values. If there is no input, null is returned.
+                                            
+                                                <td class="title-column">Mode</td>
+                                                <td>Calculates mode for a set of values. If there is no input, null is returned.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_modulus.html';" style="cursor: pointer;">
-                                            <td class="title-column">Modulus</td>
-                                            <td>Get the remainder when dividing one value by another.</td>
+                                            
+                                                <td class="title-column">Modulus</td>
+                                                <td>Get the remainder when dividing one value by another.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_multiply.html';" style="cursor: pointer;">
-                                            <td class="title-column">Multiply</td>
-                                            <td>Multiply two values.</td>
+                                            
+                                                <td class="title-column">Multiply</td>
+                                                <td>Multiply two values.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_negate.html';" style="cursor: pointer;">
-                                            <td class="title-column">Negate</td>
-                                            <td>Negation of the value</td>
+                                            
+                                                <td class="title-column">Negate</td>
+                                                <td>Negation of the value</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_power.html';" style="cursor: pointer;">
-                                            <td class="title-column">Power</td>
-                                            <td>Take the power with x as the base and y as exponent.</td>
+                                            
+                                                <td class="title-column">Power</td>
+                                                <td>Take the power with x as the base and y as exponent.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_product.html';" style="cursor: pointer;">
-                                            <td class="title-column">Product</td>
-                                            <td>Product of a set of values. Returns 1 for empty input.</td>
+                                            
+                                                <td class="title-column">Product</td>
+                                                <td>Product of a set of values. Returns 1 for empty input.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_quantile.html';" style="cursor: pointer;">
-                                            <td class="title-column">Quantile</td>
-                                            <td>Calculates quantiles for a set of values.
+                                            
+                                                <td class="title-column">Quantile</td>
+                                                <td>Calculates quantiles for a set of values.
 This function will divide the aggregated values (passed via the distribution argument) over N equally-sized bins, where N is passed via a constant argument. It will then return the values at the boundaries of these bins in list form. If the input is appropriately sorted, this computes the quantiles of the distribution.
 The function can optionally return the first and/or last element of the input, as specified by the `boundaries` argument. If the input is appropriately sorted, this will thus be the minimum and/or maximum values of the distribution.
 When the boundaries do not lie exactly on elements of the incoming distribution, the function will interpolate between the two nearby elements. If the interpolated value cannot be represented exactly, the `rounding` option controls how the value should be selected or computed.
@@ -360,59 +425,80 @@ The function fails and returns null in the following cases:
 
 The function returns an empty list if `n` equals 1 and `boundaries` is set to `NEITHER`.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_sign.html';" style="cursor: pointer;">
-                                            <td class="title-column">Sign</td>
-                                            <td>Return the signedness of the argument.
+                                            
+                                                <td class="title-column">Sign</td>
+                                                <td>Return the signedness of the argument.
 Integer values return signedness with the same type as the input. Possible return values are [-1, 0, 1]
 Floating point values return signedness with the same type as the input. Possible return values are [-1.0, -0.0, 0.0, 1.0, NaN]
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_sin.html';" style="cursor: pointer;">
-                                            <td class="title-column">Sin</td>
-                                            <td>Get the sine of a value in radians.</td>
+                                            
+                                                <td class="title-column">Sin</td>
+                                                <td>Get the sine of a value in radians.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_sinh.html';" style="cursor: pointer;">
-                                            <td class="title-column">Sinh</td>
-                                            <td>Get the hyperbolic sine of a value in radians.</td>
+                                            
+                                                <td class="title-column">Sinh</td>
+                                                <td>Get the hyperbolic sine of a value in radians.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_sqrt.html';" style="cursor: pointer;">
-                                            <td class="title-column">Sqrt</td>
-                                            <td>Square root of the value</td>
+                                            
+                                                <td class="title-column">Sqrt</td>
+                                                <td>Square root of the value</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_std_dev.html';" style="cursor: pointer;">
-                                            <td class="title-column">Std_dev</td>
-                                            <td>Calculates standard-deviation for a set of values.</td>
+                                            
+                                                <td class="title-column">Std_dev</td>
+                                                <td>Calculates standard-deviation for a set of values.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_subtract.html';" style="cursor: pointer;">
-                                            <td class="title-column">Subtract</td>
-                                            <td>Subtract one value from another.</td>
+                                            
+                                                <td class="title-column">Subtract</td>
+                                                <td>Subtract one value from another.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_sum.html';" style="cursor: pointer;">
-                                            <td class="title-column">Sum</td>
-                                            <td>Sum a set of values. The sum of zero elements yields null.</td>
+                                            
+                                                <td class="title-column">Sum</td>
+                                                <td>Sum a set of values. The sum of zero elements yields null.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_tan.html';" style="cursor: pointer;">
-                                            <td class="title-column">Tan</td>
-                                            <td>Get the tangent of a value in radians.</td>
+                                            
+                                                <td class="title-column">Tan</td>
+                                                <td>Get the tangent of a value in radians.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_tanh.html';" style="cursor: pointer;">
-                                            <td class="title-column">Tanh</td>
-                                            <td>Get the hyperbolic tangent of a value in radians.</td>
+                                            
+                                                <td class="title-column">Tanh</td>
+                                                <td>Get the hyperbolic tangent of a value in radians.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./arithmetic_variance.html';" style="cursor: pointer;">
-                                            <td class="title-column">Variance</td>
-                                            <td>Calculates variance for a set of values.</td>
+                                            
+                                                <td class="title-column">Variance</td>
+                                                <td>Calculates variance for a set of values.</td>
+                                            
                                         </tr>
                                     
                                 </tbody>
@@ -429,8 +515,9 @@ Floating point values return signedness with the same type as the input. Possibl
                                 <tbody>
                                     
                                         <tr onclick="window.location='./boolean_and.html';" style="cursor: pointer;">
-                                            <td class="title-column">And</td>
-                                            <td>The boolean `and` using Kleene logic.
+                                            
+                                                <td class="title-column">And</td>
+                                                <td>The boolean `and` using Kleene logic.
 This function behaves as follows with nulls:
 
     true and null = null
@@ -448,11 +535,13 @@ Behavior for 0 or 1 inputs is as follows:
   and() -> true
   and(x) -> x
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./boolean_and_not.html';" style="cursor: pointer;">
-                                            <td class="title-column">And_not</td>
-                                            <td>The boolean `and` of one value and the negation of the other using Kleene logic.
+                                            
+                                                <td class="title-column">And_not</td>
+                                                <td>The boolean `and` of one value and the negation of the other using Kleene logic.
 This function behaves as follows with nulls:
 
     true and not null = null
@@ -467,30 +556,38 @@ This function behaves as follows with nulls:
 
 In other words, in this context a null value really means "unknown", and an unknown value `and not` true is always false, as is false `and not` an unknown value.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./boolean_bool_and.html';" style="cursor: pointer;">
-                                            <td class="title-column">Bool_and</td>
-                                            <td>If any value in the input is false, false is returned. If the input is empty or only contains nulls, null is returned. Otherwise, true is returned.
+                                            
+                                                <td class="title-column">Bool_and</td>
+                                                <td>If any value in the input is false, false is returned. If the input is empty or only contains nulls, null is returned. Otherwise, true is returned.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./boolean_bool_or.html';" style="cursor: pointer;">
-                                            <td class="title-column">Bool_or</td>
-                                            <td>If any value in the input is true, true is returned. If the input is empty or only contains nulls, null is returned. Otherwise, false is returned.
+                                            
+                                                <td class="title-column">Bool_or</td>
+                                                <td>If any value in the input is true, true is returned. If the input is empty or only contains nulls, null is returned. Otherwise, false is returned.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./boolean_not.html';" style="cursor: pointer;">
-                                            <td class="title-column">Not</td>
-                                            <td>The `not` of a boolean value.
+                                            
+                                                <td class="title-column">Not</td>
+                                                <td>The `not` of a boolean value.
 When a null is input, a null is output.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./boolean_or.html';" style="cursor: pointer;">
-                                            <td class="title-column">Or</td>
-                                            <td>The boolean `or` using Kleene logic.
+                                            
+                                                <td class="title-column">Or</td>
+                                                <td>The boolean `or` using Kleene logic.
 This function behaves as follows with nulls:
 
     true or null = true
@@ -508,13 +605,16 @@ Behavior for 0 or 1 inputs is as follows:
   or() -> false
   or(x) -> x
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./boolean_xor.html';" style="cursor: pointer;">
-                                            <td class="title-column">Xor</td>
-                                            <td>The boolean `xor` of two values using Kleene logic.
+                                            
+                                                <td class="title-column">Xor</td>
+                                                <td>The boolean `xor` of two values using Kleene logic.
 When a null is encountered in either input, a null is output.
 </td>
+                                            
                                         </tr>
                                     
                                 </tbody>
@@ -531,109 +631,139 @@ When a null is encountered in either input, a null is output.
                                 <tbody>
                                     
                                         <tr onclick="window.location='./comparison_between.html';" style="cursor: pointer;">
-                                            <td class="title-column">Between</td>
-                                            <td>Whether the `expression` is greater than or equal to `low` and less than or equal to `high`.
+                                            
+                                                <td class="title-column">Between</td>
+                                                <td>Whether the `expression` is greater than or equal to `low` and less than or equal to `high`.
 `expression` BETWEEN `low` AND `high`
 If `low`, `high`, or `expression` are `null`, `null` is returned.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./comparison_coalesce.html';" style="cursor: pointer;">
-                                            <td class="title-column">Coalesce</td>
-                                            <td>Evaluate arguments from left to right and return the first argument that is not null. Once a non-null argument is found, the remaining arguments are not evaluated.
+                                            
+                                                <td class="title-column">Coalesce</td>
+                                                <td>Evaluate arguments from left to right and return the first argument that is not null. Once a non-null argument is found, the remaining arguments are not evaluated.
 If all arguments are null, return null.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./comparison_equal.html';" style="cursor: pointer;">
-                                            <td class="title-column">Equal</td>
-                                            <td>Whether two values are equal.
+                                            
+                                                <td class="title-column">Equal</td>
+                                                <td>Whether two values are equal.
 `equal(x, y) := (x == y)`
 If either/both of `x` and `y` are `null`, `null` is returned.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./comparison_gt.html';" style="cursor: pointer;">
-                                            <td class="title-column">Gt</td>
-                                            <td>Greater than.
+                                            
+                                                <td class="title-column">Gt</td>
+                                                <td>Greater than.
 gt(x, y) := (x > y)
 If either/both of `x` and `y` are `null`, `null` is returned.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./comparison_gte.html';" style="cursor: pointer;">
-                                            <td class="title-column">Gte</td>
-                                            <td>Greater than or equal to.
+                                            
+                                                <td class="title-column">Gte</td>
+                                                <td>Greater than or equal to.
 gte(x, y) := (x >= y)
 If either/both of `x` and `y` are `null`, `null` is returned.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./comparison_is_finite.html';" style="cursor: pointer;">
-                                            <td class="title-column">Is_finite</td>
-                                            <td>Whether a value is finite (neither infinite nor NaN).
+                                            
+                                                <td class="title-column">Is_finite</td>
+                                                <td>Whether a value is finite (neither infinite nor NaN).
 If `x` is `null`, `null` is returned.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./comparison_is_infinite.html';" style="cursor: pointer;">
-                                            <td class="title-column">Is_infinite</td>
-                                            <td>Whether a value is infinite.
+                                            
+                                                <td class="title-column">Is_infinite</td>
+                                                <td>Whether a value is infinite.
 If `x` is `null`, `null` is returned.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./comparison_is_nan.html';" style="cursor: pointer;">
-                                            <td class="title-column">Is_nan</td>
-                                            <td>Whether a value is not a number.
+                                            
+                                                <td class="title-column">Is_nan</td>
+                                                <td>Whether a value is not a number.
 If `x` is `null`, `null` is returned.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./comparison_is_not_distinct_from.html';" style="cursor: pointer;">
-                                            <td class="title-column">Is_not_distinct_from</td>
-                                            <td>Whether two values are equal.
+                                            
+                                                <td class="title-column">Is_not_distinct_from</td>
+                                                <td>Whether two values are equal.
 This function treats `null` values as comparable, so
 `is_not_distinct_from(null, null) == True`
 This is in contrast to `equal`, in which `null` values do not compare.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./comparison_is_not_null.html';" style="cursor: pointer;">
-                                            <td class="title-column">Is_not_null</td>
-                                            <td>Whether a value is not null. NaN is not null.</td>
+                                            
+                                                <td class="title-column">Is_not_null</td>
+                                                <td>Whether a value is not null. NaN is not null.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./comparison_is_null.html';" style="cursor: pointer;">
-                                            <td class="title-column">Is_null</td>
-                                            <td>Whether a value is null. NaN is not null.</td>
+                                            
+                                                <td class="title-column">Is_null</td>
+                                                <td>Whether a value is null. NaN is not null.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./comparison_lt.html';" style="cursor: pointer;">
-                                            <td class="title-column">Lt</td>
-                                            <td>Less than.
+                                            
+                                                <td class="title-column">Lt</td>
+                                                <td>Less than.
 lt(x, y) := (x < y)
 If either/both of `x` and `y` are `null`, `null` is returned.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./comparison_lte.html';" style="cursor: pointer;">
-                                            <td class="title-column">Lte</td>
-                                            <td>Less than or equal to.
+                                            
+                                                <td class="title-column">Lte</td>
+                                                <td>Less than or equal to.
 lte(x, y) := (x <= y)
 If either/both of `x` and `y` are `null`, `null` is returned.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./comparison_not_equal.html';" style="cursor: pointer;">
-                                            <td class="title-column">Not_equal</td>
-                                            <td>Whether two values are not_equal.
+                                            
+                                                <td class="title-column">Not_equal</td>
+                                                <td>Whether two values are not_equal.
 `not_equal(x, y) := (x != y)`
 If either/both of `x` and `y` are `null`, `null` is returned.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./comparison_nullif.html';" style="cursor: pointer;">
-                                            <td class="title-column">Nullif</td>
-                                            <td>If two values are equal, return null. Otherwise, return the first value.</td>
+                                            
+                                                <td class="title-column">Nullif</td>
+                                                <td>If two values are equal, return null. Otherwise, return the first value.</td>
+                                            
                                         </tr>
                                     
                                 </tbody>
@@ -650,25 +780,32 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                                 <tbody>
                                     
                                         <tr onclick="window.location='./datetime_add.html';" style="cursor: pointer;">
-                                            <td class="title-column">Add</td>
-                                            <td>Add an interval to a date/time type.
+                                            
+                                                <td class="title-column">Add</td>
+                                                <td>Add an interval to a date/time type.
 Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./datetime_add_intervals.html';" style="cursor: pointer;">
-                                            <td class="title-column">Add_intervals</td>
-                                            <td>Add two intervals together.</td>
+                                            
+                                                <td class="title-column">Add_intervals</td>
+                                                <td>Add two intervals together.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./datetime_assume_timezone.html';" style="cursor: pointer;">
-                                            <td class="title-column">Assume_timezone</td>
-                                            <td>Convert local timestamp to UTC-relative timestamp_tz using given local time's timezone.
+                                            
+                                                <td class="title-column">Assume_timezone</td>
+                                                <td>Convert local timestamp to UTC-relative timestamp_tz using given local time's timezone.
 Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./datetime_extract.html';" style="cursor: pointer;">
-                                            <td class="title-column">Extract</td>
-                                            <td>Extract portion of a date/time value. * YEAR Return the year of the value. * ISO_YEAR Return the ISO 8601 week-numbering year. First week of an ISO year has the majority (4 or more) of its
+                                            
+                                                <td class="title-column">Extract</td>
+                                                <td>Extract portion of a date/time value. * YEAR Return the year of the value. * ISO_YEAR Return the ISO 8601 week-numbering year. First week of an ISO year has the majority (4 or more) of its
   days in January.
 * US_YEAR Return US epidemiological year. First week of US epidemiological year has the majority (4 or more) of
   its days in January. Last week of US epidemiological year has the year's last Wednesday in it.
@@ -679,70 +816,93 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
   days in January. US week starts on Sunday.
 * HOUR Return the hour (0-23). * MINUTE Return the minute (0-59). * SECOND Return the second (0-59). * MILLISECOND Return number of milliseconds since the last full second. * MICROSECOND Return number of microseconds since the last full millisecond. * SUBSECOND Return number of microseconds since the last full second of the given timestamp. * UNIX_TIME Return number of seconds that have elapsed since 1970-01-01 00:00:00 UTC, ignoring leap seconds. * TIMEZONE_OFFSET Return number of seconds of timezone offset to UTC.
 Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./datetime_extract_boolean.html';" style="cursor: pointer;">
-                                            <td class="title-column">Extract_boolean</td>
-                                            <td>Extract boolean values of a date/time value. * IS_LEAP_YEAR Return true if year of the given value is a leap year and false otherwise. * IS_DST Return true if DST (Daylight Savings Time) is observed at the given value
+                                            
+                                                <td class="title-column">Extract_boolean</td>
+                                                <td>Extract boolean values of a date/time value. * IS_LEAP_YEAR Return true if year of the given value is a leap year and false otherwise. * IS_DST Return true if DST (Daylight Savings Time) is observed at the given value
   in the given timezone.
 
 Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./datetime_gt.html';" style="cursor: pointer;">
-                                            <td class="title-column">Gt</td>
-                                            <td>greater than</td>
+                                            
+                                                <td class="title-column">Gt</td>
+                                                <td>greater than</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./datetime_gte.html';" style="cursor: pointer;">
-                                            <td class="title-column">Gte</td>
-                                            <td>greater than or equal to</td>
+                                            
+                                                <td class="title-column">Gte</td>
+                                                <td>greater than or equal to</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./datetime_local_timestamp.html';" style="cursor: pointer;">
-                                            <td class="title-column">Local_timestamp</td>
-                                            <td>Convert UTC-relative timestamp_tz to local timestamp using given local time's timezone.
+                                            
+                                                <td class="title-column">Local_timestamp</td>
+                                                <td>Convert UTC-relative timestamp_tz to local timestamp using given local time's timezone.
 Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./datetime_lt.html';" style="cursor: pointer;">
-                                            <td class="title-column">Lt</td>
-                                            <td>less than</td>
+                                            
+                                                <td class="title-column">Lt</td>
+                                                <td>less than</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./datetime_lte.html';" style="cursor: pointer;">
-                                            <td class="title-column">Lte</td>
-                                            <td>less than or equal to</td>
+                                            
+                                                <td class="title-column">Lte</td>
+                                                <td>less than or equal to</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./datetime_round_calendar.html';" style="cursor: pointer;">
-                                            <td class="title-column">Round_calendar</td>
-                                            <td>Round a given timestamp/date/time to a multiple of a time unit. If the given timestamp is not already an exact multiple from the last origin unit in the given timezone, the resulting point is chosen as one of the two nearest multiples. Which of these is chosen is governed by rounding: FLOOR means to use the earlier one, CEIL means to use the later one, ROUND_TIE_DOWN means to choose the nearest and tie to the earlier one if equidistant, ROUND_TIE_UP means to choose the nearest and tie to the later one if equidistant.
+                                            
+                                                <td class="title-column">Round_calendar</td>
+                                                <td>Round a given timestamp/date/time to a multiple of a time unit. If the given timestamp is not already an exact multiple from the last origin unit in the given timezone, the resulting point is chosen as one of the two nearest multiples. Which of these is chosen is governed by rounding: FLOOR means to use the earlier one, CEIL means to use the later one, ROUND_TIE_DOWN means to choose the nearest and tie to the earlier one if equidistant, ROUND_TIE_UP means to choose the nearest and tie to the later one if equidistant.
 Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./datetime_round_temporal.html';" style="cursor: pointer;">
-                                            <td class="title-column">Round_temporal</td>
-                                            <td>Round a given timestamp/date/time to a multiple of a time unit. If the given timestamp is not already an exact multiple from the origin in the given timezone, the resulting point is chosen as one of the two nearest multiples. Which of these is chosen is governed by rounding: FLOOR means to use the earlier one, CEIL means to use the later one, ROUND_TIE_DOWN means to choose the nearest and tie to the earlier one if equidistant, ROUND_TIE_UP means to choose the nearest and tie to the later one if equidistant.
+                                            
+                                                <td class="title-column">Round_temporal</td>
+                                                <td>Round a given timestamp/date/time to a multiple of a time unit. If the given timestamp is not already an exact multiple from the origin in the given timezone, the resulting point is chosen as one of the two nearest multiples. Which of these is chosen is governed by rounding: FLOOR means to use the earlier one, CEIL means to use the later one, ROUND_TIE_DOWN means to choose the nearest and tie to the earlier one if equidistant, ROUND_TIE_UP means to choose the nearest and tie to the later one if equidistant.
 Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./datetime_strftime.html';" style="cursor: pointer;">
-                                            <td class="title-column">Strftime</td>
-                                            <td>Convert timestamp/date/time to string using provided format, see https://man7.org/linux/man-pages/man3/strftime.3.html for reference.
+                                            
+                                                <td class="title-column">Strftime</td>
+                                                <td>Convert timestamp/date/time to string using provided format, see https://man7.org/linux/man-pages/man3/strftime.3.html for reference.
 Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./datetime_strptime.html';" style="cursor: pointer;">
-                                            <td class="title-column">Strptime</td>
-                                            <td>Parse string into timestamp/date/time using provided format, see https://man7.org/linux/man-pages/man3/strptime.3.html for reference. If timezone is present in timestamp and provided as parameter an error is thrown.
+                                            
+                                                <td class="title-column">Strptime</td>
+                                                <td>Parse string into timestamp/date/time using provided format, see https://man7.org/linux/man-pages/man3/strptime.3.html for reference. If timezone is present in timestamp and provided as parameter an error is thrown.
 Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is supplied as parameter and present in the parsed string the parsed timezone is used. If parameter supplied timezone is invalid an error is thrown.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./datetime_subtract.html';" style="cursor: pointer;">
-                                            <td class="title-column">Subtract</td>
-                                            <td>Subtract an interval from a date/time type.
+                                            
+                                                <td class="title-column">Subtract</td>
+                                                <td>Subtract an interval from a date/time type.
 Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is invalid an error is thrown.</td>
+                                            
                                         </tr>
                                     
                                 </tbody>
@@ -759,32 +919,42 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                                 <tbody>
                                     
                                         <tr onclick="window.location='./logarithmic_ln.html';" style="cursor: pointer;">
-                                            <td class="title-column">Ln</td>
-                                            <td>Natural logarithm of the value</td>
+                                            
+                                                <td class="title-column">Ln</td>
+                                                <td>Natural logarithm of the value</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./logarithmic_log10.html';" style="cursor: pointer;">
-                                            <td class="title-column">Log10</td>
-                                            <td>Logarithm to base 10 of the value</td>
+                                            
+                                                <td class="title-column">Log10</td>
+                                                <td>Logarithm to base 10 of the value</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./logarithmic_log1p.html';" style="cursor: pointer;">
-                                            <td class="title-column">Log1p</td>
-                                            <td>Natural logarithm (base e) of 1 + x
+                                            
+                                                <td class="title-column">Log1p</td>
+                                                <td>Natural logarithm (base e) of 1 + x
 log1p(x) => log(1+x)
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./logarithmic_log2.html';" style="cursor: pointer;">
-                                            <td class="title-column">Log2</td>
-                                            <td>Logarithm to base 2 of the value</td>
+                                            
+                                                <td class="title-column">Log2</td>
+                                                <td>Logarithm to base 2 of the value</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./logarithmic_logb.html';" style="cursor: pointer;">
-                                            <td class="title-column">Logb</td>
-                                            <td>Logarithm of the value with the given base
+                                            
+                                                <td class="title-column">Logb</td>
+                                                <td>Logarithm of the value with the given base
 logb(x, b) => log_{b} (x)
 </td>
+                                            
                                         </tr>
                                     
                                 </tbody>
@@ -801,21 +971,27 @@ logb(x, b) => log_{b} (x)
                                 <tbody>
                                     
                                         <tr onclick="window.location='./rounding_ceil.html';" style="cursor: pointer;">
-                                            <td class="title-column">Ceil</td>
-                                            <td>Rounding to the ceiling of the value `x`.
+                                            
+                                                <td class="title-column">Ceil</td>
+                                                <td>Rounding to the ceiling of the value `x`.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./rounding_floor.html';" style="cursor: pointer;">
-                                            <td class="title-column">Floor</td>
-                                            <td>Rounding to the floor of the value `x`.
+                                            
+                                                <td class="title-column">Floor</td>
+                                                <td>Rounding to the floor of the value `x`.
 </td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./rounding_round.html';" style="cursor: pointer;">
-                                            <td class="title-column">Round</td>
-                                            <td>Rounding the value `x` to `s` decimal places.
+                                            
+                                                <td class="title-column">Round</td>
+                                                <td>Rounding the value `x` to `s` decimal places.
 </td>
+                                            
                                         </tr>
                                     
                                 </tbody>
@@ -832,200 +1008,272 @@ logb(x, b) => log_{b} (x)
                                 <tbody>
                                     
                                         <tr onclick="window.location='./string_bit_length.html';" style="cursor: pointer;">
-                                            <td class="title-column">Bit_length</td>
-                                            <td>Return the number of bits in the input string.</td>
+                                            
+                                                <td class="title-column">Bit_length</td>
+                                                <td>Return the number of bits in the input string.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_capitalize.html';" style="cursor: pointer;">
-                                            <td class="title-column">Capitalize</td>
-                                            <td>Capitalize the first character of the input string. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</td>
+                                            
+                                                <td class="title-column">Capitalize</td>
+                                                <td>Capitalize the first character of the input string. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_center.html';" style="cursor: pointer;">
-                                            <td class="title-column">Center</td>
-                                            <td>Center the input string by padding the sides with a single `character` until the specified `length` of the string has been reached. By default, if the `length` will be reached with an uneven number of padding, the extra padding will be applied to the right side. The side with extra padding can be controlled with the `padding` option.
+                                            
+                                                <td class="title-column">Center</td>
+                                                <td>Center the input string by padding the sides with a single `character` until the specified `length` of the string has been reached. By default, if the `length` will be reached with an uneven number of padding, the extra padding will be applied to the right side. The side with extra padding can be controlled with the `padding` option.
 Behavior is undefined if the number of characters passed to the `character` argument is not 1.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_char_length.html';" style="cursor: pointer;">
-                                            <td class="title-column">Char_length</td>
-                                            <td>Return the number of characters in the input string.  The length includes trailing spaces.</td>
+                                            
+                                                <td class="title-column">Char_length</td>
+                                                <td>Return the number of characters in the input string.  The length includes trailing spaces.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_concat.html';" style="cursor: pointer;">
-                                            <td class="title-column">Concat</td>
-                                            <td>Concatenate strings.</td>
+                                            
+                                                <td class="title-column">Concat</td>
+                                                <td>Concatenate strings.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_concat_ws.html';" style="cursor: pointer;">
-                                            <td class="title-column">Concat_ws</td>
-                                            <td>Concatenate strings together separated by a separator.</td>
+                                            
+                                                <td class="title-column">Concat_ws</td>
+                                                <td>Concatenate strings together separated by a separator.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_contains.html';" style="cursor: pointer;">
-                                            <td class="title-column">Contains</td>
-                                            <td>Whether the `input` string contains the `substring`.
+                                            
+                                                <td class="title-column">Contains</td>
+                                                <td>Whether the `input` string contains the `substring`.
 The `case_sensitivity` option applies to the `substring` argument.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_count_substring.html';" style="cursor: pointer;">
-                                            <td class="title-column">Count_substring</td>
-                                            <td>Return the number of non-overlapping occurrences of a substring in an input string.
+                                            
+                                                <td class="title-column">Count_substring</td>
+                                                <td>Return the number of non-overlapping occurrences of a substring in an input string.
 The `case_sensitivity` option applies to the `substring` argument.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_ends_with.html';" style="cursor: pointer;">
-                                            <td class="title-column">Ends_with</td>
-                                            <td>Whether `input` string ends with the substring.
+                                            
+                                                <td class="title-column">Ends_with</td>
+                                                <td>Whether `input` string ends with the substring.
 The `case_sensitivity` option applies to the `substring` argument.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_left.html';" style="cursor: pointer;">
-                                            <td class="title-column">Left</td>
-                                            <td>Extract `count` characters starting from the left of the string.</td>
+                                            
+                                                <td class="title-column">Left</td>
+                                                <td>Extract `count` characters starting from the left of the string.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_like.html';" style="cursor: pointer;">
-                                            <td class="title-column">Like</td>
-                                            <td>Are two strings like each other.
+                                            
+                                                <td class="title-column">Like</td>
+                                                <td>Are two strings like each other.
 The `case_sensitivity` option applies to the `match` argument.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_lower.html';" style="cursor: pointer;">
-                                            <td class="title-column">Lower</td>
-                                            <td>Transform the string to lower case characters. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</td>
+                                            
+                                                <td class="title-column">Lower</td>
+                                                <td>Transform the string to lower case characters. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_lpad.html';" style="cursor: pointer;">
-                                            <td class="title-column">Lpad</td>
-                                            <td>Left-pad the input string with the string of 'characters' until the specified length of the string has been reached. If the input string is longer than 'length', remove characters from the right-side to shorten it to 'length' characters. If the string of 'characters' is longer than the remaining 'length' needed to be filled, only pad until 'length' has been reached. If 'characters' is not specified, the default value is a single space.</td>
+                                            
+                                                <td class="title-column">Lpad</td>
+                                                <td>Left-pad the input string with the string of 'characters' until the specified length of the string has been reached. If the input string is longer than 'length', remove characters from the right-side to shorten it to 'length' characters. If the string of 'characters' is longer than the remaining 'length' needed to be filled, only pad until 'length' has been reached. If 'characters' is not specified, the default value is a single space.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_ltrim.html';" style="cursor: pointer;">
-                                            <td class="title-column">Ltrim</td>
-                                            <td>Remove any occurrence of the characters from the left side of the string. If no characters are specified, spaces are removed.</td>
+                                            
+                                                <td class="title-column">Ltrim</td>
+                                                <td>Remove any occurrence of the characters from the left side of the string. If no characters are specified, spaces are removed.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_octet_length.html';" style="cursor: pointer;">
-                                            <td class="title-column">Octet_length</td>
-                                            <td>Return the number of bytes in the input string.</td>
+                                            
+                                                <td class="title-column">Octet_length</td>
+                                                <td>Return the number of bytes in the input string.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_regexp_count_substring.html';" style="cursor: pointer;">
-                                            <td class="title-column">Regexp_count_substring</td>
-                                            <td>Return the number of non-overlapping occurrences of a regular expression pattern in an input string. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html). The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer.
+                                            
+                                                <td class="title-column">Regexp_count_substring</td>
+                                                <td>Return the number of non-overlapping occurrences of a regular expression pattern in an input string. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html). The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer.
 The `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines. This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.
 Behavior is undefined if the regex fails to compile or the position value is out of range.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_regexp_match_substring.html';" style="cursor: pointer;">
-                                            <td class="title-column">Regexp_match_substring</td>
-                                            <td>Extract a substring that matches the given regular expression pattern. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html). The occurrence of the pattern to be extracted is specified using the `occurrence` argument. Specifying `1` means the first occurrence will be extracted, `2` means the second occurrence, and so on. The `occurrence` argument should be a positive non-zero integer. The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer.
+                                            
+                                                <td class="title-column">Regexp_match_substring</td>
+                                                <td>Extract a substring that matches the given regular expression pattern. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html). The occurrence of the pattern to be extracted is specified using the `occurrence` argument. Specifying `1` means the first occurrence will be extracted, `2` means the second occurrence, and so on. The `occurrence` argument should be a positive non-zero integer. The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer.
 The `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines. This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.
 Behavior is undefined if the regex fails to compile, the occurrence value is out of range, or the position value is out of range.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_regexp_replace.html';" style="cursor: pointer;">
-                                            <td class="title-column">Regexp_replace</td>
-                                            <td>Search a string for a substring that matches a given regular expression pattern and replace it with a replacement string. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github .io/icu/userguide/strings/regexp.html). The occurrence of the pattern to be replaced is specified using the `occurrence` argument. Specifying `1` means only the first occurrence will be replaced, `2` means the second occurrence, and so on. Specifying `0` means all occurrences will be replaced. The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer. The replacement string can capture groups using numbered backreferences.
+                                            
+                                                <td class="title-column">Regexp_replace</td>
+                                                <td>Search a string for a substring that matches a given regular expression pattern and replace it with a replacement string. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github .io/icu/userguide/strings/regexp.html). The occurrence of the pattern to be replaced is specified using the `occurrence` argument. Specifying `1` means only the first occurrence will be replaced, `2` means the second occurrence, and so on. Specifying `0` means all occurrences will be replaced. The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer. The replacement string can capture groups using numbered backreferences.
 The `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines.  This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.
 Behavior is undefined if the regex fails to compile, the replacement contains an illegal back-reference, the occurrence value is out of range, or the position value is out of range.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_regexp_string_split.html';" style="cursor: pointer;">
-                                            <td class="title-column">Regexp_string_split</td>
-                                            <td>Split a string into a list of strings, based on a regular expression pattern.  The substrings matched by the pattern will be used as the separators to split the input string and will not be included in the resulting list. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html).
+                                            
+                                                <td class="title-column">Regexp_string_split</td>
+                                                <td>Split a string into a list of strings, based on a regular expression pattern.  The substrings matched by the pattern will be used as the separators to split the input string and will not be included in the resulting list. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html).
 The `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines. This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_regexp_strpos.html';" style="cursor: pointer;">
-                                            <td class="title-column">Regexp_strpos</td>
-                                            <td>Return the position of an occurrence of the given regular expression pattern in a string. The first character of the string is at position 1. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html). The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer. Which occurrence to return the position of is specified using the `occurrence` argument. Specifying `1` means the position first occurrence will be returned, `2` means the position of the second occurrence, and so on. The `occurrence` argument should be a positive non-zero integer. If no occurrence is found, 0 is returned.
+                                            
+                                                <td class="title-column">Regexp_strpos</td>
+                                                <td>Return the position of an occurrence of the given regular expression pattern in a string. The first character of the string is at position 1. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html). The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer. Which occurrence to return the position of is specified using the `occurrence` argument. Specifying `1` means the position first occurrence will be returned, `2` means the position of the second occurrence, and so on. The `occurrence` argument should be a positive non-zero integer. If no occurrence is found, 0 is returned.
 The `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines. This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.
 Behavior is undefined if the regex fails to compile, the occurrence value is out of range, or the position value is out of range.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_repeat.html';" style="cursor: pointer;">
-                                            <td class="title-column">Repeat</td>
-                                            <td>Repeat a string `count` number of times.</td>
+                                            
+                                                <td class="title-column">Repeat</td>
+                                                <td>Repeat a string `count` number of times.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_replace.html';" style="cursor: pointer;">
-                                            <td class="title-column">Replace</td>
-                                            <td>Replace all occurrences of the substring with the replacement string.
+                                            
+                                                <td class="title-column">Replace</td>
+                                                <td>Replace all occurrences of the substring with the replacement string.
 The `case_sensitivity` option applies to the `substring` argument.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_replace_slice.html';" style="cursor: pointer;">
-                                            <td class="title-column">Replace_slice</td>
-                                            <td>Replace a slice of the input string.  A specified 'length' of characters will be deleted from the input string beginning at the 'start' position and will be replaced by a new string.  A start value of 1 indicates the first character of the input string. If start is negative or zero, or greater than the length of the input string, a null string is returned. If 'length' is negative, a null string is returned.  If 'length' is zero, inserting of the new string occurs at the specified 'start' position and no characters are deleted. If 'length' is greater than the input string, deletion will occur up to the last character of the input string.</td>
+                                            
+                                                <td class="title-column">Replace_slice</td>
+                                                <td>Replace a slice of the input string.  A specified 'length' of characters will be deleted from the input string beginning at the 'start' position and will be replaced by a new string.  A start value of 1 indicates the first character of the input string. If start is negative or zero, or greater than the length of the input string, a null string is returned. If 'length' is negative, a null string is returned.  If 'length' is zero, inserting of the new string occurs at the specified 'start' position and no characters are deleted. If 'length' is greater than the input string, deletion will occur up to the last character of the input string.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_reverse.html';" style="cursor: pointer;">
-                                            <td class="title-column">Reverse</td>
-                                            <td>Returns the string in reverse order.</td>
+                                            
+                                                <td class="title-column">Reverse</td>
+                                                <td>Returns the string in reverse order.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_right.html';" style="cursor: pointer;">
-                                            <td class="title-column">Right</td>
-                                            <td>Extract `count` characters starting from the right of the string.</td>
+                                            
+                                                <td class="title-column">Right</td>
+                                                <td>Extract `count` characters starting from the right of the string.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_rpad.html';" style="cursor: pointer;">
-                                            <td class="title-column">Rpad</td>
-                                            <td>Right-pad the input string with the string of 'characters' until the specified length of the string has been reached. If the input string is longer than 'length', remove characters from the left-side to shorten it to 'length' characters. If the string of 'characters' is longer than the remaining 'length' needed to be filled, only pad until 'length' has been reached. If 'characters' is not specified, the default value is a single space.</td>
+                                            
+                                                <td class="title-column">Rpad</td>
+                                                <td>Right-pad the input string with the string of 'characters' until the specified length of the string has been reached. If the input string is longer than 'length', remove characters from the left-side to shorten it to 'length' characters. If the string of 'characters' is longer than the remaining 'length' needed to be filled, only pad until 'length' has been reached. If 'characters' is not specified, the default value is a single space.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_rtrim.html';" style="cursor: pointer;">
-                                            <td class="title-column">Rtrim</td>
-                                            <td>Remove any occurrence of the characters from the right side of the string. If no characters are specified, spaces are removed.</td>
+                                            
+                                                <td class="title-column">Rtrim</td>
+                                                <td>Remove any occurrence of the characters from the right side of the string. If no characters are specified, spaces are removed.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_starts_with.html';" style="cursor: pointer;">
-                                            <td class="title-column">Starts_with</td>
-                                            <td>Whether the `input` string starts with the `substring`.
+                                            
+                                                <td class="title-column">Starts_with</td>
+                                                <td>Whether the `input` string starts with the `substring`.
 The `case_sensitivity` option applies to the `substring` argument.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_string_agg.html';" style="cursor: pointer;">
-                                            <td class="title-column">String_agg</td>
-                                            <td>Concatenates a column of string values with a separator.</td>
+                                            
+                                                <td class="title-column">String_agg</td>
+                                                <td>Concatenates a column of string values with a separator.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_string_split.html';" style="cursor: pointer;">
-                                            <td class="title-column">String_split</td>
-                                            <td>Split a string into a list of strings, based on a specified `separator` character.</td>
+                                            
+                                                <td class="title-column">String_split</td>
+                                                <td>Split a string into a list of strings, based on a specified `separator` character.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_strpos.html';" style="cursor: pointer;">
-                                            <td class="title-column">Strpos</td>
-                                            <td>Return the position of the first occurrence of a string in another string. The first character of the string is at position 1. If no occurrence is found, 0 is returned.
+                                            
+                                                <td class="title-column">Strpos</td>
+                                                <td>Return the position of the first occurrence of a string in another string. The first character of the string is at position 1. If no occurrence is found, 0 is returned.
 The `case_sensitivity` option applies to the `substring` argument.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_substring.html';" style="cursor: pointer;">
-                                            <td class="title-column">Substring</td>
-                                            <td>Extract a substring of a specified `length` starting from position `start`. A `start` value of 1 refers to the first characters of the string.</td>
+                                            
+                                                <td class="title-column">Substring</td>
+                                                <td>Extract a substring of a specified `length` starting from position `start`. A `start` value of 1 refers to the first characters of the string.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_swapcase.html';" style="cursor: pointer;">
-                                            <td class="title-column">Swapcase</td>
-                                            <td>Transform the string's lowercase characters to uppercase and uppercase characters to lowercase. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</td>
+                                            
+                                                <td class="title-column">Swapcase</td>
+                                                <td>Transform the string's lowercase characters to uppercase and uppercase characters to lowercase. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_title.html';" style="cursor: pointer;">
-                                            <td class="title-column">Title</td>
-                                            <td>Converts the input string into titlecase. Capitalize the first character of each word in the input string except for articles (a, an, the). Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</td>
+                                            
+                                                <td class="title-column">Title</td>
+                                                <td>Converts the input string into titlecase. Capitalize the first character of each word in the input string except for articles (a, an, the). Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_trim.html';" style="cursor: pointer;">
-                                            <td class="title-column">Trim</td>
-                                            <td>Remove any occurrence of the characters from the left and right sides of the string. If no characters are specified, spaces are removed.</td>
+                                            
+                                                <td class="title-column">Trim</td>
+                                                <td>Remove any occurrence of the characters from the left and right sides of the string. If no characters are specified, spaces are removed.</td>
+                                            
                                         </tr>
                                     
                                         <tr onclick="window.location='./string_upper.html';" style="cursor: pointer;">
-                                            <td class="title-column">Upper</td>
-                                            <td>Transform the string to upper case characters. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</td>
+                                            
+                                                <td class="title-column">Upper</td>
+                                                <td>Transform the string to upper case characters. Implementation should follow the utf8_unicode_ci collations according to the Unicode Collation Algorithm described at http://www.unicode.org/reports/tr10/.</td>
+                                            
                                         </tr>
                                     
                                 </tbody>

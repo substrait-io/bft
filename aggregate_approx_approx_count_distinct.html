@@ -3,10 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-    <title>approx_approx_count_distinct Function - BFT</title>
+    <title>approx_count_distinct Function - BFT</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Reference for the approx_count_distinct function">
+    
+        <meta name="description" content="Reference for the count_distinct function">
+    
     <link rel="stylesheet" href="./assets/supplementary/terminal.css">
     <link rel="stylesheet" href="./assets/supplementary/style.css">
 </head>
@@ -28,7 +30,7 @@
     </header>
 
     <article class="container">
-        <h2>Approx_approx_count_distinct</h2>
+        <h2>Approx_count_distinct</h2>
         <section>
             <p>
                 Defined in <a href="https://github.com/substrait-io/substrait/blob/main/extensions/functions_aggregate_approx.yaml">functions_aggregate_approx.yaml</a>
@@ -48,7 +50,7 @@
             <h3>Kernels&nbsp;<a href="#kernels">&para;</a></h3>
             <ul>
                 
-                <li class="bft-kernel"><span>approx_approx_count_distinct(any) -> i64 : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>approx_count_distinct(any) -> i64 : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
             </ul>
         </section>
@@ -73,37 +75,37 @@
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-cudf">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-postgres">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-velox_presto">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
@@ -126,6 +128,131 @@
         <section id="examples">
             <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
             
+            <table>
+                <caption>Basic examples without any special cases</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (i64)</th>
+                        
+                        <th>result (i64)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[1, -2, 3, -4, 5, 6]</td>
+                        
+                        <td>6</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[-32767, -20000, 30000, 5, 32767]</td>
+                        
+                        <td>5</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[-2147483648, -10000000, 30000000, 2147483647]</td>
+                        
+                        <td>4</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[-214748364800000, -1000000000, 0, 922337203685477580]</td>
+                        
+                        <td>4</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[1]</td>
+                        
+                        <td>1</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>['abc', 'def', 'ghi']</td>
+                        
+                        <td>3</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>['abc', None, 'ghi']</td>
+                        
+                        <td>2</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[]</td>
+                        
+                        <td>0</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[None, None, None]</td>
+                        
+                        <td>0</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[None, None, 4, 3, None, 922337203685477580, 12833888]</td>
+                        
+                        <td>4</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
         </section>
     </article>
     <script src="./assets/supplementary/script.js"></script>
@@ -134,6 +261,46 @@
         
         'datafusion': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
                 
             ],
             kernels: [
@@ -146,6 +313,46 @@
         'duckdb': {
             examples: [
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -156,6 +363,46 @@
         
         'cudf': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
                 
             ],
             kernels: [
@@ -168,6 +415,46 @@
         'sqlite': {
             examples: [
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -179,6 +466,46 @@
         'postgres': {
             examples: [
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -189,6 +516,46 @@
         
         'velox_presto': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
                 
             ],
             kernels: [
