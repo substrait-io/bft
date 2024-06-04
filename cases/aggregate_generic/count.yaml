@@ -8,32 +8,32 @@ cases:
         type: i16
     result:
       value: 6
-      type: i16
+      type: i64
   - group: basic
     args:
       - value: [1000]
         type: i16
     result:
       value: 1
-      type: i16
+      type: i64
   - group: basic
     args:
       - value: []
         type: i16
     result:
       value: 0
-      type: i16
+      type: i64
   - group: basic
     args:
       - value: [Null, Null, Null]
         type: i16
     result:
       value: 0
-      type: i16
+      type: i64
   - group: basic
     args:
       - value: [Null, Null, Null, 1000]
         type: i16
     result:
       value: 1
-      type: i16
+      type: i64
