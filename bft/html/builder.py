@@ -186,7 +186,10 @@ def create_function_info(
     supplements: SupplementsFile,
     dialects: DialectsLibrary,
 ) -> FunctionInfo:
-    name = "_".join(func.name.split('_')[1:])
+    if func.name.startswith('aggregate'):
+        name = "_".join(func.name.split('_')[2:])
+    else:
+        name = "_".join(func.name.split('_')[1:])
     uri_short = func.uri
     uri = "https://github.com/substrait-io/substrait/blob/main/extensions/" + uri_short
     brief = func.description
@@ -262,7 +265,10 @@ def build_site(index_path: str, dest_dir):
         f"There are {len(functions)} functions and {len(cases)} cases and {len(supplements)} supplements and {(len(dialects_lib.dialects))} dialects"
     )
     for func in functions:
-        func_name_full = "_".join(func.name.split('_')[1:])
+        if func.name.startswith('aggregate'):
+            func_name_full = "_".join(func.name.split('_')[2:])
+        else:
+            func_name_full = "_".join(func.name.split('_')[1:])
         matching_cases = [case for case in cases if case.function == func_name_full]
         supplement = supplements.get(func_name_full, None)
         if supplement is None:

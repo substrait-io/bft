@@ -90,8 +90,13 @@
                                 <tbody>
                                     {% for function in category_functions %}
                                         <tr onclick="window.location='./{{ function.name|lower }}.html';" style="cursor: pointer;">
-                                            <td class="title-column">{{ "_".join(function.name.split('_')[1:])|title }}</td>
-                                            <td>{{ function.brief }}</td>
+                                            {% if 'aggregate' in function.name %}
+                                                <td class="title-column">{{ "_".join(function.name.split('_')[2:])|title }}</td>
+                                                <td>{{ function.brief }}</td>
+                                            {% else %}
+                                                <td class="title-column">{{ "_".join(function.name.split('_')[1:])|title }}</td>
+                                                <td>{{ function.brief }}</td>
+                                            {% endif %}
                                         </tr>
                                     {% endfor %}
                                 </tbody>
