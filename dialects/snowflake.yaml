@@ -1,0 +1,288 @@
+name: snowflake
+type: sql
+scalar_functions:
+  - name: add
+    local_name: +
+    infix: True
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+  - name: subtract
+    local_name: "-"
+    infix: True
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+  - name: multiply
+    local_name: "*"
+    infix: True
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+  - name: divide
+    local_name: "//"
+    infix: True
+    required_options:
+      on_division_by_zero: NAN
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+      on_domain_error: NAN
+  - name: modulus
+    local_name: "%"
+    infix: True
+    required_options:
+      division_type: TRUNCATE
+      overflow: ERROR
+      on_domain_error: "NULL"
+    unsupported_kernels:
+      - args:
+          - fp32
+          - fp32
+        result: fp32
+      - args:
+          - fp64
+          - fp64
+        result: fp64
+  - name: power
+    local_name: pow
+    required_options:
+      overflow: ERROR
+      rounding: TIE_TO_EVEN
+  - name: sqrt
+    local_name: sqrt
+    required_options:
+      on_domain_error: ERROR
+      rounding: TIE_TO_EVEN
+  - name: exp
+    local_name: exp
+    required_options:
+      rounding: TIE_TO_EVEN
+  - name: cos
+    local_name: cos
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
+  - name: sin
+    local_name: sin
+    infix: False
+    required_options:
+      rounding: TIE_TO_EVEN
+  - name: tan
+    local_name: tan
+    required_options:
+      rounding: TIE_TO_EVEN
+  - name: cosh
+    unsupported: true
+  - name: sinh
+    unsupported: true
+  - name: tanh
+    unsupported: true
+  - name: acos
+    local_name: acos
+    required_options:
+      rounding: TIE_TO_EVEN
+      on_domain_error: NAN
+  - name: asin
+    local_name: asin
+    required_options:
+      rounding: TIE_TO_EVEN
+  - name: atan
+    local_name: atan
+    required_options:
+      rounding: TIE_TO_EVEN
+  - name: acosh
+    unsupported: true
+  - name: asinh
+    unsupported: true
+  - name: atanh
+    unsupported: true
+  - name: atan2
+    local_name: atan2
+    required_options:
+      rounding: TIE_TO_EVEN
+      on_domain_error: NAN
+  - name: factorial
+    local_name: factorial
+    infix: False
+    required_options:
+      overflow: ERROR
+    unsupported_kernels:
+      - args:
+          - i64
+        result: i64
+  - name: abs
+    local_name: abs
+    required_options:
+      overflow: ERROR
+  - name: sign
+    local_name: sign
+  - name: negate
+    unsupported: true
+  - name: bitwise_not
+    local_name: "~"
+  - name: bitwise_and
+    local_name: "&"
+    infix: True
+  - name: bitwise_or
+    local_name: "|"
+    infix: True
+  - name: bitwise_xor
+    unsupported: true
+  - name: and
+    local_name: and
+    infix: True
+  - name: and_not
+    local_name: and NOT
+    infix: True
+  - name: or
+    local_name: or
+    infix: True
+  - name: xor
+    local_name: <>
+    infix: True
+  - name: not
+    local_name: not
+    infix: False
+  - name: lt
+    local_name: "<"
+    infix: True
+  - name: lte
+    local_name: "<="
+    infix: True
+  - name: gt
+    local_name: ">"
+    infix: True
+  - name: gte
+    local_name: ">="
+    infix: True
+  - name: equal
+    local_name: "="
+    infix: True
+  - name: not_equal
+    local_name: "!="
+    infix: True
+  - name: is_not_distinct_from
+    local_name: "IS NOT DISTINCT FROM"
+    infix: True
+  - name: is_null
+    local_name: "IS NULL"
+    postfix: True
+  - name: is_not_null
+    local_name: "IS NOT NULL"
+    postfix: True
+  - name: nullif
+  - name: coalesce
+  - name: is_finite
+    local_name: "isfinite"
+  - name: is_infinite
+    local_name: "isinf"
+  - name: is_nan
+    local_name: "isnan"
+  - name: between
+    unsupported: True
+  - name: ceil
+  - name: floor
+  - name: round
+  - name: extract
+    extract: True
+  - name: add_datetime
+    local_name: +
+    infix: True
+  - name: add_intervals
+    local_name: +
+    infix: True
+    required_options:
+      year_interval: 360
+  - name: subtract_datetime
+    local_name: "-"
+    infix: True
+    required_options:
+      with_time: FALSE
+  - name: lt_datetime
+    local_name: "<"
+    infix: True
+  - name: lte_datetime
+    local_name: "<="
+    infix: True
+  - name: gt_datetime
+    local_name: ">"
+    infix: True
+  - name: gte_datetime
+    local_name: ">="
+    infix: True
+  - name: substring
+    required_options:
+      negative_start: WRAP_FROM_END
+  - name: concat
+    local_name: "||"
+    required_options:
+      null_handling: ACCEPT_NULLS
+    infix: True
+  - name: concat_ws
+  - name: like
+    infix: True
+  - name: lower
+  - name: upper
+  - name: reverse
+  - name: repeat
+  - name: replace
+  - name: regexp_replace
+    required_options:
+      lookaround: FALSE
+  - name: regexp_string_split
+    local_name: "regexp_split_to_array"
+    required_options:
+      lookaround: FALSE
+  - name: regexp_count_substring
+    unsupported: true
+  - name: regexp_match_substring
+    local_name: "regexp_extract"
+    required_options:
+      lookaround: FALSE
+  - name: bit_length
+  - name: char_length
+    local_name: "length"
+  - name: octet_length
+    unsupported: True
+  - name: ltrim
+  - name: rtrim
+  - name: trim
+  - name: lpad
+  - name: rpad
+  - name: left
+  - name: right
+  - name: string_split
+  - name: ln
+    required_options:
+      on_log_zero: ERROR
+      on_domain_error: ERROR
+  - name: log
+    required_options:
+      on_log_zero: ERROR
+      on_domain_error: ERROR
+  - name: log2
+    required_options:
+      on_log_zero: ERROR
+      on_domain_error: ERROR
+aggregate_functions:
+  - name: min
+    aggregate: True
+  - name: max
+    aggregate: True
+  - name: sum
+    aggregate: True
+    unsupported_kernels:
+      - args:
+          - i64
+        result: i64
+  - name: count
+    aggregate: True
+  - name: count_star
+    local_name: 'count(*)'
+    aggregate: True
+  - name: approx_count_distinct
+    aggregate: True
+  - name: bool_and
+    aggregate: True
+  - name: bool_or
+    aggregate: True
