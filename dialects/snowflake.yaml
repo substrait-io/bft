@@ -278,6 +278,8 @@ aggregate_functions:
   - name: approx_count_distinct
     aggregate: True
   - name: bool_and
+    local_name: "booland_agg"
     aggregate: True
   - name: bool_or
+    local_name: "boolor_agg"
     aggregate: True
