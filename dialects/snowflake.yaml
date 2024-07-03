@@ -206,14 +206,14 @@ scalar_functions:
     local_name: ">="
     infix: True
   - name: substring
-    required_options:
-      negative_start: WRAP_FROM_END
+    unsupported: True
   - name: concat
     local_name: "||"
     required_options:
       null_handling: ACCEPT_NULLS
     infix: True
   - name: concat_ws
+    unsupported: True
   - name: like
     infix: True
   - name: lower
@@ -222,18 +222,13 @@ scalar_functions:
   - name: repeat
   - name: replace
   - name: regexp_replace
-    required_options:
-      lookaround: FALSE
+    unsupported: True
   - name: regexp_string_split
-    local_name: "regexp_split_to_array"
-    required_options:
-      lookaround: FALSE
+    unsupported: True
   - name: regexp_count_substring
     unsupported: true
   - name: regexp_match_substring
-    local_name: "regexp_extract"
-    required_options:
-      lookaround: FALSE
+    unsupported: True
   - name: bit_length
   - name: char_length
     local_name: "length"
@@ -245,8 +240,11 @@ scalar_functions:
   - name: lpad
   - name: rpad
   - name: left
+    unsupported: True
   - name: right
+    unsupported: True
   - name: string_split
+    unsupported: True
   - name: ln
     required_options:
       on_log_zero: ERROR
