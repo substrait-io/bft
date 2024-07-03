@@ -121,7 +121,10 @@ class SnowflakeRunner(SqlCaseRunner):
                             else:
                                 arg_vals += f"({literal_to_str(value)}),"
                         elif is_float_type(arg):
-                            arg_vals += f"({literal_to_float(value)}),"
+                            if value:
+                                arg_vals += f"({literal_to_float(value)}),"
+                            else:
+                                arg_vals += f"({literal_to_str(value)}),"
                         else:
                             arg_vals += f"({literal_to_str(value)}),"
                     arg_vals_list.append([arg_vals[:-1]])
