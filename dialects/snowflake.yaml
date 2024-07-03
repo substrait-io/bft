@@ -252,13 +252,9 @@ scalar_functions:
       on_log_zero: ERROR
       on_domain_error: ERROR
   - name: log
-    required_options:
-      on_log_zero: ERROR
-      on_domain_error: ERROR
+    unsupported: True
   - name: log2
-    required_options:
-      on_log_zero: ERROR
-      on_domain_error: ERROR
+    unsupported: True
 aggregate_functions:
   - name: min
     aggregate: True
