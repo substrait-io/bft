@@ -46,6 +46,19 @@ def literal_to_str(lit: str | int | float):
     return str(lit)
 
 
+def literal_to_float(lit: str | int | float):
+    if lit in [float('inf'), 'inf']:
+        return "TO_DOUBLE('inf'::float)"
+    elif lit in [float('-inf'), '-inf']:
+        return "TO_DOUBLE('-inf'::float)"
+    return lit
+
+
+def is_float_type(arg):
+    return arg.type in ["fp32", "fp64"]
+
+
+
 def is_string_type(arg):
     return (
             arg.type in ["string", "timestamp", "timestamp_tz", "date", "time"]
@@ -107,6 +120,8 @@ class SnowflakeRunner(SqlCaseRunner):
                                 arg_vals += f"('{literal_to_str(value)}'),"
                             else:
                                 arg_vals += f"({literal_to_str(value)}),"
+                        elif is_float_type(arg):
+                            arg_vals += f"({literal_to_float(value)}),"
                         else:
                             arg_vals += f"({literal_to_str(value)}),"
                     arg_vals_list.append([arg_vals[:-1]])
