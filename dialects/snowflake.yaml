@@ -179,32 +179,21 @@ scalar_functions:
   - name: floor
   - name: round
   - name: extract
-    extract: True
+    unsupported: True
   - name: add_datetime
-    local_name: +
-    infix: True
+    unsupported: True
   - name: add_intervals
-    local_name: +
-    infix: True
-    required_options:
-      year_interval: 360
+    unsupported: True
   - name: subtract_datetime
-    local_name: "-"
-    infix: True
-    required_options:
-      with_time: FALSE
+    unsupported: True
   - name: lt_datetime
-    local_name: "<"
-    infix: True
+    unsupported: True
   - name: lte_datetime
-    local_name: "<="
-    infix: True
+    unsupported: True
   - name: gt_datetime
-    local_name: ">"
-    infix: True
+    unsupported: True
   - name: gte_datetime
-    local_name: ">="
-    infix: True
+    unsupported: True
   - name: substring
     unsupported: True
   - name: concat
