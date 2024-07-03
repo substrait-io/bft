@@ -40,9 +40,9 @@ def literal_to_str(lit: str | int | float):
     elif lit in [math.nan, "nan"]:
         return "'NaN'"
     elif lit in [float("inf"), "inf"]:
-        return "'Infinity'"
+        return "'inf'"
     elif lit in [float("-inf"), "-inf"]:
-        return "'-Infinity'"
+        return "'-inf'"
     return str(lit)
 
 

@@ -5,35 +5,36 @@ scalar_functions:
     local_name: +
     infix: True
     required_options:
-      overflow: ERROR
+      overflow: SILENT
       rounding: TIE_TO_EVEN
   - name: subtract
     local_name: "-"
     infix: True
     required_options:
-      overflow: ERROR
+      overflow: SILENT
       rounding: TIE_TO_EVEN
   - name: multiply
     local_name: "*"
     infix: True
     required_options:
-      overflow: ERROR
+      overflow: SILENT
       rounding: TIE_TO_EVEN
   - name: divide
-    local_name: "//"
+    local_name: "/"
     infix: True
     required_options:
-      on_division_by_zero: NAN
-      overflow: ERROR
+      on_division_by_zero: ERROR
+      overflow: SILENT
       rounding: TIE_TO_EVEN
       on_domain_error: NAN
   - name: modulus
     local_name: "%"
     infix: True
     required_options:
+      on_division_by_zero: ERROR
       division_type: TRUNCATE
       overflow: ERROR
-      on_domain_error: "NULL"
+      on_domain_error: ERROR
     unsupported_kernels:
       - args:
           - fp32
@@ -106,28 +107,22 @@ scalar_functions:
     infix: False
     required_options:
       overflow: ERROR
-    unsupported_kernels:
-      - args:
-          - i64
-        result: i64
   - name: abs
     local_name: abs
     required_options:
-      overflow: ERROR
+      overflow: SILENT
   - name: sign
     local_name: sign
   - name: negate
     unsupported: true
   - name: bitwise_not
-    local_name: "~"
+    local_name: "BITNOT"
   - name: bitwise_and
-    local_name: "&"
-    infix: True
+    local_name: "BITAND"
   - name: bitwise_or
-    local_name: "|"
-    infix: True
+    local_name: "BITOR"
   - name: bitwise_xor
-    unsupported: true
+    local_name: "BITXOR"
   - name: and
     local_name: and
     infix: True
