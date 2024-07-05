@@ -7,18 +7,82 @@ scalar_functions:
     required_options:
       overflow: SILENT
       rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - i32
+          - i32
+        result: i32
+      - args:
+          - i64
+          - i64
+        result: i64
+      - args:
+          - fp32
+          - fp32
+        result: fp32
   - name: subtract
     local_name: "-"
     infix: True
     required_options:
       overflow: SILENT
       rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - i32
+          - i32
+        result: i32
+      - args:
+          - i64
+          - i64
+        result: i64
+      - args:
+          - fp32
+          - fp32
+        result: fp32
   - name: multiply
     local_name: "*"
     infix: True
     required_options:
       overflow: SILENT
       rounding: TIE_TO_EVEN
+    unsupported: true # There is one test case with different types (fp32, fp64) => fp64
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - i32
+          - i32
+        result: i32
+      - args:
+          - i64
+          - i64
+        result: i64
+      - args:
+          - fp32
+          - fp32
+        result: fp32
   - name: divide
     local_name: "/"
     infix: True
@@ -27,51 +91,92 @@ scalar_functions:
       overflow: SILENT
       rounding: TIE_TO_EVEN
       on_domain_error: NAN
-  - name: modulus
-    local_name: "%"
-    infix: True
-    required_options:
-      on_division_by_zero: ERROR
-      division_type: TRUNCATE
-      overflow: ERROR
-      on_domain_error: ERROR
+    unsupported: true # TODO Enable after fixing a test case with a division by zero (i64, i64) => fp64
     unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - i32
+          - i32
+        result: i32
+      - args:
+          - i64
+          - i64
+        result: i64
       - args:
           - fp32
           - fp32
         result: fp32
-      - args:
-          - fp64
-          - fp64
-        result: fp64
+  - name: modulus
+    unsupported: true
   - name: power
     local_name: pow
     required_options:
       overflow: ERROR
       rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - i64
+          - i64
+        result: i64
+      - args:
+          - fp32
+          - fp32
+        result: fp32
   - name: sqrt
     local_name: sqrt
     required_options:
       on_domain_error: ERROR
       rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - i64
+        result: fp64
+      - args:
+          - fp32
+        result: fp32
   - name: exp
-    local_name: exp
     required_options:
       rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - i64
+        result: fp64
+      - args:
+          - fp32
+        result: fp32
   - name: cos
     local_name: cos
     infix: False
     required_options:
       rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
   - name: sin
     local_name: sin
     infix: False
     required_options:
       rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
   - name: tan
     local_name: tan
     required_options:
       rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
   - name: cosh
     unsupported: true
   - name: sinh
@@ -83,14 +188,26 @@ scalar_functions:
     required_options:
       rounding: TIE_TO_EVEN
       on_domain_error: NAN
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
   - name: asin
     local_name: asin
     required_options:
       rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
   - name: atan
     local_name: atan
     required_options:
       rounding: TIE_TO_EVEN
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
   - name: acosh
     unsupported: true
   - name: asinh
@@ -102,27 +219,45 @@ scalar_functions:
     required_options:
       rounding: TIE_TO_EVEN
       on_domain_error: NAN
+    unsupported_kernels:
+      - args:
+          - fp32
+          - fp32
+        result: fp32
   - name: factorial
-    local_name: factorial
-    infix: False
-    required_options:
-      overflow: ERROR
+    unsupported: true
   - name: abs
     local_name: abs
     required_options:
       overflow: SILENT
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i8
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
+          - i64
+        result: i64
+      - args:
+          - fp32
+        result: fp32
   - name: sign
     local_name: sign
   - name: negate
     unsupported: true
   - name: bitwise_not
-    local_name: "BITNOT"
+    unsupported: true
   - name: bitwise_and
-    local_name: "BITAND"
+    unsupported: true
   - name: bitwise_or
-    local_name: "BITOR"
+    unsupported: true
   - name: bitwise_xor
-    local_name: "BITXOR"
+    unsupported: true
   - name: and
     local_name: and
     infix: True
@@ -141,32 +276,253 @@ scalar_functions:
   - name: lt
     local_name: "<"
     infix: True
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: boolean
+      - args:
+          - i16
+          - i16
+        result: boolean
+      - args:
+          - i32
+          - i32
+        result: boolean
+      - args:
+          - i64
+          - i64
+        result: boolean
+      - args:
+          - fp32
+          - fp32
+        result: boolean
   - name: lte
     local_name: "<="
     infix: True
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: boolean
+      - args:
+          - i16
+          - i16
+        result: boolean
+      - args:
+          - i32
+          - i32
+        result: boolean
+      - args:
+          - i64
+          - i64
+        result: boolean
+      - args:
+          - fp32
+          - fp32
+        result: boolean
   - name: gt
     local_name: ">"
     infix: True
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: boolean
+      - args:
+          - i16
+          - i16
+        result: boolean
+      - args:
+          - i32
+          - i32
+        result: boolean
+      - args:
+          - i64
+          - i64
+        result: boolean
+      - args:
+          - fp32
+          - fp32
+        result: boolean
   - name: gte
     local_name: ">="
     infix: True
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: boolean
+      - args:
+          - i16
+          - i16
+        result: boolean
+      - args:
+          - i32
+          - i32
+        result: boolean
+      - args:
+          - i64
+          - i64
+        result: boolean
+      - args:
+          - fp32
+          - fp32
+        result: boolean
   - name: equal
     local_name: "="
     infix: True
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: boolean
+      - args:
+          - i16
+          - i16
+        result: boolean
+      - args:
+          - i32
+          - i32
+        result: boolean
+      - args:
+          - i64
+          - i64
+        result: boolean
+      - args:
+          - fp32
+          - fp32
+        result: boolean
   - name: not_equal
     local_name: "!="
     infix: True
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: boolean
+      - args:
+          - i16
+          - i16
+        result: boolean
+      - args:
+          - i32
+          - i32
+        result: boolean
+      - args:
+          - i64
+          - i64
+        result: boolean
+      - args:
+          - fp32
+          - fp32
+        result: boolean
   - name: is_not_distinct_from
     local_name: "IS NOT DISTINCT FROM"
     infix: True
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: boolean
+      - args:
+          - i16
+          - i16
+        result: boolean
+      - args:
+          - i32
+          - i32
+        result: boolean
+      - args:
+          - i64
+          - i64
+        result: boolean
+      - args:
+          - fp32
+          - fp32
+        result: boolean
   - name: is_null
     local_name: "IS NULL"
     postfix: True
+    unsupported_kernels:
+      - args:
+          - i8
+        result: boolean
+      - args:
+          - i16
+        result: boolean
+      - args:
+          - i32
+        result: boolean
+      - args:
+          - i64
+        result: boolean
+      - args:
+          - fp32
+        result: boolean
   - name: is_not_null
     local_name: "IS NOT NULL"
     postfix: True
+    unsupported_kernels:
+      - args:
+          - i8
+        result: boolean
+      - args:
+          - i16
+        result: boolean
+      - args:
+          - i32
+        result: boolean
+      - args:
+          - i64
+        result: boolean
+      - args:
+          - fp32
+        result: boolean
   - name: nullif
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - i32
+          - i32
+        result: i32
+      - args:
+          - i64
+          - i64
+        result: i64
+      - args:
+          - fp32
+          - fp32
+        result: fp32
   - name: coalesce
+    unsupported_kernels:
+      - args:
+          - i8
+          - i8
+        result: i8
+      - args:
+          - i16
+          - i16
+        result: i16
+      - args:
+          - i32
+          - i32
+        result: i32
+      - args:
+          - i64
+          - i64
+        result: i64
+      - args:
+          - fp32
+          - fp32
+        result: fp32
   - name: is_finite
     unsupported: True
   - name: is_infinite
@@ -176,8 +532,11 @@ scalar_functions:
   - name: between
     unsupported: True
   - name: ceil
+    unsupported: True
   - name: floor
+    unsupported: True
   - name: round
+    unsupported: True
   - name: extract
     unsupported: True
   - name: add_datetime
@@ -209,6 +568,7 @@ scalar_functions:
   - name: upper
   - name: reverse
   - name: repeat
+    unsupported: True
   - name: replace
   - name: regexp_replace
     unsupported: True
@@ -227,7 +587,9 @@ scalar_functions:
   - name: rtrim
   - name: trim
   - name: lpad
+    unsupported: True
   - name: rpad
+    unsupported: True
   - name: left
     unsupported: True
   - name: right
@@ -238,6 +600,13 @@ scalar_functions:
     required_options:
       on_log_zero: ERROR
       on_domain_error: ERROR
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
+      - args:
+          - i64
+        result: fp64
   - name: log
     unsupported: True
   - name: log2
@@ -245,20 +614,67 @@ scalar_functions:
 aggregate_functions:
   - name: min
     aggregate: True
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i8
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
+          - i64
+        result: i64
+      - args:
+          - fp32
+        result: fp32
   - name: max
     aggregate: True
+    unsupported_kernels:
+      - args:
+          - i8
+        result: i8
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
+          - i64
+        result: i64
+      - args:
+          - fp32
+        result: fp32
   - name: sum
     aggregate: True
     unsupported_kernels:
       - args:
+          - i8
+        result: i8 # return type suppose to be fp64 but the test case is i8. same for the rest of the kernels
+      - args:
+          - i16
+        result: i16
+      - args:
+          - i32
+        result: i32
+      - args:
           - i64
         result: i64
+      - args:
+          - fp32
+        result: fp32
   - name: count
+    unsupported: True
     aggregate: True
   - name: count_star
+    unsupported: True
     local_name: 'count(*)'
     aggregate: True
   - name: approx_count_distinct
+    unsupported: True
     aggregate: True
   - name: bool_and
     local_name: "booland_agg"

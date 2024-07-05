@@ -12,12 +12,7 @@ from bft.cases.types import Case
 from bft.dialects.types import SqlMapping
 
 type_map = {
-    "i8": "TINYINT",
-    "i16": "SMALLINT",
-    "i32": "INTEGER",
-    "i64": "BIGINT",
-    "fp32": "REAL",
-    "fp64": "DOUBLE",
+    "fp64": "FLOAT",
     "boolean": "BOOLEAN",
     "string": "VARCHAR",
     "date": "DATE",
@@ -30,7 +25,7 @@ type_map = {
 
 def type_to_snowflake_type(type: str):
     if type not in type_map:
-        raise Exception(f"Unrecognized type: {type}")
+        return None
     return type_map[type]
 
 
@@ -91,12 +86,15 @@ class SnowflakeRunner(SqlCaseRunner):
     def run_sql_case(self, case: Case, mapping: SqlMapping) -> SqlCaseResult:
 
         try:
-            arg_defs = [
-                f"arg{idx} {type_to_snowflake_type(arg.type)}"
-                for idx, arg in enumerate(case.args)
-            ]
-            schema = ",".join(arg_defs)
+            print(f"Running testcase {case} {mapping}")
             cursor = self.conn.cursor()
+            arg_defs = []
+            for idx, arg in enumerate(case.args):
+                arg_type = type_to_snowflake_type(arg.type)
+                if arg_type is None:
+                    return SqlCaseResult.unsupported(f"Unsupported type {arg.type}")
+                arg_defs.append(f"arg{idx} {arg_type}")
+            schema = ",".join(arg_defs)
             cursor.execute(f"CREATE TABLE my_table({schema});")
             cursor.execute(f"SET TimeZone='UTC';")
             print(f"Running case: {case} create table my_table({schema});")
@@ -180,5 +178,5 @@ class SnowflakeRunner(SqlCaseRunner):
         except Error as err:
             return SqlCaseResult.error(str(err))
         finally:
-            cursor.execute("DROP TABLE my_table")
+            cursor.execute("DROP TABLE IF EXISTS my_table")
             cursor.close()
