@@ -61,21 +61,27 @@ When a null is input, a null is output.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>datafusion</option>
-                
-                <option>duckdb</option>
-                
-                <option>cudf</option>
-                
                 <option>sqlite</option>
-                
-                <option>postgres</option>
                 
                 <option>velox_presto</option>
                 
+                <option>duckdb</option>
+                
+                <option>postgres</option>
+                
+                <option>datafusion</option>
+                
+                <option>cudf</option>
+                
             </select>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -87,25 +93,19 @@ When a null is input, a null is output.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-postgres">
                 
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
                 
                     
                 
@@ -199,7 +199,30 @@ When a null is input, a null is output.
     <script>
       var bftDialects = {
         
-        'datafusion': {
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
             examples: [
                 
                 
@@ -245,52 +268,6 @@ When a null is input, a null is output.
             ]
         },
         
-        'cudf': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
         'postgres': {
             examples: [
                 
@@ -314,7 +291,30 @@ When a null is input, a null is output.
             ]
         },
         
-        'velox_presto': {
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'cudf': {
             examples: [
                 
                 

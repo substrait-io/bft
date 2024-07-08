@@ -119,21 +119,33 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>datafusion</option>
-                
-                <option>duckdb</option>
-                
-                <option>cudf</option>
-                
                 <option>sqlite</option>
-                
-                <option>postgres</option>
                 
                 <option>velox_presto</option>
                 
+                <option>duckdb</option>
+                
+                <option>postgres</option>
+                
+                <option>datafusion</option>
+                
+                <option>cudf</option>
+                
             </select>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    
+                        <dt>on_log_zero</dt>
+                        <dd>NAN</dd>
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>NONE</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                         <dt>on_log_zero</dt>
@@ -157,27 +169,6 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    
-                        <dt>on_log_zero</dt>
-                        <dd>MINUS_INFINITY</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                        <dt>on_log_zero</dt>
-                        <dd>NAN</dd>
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NONE</dd>
-                    
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-postgres">
                 
                     
@@ -190,7 +181,7 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
                         <dt>on_log_zero</dt>
@@ -198,6 +189,15 @@
                     
                         <dt>on_domain_error</dt>
                         <dd>NAN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                        <dt>on_log_zero</dt>
+                        <dd>MINUS_INFINITY</dd>
                     
                 
             </dl>
@@ -407,7 +407,7 @@
     <script>
       var bftDialects = {
         
-        'datafusion': {
+        'sqlite': {
             examples: [
                 
                 
@@ -427,7 +427,11 @@
                 
                 
                 
-                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=ERROR was requested",
+                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=NAN was requested",
                 
                 
                 
@@ -435,7 +439,11 @@
                 
                 
                 
-                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=NONE was requested",
+                  null,
+                
+                
+                
+                  "The dialect sqlite expects on_log_zero=NAN but on_log_zero=ERROR was requested",
                 
                 
                 
@@ -443,11 +451,60 @@
                 
                 
                 
-                  "The dialect datafusion expects on_log_zero=MINUS_INFINITY but on_log_zero=ERROR was requested",
+                  "The dialect sqlite expects on_log_zero=NAN but on_log_zero=MINUS_INFINITY was requested",
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel ln(i64) -> fp64",
                 
                 
                 
-                  "The dialect datafusion expects on_log_zero=MINUS_INFINITY but on_log_zero=NAN was requested",
+                  "The dialect velox_presto does not support the kernel ln(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto expects on_domain_error=NAN but on_domain_error=ERROR was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto expects on_domain_error=NAN but on_domain_error=NONE was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto expects on_log_zero=MINUS_INFINITY but on_log_zero=ERROR was requested",
+                
+                
+                
+                  "The dialect velox_presto expects on_log_zero=MINUS_INFINITY but on_log_zero=NAN was requested",
                 
                 
                 
@@ -457,7 +514,7 @@
             ],
             kernels: [
                 
-                true,
+                false,
                 
                 true,
                 
@@ -509,120 +566,6 @@
                 
                 
                   "The dialect duckdb expects on_log_zero=ERROR but on_log_zero=MINUS_INFINITY was requested",
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'cudf': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects on_log_zero=MINUS_INFINITY but on_log_zero=ERROR was requested",
-                
-                
-                
-                  "The dialect cudf expects on_log_zero=MINUS_INFINITY but on_log_zero=NAN was requested",
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=NAN was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects on_log_zero=NAN but on_log_zero=ERROR was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects on_log_zero=NAN but on_log_zero=MINUS_INFINITY was requested",
                 
                 
             ],
@@ -692,15 +635,15 @@
             ]
         },
         
-        'velox_presto': {
+        'datafusion': {
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel ln(i64) -> fp64",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel ln(fp32) -> fp32",
+                  null,
                 
                 
                 
@@ -712,7 +655,7 @@
                 
                 
                 
-                  "The dialect velox_presto expects on_domain_error=NAN but on_domain_error=ERROR was requested",
+                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=ERROR was requested",
                 
                 
                 
@@ -720,7 +663,7 @@
                 
                 
                 
-                  "The dialect velox_presto expects on_domain_error=NAN but on_domain_error=NONE was requested",
+                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=NONE was requested",
                 
                 
                 
@@ -728,11 +671,11 @@
                 
                 
                 
-                  "The dialect velox_presto expects on_log_zero=MINUS_INFINITY but on_log_zero=ERROR was requested",
+                  "The dialect datafusion expects on_log_zero=MINUS_INFINITY but on_log_zero=ERROR was requested",
                 
                 
                 
-                  "The dialect velox_presto expects on_log_zero=MINUS_INFINITY but on_log_zero=NAN was requested",
+                  "The dialect datafusion expects on_log_zero=MINUS_INFINITY but on_log_zero=NAN was requested",
                 
                 
                 
@@ -742,7 +685,64 @@
             ],
             kernels: [
                 
-                false,
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects on_log_zero=MINUS_INFINITY but on_log_zero=ERROR was requested",
+                
+                
+                
+                  "The dialect cudf expects on_log_zero=MINUS_INFINITY but on_log_zero=NAN was requested",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
                 
                 true,
                 

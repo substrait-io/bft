@@ -65,21 +65,21 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>datafusion</option>
-                
-                <option>duckdb</option>
-                
-                <option>cudf</option>
-                
                 <option>sqlite</option>
-                
-                <option>postgres</option>
                 
                 <option>velox_presto</option>
                 
+                <option>duckdb</option>
+                
+                <option>postgres</option>
+                
+                <option>datafusion</option>
+                
+                <option>cudf</option>
+                
             </select>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-sqlite">
                 
                     
                         <dt>division_type</dt>
@@ -87,6 +87,21 @@
                     
                         <dt>overflow</dt>
                         <dd>SILENT</dd>
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>NULL</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                        <dt>division_type</dt>
+                        <dd>TRUNCATE</dd>
+                    
+                        <dt>overflow</dt>
+                        <dd>ERROR</dd>
                     
                         <dt>on_domain_error</dt>
                         <dd>ERROR</dd>
@@ -109,36 +124,6 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    
-                        <dt>division_type</dt>
-                        <dd>FLOOR</dd>
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NULL</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                        <dt>division_type</dt>
-                        <dd>TRUNCATE</dd>
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NULL</dd>
-                    
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-postgres">
                 
                     
@@ -154,17 +139,32 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
                         <dt>division_type</dt>
                         <dd>TRUNCATE</dd>
                     
                         <dt>overflow</dt>
-                        <dd>ERROR</dd>
+                        <dd>SILENT</dd>
                     
                         <dt>on_domain_error</dt>
                         <dd>ERROR</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                        <dt>division_type</dt>
+                        <dd>FLOOR</dd>
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>NULL</dd>
                     
                 
             </dl>
@@ -438,7 +438,7 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
     <script>
       var bftDialects = {
         
-        'datafusion': {
+        'sqlite': {
             examples: [
                 
                 
@@ -478,15 +478,15 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect datafusion expects division_type=TRUNCATE but division_type=FLOOR was requested",
-                
-                
-                
-                  "The dialect datafusion expects on_domain_error=ERROR but on_domain_error=NULL was requested",
+                  "The dialect sqlite expects division_type=TRUNCATE but division_type=FLOOR was requested",
                 
                 
                 
                   null,
+                
+                
+                
+                  "The dialect sqlite expects on_domain_error=NULL but on_domain_error=ERROR was requested",
                 
                 
             ],
@@ -497,6 +497,71 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 true,
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i16, i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i32, i32) -> i32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> error",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
                 
                 true,
                 
@@ -552,136 +617,6 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 
                 
                   "The dialect duckdb expects on_domain_error=NULL but on_domain_error=ERROR was requested",
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'cudf': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects division_type=FLOOR but division_type=TRUNCATE was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects on_domain_error=NULL but on_domain_error=ERROR was requested",
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects division_type=TRUNCATE but division_type=FLOOR was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects on_domain_error=NULL but on_domain_error=ERROR was requested",
                 
                 
             ],
@@ -763,31 +698,15 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
             ]
         },
         
-        'velox_presto': {
+        'datafusion': {
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel modulus(i16, i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel modulus(i32, i32) -> i32",
-                
-                
-                
                   null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                  null,
                 
                 
                 
@@ -799,29 +718,110 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> error",
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects division_type=TRUNCATE but division_type=FLOOR was requested",
+                
+                
+                
+                  "The dialect datafusion expects on_domain_error=ERROR but on_domain_error=NULL was requested",
+                
+                
+                
+                  null,
                 
                 
             ],
             kernels: [
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects division_type=FLOOR but division_type=TRUNCATE was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects on_domain_error=NULL but on_domain_error=ERROR was requested",
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
                 
                 true,
                 

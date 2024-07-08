@@ -76,21 +76,27 @@ Behavior for 0 or 1 inputs is as follows:
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>datafusion</option>
-                
-                <option>duckdb</option>
-                
-                <option>cudf</option>
-                
                 <option>sqlite</option>
-                
-                <option>postgres</option>
                 
                 <option>velox_presto</option>
                 
+                <option>duckdb</option>
+                
+                <option>postgres</option>
+                
+                <option>datafusion</option>
+                
+                <option>cudf</option>
+                
             </select>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -102,25 +108,19 @@ Behavior for 0 or 1 inputs is as follows:
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-postgres">
                 
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
                 
                     
                 
@@ -289,7 +289,50 @@ Behavior for 0 or 1 inputs is as follows:
     <script>
       var bftDialects = {
         
-        'datafusion': {
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
             examples: [
                 
                 
@@ -375,92 +418,6 @@ Behavior for 0 or 1 inputs is as follows:
             ]
         },
         
-        'cudf': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
         'postgres': {
             examples: [
                 
@@ -504,7 +461,50 @@ Behavior for 0 or 1 inputs is as follows:
             ]
         },
         
-        'velox_presto': {
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'cudf': {
             examples: [
                 
                 

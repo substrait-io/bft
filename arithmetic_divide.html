@@ -164,34 +164,52 @@ are either both 0 or both ±infinity.</p>
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>datafusion</option>
-                
-                <option>duckdb</option>
-                
-                <option>cudf</option>
-                
                 <option>sqlite</option>
-                
-                <option>postgres</option>
                 
                 <option>velox_presto</option>
                 
+                <option>duckdb</option>
+                
+                <option>postgres</option>
+                
+                <option>datafusion</option>
+                
+                <option>cudf</option>
+                
             </select>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-sqlite">
                 
                     
                         <dt>on_division_by_zero</dt>
-                        <dd>ERROR</dd>
+                        <dd>NAN</dd>
                     
                         <dt>overflow</dt>
-                        <dd>ERROR</dd>
+                        <dd>SILENT</dd>
                     
                         <dt>rounding</dt>
                         <dd>TIE_TO_EVEN</dd>
                     
                         <dt>on_domain_error</dt>
+                        <dd>NAN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    
+                        <dt>on_division_by_zero</dt>
+                        <dd>NAN</dd>
+                    
+                        <dt>overflow</dt>
                         <dd>ERROR</dd>
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>ERROR</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
                     
                 
             </dl>
@@ -204,42 +222,6 @@ are either both 0 or both ±infinity.</p>
                     
                         <dt>overflow</dt>
                         <dd>ERROR</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NAN</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                        <dt>on_division_by_zero</dt>
-                        <dd>LIMIT</dd>
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NAN</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                        <dt>on_division_by_zero</dt>
-                        <dd>NAN</dd>
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
                     
                         <dt>rounding</dt>
                         <dd>TIE_TO_EVEN</dd>
@@ -268,20 +250,38 @@ are either both 0 or both ±infinity.</p>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
                         <dt>on_division_by_zero</dt>
-                        <dd>NAN</dd>
+                        <dd>ERROR</dd>
                     
                         <dt>overflow</dt>
                         <dd>ERROR</dd>
                     
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
                         <dt>on_domain_error</dt>
                         <dd>ERROR</dd>
                     
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
                         <dt>rounding</dt>
                         <dd>TIE_TO_EVEN</dd>
+                    
+                        <dt>on_division_by_zero</dt>
+                        <dd>LIMIT</dd>
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>NAN</dd>
                     
                 
             </dl>
@@ -564,7 +564,7 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
     <script>
       var bftDialects = {
         
-        'datafusion': {
+        'sqlite': {
             examples: [
                 
                 
@@ -584,7 +584,15 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect datafusion expects on_division_by_zero=ERROR but on_division_by_zero=NAN was requested",
+                  null,
+                
+                
+                
+                  "The dialect sqlite expects on_division_by_zero=NAN but on_division_by_zero=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects on_division_by_zero=NAN but on_division_by_zero=LIMIT was requested",
                 
                 
                 
@@ -592,23 +600,15 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect datafusion expects on_division_by_zero=ERROR but on_division_by_zero=LIMIT was requested",
-                
-                
-                
                   null,
                 
                 
                 
-                  null,
+                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
                 
                 
                 
-                  null,
-                
-                
-                
-                  "The dialect datafusion expects overflow=ERROR but overflow=SATURATE was requested",
+                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
                 
                 
             ],
@@ -619,6 +619,71 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 true,
                 
                 true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel divide(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel divide(i16, i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel divide(i32, i32) -> i32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel divide(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel divide(i8, i8) -> error",
+                
+                
+                
+                  "The dialect velox_presto expects on_division_by_zero=NAN but on_division_by_zero=LIMIT was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel divide(i8, i8) -> i8",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
                 
                 true,
                 
@@ -674,136 +739,6 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 
                 
                   "The dialect duckdb expects overflow=ERROR but overflow=SATURATE was requested",
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'cudf': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects on_division_by_zero=LIMIT but on_division_by_zero=NAN was requested",
-                
-                
-                
-                  "The dialect cudf expects on_division_by_zero=LIMIT but on_division_by_zero=ERROR was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects on_division_by_zero=NAN but on_division_by_zero=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects on_division_by_zero=NAN but on_division_by_zero=LIMIT was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
                 
                 
             ],
@@ -889,35 +824,11 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
             ]
         },
         
-        'velox_presto': {
+        'datafusion': {
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel divide(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel divide(i16, i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel divide(i32, i32) -> i32",
-                
-                
-                
                   null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel divide(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel divide(i8, i8) -> error",
-                
-                
-                
-                  "The dialect velox_presto expects on_division_by_zero=NAN but on_division_by_zero=LIMIT was requested",
                 
                 
                 
@@ -933,17 +844,106 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel divide(i8, i8) -> i8",
+                  "The dialect datafusion expects on_division_by_zero=ERROR but on_division_by_zero=NAN was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects on_division_by_zero=ERROR but on_division_by_zero=LIMIT was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects overflow=ERROR but overflow=SATURATE was requested",
                 
                 
             ],
             kernels: [
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects on_division_by_zero=LIMIT but on_division_by_zero=NAN was requested",
+                
+                
+                
+                  "The dialect cudf expects on_division_by_zero=LIMIT but on_division_by_zero=ERROR was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
                 
                 true,
                 

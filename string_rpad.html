@@ -61,21 +61,27 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>datafusion</option>
-                
-                <option>duckdb</option>
-                
-                <option>cudf</option>
-                
                 <option>sqlite</option>
-                
-                <option>postgres</option>
                 
                 <option>velox_presto</option>
                 
+                <option>duckdb</option>
+                
+                <option>postgres</option>
+                
+                <option>datafusion</option>
+                
+                <option>cudf</option>
+                
             </select>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -87,25 +93,19 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-postgres">
                 
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-datafusion">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
                 
                     
                 
@@ -290,7 +290,7 @@
     <script>
       var bftDialects = {
         
-        'datafusion': {
+        'sqlite': {
             examples: [
                 
                 
@@ -335,109 +335,60 @@
                 true,
                 
                 true,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                false,
                 
             ]
         },
         
         'duckdb': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'cudf': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'sqlite': {
             examples: [
                 
                 
@@ -535,43 +486,43 @@
             ]
         },
         
-        'velox_presto': {
+        'datafusion': {
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel rpad(string, i32, string) -> string",
+                  null,
                 
                 
             ],
@@ -579,7 +530,56 @@
                 
                 true,
                 
-                false,
+                true,
+                
+            ]
+        },
+        
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
                 
             ]
         },
