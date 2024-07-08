@@ -28,7 +28,7 @@ cases:
         type: string
     result:
       value: "b"
-      type: sting
+      type: string
   - group: basic
     args:
       - value: 'abcdefghi'
