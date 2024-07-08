@@ -532,9 +532,15 @@ scalar_functions:
   - name: between
     unsupported: True
   - name: ceil
-    unsupported: True
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
   - name: floor
-    unsupported: True
+    unsupported_kernels:
+      - args:
+          - fp32
+        result: fp32
   - name: round
     unsupported: True
   - name: extract
