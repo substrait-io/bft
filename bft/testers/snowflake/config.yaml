@@ -1,0 +1,6 @@
+snowflake:
+  username: <username>
+  account: <account name>
+  warehouse: <warehouse name>
+  database: <database name>
+  schema: <schema name>

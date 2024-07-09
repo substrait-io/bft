@@ -5,3 +5,4 @@ mistletoe
 pytest
 pyvelox
 pyyaml
+snowflake
