@@ -1,0 +1,62 @@
+function: ends_with
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 'abcd'
+        type: string
+      - value: 'd'
+        type: string
+    result:
+      value: true
+      type: boolean
+  - group:
+      id: basic
+      description: Basic examples without any special case
+    args:
+      - value: 'abcd'
+        type: string
+      - value: 'a'
+        type: string
+    result:
+      value: false
+      type: boolean
+  - group:
+     id: case_insenstivity
+     description: multi byte character comparison with case insensitivity
+    args:
+      - value: 'abcd'
+        type: string
+      - value: 'CD'
+        type: string
+    options:
+      case_sensitivity: CASE_INSENSITIVE
+    result:
+      value: true
+      type: boolean
+  - group:
+     id: multi_byte_characters
+     description: multi byte character comparison
+    args:
+      - value: '😊a😊b😊😊'
+        type: string
+      - value: 'b😊😊'
+        type: string
+    result:
+      value: true
+      type: boolean
+  - group:
+     id: multi_byte_characters case insensitivity
+     description: multi byte character comparison with case insensitivity
+    args:
+      - value: '😊a😊b😊😊'
+        type: string
+      - value: 'B😊😊'
+        type: string
+    options:
+      case_sensitivity: CASE_INSENSITIVE
+    result:
+      value: true
+      type: boolean
+

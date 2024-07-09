@@ -799,6 +799,12 @@ scalar_functions:
   - name: string_split
     local_name: "split"
     unsupported: True
+  - name: starts_with
+    unsupported: True
+  - name: ends_with
+    unsupported: True
+  - name: contains
+    unsupported: True
   - name: ln
     required_options:
       on_log_zero: MINUS_INFINITY

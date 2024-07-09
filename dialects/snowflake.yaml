@@ -574,6 +574,17 @@ scalar_functions:
     unsupported: True
   - name: string_split
     unsupported: True
+  - name: starts_with
+    local_name: "startswith"
+    required_options:
+      case_sensitivity: CASE_SENSITIVE
+  - name: ends_with
+    local_name: "endswith"
+    required_options:
+      case_sensitivity: CASE_SENSITIVE
+  - name: contains
+    required_options:
+      case_sensitivity: CASE_SENSITIVE
   - name: ln
     required_options:
       on_log_zero: ERROR

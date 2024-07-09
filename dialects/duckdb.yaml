@@ -252,6 +252,15 @@ scalar_functions:
   - name: left
   - name: right
   - name: string_split
+  - name: starts_with
+    required_options:
+      case_sensitivity: CASE_SENSITIVE
+  - name: ends_with
+    required_options:
+      case_sensitivity: CASE_SENSITIVE
+  - name: contains
+    required_options:
+      case_sensitivity: CASE_SENSITIVE
   - name: ln
     required_options:
       on_log_zero: ERROR

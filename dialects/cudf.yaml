@@ -220,6 +220,12 @@ scalar_functions:
     unsupported: true
   - name: string_split
     local_name: "split"
+  - name: starts_with
+    unsupported: True
+  - name: ends_with
+    unsupported: True
+  - name: contains
+    unsupported: True
   - name: ln
     local_name: log
     required_options:
