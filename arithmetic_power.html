@@ -88,6 +88,8 @@ This option controls what happens when this overflow occurs.</p>
                 
                 <option>duckdb</option>
                 
+                <option>snowflake</option>
+                
                 <option>postgres</option>
                 
                 <option>cudf</option>
@@ -101,6 +103,18 @@ This option controls what happens when this overflow occurs.</p>
             </select>
             
             <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>ERROR</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     
                         <dt>overflow</dt>
@@ -334,6 +348,41 @@ and the way the operation is carried out in various dialects.</p>
                 true,
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'snowflake': {
+            examples: [
+                
+                
+                  "The dialect snowflake does not support the kernel power(i64, i64) -> i64",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel power(fp32, fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect snowflake does not support the kernel power(i64, i64) -> i64",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
                 
                 true,
                 

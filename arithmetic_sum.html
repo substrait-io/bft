@@ -96,6 +96,8 @@ yield an int32 on overflow)</p>
                 
                 <option>duckdb</option>
                 
+                <option>snowflake</option>
+                
                 <option>postgres</option>
                 
                 <option>cudf</option>
@@ -109,6 +111,12 @@ yield an int32 on overflow)</p>
             </select>
             
             <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     
                 
@@ -446,6 +454,75 @@ DECLARED_OUTPUT nullability.</p></dd>
                 
                 
                   "The dialect duckdb does not support the kernel sum(i64) -> error",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'snowflake': {
+            examples: [
+                
+                
+                  "The dialect snowflake does not support the kernel sum(i8) -> i8",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel sum(i32) -> i32",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel sum(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect snowflake does not support the kernel sum(i16) -> i16",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel sum(i16) -> i16",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel sum(i32) -> i32",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel sum(i64) -> error",
                 
                 
             ],

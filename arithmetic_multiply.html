@@ -130,6 +130,8 @@ then round to the value closest to zero.</p>
                 
                 <option>duckdb</option>
                 
+                <option>snowflake</option>
+                
                 <option>postgres</option>
                 
                 <option>cudf</option>
@@ -147,6 +149,18 @@ then round to the value closest to zero.</p>
                     
                         <dt>overflow</dt>
                         <dd>ERROR</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-snowflake">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
                     
                         <dt>rounding</dt>
                         <dd>TIE_TO_EVEN</dd>
@@ -592,6 +606,83 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
                 true,
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'snowflake': {
+            examples: [
+                
+                
+                  "The dialect snowflake does not support the kernel multiply(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel multiply(i16, i16) -> i16",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel multiply(i32, i32) -> i32",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel multiply(i64, i64) -> i64",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect snowflake does not support the kernel multiply(i8, i8) -> error",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel multiply(i16, i16) -> error",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel multiply(i32, i32) -> error",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel multiply(i64, i64) -> error",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel multiply(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel multiply(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel multiply(i8, i8) -> undefined",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
                 
                 true,
                 

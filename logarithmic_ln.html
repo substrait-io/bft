@@ -121,6 +121,8 @@
                 
                 <option>duckdb</option>
                 
+                <option>snowflake</option>
+                
                 <option>postgres</option>
                 
                 <option>cudf</option>
@@ -134,6 +136,18 @@
             </select>
             
             <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                        <dt>on_log_zero</dt>
+                        <dd>ERROR</dd>
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>ERROR</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     
                         <dt>on_log_zero</dt>
@@ -458,6 +472,63 @@
             kernels: [
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'snowflake': {
+            examples: [
+                
+                
+                  "The dialect snowflake does not support the kernel ln(i64) -> fp64",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel ln(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect snowflake expects on_domain_error=ERROR but on_domain_error=NAN was requested",
+                
+                
+                
+                  "The dialect snowflake expects on_domain_error=ERROR but on_domain_error=NONE was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect snowflake expects on_log_zero=ERROR but on_log_zero=NAN was requested",
+                
+                
+                
+                  "The dialect snowflake expects on_log_zero=ERROR but on_log_zero=MINUS_INFINITY was requested",
+                
+                
+            ],
+            kernels: [
+                
+                false,
                 
                 true,
                 

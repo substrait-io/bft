@@ -61,6 +61,8 @@
                 
                 <option>duckdb</option>
                 
+                <option>snowflake</option>
+                
                 <option>postgres</option>
                 
                 <option>cudf</option>
@@ -74,6 +76,12 @@
             </select>
             
             <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     
                 
@@ -195,6 +203,29 @@
                 
                 
                   null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'snowflake': {
+            examples: [
+                
+                
+                  "The dialect snowflake does not support the kernel is_null(i16) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect snowflake does not support the kernel is_null(i16) -> boolean",
                 
                 
             ],

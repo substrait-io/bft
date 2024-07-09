@@ -128,6 +128,8 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 
                 <option>duckdb</option>
                 
+                <option>snowflake</option>
+                
                 <option>postgres</option>
                 
                 <option>cudf</option>
@@ -145,6 +147,18 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                     
                         <dt>overflow</dt>
                         <dd>ERROR</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-snowflake">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
                     
                         <dt>rounding</dt>
                         <dd>TIE_TO_EVEN</dd>
@@ -567,6 +581,79 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 true,
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'snowflake': {
+            examples: [
+                
+                
+                  "The dialect snowflake does not support the kernel subtract(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel subtract(i16, i16) -> i16",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel subtract(i32, i32) -> i32",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel subtract(i64, i64) -> i64",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect snowflake does not support the kernel subtract(i8, i8) -> error",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel subtract(i16, i16) -> error",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel subtract(i32, i32) -> error",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel subtract(i64, i64) -> error",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel subtract(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel subtract(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel subtract(i8, i8) -> undefined",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
                 
                 true,
                 

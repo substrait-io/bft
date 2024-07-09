@@ -62,6 +62,8 @@ If all arguments are null, return null.
                 
                 <option>duckdb</option>
                 
+                <option>snowflake</option>
+                
                 <option>postgres</option>
                 
                 <option>cudf</option>
@@ -75,6 +77,12 @@ If all arguments are null, return null.
             </select>
             
             <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     
                 
@@ -268,6 +276,45 @@ If all arguments are null, return null.
                 
                 
                   null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'snowflake': {
+            examples: [
+                
+                
+                  "The dialect snowflake does not support the kernel coalesce(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel coalesce(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel coalesce(i16, i16) -> i16",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel coalesce(i32, i32) -> i32",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel coalesce(i64, i64) -> i64",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel coalesce(fp32, fp32) -> fp32",
                 
                 
                 

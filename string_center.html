@@ -78,6 +78,8 @@ Behavior is undefined if the number of characters passed to the `character` argu
                 
                 <option>duckdb</option>
                 
+                <option>snowflake</option>
+                
                 <option>postgres</option>
                 
                 <option>cudf</option>
@@ -91,6 +93,12 @@ Behavior is undefined if the number of characters passed to the `character` argu
             </select>
             
             <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -152,6 +160,19 @@ Behavior is undefined if the number of characters passed to the `character` argu
       var bftDialects = {
         
         'duckdb': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'snowflake': {
             examples: [
                 
             ],

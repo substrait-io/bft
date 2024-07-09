@@ -96,6 +96,8 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 
                 <option>duckdb</option>
                 
+                <option>snowflake</option>
+                
                 <option>postgres</option>
                 
                 <option>cudf</option>
@@ -109,6 +111,15 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
             </select>
             
             <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     
                         <dt>rounding</dt>
@@ -311,6 +322,39 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
             kernels: [
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'snowflake': {
+            examples: [
+                
+                
+                  "The dialect snowflake does not support the kernel cos(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
                 
                 true,
                 

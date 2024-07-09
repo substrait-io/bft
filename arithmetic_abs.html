@@ -96,6 +96,8 @@ of the type class.</p>
                 
                 <option>duckdb</option>
                 
+                <option>snowflake</option>
+                
                 <option>postgres</option>
                 
                 <option>cudf</option>
@@ -113,6 +115,15 @@ of the type class.</p>
                     
                         <dt>overflow</dt>
                         <dd>ERROR</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-snowflake">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
                     
                 
             </dl>
@@ -430,6 +441,67 @@ latter will overflow.</p>
                 true,
                 
                 true,
+                
+                true,
+                
+            ]
+        },
+        
+        'snowflake': {
+            examples: [
+                
+                
+                  "The dialect snowflake does not support the kernel abs(i8) -> i8",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel abs(i16) -> i16",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel abs(i32) -> i32",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel abs(i64) -> i64",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel abs(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect snowflake does not support the kernel abs(i8) -> i8",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel abs(i8) -> error",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel abs(i8) -> i8",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel abs(i8) -> undefined",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
                 
                 true,
                 

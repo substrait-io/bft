@@ -96,6 +96,8 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 
                 <option>duckdb</option>
                 
+                <option>snowflake</option>
+                
                 <option>postgres</option>
                 
                 <option>cudf</option>
@@ -109,6 +111,12 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
             </select>
             
             <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     
                 
@@ -269,6 +277,35 @@ at 0.</p>
       var bftDialects = {
         
         'duckdb': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'snowflake': {
             examples: [
                 
                 

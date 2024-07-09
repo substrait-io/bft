@@ -74,6 +74,8 @@ Floating point values return signedness with the same type as the input. Possibl
                 
                 <option>duckdb</option>
                 
+                <option>snowflake</option>
+                
                 <option>postgres</option>
                 
                 <option>cudf</option>
@@ -87,6 +89,12 @@ Floating point values return signedness with the same type as the input. Possibl
             </select>
             
             <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     
                 
@@ -169,6 +177,27 @@ sign(-2 * 3) will be the same as sign(-2) * sign(3).</p>
       var bftDialects = {
         
         'duckdb': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'snowflake': {
             examples: [
                 
             ],

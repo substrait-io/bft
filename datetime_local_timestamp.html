@@ -62,6 +62,8 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
                 <option>duckdb</option>
                 
+                <option>snowflake</option>
+                
                 <option>postgres</option>
                 
                 <option>cudf</option>
@@ -75,6 +77,12 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
             </select>
             
             <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -136,6 +144,17 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
       var bftDialects = {
         
         'duckdb': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'snowflake': {
             examples: [
                 
             ],

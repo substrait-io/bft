@@ -84,6 +84,8 @@ The `case_sensitivity` option applies to the `substring` argument.
                 
                 <option>duckdb</option>
                 
+                <option>snowflake</option>
+                
                 <option>postgres</option>
                 
                 <option>cudf</option>
@@ -97,6 +99,12 @@ The `case_sensitivity` option applies to the `substring` argument.
             </select>
             
             <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -158,6 +166,21 @@ The `case_sensitivity` option applies to the `substring` argument.
       var bftDialects = {
         
         'duckdb': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'snowflake': {
             examples: [
                 
             ],
