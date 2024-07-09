@@ -94,37 +94,19 @@ of the type class.</p>
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
                 <option>duckdb</option>
                 
                 <option>postgres</option>
                 
-                <option>datafusion</option>
-                
                 <option>cudf</option>
                 
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
@@ -144,6 +126,24 @@ of the type class.</p>
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
@@ -153,11 +153,11 @@ of the type class.</p>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                         <dt>overflow</dt>
-                        <dd>SILENT</dd>
+                        <dd>ERROR</dd>
                     
                 
             </dl>
@@ -375,128 +375,6 @@ latter will overflow.</p>
     <script>
       var bftDialects = {
         
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel abs(i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel abs(i32) -> i32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel abs(fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel abs(i8) -> error",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel abs(i8) -> undefined",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                true,
-                
-                false,
-                
-                true,
-                
-            ]
-        },
-        
         'duckdb': {
             examples: [
                 
@@ -619,6 +497,128 @@ latter will overflow.</p>
             ]
         },
         
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
         'datafusion': {
             examples: [
                 
@@ -680,11 +680,19 @@ latter will overflow.</p>
             ]
         },
         
-        'cudf': {
+        'velox_presto': {
             examples: [
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel abs(i32) -> i32",
                 
                 
                 
@@ -692,7 +700,7 @@ latter will overflow.</p>
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel abs(fp32) -> fp32",
                 
                 
                 
@@ -700,41 +708,33 @@ latter will overflow.</p>
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel abs(i8) -> error",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
                 
                 
                 
-                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  null,
+                  "The dialect velox_presto does not support the kernel abs(i8) -> undefined",
                 
                 
             ],
             kernels: [
                 
-                true,
+                false,
+                
+                false,
+                
+                false,
                 
                 true,
                 
-                true,
-                
-                true,
-                
-                true,
+                false,
                 
                 true,
                 

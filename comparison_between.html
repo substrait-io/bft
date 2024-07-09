@@ -61,31 +61,19 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
                 <option>duckdb</option>
                 
                 <option>postgres</option>
                 
-                <option>datafusion</option>
-                
                 <option>cudf</option>
                 
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
@@ -99,13 +87,25 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -399,148 +399,6 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
     <script>
       var bftDialects = {
         
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel between(i8, i8, i8) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel between(i16, i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel between(i32, i32, i32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel between(i8, i8, i8) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel between(i16, i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel between(i32, i32, i32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel between(fp32, fp32, fp32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel between(i8, i8, i8) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
         'duckdb': {
             examples: [
                 
@@ -683,6 +541,148 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
             ]
         },
         
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
         'datafusion': {
             examples: [
                 
@@ -754,10 +754,46 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
             ]
         },
         
-        'cudf': {
+        'velox_presto': {
             examples: [
                 
                 
+                  "The dialect velox_presto does not support the kernel between(i8, i8, i8) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel between(i16, i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel between(i32, i32, i32) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel between(i8, i8, i8) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel between(i16, i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel between(i32, i32, i32) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel between(fp32, fp32, fp32) -> boolean",
+                
+                
+                
                   null,
                 
                 
@@ -770,43 +806,7 @@ If `low`, `high`, or `expression` are `null`, `null` is returned.
                 
                 
                 
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
+                  "The dialect velox_presto does not support the kernel between(i8, i8, i8) -> boolean",
                 
                 
                 

@@ -62,31 +62,19 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
                 <option>duckdb</option>
                 
                 <option>postgres</option>
                 
-                <option>datafusion</option>
-                
                 <option>cudf</option>
                 
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
@@ -100,13 +88,25 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -288,100 +288,6 @@ If either/both of `x` and `y` are `null`, `null` is returned.
     <script>
       var bftDialects = {
         
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel equal(i8, i8) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel equal(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel equal(i32, i32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel equal(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel equal(i16, i16) -> boolean",
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-            ]
-        },
-        
         'duckdb': {
             examples: [
                 
@@ -476,6 +382,100 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             ]
         },
         
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+            ]
+        },
+        
         'datafusion': {
             examples: [
                 
@@ -523,11 +523,19 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             ]
         },
         
-        'cudf': {
+        'velox_presto': {
             examples: [
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel equal(i8, i8) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel equal(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel equal(i32, i32) -> boolean",
                 
                 
                 
@@ -547,19 +555,11 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel equal(i16, i16) -> boolean",
                 
                 
                 
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
+                  "The dialect velox_presto does not support the kernel equal(i16, i16) -> boolean",
                 
                 
             ],

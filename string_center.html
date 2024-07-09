@@ -76,31 +76,19 @@ Behavior is undefined if the number of characters passed to the `character` argu
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
                 <option>duckdb</option>
                 
                 <option>postgres</option>
                 
-                <option>datafusion</option>
-                
                 <option>cudf</option>
                 
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
@@ -114,13 +102,25 @@ Behavior is undefined if the number of characters passed to the `character` argu
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -151,32 +151,6 @@ Behavior is undefined if the number of characters passed to the `character` argu
     <script>
       var bftDialects = {
         
-        'sqlite': {
-            examples: [
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
         'duckdb': {
             examples: [
                 
@@ -203,6 +177,32 @@ Behavior is undefined if the number of characters passed to the `character` argu
             ]
         },
         
+        'cudf': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
         'datafusion': {
             examples: [
                 
@@ -216,7 +216,7 @@ Behavior is undefined if the number of characters passed to the `character` argu
             ]
         },
         
-        'cudf': {
+        'velox_presto': {
             examples: [
                 
             ],

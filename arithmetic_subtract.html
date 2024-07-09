@@ -126,43 +126,19 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
                 <option>duckdb</option>
                 
                 <option>postgres</option>
                 
-                <option>datafusion</option>
-                
                 <option>cudf</option>
                 
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
@@ -188,6 +164,30 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    
+                        <dt>overflow</dt>
+                        <dd>SILENT</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
@@ -197,11 +197,11 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                         <dt>overflow</dt>
-                        <dd>SILENT</dd>
+                        <dd>ERROR</dd>
                     
                         <dt>rounding</dt>
                         <dd>TIE_TO_EVEN</dd>
@@ -500,152 +500,6 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
     <script>
       var bftDialects = {
         
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                false,
-                
-                true,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel subtract(i16, i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel subtract(i32, i32) -> i32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> error",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel subtract(i16, i16) -> error",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel subtract(i32, i32) -> error",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> undefined",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
         'duckdb': {
             examples: [
                 
@@ -792,6 +646,152 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
             ]
         },
         
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
+                
+                
+                
+                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                false,
+                
+                true,
+                
+            ]
+        },
+        
         'datafusion': {
             examples: [
                 
@@ -865,11 +865,19 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
             ]
         },
         
-        'cudf': {
+        'velox_presto': {
             examples: [
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel subtract(i16, i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel subtract(i32, i32) -> i32",
                 
                 
                 
@@ -885,7 +893,15 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> error",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel subtract(i16, i16) -> error",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel subtract(i32, i32) -> error",
                 
                 
                 
@@ -893,41 +909,25 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
+                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  null,
+                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> undefined",
                 
                 
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
                 true,
                 

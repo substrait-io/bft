@@ -94,31 +94,19 @@ The `case_sensitivity` option applies to the `substring` argument.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
                 <option>duckdb</option>
                 
                 <option>postgres</option>
                 
-                <option>datafusion</option>
-                
                 <option>cudf</option>
                 
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
@@ -132,13 +120,25 @@ The `case_sensitivity` option applies to the `substring` argument.
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -168,60 +168,6 @@ The `case_sensitivity` option applies to the `substring` argument.
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'sqlite': {
-            examples: [
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-            ]
-        },
         
         'duckdb': {
             examples: [
@@ -277,6 +223,60 @@ The `case_sensitivity` option applies to the `substring` argument.
             ]
         },
         
+        'cudf': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
         'datafusion': {
             examples: [
                 
@@ -304,7 +304,7 @@ The `case_sensitivity` option applies to the `substring` argument.
             ]
         },
         
-        'cudf': {
+        'velox_presto': {
             examples: [
                 
             ],

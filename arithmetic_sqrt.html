@@ -112,43 +112,19 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
                 <option>duckdb</option>
                 
                 <option>postgres</option>
                 
-                <option>datafusion</option>
-                
                 <option>cudf</option>
                 
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NAN</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NAN</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
@@ -174,6 +150,30 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>NAN</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    
+                        <dt>on_domain_error</dt>
+                        <dd>NAN</dd>
+                    
+                        <dt>rounding</dt>
+                        <dd>TIE_TO_EVEN</dd>
+                    
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
@@ -186,7 +186,7 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                         <dt>on_domain_error</dt>
@@ -367,108 +367,6 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
     <script>
       var bftDialects = {
         
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel sqrt(fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                true,
-                
-            ]
-        },
-        
         'duckdb': {
             examples: [
                 
@@ -571,6 +469,108 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
             ]
         },
         
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
         'datafusion': {
             examples: [
                 
@@ -622,39 +622,39 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
             ]
         },
         
-        'cudf': {
+        'velox_presto': {
             examples: [
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel sqrt(fp32) -> fp32",
                 
                 
                 
@@ -664,9 +664,9 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
                 true,
                 

@@ -67,31 +67,19 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
                 <option>duckdb</option>
                 
                 <option>postgres</option>
                 
-                <option>datafusion</option>
-                
                 <option>cudf</option>
                 
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
@@ -105,13 +93,25 @@
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     
                 
@@ -345,148 +345,6 @@
     <script>
       var bftDialects = {
         
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel lte(i8, i8) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel lte(i8, i8) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel lte(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel lte(i32, i32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel lte(fp32, fp32) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel lte(fp32, fp32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel lte(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel lte(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel lte(i16, i16) -> boolean",
-                
-                
-            ],
-            kernels: [
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
-                
-            ]
-        },
-        
         'duckdb': {
             examples: [
                 
@@ -629,6 +487,148 @@
             ]
         },
         
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+                true,
+                
+            ]
+        },
+        
         'datafusion': {
             examples: [
                 
@@ -700,10 +700,38 @@
             ]
         },
         
-        'cudf': {
+        'velox_presto': {
             examples: [
                 
                 
+                  "The dialect velox_presto does not support the kernel lte(i8, i8) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel lte(i8, i8) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel lte(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel lte(i32, i32) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel lte(fp32, fp32) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel lte(fp32, fp32) -> boolean",
+                
+                
+                
                   null,
                 
                 
@@ -716,43 +744,15 @@
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel lte(i16, i16) -> boolean",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel lte(i16, i16) -> boolean",
                 
                 
                 
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
+                  "The dialect velox_presto does not support the kernel lte(i16, i16) -> boolean",
                 
                 
             ],

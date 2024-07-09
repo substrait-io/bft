@@ -97,31 +97,19 @@ Returns null if applied to zero records. For the integer implementations, the ro
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>sqlite</option>
-                
-                <option>velox_presto</option>
-                
                 <option>duckdb</option>
                 
                 <option>postgres</option>
                 
-                <option>datafusion</option>
-                
                 <option>cudf</option>
                 
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
+                
+                <option>velox_presto</option>
+                
             </select>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
@@ -135,13 +123,25 @@ Returns null if applied to zero records. For the integer implementations, the ro
                 
             </dl>
             
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
             <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-cudf">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -171,48 +171,6 @@ Returns null if applied to zero records. For the integer implementations, the ro
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'sqlite': {
-            examples: [
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-            ]
-        },
         
         'duckdb': {
             examples: [
@@ -256,6 +214,48 @@ Returns null if applied to zero records. For the integer implementations, the ro
             ]
         },
         
+        'cudf': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
         'datafusion': {
             examples: [
                 
@@ -277,7 +277,7 @@ Returns null if applied to zero records. For the integer implementations, the ro
             ]
         },
         
-        'cudf': {
+        'velox_presto': {
             examples: [
                 
             ],
