@@ -54,6 +54,7 @@ BFT currently supports testing of the following dialects:
 * DuckDB
 * Postgres
 * SQLite
+* Snowflake
 
 ## Workflows
 
@@ -135,6 +136,33 @@ mentions reference methods:
   a = pv.from_list([1, 3])
   eval = expr.evaluate({"a":a})
   ```
+
+**Snowflake**  
+  For testing with Snowflake, its Python interface can be installed via [pip](https://pypi.org/project/snowflake-connector-python/).
+  ```
+  import snowflake.connector
+  conn = snowflake.connector.connect(
+    user='user',
+    password='password',
+    account='account',
+    warehouse='warehouse',
+    database='database',
+    schema='schema'
+  )
+  cur = conn.cursor()
+  cur.execute("SELECT POW(2,3)")
+  ```
+  To run the tests, follow the below steps:
+  - Update bft/testers/snowflake/config.yaml file with snowflake user,account,db,schema etc. 
+  - Set the password in the environment variable SNOWSQL_PWD
+    ```
+    export SNOWSQL_PWD=<your password> 
+    ```
+  - Run the tests using the below command
+    ```
+    pytest bft/tests/test_snowflake.py
+    ```
+
 
 #### CI environment
 We perform continuous integration on a variety of systems to verify the integrity

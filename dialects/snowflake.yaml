@@ -84,35 +84,7 @@ scalar_functions:
           - fp32
         result: fp32
   - name: divide
-    local_name: "/"
-    infix: True
-    required_options:
-      on_division_by_zero: ERROR
-      overflow: SILENT
-      rounding: TIE_TO_EVEN
-      on_domain_error: NAN
     unsupported: true # TODO Enable after fixing a test case with a division by zero (i64, i64) => fp64
-    unsupported_kernels:
-      - args:
-          - i8
-          - i8
-        result: i8
-      - args:
-          - i16
-          - i16
-        result: i16
-      - args:
-          - i32
-          - i32
-        result: i32
-      - args:
-          - i64
-          - i64
-        result: i64
-      - args:
-          - fp32
-          - fp32
-        result: fp32
   - name: modulus
     unsupported: true
   - name: power
