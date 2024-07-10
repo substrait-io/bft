@@ -248,7 +248,7 @@ scalar_functions:
     required_options:
       on_log_zero: MINUS_INFINITY
       on_domain_error: NAN
-  - name: log
+  - name: log10
     required_options:
       on_log_zero: MINUS_INFINITY
       on_domain_error: NAN

@@ -493,7 +493,7 @@ scalar_functions:
     required_options:
       on_log_zero: ERROR
       on_domain_error: ERROR
-  - name: log
+  - name: log10
     required_options:
       on_log_zero: ERROR
       on_domain_error: ERROR

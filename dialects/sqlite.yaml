@@ -270,7 +270,7 @@ scalar_functions:
     required_options:
       on_log_zero: NAN
       on_domain_error: NONE
-  - name: log
+  - name: log10
     required_options:
       on_log_zero: NAN
       on_domain_error: NONE

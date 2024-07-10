@@ -233,7 +233,7 @@ scalar_functions:
     local_name: log
     required_options:
       on_log_zero: MINUS_INFINITY
-  - name: log
+  - name: log10
     unsupported: true
   - name: log2
     unsupported: true

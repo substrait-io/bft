@@ -816,7 +816,7 @@ scalar_functions:
       - args:
           - fp32
         result: fp32
-  - name: log
+  - name: log10
     local_name: log10
     required_options:
       on_log_zero: MINUS_INFINITY

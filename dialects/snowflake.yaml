@@ -596,7 +596,7 @@ scalar_functions:
       - args:
           - i64
         result: fp64
-  - name: log
+  - name: log10
     unsupported: True
   - name: log2
     unsupported: True

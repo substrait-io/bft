@@ -1,4 +1,4 @@
-function: log
+function: log10
 cases:
   - group:
       id: basic
