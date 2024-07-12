@@ -11,9 +11,7 @@ cases:
     result:
       value: true
       type: boolean
-  - group:
-      id: basic
-      description: Basic examples as case insensitivity
+  - group: basic
     args:
       - value: 'abcdefg'
         type: string
@@ -24,9 +22,7 @@ cases:
     result:
       value: true
       type: boolean
-  - group:
-      id: basic
-      description: Basic examples contains in middle
+  - group: basic
     args:
       - value: 'abcdefg'
         type: string
@@ -35,9 +31,7 @@ cases:
     result:
       value: true
       type: boolean
-  - group:
-      id: basic
-      description: Basic examples contains as suffix
+  - group: basic
     args:
       - value: 'abcdefg'
         type: string
@@ -46,9 +40,7 @@ cases:
     result:
       value: true
       type: boolean
-  - group:
-      id: basic
-      description: Basic examples missing substring
+  - group: basic
     args:
       - value: 'abcdefg'
         type: string
@@ -68,9 +60,7 @@ cases:
     result:
       value: true
       type: boolean
-  - group:
-      id: multi_byte_characters
-      description: multi byte characters exists in the string with case insensitivity
+  - group: multi_byte_characters
     args:
       - value: '😊a😊b😊😊'
         type: string
@@ -81,9 +71,7 @@ cases:
     result:
       value: true
       type: boolean
-  - group:
-      id: multi_byte_characters
-      description: multi byte characters absent in the string
+  - group: multi_byte_characters
     args:
       - value: '😊a😊b😊😊'
         type: string

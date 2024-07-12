@@ -11,9 +11,7 @@ cases:
     result:
       value: true
       type: boolean
-  - group:
-      id: basic
-      description: Basic examples without any special case
+  - group: basic
     args:
       - value: 'abcd'
         type: string
