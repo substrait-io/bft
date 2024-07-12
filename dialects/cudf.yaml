@@ -220,6 +220,15 @@ scalar_functions:
     unsupported: true
   - name: string_split
     local_name: "split"
+  - name: starts_with
+    required_options:
+      case_sensitivity: CASE_SENSITIVE
+  - name: ends_with
+    required_options:
+      case_sensitivity: CASE_SENSITIVE
+  - name: contains
+    required_options:
+      case_sensitivity: CASE_SENSITIVE
   - name: ln
     local_name: log
     required_options:

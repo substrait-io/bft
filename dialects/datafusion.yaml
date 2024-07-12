@@ -236,6 +236,14 @@ scalar_functions:
   - name: right
   - name: string_split
     unsupported: True
+  - name: starts_with
+    required_options:
+      case_sensitivity: CASE_SENSITIVE
+  - name: ends_with
+    required_options:
+      case_sensitivity: CASE_SENSITIVE
+  - name: contains
+    unsupported: True
   - name: ln
     required_options:
       on_log_zero: MINUS_INFINITY

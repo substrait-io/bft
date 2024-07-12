@@ -1,0 +1,82 @@
+function: contains
+cases:
+  - group:
+      id: basic
+      description: Basic examples contains as prefix
+    args:
+      - value: 'abcdefg'
+        type: string
+      - value: 'abc'
+        type: string
+    result:
+      value: true
+      type: boolean
+  - group: basic
+    args:
+      - value: 'abcdefg'
+        type: string
+      - value: 'CdE'
+        type: string
+    options:
+      case_sensitivity: CASE_INSENSITIVE
+    result:
+      value: true
+      type: boolean
+  - group: basic
+    args:
+      - value: 'abcdefg'
+        type: string
+      - value: 'cde'
+        type: string
+    result:
+      value: true
+      type: boolean
+  - group: basic
+    args:
+      - value: 'abcdefg'
+        type: string
+      - value: 'fg'
+        type: string
+    result:
+      value: true
+      type: boolean
+  - group: basic
+    args:
+      - value: 'abcdefg'
+        type: string
+      - value: 'aef'
+        type: string
+    result:
+      value: false
+      type: boolean
+  - group:
+      id: multi_byte_characters
+      description: multi byte characters exists in the string
+    args:
+      - value: '😊a😊b😊😊'
+        type: string
+      - value: 'a😊b'
+        type: string
+    result:
+      value: true
+      type: boolean
+  - group: multi_byte_characters
+    args:
+      - value: '😊a😊b😊😊'
+        type: string
+      - value: 'A😊B'
+        type: string
+    options:
+      case_sensitivity: CASE_INSENSITIVE
+    result:
+      value: true
+      type: boolean
+  - group: multi_byte_characters
+    args:
+      - value: '😊a😊b😊😊'
+        type: string
+      - value: 'a😊c'
+        type: string
+    result:
+      value: false
+      type: boolean
