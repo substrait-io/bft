@@ -11,13 +11,13 @@ class CaseFileVisitor(BaseYamlVisitor[CaseFile]):
         super().__init__()
         self.__groups = {}
 
-    def __resolve_proto_case(self, case: ProtoCase, function: str) -> Case:
+    def __resolve_proto_case(self, case: ProtoCase, base_uri: str, function: str) -> Case:
         if case.group not in self.__groups:
             raise Exception(
                 "A case referred to group " + case.group +" which was not defined in the file"
             )
         grp = self.__groups[case.group]
-        return Case(function, grp, case.args, case.result, case.options)
+        return Case(base_uri, function, grp, case.args, case.result, case.options)
 
     def visit_group(self, group):
         id = self._get_or_die(group, "id")
@@ -71,11 +71,11 @@ class CaseFileVisitor(BaseYamlVisitor[CaseFile]):
         return ProtoCase(grp, args, result, opt_tuples)
 
     def visit(self, case_file):
+        base_uri = self._get_or_die(case_file, 'base_uri')
         func_name = self._get_or_die(case_file, "function")
         proto_cases = self._visit_list(self.visit_case, case_file, "cases")
-        cases = [self.__resolve_proto_case(c, func_name) for c in proto_cases]
-        return CaseFile(func_name, cases)
-
+        cases = [self.__resolve_proto_case(c, base_uri, func_name) for c in proto_cases]
+        return CaseFile(func_name, base_uri, cases)
 
 class CaseFileParser(BaseYamlParser[CaseFile]):
     def get_visitor(self) -> CaseFileVisitor:

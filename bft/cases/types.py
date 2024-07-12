@@ -12,6 +12,7 @@ class CaseGroup(NamedTuple):
 
 
 class Case(NamedTuple):
+    base_uri: str
     function: str
     group: CaseGroup
     args: List[CaseLiteral]
@@ -32,6 +33,7 @@ def case_to_kernel_str(
 
 
 class CaseFile(NamedTuple):
+    base_uri: str
     function: str
     cases: List[Case]
 
