@@ -112,43 +112,58 @@ The `case_sensitivity` option applies to the `substring` argument.
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
+                        <dt>case_sensitivity</dt>
+                        <dd>CASE_SENSITIVE</dd>
+                    
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-snowflake">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
+                        <dt>case_sensitivity</dt>
+                        <dd>CASE_SENSITIVE</dd>
+                    
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-postgres">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
+                        <dt>case_sensitivity</dt>
+                        <dd>CASE_SENSITIVE</dd>
+                    
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-cudf">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
+                        <dt>case_sensitivity</dt>
+                        <dd>CASE_SENSITIVE</dd>
+                    
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
+                        <dt>case_sensitivity</dt>
+                        <dd>CASE_SENSITIVE</dd>
+                    
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-velox_presto">
                 
-                    <dt>Dialect isn't yet supported</dt>
+                    
                 
             </dl>
             
@@ -171,6 +186,147 @@ The `case_sensitivity` option applies to the `substring` argument.
         <section id="examples">
             <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
             
+            <table>
+                <caption>Basic examples without any special cases</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (string)</th>
+                        
+                        <th>arg2 (string)</th>
+                        
+                        <th>result (boolean)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>abcd</td>
+                        
+                        <td>a</td>
+                        
+                        <td>True</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>abcd</td>
+                        
+                        <td>z</td>
+                        
+                        <td>False</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>multi byte character comparison with case insensitivity</caption>
+                <thead>
+                    <tr>
+                        
+                        <th>case_sensitivity</th>
+                        
+                        
+                        <th>arg1 (string)</th>
+                        
+                        <th>arg2 (string)</th>
+                        
+                        <th>result (boolean)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>CASE_INSENSITIVE</td>
+                        
+                        
+                        <td>abcd</td>
+                        
+                        <td>AB</td>
+                        
+                        <td>True</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>multi byte character comparison</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (string)</th>
+                        
+                        <th>arg2 (string)</th>
+                        
+                        <th>result (boolean)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>😊a😊b😊😊</td>
+                        
+                        <td>😊a</td>
+                        
+                        <td>True</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>multi byte character comparison with case insensitivity</caption>
+                <thead>
+                    <tr>
+                        
+                        <th>case_sensitivity</th>
+                        
+                        
+                        <th>arg1 (string)</th>
+                        
+                        <th>arg2 (string)</th>
+                        
+                        <th>result (boolean)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>CASE_INSENSITIVE</td>
+                        
+                        
+                        <td>😊a😊b😊😊</td>
+                        
+                        <td>😊A</td>
+                        
+                        <td>True</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
         </section>
     </article>
     <script src="./assets/supplementary/script.js"></script>
@@ -180,26 +336,46 @@ The `case_sensitivity` option applies to the `substring` argument.
         'duckdb': {
             examples: [
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
+                
+                
             ],
             kernels: [
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
             ]
         },
@@ -207,26 +383,46 @@ The `case_sensitivity` option applies to the `substring` argument.
         'snowflake': {
             examples: [
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect snowflake expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect snowflake expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
+                
+                
             ],
             kernels: [
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
             ]
         },
@@ -234,26 +430,46 @@ The `case_sensitivity` option applies to the `substring` argument.
         'postgres': {
             examples: [
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
+                
+                
             ],
             kernels: [
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
             ]
         },
@@ -261,26 +477,46 @@ The `case_sensitivity` option applies to the `substring` argument.
         'cudf': {
             examples: [
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
+                
+                
             ],
             kernels: [
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
             ]
         },
@@ -288,26 +524,46 @@ The `case_sensitivity` option applies to the `substring` argument.
         'sqlite': {
             examples: [
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
             ]
         },
@@ -315,26 +571,46 @@ The `case_sensitivity` option applies to the `substring` argument.
         'datafusion': {
             examples: [
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
+                
+                
             ],
             kernels: [
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
             ]
         },
@@ -342,26 +618,46 @@ The `case_sensitivity` option applies to the `substring` argument.
         'velox_presto': {
             examples: [
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
-                false,
+                true,
                 
             ]
         },
