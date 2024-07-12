@@ -1,3 +1,4 @@
+base_uri: https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_aggreate_generic.yaml
 function: count_star
 cases:
   - group:
