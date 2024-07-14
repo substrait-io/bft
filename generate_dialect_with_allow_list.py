@@ -169,7 +169,7 @@ class Substrait:
 class Dialect:
     @staticmethod
     def read_dialect(name):
-        with open(f'dialects/{name}.yaml', 'r') as fh:
+        with open(f'dialects_old/{name}.yaml', 'r') as fh:
             data = yaml.load(fh, Loader=yaml.FullLoader)
         return data
 
