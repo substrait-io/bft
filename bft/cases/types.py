@@ -12,8 +12,8 @@ class CaseGroup(NamedTuple):
 
 
 class Case(NamedTuple):
-    base_uri: str
     function: str
+    base_uri: str
     group: CaseGroup
     args: List[CaseLiteral]
     result: CaseLiteral | Literal["error", "undefined"]
@@ -33,8 +33,8 @@ def case_to_kernel_str(
 
 
 class CaseFile(NamedTuple):
-    base_uri: str
     function: str
+    base_uri: str
     cases: List[Case]
 
 
