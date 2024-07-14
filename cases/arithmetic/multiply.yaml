@@ -136,9 +136,10 @@ cases:
   - group:
       id: types
       description: Examples demonstrating behavior of different data types
+      # TODO fp32_fp64 is not supported by substrait is this a valid testcase ?
     args:
       - value: 4.5
-        type: fp32
+        type: fp64
       - value: 2.5000007152557373046875
         type: fp64
     result:

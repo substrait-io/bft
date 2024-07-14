@@ -8,7 +8,7 @@ cases:
       - value: 2
         type: i8
       - value: 2
-        type: i8
+        type: i32
     result:
       value: 2
       type: i8
@@ -17,7 +17,7 @@ cases:
       - value: 2.75
         type: fp32
       - value: 1
-        type: i8
+        type: i32
     result:
       value: 2.8
       type: fp32
@@ -26,7 +26,7 @@ cases:
       - value: 2.0000007152457373046875
         type: fp64
       - value: 10
-        type: i8
+        type: i32
     result:
       value: 2.0000007152
       type: fp64
@@ -46,7 +46,7 @@ cases:
       - value: 2
         type: i8
       - value: -2
-        type: i8
+        type: i32
     result:
       value: 0
       type: i8

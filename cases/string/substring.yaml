@@ -19,9 +19,9 @@ cases:
       - value: 'abcdefg'
         type: string
       - value: 1
-        type: i64
+        type: i32
       - value: 5
-        type: i64
+        type: i32
     result:
       value: 'abcde'
       type: string
@@ -43,9 +43,9 @@ cases:
       - value: 'abcdefg'
         type: string
       - value: 10
-        type: i64
+        type: i32
       - value: 2
-        type: i64
+        type: i32
     result:
       value: ''
       type: string
@@ -67,9 +67,9 @@ cases:
       - value: '😊a😊b😊😊'
         type: string
       - value: 1
-        type: i64
+        type: i32
       - value: 3
-        type: i64
+        type: i32
     result:
       value: '😊a😊'
       type: string
@@ -80,9 +80,9 @@ cases:
       - value: 'abcdefg'
         type: string
       - value: -1
-        type: i64
+        type: i32
       - value: 2
-        type: i64
+        type: i32
     options:
       negative_start: WRAP_FROM_END
     result:
@@ -93,9 +93,9 @@ cases:
       - value: 'abcdefg'
         type: string
       - value: -2
-        type: i64
+        type: i32
       - value: 1
-        type: i64
+        type: i32
     options:
       negative_start: WRAP_FROM_END
     result:
@@ -106,9 +106,9 @@ cases:
       - value: 'abcdefg'
         type: string
       - value: -1
-        type: i64
+        type: i32
       - value: 2
-        type: i64
+        type: i32
     options:
       negative_start: LEFT_OF_BEGINNING
     result:
@@ -119,9 +119,9 @@ cases:
       - value: 'abcdefg'
         type: string
       - value: -1
-        type: i64
+        type: i32
       - value: 3
-        type: i64
+        type: i32
     options:
       negative_start: LEFT_OF_BEGINNING
     result:
