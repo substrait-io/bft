@@ -336,6 +336,7 @@ scalar_functions:
   supported_kernels:
   - string_tstz_str
   - string_ptstz_str
+  - string_tstz
   - string_ts
   - string_pts
   - string_date
@@ -349,33 +350,33 @@ scalar_functions:
   local_name: +
   infix: true
   supported_kernels:
-  - ts_iyear
-  - tstz_iyear_str
-  - date_iyear
-  - ts_iday
-  - tstz_iday
-  - date_iday
+  - ts_interval
+  - tstz_interval_str
+  - date_interval
+  - ts_interval
+  - tstz_interval
+  - date_interval
 - name: datetime.add_intervals
   local_name: +
   infix: true
   required_options:
     year_interval: 360
   supported_kernels:
-  - iday_iday
-  - iyear_iyear
+  - interval_interval
+  - interval_interval
 - name: datetime.subtract
   local_name: '-'
   infix: true
   required_options:
     with_time: false
   supported_kernels:
-  - ts_iyear
-  - tstz_iyear
-  - tstz_iyear_str
-  - date_iyear
-  - ts_iday
-  - tstz_iday
-  - date_iday
+  - ts_interval
+  - tstz_interval
+  - tstz_interval_str
+  - date_interval
+  - ts_interval
+  - tstz_interval
+  - date_interval
 - name: datetime.lt
   local_name: <
   infix: true
@@ -383,8 +384,8 @@ scalar_functions:
   - ts_ts
   - tstz_tstz
   - date_date
-  - iday_iday
-  - iyear_iyear
+  - interval_interval
+  - interval_interval
 - name: datetime.lte
   local_name: <=
   infix: true
@@ -392,8 +393,8 @@ scalar_functions:
   - ts_ts
   - tstz_tstz
   - date_date
-  - iday_iday
-  - iyear_iyear
+  - interval_interval
+  - interval_interval
 - name: datetime.gt
   local_name: '>'
   infix: true
@@ -401,8 +402,8 @@ scalar_functions:
   - ts_ts
   - tstz_tstz
   - date_date
-  - iday_iday
-  - iyear_iyear
+  - interval_interval
+  - interval_interval
 - name: datetime.gte
   local_name: '>='
   infix: true
@@ -410,8 +411,8 @@ scalar_functions:
   - ts_ts
   - tstz_tstz
   - date_date
-  - iday_iday
-  - iyear_iyear
+  - interval_interval
+  - interval_interval
 - name: string.substring
   required_options:
     negative_start: WRAP_FROM_END
@@ -470,6 +471,7 @@ scalar_functions:
   supported_kernels:
   - str_str_str_i64_i64
   - vchar_vchar_vchar_i64_i64
+  - str_str_str
 - name: string.regexp_string_split
   local_name: regexp_split_to_array
   required_options:
@@ -484,6 +486,7 @@ scalar_functions:
   supported_kernels:
   - vchar_vchar_i64_i64_i64
   - str_str_i64_i64_i64
+  - str_str
 - name: string.bit_length
   supported_kernels:
   - str
@@ -499,14 +502,17 @@ scalar_functions:
   supported_kernels:
   - vchar_vchar
   - str_str
+  - str
 - name: string.rtrim
   supported_kernels:
   - vchar_vchar
   - str_str
+  - str
 - name: string.trim
   supported_kernels:
   - vchar_vchar
   - str_str
+  - str
 - name: string.lpad
   supported_kernels:
   - vchar_i32_vchar
