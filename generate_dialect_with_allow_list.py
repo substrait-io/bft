@@ -15,27 +15,107 @@ def debug(msg):
         print(f"DEBUG: {msg}")
 
 
+type_to_short_type = {
+    'required enumeration': 'req',
+    'i8': 'i8',
+    'i16': 'i16',
+    'i32': 'i32',
+    'i64': 'i64',
+    'fp32': 'fp32',
+    'fp64': 'fp64',
+    'string': 'str',
+    'binary': 'vbin',
+    'boolean': 'bool',
+    'timestamp': 'ts',
+    'timestamp_tz': 'tstz',
+    'date': 'date',
+    'time': 'time',
+    'interval_year': 'iyear',
+    'interval_day': 'iday',
+    'uuid': 'uuid',
+    'fixedchar<N>': 'fchar',
+    'varchar<N>': 'vchar',
+    'fixedbinary<N>': 'fbin',
+    'decimal<P,S>': 'dec',
+    'precision_timestamp<P>': 'pts',
+    'precision_timestamp_tz<P>': 'ptstz',
+    'struct<T1,T2,...,TN>': 'struct',
+    'list<T>': 'list',
+    'map<K,V>': 'map',
+    'map': 'map',
+    'any': 'any',
+    'any1': 'any1',
+    'any2': 'any2',
+    'any3': 'any3',
+    'user defined type': 'u!name',
+
+    # added to handle parametrized types
+    'fixedchar': 'fchar',
+    'varchar': 'vchar',
+    'fixedbinary': 'fbin',
+    'decimal': 'dec',
+    'precision_timestamp': 'pts',
+    'precision_timestamp_tz': 'ptstz',
+    'struct': 'struct',
+    'list': 'list',
+
+    # added to handle geometry type
+    'geometry': 'geometry',
+}
+
+short_type_to_type = {st: lt for lt, st in type_to_short_type.items()}
+
+
 class Substrait:
     @staticmethod
     def get_base_uri():
         return 'https://github.com/substrait-io/substrait/blob/main/extensions/'
 
     @staticmethod
+    def get_short_type(long_type):
+        long_type = long_type.lower()
+        short_type = type_to_short_type.get(long_type, None)
+        if short_type is None:
+            # remove the type parameters and try again
+            if '<' in long_type:
+                long_type = long_type[:long_type.find('<')]
+                short_type = type_to_short_type.get(long_type, None)
+            if short_type is None:
+                if '!' not in long_type:
+                    error(f"Type not found in the mapping: {long_type}")
+                return long_type
+        return short_type
+
+    @staticmethod
+    def get_long_type(short_type):
+        long_type = short_type_to_type.get(short_type, None)
+        if long_type is None:
+            error(f"Type not found in the mapping: {short_type}")
+            return short_type
+        return long_type
+
+    @staticmethod
     def get_supported_kernels_from_impls(func):
         supported_kernels = []
+        variadic = -1
         for impl in func['impls']:
             signature = ""
             if 'args' in impl:
                 for arg in impl['args']:
                     if 'value' in arg:
-                        signature += arg['value'] + "_"
+                        arg_type = arg['value']
+                        if arg_type.endswith('?'):
+                            arg_type = arg_type[:-1]
+                        signature += Substrait.get_short_type(arg_type) + "_"
                     else:
                         debug(f"Missing value in arg: {arg['options']} for function: {func['name']}")
                         signature += 'string_'
                 signature = signature[:-1]  # remove the last , from the signature
-            # signature += ":" + impl['return']
+                if 'variadic' in impl:
+                    if 'min' in impl['variadic']:
+                        variadic = impl['variadic']['min']
             supported_kernels.append(signature)
-        return supported_kernels
+        return supported_kernels, variadic
 
     @staticmethod
     def add_functions_to_map(func_list, function_map, suffix, extension):
@@ -46,7 +126,9 @@ class Substrait:
                 debug(f"Duplicate function name: {name} renaming to {name}_{suffix} extension: {extension}")
                 name = f"{name}_{suffix}"
                 assert name not in function_map
-            func['supported_kernels'] = Substrait.get_supported_kernels_from_impls(func)
+            func['supported_kernels'], variadic = Substrait.get_supported_kernels_from_impls(func)
+            if variadic >= 0:
+                func['variadic'] = variadic
             func['uri'] = uri
             func.pop('description', None)
             func.pop('impls', None)
@@ -80,7 +162,8 @@ class Substrait:
                 if 'aggregate_functions' in data:
                     Substrait.add_functions_to_map(data['aggregate_functions'], aggregate_functions, suffix, extension)
 
-        return {'dependencies': dependencies, 'scalar_functions': scalar_functions, 'aggregate_functions': aggregate_functions}
+        return {'dependencies': dependencies, 'scalar_functions': scalar_functions,
+                'aggregate_functions': aggregate_functions}
 
 
 class Dialect:
@@ -124,6 +207,8 @@ class Dialect:
             if name in substrait_functions:
                 func['supported_kernels'] = Dialect.get_supported_kernels_in_func(func, substrait_functions[name])
                 func['name'] = substrait_functions[name]['uri']
+                if 'variadic' in substrait_functions[name]:
+                    func['variadic'] = substrait_functions[name]['variadic']
             else:
                 error(f"Function {name} not found in substrait functions")
             func.pop('unsupported_kernels', None)
@@ -167,10 +252,10 @@ print(
 with open('out_substrait_funcs.yaml', 'w') as f:
     yaml_obj.dump(substrait_spec, f)
 
-process_one_dialect(substrait_spec, 'cudf')
-process_one_dialect(substrait_spec, 'datafusion')
+# process_one_dialect(substrait_spec, 'cudf')
+# process_one_dialect(substrait_spec, 'datafusion')
 process_one_dialect(substrait_spec, 'duckdb')
-process_one_dialect(substrait_spec, 'postgres')
-process_one_dialect(substrait_spec, 'snowflake')
-process_one_dialect(substrait_spec, 'sqlite')
-process_one_dialect(substrait_spec, 'velox_presto')
+# process_one_dialect(substrait_spec, 'postgres')
+# process_one_dialect(substrait_spec, 'snowflake')
+# process_one_dialect(substrait_spec, 'sqlite')
+# process_one_dialect(substrait_spec, 'velox_presto')
