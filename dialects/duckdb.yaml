@@ -533,6 +533,45 @@ scalar_functions:
   supported_kernels:
   - vchar_vchar
   - str_str
+- name: string.starts_with
+  required_options:
+    case_sensitivity: CASE_SENSITIVE
+  supported_kernels:
+  - vchar_vchar
+  - vchar_str
+  - vchar_fchar
+  - str_str
+  - str_vchar
+  - str_fchar
+  - fchar_fchar
+  - fchar_str
+  - fchar_vchar
+- name: string.ends_with
+  required_options:
+    case_sensitivity: CASE_SENSITIVE
+  supported_kernels:
+  - vchar_vchar
+  - vchar_str
+  - vchar_fchar
+  - str_str
+  - str_vchar
+  - str_fchar
+  - fchar_fchar
+  - fchar_str
+  - fchar_vchar
+- name: string.contains
+  required_options:
+    case_sensitivity: CASE_SENSITIVE
+  supported_kernels:
+  - vchar_vchar
+  - vchar_str
+  - vchar_fchar
+  - str_str
+  - str_vchar
+  - str_fchar
+  - fchar_fchar
+  - fchar_str
+  - fchar_vchar
 - name: logarithmic.ln
   required_options:
     on_log_zero: ERROR
