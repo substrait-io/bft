@@ -30,8 +30,8 @@ type_to_short_type = {
     'timestamp_tz': 'tstz',
     'date': 'date',
     'time': 'time',
-    'interval_year': 'iyear',
-    'interval_day': 'iday',
+    'interval_year': 'interval',
+    'interval_day': 'interval',
     'uuid': 'uuid',
     'fixedchar<N>': 'fchar',
     'varchar<N>': 'vchar',
@@ -252,10 +252,10 @@ print(
 with open('out_substrait_funcs.yaml', 'w') as f:
     yaml_obj.dump(substrait_spec, f)
 
-# process_one_dialect(substrait_spec, 'cudf')
-# process_one_dialect(substrait_spec, 'datafusion')
+process_one_dialect(substrait_spec, 'cudf')
+process_one_dialect(substrait_spec, 'datafusion')
 process_one_dialect(substrait_spec, 'duckdb')
-# process_one_dialect(substrait_spec, 'postgres')
-# process_one_dialect(substrait_spec, 'snowflake')
-# process_one_dialect(substrait_spec, 'sqlite')
-# process_one_dialect(substrait_spec, 'velox_presto')
+process_one_dialect(substrait_spec, 'postgres')
+process_one_dialect(substrait_spec, 'snowflake')
+process_one_dialect(substrait_spec, 'sqlite')
+process_one_dialect(substrait_spec, 'velox_presto')
