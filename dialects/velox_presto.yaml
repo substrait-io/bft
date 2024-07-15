@@ -280,17 +280,14 @@ scalar_functions:
   supported_kernels:
   - i32_i32
   - i64_i32
-  - fp32_i32
 - name: string.substring
   local_name: substr
   required_options:
     negative_start: WRAP_FROM_END
   supported_kernels:
   - vchar_i32_i32
-  - str_i32_i32
   - fchar_i32_i32
   - vchar_i32
-  - str_i32
   - fchar_i32
 - name: string.concat
   required_options:
@@ -352,19 +349,9 @@ scalar_functions:
 - name: string.lpad
   supported_kernels:
   - vchar_i32_vchar
-  - str_i32_str
 - name: string.rpad
   supported_kernels:
   - vchar_i32_vchar
-  - str_i32_str
-- name: string.left
-  supported_kernels:
-  - vchar_i32
-  - str_i32
-- name: string.right
-  supported_kernels:
-  - vchar_i32
-  - str_i32
 - name: logarithmic.ln
   required_options:
     on_log_zero: MINUS_INFINITY
