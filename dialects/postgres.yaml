@@ -519,6 +519,7 @@ scalar_functions:
   - str_str_i64
   - vchar_vchar_i64
   - fchar_fchar_i64
+  - str_str
 - name: string.regexp_match_substring
   local_name: regexp_substr
   supported_kernels:
