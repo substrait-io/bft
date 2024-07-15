@@ -5,7 +5,9 @@ from bft.dialects.types import DialectFile, DialectFunction, DialectKernel, shor
 class DialectFileVisitor(BaseYamlVisitor[DialectFile]):
     @staticmethod
     def visit_kernel(kernel):
-        arg_types = [DialectFileVisitor.get_long_type(arg_type) for arg_type in kernel.split("_")]
+        arg_types = []
+        if kernel != '':
+            arg_types = [DialectFileVisitor.get_long_type(arg_type) for arg_type in kernel.split("_")]
         return DialectKernel(arg_types, any)
 
     @staticmethod

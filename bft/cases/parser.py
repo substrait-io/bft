@@ -43,8 +43,9 @@ class CaseFileVisitor(BaseYamlVisitor[CaseFile]):
     def visit_literal(self, lit):
         value = self._get_or_die(lit, "value")
         data_type = self._get_or_die(lit, "type")
+        is_not_a_func_arg = self._get_or_else(lit, "is_not_a_func_arg", False)
         value = self.__normalize_yaml_literal(value, data_type)
-        return CaseLiteral(value, data_type)
+        return CaseLiteral(value, data_type, is_not_a_func_arg)
 
     def visit_literal_result(self, lit):
         value = self._get_or_die(lit, "value")

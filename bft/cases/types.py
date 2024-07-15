@@ -4,6 +4,7 @@ from typing import Dict, List, Literal, NamedTuple, Tuple
 class CaseLiteral(NamedTuple):
     value: str | int | float | list
     type: str
+    is_not_a_func_arg: bool = False  # if true it is used only to populate test data
 
 
 class CaseGroup(NamedTuple):

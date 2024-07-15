@@ -120,6 +120,8 @@ class Dialect(object):
         for supported_kernel in dfunc.supported_kernels:
             if dfunc.aggregate:
                 arg_len = 1
+                if len(args) == 0 or args[0].is_not_a_func_arg:
+                    arg_len = 0
             else:
                 arg_len = len(args)
             if len(supported_kernel.arg_types) != arg_len and dfunc.variadic_min == -1:
