@@ -311,10 +311,6 @@ scalar_functions:
   - str
   - vchar
   - fchar
-- name: string.repeat
-  supported_kernels:
-  - str_i64
-  - vchar_i64_i64
 - name: string.replace
   supported_kernels:
   - str_str_str
