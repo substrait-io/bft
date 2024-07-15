@@ -314,6 +314,7 @@ scalar_functions:
   supported_kernels:
   - string_tstz_str
   - string_ptstz_str
+  - string_tstz
   - string_ts
   - string_pts
   - string_date
@@ -401,6 +402,7 @@ scalar_functions:
   supported_kernels:
   - str_str_str_i64_i64
   - vchar_vchar_vchar_i64_i64
+  - str_str_str
 - name: string.regexp_string_split
   local_name: split
   required_options:
