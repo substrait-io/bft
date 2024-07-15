@@ -1,254 +1,528 @@
 name: cudf
 type: sql
+dependencies:
+  aggregate_approx: 
+    https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_aggregate_approx.yaml
+  aggregate_generic: 
+    https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_aggregate_generic.yaml
+  arithmetic: 
+    https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_arithmetic.yaml
+  arithmetic_decimal: 
+    https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_arithmetic_decimal.yaml
+  boolean: 
+    https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_boolean.yaml
+  comparison: 
+    https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_comparison.yaml
+  datetime: 
+    https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_datetime.yaml
+  geometry: 
+    https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_geometry.yaml
+  logarithmic: 
+    https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_logarithmic.yaml
+  rounding: 
+    https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_rounding.yaml
+  set: 
+    https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_set.yaml
+  string: 
+    https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_string.yaml
 scalar_functions:
-  - name: add
-    local_name: add
-    required_options:
-      overflow: SILENT # cudf rolls over on overflow
-      rounding: TIE_TO_EVEN
-  - name: subtract
-    local_name: subtract
-    required_options:
-      overflow: SILENT # cudf rolls over on overflow
-      rounding: TIE_TO_EVEN
-  - name: multiply
-    local_name: multiply
-    required_options:
-      overflow: SILENT # cudf rolls over on overflow
-      rounding: TIE_TO_EVEN
-  - name: divide
-    local_name: divide
-    required_options:
-      overflow: SILENT # cudf rolls over on overflow
-      rounding: TIE_TO_EVEN
-      on_division_by_zero: LIMIT
-      on_domain_error: NAN
-  - name: modulus
-    local_name: mod
-    required_options:
-      division_type: FLOOR
-      overflow: SILENT
-      on_domain_error: "NULL"
-  - name: power
-    local_name: pow
-    required_options:
-      overflow: SILENT
-  - name: sqrt
-    local_name: sqrt
-    required_options:
-      on_domain_error: NAN
-      rounding: TIE_TO_EVEN
-  - name: exp
-    local_name: exp
-    required_options:
-      rounding: TIE_TO_EVEN
-  - name: cos
-    local_name: cos
-    required_options:
-      rounding: TIE_TO_EVEN
-  - name: sin
-    local_name: sin
-    required_options:
-      rounding: TIE_TO_EVEN
-  - name: tan
-    local_name: tan
-    required_options:
-      rounding: TIE_TO_EVEN
-  - name: cosh
-    local_name: cosh
-    required_options:
-      rounding: TIE_TO_EVEN
-  - name: sinh
-    local_name: sinh
-    required_options:
-      rounding: TIE_TO_EVEN
-  - name: tanh
-    local_name: cosh
-    required_options:
-      rounding: TIE_TO_EVEN
-  - name: acos
-    local_name: arccos
-    required_options:
-      rounding: TIE_TO_EVEN
-      on_domain_error: NAN
-  - name: asin
-    local_name: arcsin
-    required_options:
-      rounding: TIE_TO_EVEN
-      on_domain_error: NAN
-  - name: atan
-    local_name: arctan
-    required_options:
-      rounding: TIE_TO_EVEN
-  - name: acosh
-    local_name: arccosh
-    required_options:
-      rounding: TIE_TO_EVEN
-      on_domain_error: NAN
-  - name: asinh
-    local_name: arcsinh
-    required_options:
-      rounding: TIE_TO_EVEN
-  - name: atanh
-    local_name: arctanh
-    required_options:
-      rounding: TIE_TO_EVEN
-      on_domain_error: NAN
-  - name: atan2
-    unsupported: true
-  - name: factorial
-    unsupported: true
-  - name: abs
-    local_name: abs
-    required_options:
-      overflow: SILENT
-  - name: sign
-    unsupported: true
-  - name: negate
-    unsupported: true
-  - name: bitwise_not
-    local_name: "~"
-  - name: bitwise_and
-    local_name: and_
-  - name: bitwise_or
-    local_name: or_
-  - name: bitwise_xor
-    local_name: xor
-  - name: and
-    infix: True
-  - name: and_not
-    unsupported: true
-  - name: or
-    infix: True
-  - name: xor
-  - name: not
-  - name: lt
-  - name: lte
-    local_name: "le"
-  - name: gt
-  - name: gte
-    local_name: "ge"
-  - name: equal
-    local_name: "eq"
-  - name: not_equal
-    local_name: "ne"
-  - name: is_not_distinct_from
-    unsupported: True
-  - name: is_null
-    local_name: "isnull"
-  - name: is_not_null
-    local_name: "notnull"
-  - name: nullif
-    unsupported: True
-  - name: coalesce
-    unsupported: True
-  - name: is_finite
-    unsupported: True
-  - name: is_infinite
-    unsupported: True
-  - name: is_nan
-    local_name: "isna"
-  - name: between
-  - name: ceil
-  - name: floor
-  - name: round
-  - name: extract
-    extract: True
-  - name: add_datetime
-    unsupported: True
-  - name: add_intervals
-    unsupported: True
-  - name: subtract_datetime
-    unsupported: True
-  - name: lt_datetime
-    local_name: "<"
-    infix: True
-  - name: lte_datetime
-    local_name: "<="
-    infix: True
-  - name: gt_datetime
-    local_name: ">"
-    infix: True
-  - name: gt_datetime
-    local_name: ">="
-    infix: True
-  - name: substring
-    unsupported: True
-  - name: concat
-    required_options:
-      null_handling: ACCEPT_NULLS
-  - name: concat_ws
-    local_name: "cat"
-  - name: like
-  - name: lower
-  - name: upper
-  - name: reverse
-    unsupported: True
-  - name: repeat
-  - name: replace
-  - name: regexp_replace
-    local_name: "replace"
-    required_options:
-      lookaround: FALSE
-  - name: regexp_string_split
-    local_name: "split"
-    required_options:
-      lookaround: FALSE
-  - name: regexp_count_substring
-    unsupported: True
-  - name: regexp_match_substring
-    unsupported: True
-  - name: bit_length
-    unsupported: True
-  - name: char_length
-    local_name: "len"
-  - name: octet_length
-    unsupported: True
-  - name: ltrim
-    local_name: "lstrip"
-  - name: rtrim
-    local_name: "rstrip"
-  - name: trim
-    local_name: "strip"
-  - name: lpad
-    local_name: "rjust"
-  - name: rpad
-    local_name: "ljust"
-  - name: left
-    unsupported: true
-  - name: right
-    unsupported: true
-  - name: string_split
-    local_name: "split"
-  - name: starts_with
-    required_options:
-      case_sensitivity: CASE_SENSITIVE
-  - name: ends_with
-    required_options:
-      case_sensitivity: CASE_SENSITIVE
-  - name: contains
-    required_options:
-      case_sensitivity: CASE_SENSITIVE
-  - name: ln
-    local_name: log
-    required_options:
-      on_log_zero: MINUS_INFINITY
-  - name: log10
-    unsupported: true
-  - name: log2
-    unsupported: true
+- name: arithmetic.add
+  local_name: add
+  required_options:
+    overflow: SILENT
+    rounding: TIE_TO_EVEN
+  supported_kernels:
+  - i8_i8
+  - i16_i16
+  - i32_i32
+  - i64_i64
+  - fp32_fp32
+  - fp64_fp64
+- name: arithmetic.subtract
+  local_name: subtract
+  required_options:
+    overflow: SILENT
+    rounding: TIE_TO_EVEN
+  supported_kernels:
+  - i8_i8
+  - i16_i16
+  - i32_i32
+  - i64_i64
+  - fp32_fp32
+  - fp64_fp64
+- name: arithmetic.multiply
+  local_name: multiply
+  required_options:
+    overflow: SILENT
+    rounding: TIE_TO_EVEN
+  supported_kernels:
+  - i8_i8
+  - i16_i16
+  - i32_i32
+  - i64_i64
+  - fp32_fp32
+  - fp64_fp64
+- name: arithmetic.divide
+  local_name: divide
+  required_options:
+    overflow: SILENT
+    rounding: TIE_TO_EVEN
+    on_division_by_zero: LIMIT
+    on_domain_error: NAN
+  supported_kernels:
+  - i8_i8
+  - i16_i16
+  - i32_i32
+  - i64_i64
+  - fp32_fp32
+  - fp64_fp64
+- name: arithmetic.modulus
+  local_name: mod
+  required_options:
+    division_type: FLOOR
+    overflow: SILENT
+    on_domain_error: 'NULL'
+  supported_kernels:
+  - i8_i8
+  - i16_i16
+  - i32_i32
+  - i64_i64
+- name: arithmetic.power
+  local_name: pow
+  required_options:
+    overflow: SILENT
+  supported_kernels:
+  - i64_i64
+  - fp32_fp32
+  - fp64_fp64
+- name: arithmetic.sqrt
+  local_name: sqrt
+  required_options:
+    on_domain_error: NAN
+    rounding: TIE_TO_EVEN
+  supported_kernels:
+  - i64
+  - fp32
+  - fp64
+- name: arithmetic.exp
+  local_name: exp
+  required_options:
+    rounding: TIE_TO_EVEN
+  supported_kernels:
+  - i64
+  - fp32
+  - fp64
+- name: arithmetic.cos
+  local_name: cos
+  required_options:
+    rounding: TIE_TO_EVEN
+  supported_kernels:
+  - fp32
+  - fp64
+- name: arithmetic.sin
+  local_name: sin
+  required_options:
+    rounding: TIE_TO_EVEN
+  supported_kernels:
+  - fp32
+  - fp64
+- name: arithmetic.tan
+  local_name: tan
+  required_options:
+    rounding: TIE_TO_EVEN
+  supported_kernels:
+  - fp32
+  - fp64
+- name: arithmetic.cosh
+  local_name: cosh
+  required_options:
+    rounding: TIE_TO_EVEN
+  supported_kernels:
+  - fp32
+  - fp64
+- name: arithmetic.sinh
+  local_name: sinh
+  required_options:
+    rounding: TIE_TO_EVEN
+  supported_kernels:
+  - fp32
+  - fp64
+- name: arithmetic.tanh
+  local_name: cosh
+  required_options:
+    rounding: TIE_TO_EVEN
+  supported_kernels:
+  - fp32
+  - fp64
+- name: arithmetic.acos
+  local_name: arccos
+  required_options:
+    rounding: TIE_TO_EVEN
+    on_domain_error: NAN
+  supported_kernels:
+  - fp32
+  - fp64
+- name: arithmetic.asin
+  local_name: arcsin
+  required_options:
+    rounding: TIE_TO_EVEN
+    on_domain_error: NAN
+  supported_kernels:
+  - fp32
+  - fp64
+- name: arithmetic.atan
+  local_name: arctan
+  required_options:
+    rounding: TIE_TO_EVEN
+  supported_kernels:
+  - fp32
+  - fp64
+- name: arithmetic.acosh
+  local_name: arccosh
+  required_options:
+    rounding: TIE_TO_EVEN
+    on_domain_error: NAN
+  supported_kernels:
+  - fp32
+  - fp64
+- name: arithmetic.asinh
+  local_name: arcsinh
+  required_options:
+    rounding: TIE_TO_EVEN
+  supported_kernels:
+  - fp32
+  - fp64
+- name: arithmetic.atanh
+  local_name: arctanh
+  required_options:
+    rounding: TIE_TO_EVEN
+    on_domain_error: NAN
+  supported_kernels:
+  - fp32
+  - fp64
+- name: arithmetic.abs
+  local_name: abs
+  required_options:
+    overflow: SILENT
+  supported_kernels:
+  - i8
+  - i16
+  - i32
+  - i64
+  - fp32
+  - fp64
+- name: arithmetic.bitwise_not
+  local_name: '~'
+  supported_kernels:
+  - i8
+  - i16
+  - i32
+  - i64
+- name: arithmetic.bitwise_and
+  local_name: and_
+  supported_kernels:
+  - i8_i8
+  - i16_i16
+  - i32_i32
+  - i64_i64
+- name: arithmetic.bitwise_or
+  local_name: or_
+  supported_kernels:
+  - i8_i8
+  - i16_i16
+  - i32_i32
+  - i64_i64
+- name: arithmetic.bitwise_xor
+  local_name: xor
+  supported_kernels:
+  - i8_i8
+  - i16_i16
+  - i32_i32
+  - i64_i64
+- name: boolean.and
+  infix: true
+  supported_kernels:
+  - bool
+  variadic: 0
+- name: boolean.or
+  infix: true
+  supported_kernels:
+  - bool
+  variadic: 0
+- name: boolean.xor
+  supported_kernels:
+  - bool_bool
+- name: boolean.not
+  supported_kernels:
+  - bool
+- name: comparison.lt
+  supported_kernels:
+  - any1_any1
+- name: comparison.lte
+  local_name: le
+  supported_kernels:
+  - any1_any1
+- name: comparison.gt
+  supported_kernels:
+  - any1_any1
+- name: comparison.gte
+  local_name: ge
+  supported_kernels:
+  - any1_any1
+- name: comparison.equal
+  local_name: eq
+  supported_kernels:
+  - any1_any1
+- name: comparison.not_equal
+  local_name: ne
+  supported_kernels:
+  - any1_any1
+- name: comparison.is_null
+  local_name: isnull
+  supported_kernels:
+  - any1
+- name: comparison.is_not_null
+  local_name: notnull
+  supported_kernels:
+  - any1
+- name: comparison.is_nan
+  local_name: isna
+  supported_kernels:
+  - fp32
+  - fp64
+- name: comparison.between
+  supported_kernels:
+  - any1_any1_any1
+- name: rounding.ceil
+  supported_kernels:
+  - fp32
+  - fp64
+- name: rounding.floor
+  supported_kernels:
+  - fp32
+  - fp64
+- name: rounding.round
+  supported_kernels:
+  - i8_i32
+  - i16_i32
+  - i32_i32
+  - i64_i32
+  - fp32_i32
+  - fp64_i32
+- name: datetime.extract
+  extract: true
+  supported_kernels:
+  - string_tstz_str
+  - string_ptstz_str
+  - string_ts
+  - string_pts
+  - string_date
+  - string_time
+  - string_string_tstz_str
+  - string_string_ptstz_str
+  - string_string_ts
+  - string_string_pts
+  - string_string_date
+- name: datetime.lt
+  local_name: <
+  infix: true
+  supported_kernels:
+  - ts_ts
+  - tstz_tstz
+  - date_date
+  - interval_interval
+  - interval_interval
+- name: datetime.lte
+  local_name: <=
+  infix: true
+  supported_kernels:
+  - ts_ts
+  - tstz_tstz
+  - date_date
+  - interval_interval
+  - interval_interval
+- name: datetime.gt
+  local_name: '>'
+  infix: true
+  supported_kernels:
+  - ts_ts
+  - tstz_tstz
+  - date_date
+  - interval_interval
+  - interval_interval
+- name: datetime.gt
+  local_name: '>='
+  infix: true
+  supported_kernels:
+  - ts_ts
+  - tstz_tstz
+  - date_date
+  - interval_interval
+  - interval_interval
+- name: string.concat
+  required_options:
+    null_handling: ACCEPT_NULLS
+  supported_kernels:
+  - vchar
+  - str
+  variadic: 1
+- name: string.concat_ws
+  local_name: cat
+  supported_kernels:
+  - str_str
+  - vchar_vchar
+  variadic: 1
+- name: string.like
+  supported_kernels:
+  - vchar_vchar
+  - str_str
+- name: string.lower
+  supported_kernels:
+  - str
+  - vchar
+  - fchar
+- name: string.upper
+  supported_kernels:
+  - str
+  - vchar
+  - fchar
+- name: string.repeat
+  supported_kernels:
+  - str_i64
+  - vchar_i64_i64
+- name: string.replace
+  supported_kernels:
+  - str_str_str
+  - vchar_vchar_vchar
+- name: string.regexp_replace
+  local_name: replace
+  required_options:
+    lookaround: false
+  supported_kernels:
+  - str_str_str_i64_i64
+  - vchar_vchar_vchar_i64_i64
+- name: string.regexp_string_split
+  local_name: split
+  required_options:
+    lookaround: false
+  supported_kernels:
+  - vchar_vchar
+  - str_str
+- name: string.char_length
+  local_name: len
+  supported_kernels:
+  - str
+  - vchar
+  - fchar
+- name: string.ltrim
+  local_name: lstrip
+  supported_kernels:
+  - vchar_vchar
+  - str_str
+  - str
+- name: string.rtrim
+  local_name: rstrip
+  supported_kernels:
+  - vchar_vchar
+  - str_str
+  - str
+- name: string.trim
+  local_name: strip
+  supported_kernels:
+  - vchar_vchar
+  - str_str
+  - str
+- name: string.lpad
+  local_name: rjust
+  supported_kernels:
+  - vchar_i32_vchar
+  - str_i32_str
+- name: string.rpad
+  local_name: ljust
+  supported_kernels:
+  - vchar_i32_vchar
+  - str_i32_str
+- name: string.string_split
+  local_name: split
+  supported_kernels:
+  - vchar_vchar
+  - str_str
+- name: string.starts_with
+  required_options:
+    case_sensitivity: CASE_SENSITIVE
+  supported_kernels:
+  - vchar_vchar
+  - vchar_str
+  - vchar_fchar
+  - str_str
+  - str_vchar
+  - str_fchar
+  - fchar_fchar
+  - fchar_str
+  - fchar_vchar
+- name: string.ends_with
+  required_options:
+    case_sensitivity: CASE_SENSITIVE
+  supported_kernels:
+  - vchar_vchar
+  - vchar_str
+  - vchar_fchar
+  - str_str
+  - str_vchar
+  - str_fchar
+  - fchar_fchar
+  - fchar_str
+  - fchar_vchar
+- name: string.contains
+  required_options:
+    case_sensitivity: CASE_SENSITIVE
+  supported_kernels:
+  - vchar_vchar
+  - vchar_str
+  - vchar_fchar
+  - str_str
+  - str_vchar
+  - str_fchar
+  - fchar_fchar
+  - fchar_str
+  - fchar_vchar
+- name: logarithmic.ln
+  local_name: log10
+  required_options:
+    on_log_zero: MINUS_INFINITY
+  supported_kernels:
+  - i64
+  - fp32
+  - fp64
 aggregate_functions:
-  - name: min
-    aggregate: True
-  - name: max
-    aggregate: True
-  - name: sum
-    aggregate: True
-  - name: count
-    aggregate: True
-  - name: approx_count_distinct
-    unsupported: true
-  - name: bool_and
-    unsupported: true
-  - name: bool_or
-    unsupported: true
+- name: arithmetic.min
+  aggregate: true
+  supported_kernels:
+  - i8
+  - i16
+  - i32
+  - i64
+  - fp32
+  - fp64
+- name: arithmetic.max
+  aggregate: true
+  supported_kernels:
+  - i8
+  - i16
+  - i32
+  - i64
+  - fp32
+  - fp64
+- name: arithmetic.sum
+  aggregate: true
+  supported_kernels:
+  - i8
+  - i16
+  - i32
+  - i64
+  - fp32
+  - fp64
+- name: aggregate_generic.count
+  aggregate: true
+  supported_kernels:
+  - any
