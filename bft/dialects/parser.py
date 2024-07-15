@@ -66,7 +66,8 @@ class DialectFileVisitor(BaseYamlVisitor[DialectFile]):
             self.visit_aggregate_function, dfile, "aggregate_functions"
         )
         uri_to_func_prefix = {uri: func_prefix for func_prefix, uri in dfile.get("dependencies", {}).items()}
-        return DialectFile(name, dtype, scalar_functions, aggregate_functions, uri_to_func_prefix)
+        supported_types = self._visit_list(self.get_long_type, dfile, "supported_types")
+        return DialectFile(name, dtype, scalar_functions, aggregate_functions, uri_to_func_prefix, supported_types)
 
 
 class DialectFileParser(BaseYamlParser[DialectFile]):

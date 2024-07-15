@@ -83,6 +83,7 @@ class DialectFile(NamedTuple):
     scalar_functions: List[DialectFunction]
     aggregate_functions: List[DialectFunction]
     uri_to_func_prefix: Dict[str, str]
+    supported_types: List[str]
 
 
 class SqlMapping(NamedTuple):
@@ -100,6 +101,7 @@ class SqlMapping(NamedTuple):
 class Dialect(object):
     def __init__(self, dialect_file: DialectFile):
         self.name = dialect_file.name
+        self.supported_types = dialect_file.supported_types
         self.__scalar_functions_by_name: Dict[str, DialectFunction] = {
             f.name: f for f in dialect_file.scalar_functions
         }
@@ -139,6 +141,9 @@ class Dialect(object):
                     break
                 if ktype.startswith("any"):
                     if ktype not in any_map:
+                        if arg.type not in self.supported_types:
+                            matched = False
+                            break
                         any_map[ktype] = arg.type
                     elif any_map[ktype] != arg.type:
                         matched = False
