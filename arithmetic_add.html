@@ -144,79 +144,43 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-snowflake">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-postgres">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-cudf">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-velox_presto">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
@@ -337,6 +301,62 @@ because the first will overflow and the second will not.</p>
             </table>
             
             <table>
+                <caption>examples using the date types and resulting in a timestamp</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (date)</th>
+                        
+                        <th>arg2 (interval)</th>
+                        
+                        <th>result (timestamp)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2020-12-31</td>
+                        
+                        <td>INTERVAL '5 DAY'</td>
+                        
+                        <td>2021-01-05 00:00:00</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2020-12-31 </td>
+                        
+                        <td>INTERVAL '5 YEAR'</td>
+                        
+                        <td>2025-12-31 00:00:00</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2020-12-31</td>
+                        
+                        <td>INTERVAL '5 MONTH'</td>
+                        
+                        <td>2021-05-31 00:00:00</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
                 <caption>Examples demonstrating exceptional floating point cases</caption>
                 <thead>
                     <tr>
@@ -372,6 +392,36 @@ because the first will overflow and the second will not.</p>
                         <td>-1.5e+308</td>
                         
                         <td>-inf</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>examples with null args or return</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (date)</th>
+                        
+                        <th>arg2 (interval)</th>
+                        
+                        <th>result (date)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>None</td>
+                        
+                        <td>INTERVAL '5 DAY'</td>
+                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -538,6 +588,62 @@ because the first will overflow and the second will not.</p>
             </table>
             
             <table>
+                <caption>examples using the timestamp types</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (timestamp)</th>
+                        
+                        <th>arg2 (interval)</th>
+                        
+                        <th>result (timestamp)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2016-12-31 13:30:15</td>
+                        
+                        <td>INTERVAL '5 DAY'</td>
+                        
+                        <td>2017-01-05 13:30:15</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2016-12-01 13:30:15</td>
+                        
+                        <td>INTERVAL '5 YEAR'</td>
+                        
+                        <td>2021-12-01 13:30:15</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2016-12-01 13:30:15</td>
+                        
+                        <td>INTERVAL '5 HOUR'</td>
+                        
+                        <td>2016-12-01 18:30:15</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
                 <caption>Examples demonstrating behavior of different data types</caption>
                 <thead>
                     <tr>
@@ -617,6 +723,22 @@ because the first will overflow and the second will not.</p>
                 
                 
                 
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
                   "The dialect duckdb expects overflow=ERROR but overflow=SATURATE was requested",
                 
                 
@@ -636,20 +758,32 @@ because the first will overflow and the second will not.</p>
                   null,
                 
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -658,19 +792,31 @@ because the first will overflow and the second will not.</p>
             examples: [
                 
                 
-                  "The dialect snowflake does not support the kernel add(i8, i8) -> i8",
+                  "The dialect snowflake does not support the kernel arithmetic.add(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel add(i16, i16) -> i16",
+                  "The dialect snowflake does not support the kernel arithmetic.add(i16, i16) -> i16",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel add(i32, i32) -> i32",
+                  "The dialect snowflake does not support the kernel arithmetic.add(i32, i32) -> i32",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel add(i64, i64) -> i64",
+                  "The dialect snowflake does not support the kernel arithmetic.add(i64, i64) -> i64",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -682,35 +828,51 @@ because the first will overflow and the second will not.</p>
                 
                 
                 
-                  "The dialect snowflake does not support the kernel add(i8, i8) -> error",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel add(i16, i16) -> error",
+                  "The dialect snowflake does not support the kernel arithmetic.add(i8, i8) -> error",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel add(i32, i32) -> error",
+                  "The dialect snowflake does not support the kernel arithmetic.add(i16, i16) -> error",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel add(i64, i64) -> error",
+                  "The dialect snowflake does not support the kernel arithmetic.add(i32, i32) -> error",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel add(i8, i8) -> i8",
+                  "The dialect snowflake does not support the kernel arithmetic.add(i64, i64) -> error",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel add(i8, i8) -> i8",
+                  "The dialect snowflake does not support the kernel arithmetic.add(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel add(i8, i8) -> undefined",
+                  "The dialect snowflake does not support the kernel arithmetic.add(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel add(fp32, fp32) -> fp32",
+                  "The dialect snowflake does not support the kernel arithmetic.add(i8, i8) -> undefined",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel arithmetic.add(fp32, fp32) -> fp32",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -730,7 +892,7 @@ because the first will overflow and the second will not.</p>
                 
                 false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -739,7 +901,7 @@ because the first will overflow and the second will not.</p>
             examples: [
                 
                 
-                  "The dialect postgres does not support the kernel add(i8, i8) -> i8",
+                  "The dialect postgres does not support the kernel arithmetic.add(i8, i8) -> i8",
                 
                 
                 
@@ -763,7 +925,23 @@ because the first will overflow and the second will not.</p>
                 
                 
                 
-                  "The dialect postgres does not support the kernel add(i8, i8) -> error",
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel arithmetic.add(i8, i8) -> error",
                 
                 
                 
@@ -779,15 +957,27 @@ because the first will overflow and the second will not.</p>
                 
                 
                 
-                  "The dialect postgres does not support the kernel add(i8, i8) -> i8",
+                  "The dialect postgres does not support the kernel arithmetic.add(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect postgres does not support the kernel add(i8, i8) -> i8",
+                  "The dialect postgres does not support the kernel arithmetic.add(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect postgres does not support the kernel add(i8, i8) -> undefined",
+                  "The dialect postgres does not support the kernel arithmetic.add(i8, i8) -> undefined",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
                 
@@ -803,15 +993,15 @@ because the first will overflow and the second will not.</p>
                 
                 false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -836,11 +1026,27 @@ because the first will overflow and the second will not.</p>
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
                   null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -873,6 +1079,18 @@ because the first will overflow and the second will not.</p>
                 
                 
                   null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -882,17 +1100,17 @@ because the first will overflow and the second will not.</p>
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -917,11 +1135,27 @@ because the first will overflow and the second will not.</p>
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
                   null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -954,6 +1188,18 @@ because the first will overflow and the second will not.</p>
                 
                 
                   null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -963,17 +1209,17 @@ because the first will overflow and the second will not.</p>
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -998,11 +1244,27 @@ because the first will overflow and the second will not.</p>
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
                   null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -1035,6 +1297,18 @@ because the first will overflow and the second will not.</p>
                 
                 
                   null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -1044,17 +1318,17 @@ because the first will overflow and the second will not.</p>
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -1063,15 +1337,31 @@ because the first will overflow and the second will not.</p>
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel add(i8, i8) -> i8",
+                  "The dialect velox_presto does not support the kernel arithmetic.add(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel add(i16, i16) -> i16",
+                  "The dialect velox_presto does not support the kernel arithmetic.add(i16, i16) -> i16",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel add(i32, i32) -> i32",
+                  "The dialect velox_presto does not support the kernel arithmetic.add(i32, i32) -> i32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -1083,39 +1373,51 @@ because the first will overflow and the second will not.</p>
                 
                 
                 
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.add(i8, i8) -> error",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.add(i16, i16) -> error",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.add(i32, i32) -> error",
+                
+                
+                
                   null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel add(i8, i8) -> error",
+                  "The dialect velox_presto does not support the kernel arithmetic.add(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel add(i16, i16) -> error",
+                  "The dialect velox_presto does not support the kernel arithmetic.add(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel add(i32, i32) -> error",
+                  "The dialect velox_presto does not support the kernel arithmetic.add(i8, i8) -> undefined",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel arithmetic.add(fp32, fp32) -> fp32",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel add(i8, i8) -> i8",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel add(i8, i8) -> i8",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel add(i8, i8) -> undefined",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel add(fp32, fp32) -> fp32",
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -1131,11 +1433,11 @@ because the first will overflow and the second will not.</p>
                 
                 false,
                 
-                true,
+                false,
                 
                 false,
                 
-                true,
+                false,
                 
             ]
         },

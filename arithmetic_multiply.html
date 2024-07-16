@@ -146,73 +146,43 @@ then round to the value closest to zero.</p>
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-snowflake">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-postgres">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-cudf">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-velox_presto">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
@@ -505,7 +475,7 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
                     <tr>
                         
                         
-                        <th>arg1 (fp32)</th>
+                        <th>arg1 (fp64)</th>
                         
                         <th>arg2 (fp64)</th>
                         
@@ -597,17 +567,17 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -616,59 +586,59 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
             examples: [
                 
                 
-                  "The dialect snowflake does not support the kernel multiply(i8, i8) -> i8",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel multiply(i16, i16) -> i16",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel multiply(i32, i32) -> i32",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel multiply(i64, i64) -> i64",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel multiply(i8, i8) -> error",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel multiply(i16, i16) -> error",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel multiply(i32, i32) -> error",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel multiply(i64, i64) -> error",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel multiply(i8, i8) -> i8",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel multiply(i8, i8) -> i8",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel multiply(i8, i8) -> undefined",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -684,7 +654,7 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
                 
                 false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -693,7 +663,7 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
             examples: [
                 
                 
-                  "The dialect postgres does not support the kernel multiply(i8, i8) -> i8",
+                  "The dialect postgres does not support the kernel arithmetic.multiply(i8, i8) -> i8",
                 
                 
                 
@@ -717,7 +687,7 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
                 
                 
                 
-                  "The dialect postgres does not support the kernel multiply(i8, i8) -> error",
+                  "The dialect postgres does not support the kernel arithmetic.multiply(i8, i8) -> error",
                 
                 
                 
@@ -733,15 +703,15 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
                 
                 
                 
-                  "The dialect postgres does not support the kernel multiply(i8, i8) -> i8",
+                  "The dialect postgres does not support the kernel arithmetic.multiply(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect postgres does not support the kernel multiply(i8, i8) -> i8",
+                  "The dialect postgres does not support the kernel arithmetic.multiply(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect postgres does not support the kernel multiply(i8, i8) -> undefined",
+                  "The dialect postgres does not support the kernel arithmetic.multiply(i8, i8) -> undefined",
                 
                 
                 
@@ -753,15 +723,15 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
                 
                 false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -828,17 +798,17 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -905,17 +875,17 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -982,17 +952,17 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -1001,19 +971,15 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel multiply(i8, i8) -> i8",
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel multiply(i16, i16) -> i16",
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i16, i16) -> i16",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel multiply(i32, i32) -> i32",
-                
-                
-                
-                  null,
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i32, i32) -> i32",
                 
                 
                 
@@ -1025,15 +991,19 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel multiply(i8, i8) -> error",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel multiply(i16, i16) -> error",
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i8, i8) -> error",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel multiply(i32, i32) -> error",
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i16, i16) -> error",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i32, i32) -> error",
                 
                 
                 
@@ -1041,19 +1011,19 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel multiply(i8, i8) -> i8",
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel multiply(i8, i8) -> i8",
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel multiply(i8, i8) -> undefined",
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i8, i8) -> undefined",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel multiply(fp32, fp64) -> fp64",
+                  null,
                 
                 
             ],
@@ -1065,11 +1035,11 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
                 
                 false,
                 
-                true,
+                false,
                 
                 false,
                 
-                true,
+                false,
                 
             ]
         },

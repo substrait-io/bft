@@ -130,85 +130,43 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>ERROR</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-snowflake">
                 
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>ERROR</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-postgres">
                 
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>ERROR</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-cudf">
                 
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NAN</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NAN</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>ERROR</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-velox_presto">
                 
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NAN</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
@@ -423,11 +381,11 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -436,35 +394,35 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
             examples: [
                 
                 
-                  "The dialect snowflake does not support the kernel sqrt(i64) -> fp64",
+                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel sqrt(i64) -> fp64",
+                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel sqrt(i64) -> fp64",
+                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel sqrt(i64) -> fp64",
+                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel sqrt(i64) -> fp64",
+                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel sqrt(i64) -> fp64",
+                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel sqrt(i64) -> fp64",
+                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel sqrt(fp32) -> fp32",
+                  "The dialect snowflake does not support the kernel arithmetic.sqrt(fp32) -> fp32",
                 
                 
                 
@@ -478,7 +436,7 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
                 
                 false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -525,11 +483,11 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -576,11 +534,11 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -627,11 +585,11 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -678,11 +636,11 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -691,35 +649,35 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
+                  "The dialect velox_presto does not support the kernel arithmetic.sqrt(i64) -> fp64",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
+                  "The dialect velox_presto does not support the kernel arithmetic.sqrt(i64) -> fp64",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
+                  "The dialect velox_presto does not support the kernel arithmetic.sqrt(i64) -> fp64",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
+                  "The dialect velox_presto does not support the kernel arithmetic.sqrt(i64) -> fp64",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
+                  "The dialect velox_presto does not support the kernel arithmetic.sqrt(i64) -> fp64",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
+                  "The dialect velox_presto does not support the kernel arithmetic.sqrt(i64) -> fp64",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel sqrt(i64) -> fp64",
+                  "The dialect velox_presto does not support the kernel arithmetic.sqrt(i64) -> fp64",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel sqrt(fp32) -> fp32",
+                  "The dialect velox_presto does not support the kernel arithmetic.sqrt(fp32) -> fp32",
                 
                 
                 
@@ -733,7 +691,7 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
                 
                 false,
                 
-                true,
+                false,
                 
             ]
         },

@@ -81,58 +81,43 @@
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
-                    
-                        <dt>negative_start</dt>
-                        <dd>WRAP_FROM_END</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-snowflake">
                 
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-postgres">
                 
-                    
-                        <dt>negative_start</dt>
-                        <dd>LEFT_OF_BEGINNING</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-cudf">
                 
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
-                    
-                        <dt>negative_start</dt>
-                        <dd>WRAP_FROM_END</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
-                    
-                        <dt>negative_start</dt>
-                        <dd>LEFT_OF_BEGINNING</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-velox_presto">
                 
-                    
-                        <dt>negative_start</dt>
-                        <dd>WRAP_FROM_END</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
@@ -163,9 +148,9 @@
                         
                         <th>arg1 (string)</th>
                         
-                        <th>arg2 (i64)</th>
+                        <th>arg2 (i32)</th>
                         
-                        <th>arg3 (i64)</th>
+                        <th>arg3 (i32)</th>
                         
                         <th>result (string)</th>
                     </tr>
@@ -212,9 +197,9 @@
                         
                         <th>arg1 (string)</th>
                         
-                        <th>arg2 (i64)</th>
+                        <th>arg2 (i32)</th>
                         
-                        <th>arg3 (i64)</th>
+                        <th>arg3 (i32)</th>
                         
                         <th>result (string)</th>
                     </tr>
@@ -263,9 +248,9 @@
                         
                         <th>arg1 (string)</th>
                         
-                        <th>arg2 (i64)</th>
+                        <th>arg2 (i32)</th>
                         
-                        <th>arg3 (i64)</th>
+                        <th>arg3 (i32)</th>
                         
                         <th>result (string)</th>
                     </tr>
@@ -350,9 +335,9 @@
                         
                         <th>arg1 (string)</th>
                         
-                        <th>arg2 (i64)</th>
+                        <th>arg2 (i32)</th>
                         
-                        <th>arg3 (i64)</th>
+                        <th>arg3 (i32)</th>
                         
                         <th>result (string)</th>
                     </tr>
@@ -443,11 +428,11 @@
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -456,53 +441,53 @@
             examples: [
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -515,7 +500,7 @@
                 
                 
                 
-                  "The dialect postgres does not support the kernel substring(string, i64, i64) -> string",
+                  null,
                 
                 
                 
@@ -523,23 +508,15 @@
                 
                 
                 
-                  "The dialect postgres does not support the kernel substring(string, i64, i64) -> string",
+                  null,
                 
                 
                 
-                  "The dialect postgres does not support the kernel substring(string, i64, i64) -> string",
+                  "The dialect postgres expects negative_start=LEFT_OF_BEGINNING but negative_start=WRAP_FROM_END was requested",
                 
                 
                 
-                  "The dialect postgres does not support the kernel substring(string, i64, i64) -> string",
-                
-                
-                
-                  "The dialect postgres does not support the kernel substring(string, i64, i64) -> string",
-                
-                
-                
-                  "The dialect postgres does not support the kernel substring(string, i64, i64) -> string",
+                  "The dialect postgres expects negative_start=LEFT_OF_BEGINNING but negative_start=WRAP_FROM_END was requested",
                 
                 
                 
@@ -547,17 +524,25 @@
                 
                 
                 
-                  "The dialect postgres does not support the kernel substring(string, i64, i64) -> string",
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -566,53 +551,53 @@
             examples: [
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -663,11 +648,11 @@
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -718,11 +703,11 @@
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -731,53 +716,53 @@
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel substring(string, i32, i32) -> string",
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel substring(string, i32, i32) -> string",
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  "The dialect velox_presto expects negative_start=WRAP_FROM_END but negative_start=LEFT_OF_BEGINNING was requested",
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  "The dialect velox_presto expects negative_start=WRAP_FROM_END but negative_start=LEFT_OF_BEGINNING was requested",
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel substring(string, i32, i32) -> string",
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
             ],
             kernels: [
                 
-                true,
+                false,
                 
                 false,
                 
-                true,
+                false,
                 
             ]
         },

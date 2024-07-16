@@ -85,43 +85,43 @@
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-snowflake">
                 
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-postgres">
                 
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-cudf">
                 
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-velox_presto">
                 
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
@@ -292,14 +292,165 @@
             </table>
             
             <table>
-                <caption>Examples with null as input</caption>
+                <caption>examples using the date type</caption>
                 <thead>
                     <tr>
                         
                         
-                        <th>arg1 (i16)</th>
+                        <th>arg1 (interval)</th>
                         
-                        <th>arg2 (i16)</th>
+                        <th>arg2 (interval)</th>
+                        
+                        <th>result (boolean)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2020-12-30</td>
+                        
+                        <td>2020-12-31</td>
+                        
+                        <td>False</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2020-12-31</td>
+                        
+                        <td>2020-12-31</td>
+                        
+                        <td>True</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2020-12-31</td>
+                        
+                        <td>2020-12-30</td>
+                        
+                        <td>True</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>INTERVAL '7 DAY'</td>
+                        
+                        <td>INTERVAL '7 DAY'</td>
+                        
+                        <td>True</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>INTERVAL '7 DAY'</td>
+                        
+                        <td>INTERVAL '6 DAY'</td>
+                        
+                        <td>True</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>examples using the interval type</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (interval)</th>
+                        
+                        <th>arg2 (interval)</th>
+                        
+                        <th>result (boolean)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>INTERVAL '5 DAY'</td>
+                        
+                        <td>INTERVAL '6 DAY'</td>
+                        
+                        <td>False</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>INTERVAL '5 YEAR'</td>
+                        
+                        <td>INTERVAL '6 YEAR'</td>
+                        
+                        <td>False</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>INTERVAL '7 YEAR'</td>
+                        
+                        <td>INTERVAL '7 YEAR'</td>
+                        
+                        <td>True</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>INTERVAL '7 YEAR'</td>
+                        
+                        <td>INTERVAL '6 YEAR'</td>
+                        
+                        <td>True</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>examples with null args or return</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (timestamp)</th>
+                        
+                        <th>arg2 (timestamp)</th>
                         
                         <th>result (boolean)</th>
                     </tr>
@@ -340,6 +491,157 @@
                         <td>None</td>
                         
                         <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>None</td>
+                        
+                        <td>INTERVAL '5 DAY'</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>None</td>
+                        
+                        <td>2020-12-30</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>None</td>
+                        
+                        <td>2018-12-31 13:30:15</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>examples using the timestamp_tz type</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (timestamp_tz)</th>
+                        
+                        <th>arg2 (timestamp_tz)</th>
+                        
+                        <th>result (boolean)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>1999-01-08 01:05:05 PST</td>
+                        
+                        <td>1999-01-08 04:05:06 EST</td>
+                        
+                        <td>False</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>1999-01-08 01:05:06 PST</td>
+                        
+                        <td>1999-01-08 01:05:06 PST</td>
+                        
+                        <td>True</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>1999-01-08 01:05:06 PST</td>
+                        
+                        <td>1999-01-08 04:05:05 EST</td>
+                        
+                        <td>True</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>examples using the timestamp type</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (timestamp)</th>
+                        
+                        <th>arg2 (timestamp)</th>
+                        
+                        <th>result (boolean)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2016-12-31 13:30:15</td>
+                        
+                        <td>2017-12-31 13:30:15</td>
+                        
+                        <td>False</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2017-12-31 13:30:15</td>
+                        
+                        <td>2017-12-31 13:30:15</td>
+                        
+                        <td>True</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2018-12-31 13:30:15</td>
+                        
+                        <td>2017-12-31 13:30:15</td>
+                        
+                        <td>True</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -408,18 +710,90 @@
                   null,
                 
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -428,35 +802,31 @@
             examples: [
                 
                 
-                  "The dialect snowflake does not support the kernel gte(i8, i8) -> boolean",
+                  "The dialect snowflake does not support the kernel comparison.gte(i8, i8) -> boolean",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel gte(i8, i8) -> boolean",
+                  "The dialect snowflake does not support the kernel comparison.gte(i8, i8) -> boolean",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel gte(i16, i16) -> boolean",
+                  "The dialect snowflake does not support the kernel comparison.gte(i16, i16) -> boolean",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel gte(i32, i32) -> boolean",
+                  "The dialect snowflake does not support the kernel comparison.gte(i32, i32) -> boolean",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel gte(i64, i64) -> boolean",
+                  "The dialect snowflake does not support the kernel comparison.gte(i64, i64) -> boolean",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel gte(fp32, fp32) -> boolean",
+                  "The dialect snowflake does not support the kernel comparison.gte(fp32, fp32) -> boolean",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel gte(fp32, fp32) -> boolean",
-                
-                
-                
-                  null,
+                  "The dialect snowflake does not support the kernel comparison.gte(fp32, fp32) -> boolean",
                 
                 
                 
@@ -468,29 +838,105 @@
                 
                 
                 
-                  "The dialect snowflake does not support the kernel gte(i16, i16) -> boolean",
+                  null,
                 
                 
                 
-                  "The dialect snowflake does not support the kernel gte(i16, i16) -> boolean",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel gte(i16, i16) -> boolean",
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.gte(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.gte(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.gte(i16, i16) -> boolean",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -499,11 +945,83 @@
             examples: [
                 
                 
-                  "The dialect postgres does not support the kernel gte(i8, i8) -> boolean",
+                  "The dialect postgres does not support the kernel comparison.gte(i8, i8) -> boolean",
                 
                 
                 
-                  "The dialect postgres does not support the kernel gte(i8, i8) -> boolean",
+                  "The dialect postgres does not support the kernel comparison.gte(i8, i8) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
                 
@@ -553,15 +1071,15 @@
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -610,7 +1128,39 @@
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -619,20 +1169,60 @@
                 
                 
                   null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -681,7 +1271,39 @@
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -690,20 +1312,60 @@
                 
                 
                   null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -752,7 +1414,39 @@
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -761,20 +1455,60 @@
                 
                 
                   null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -783,31 +1517,19 @@
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel gte(i8, i8) -> boolean",
+                  "The dialect velox_presto does not support the kernel comparison.gte(i8, i8) -> boolean",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel gte(i8, i8) -> boolean",
+                  "The dialect velox_presto does not support the kernel comparison.gte(i8, i8) -> boolean",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel gte(i16, i16) -> boolean",
+                  "The dialect velox_presto does not support the kernel comparison.gte(i16, i16) -> boolean",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel gte(i32, i32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel gte(fp32, fp32) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel gte(fp32, fp32) -> boolean",
+                  "The dialect velox_presto does not support the kernel comparison.gte(i32, i32) -> boolean",
                 
                 
                 
@@ -815,6 +1537,18 @@
                 
                 
                 
+                  "The dialect velox_presto does not support the kernel comparison.gte(fp32, fp32) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.gte(fp32, fp32) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
                   null,
                 
                 
@@ -823,29 +1557,101 @@
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel gte(i16, i16) -> boolean",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel gte(i16, i16) -> boolean",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel gte(i16, i16) -> boolean",
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.gte(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.gte(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.gte(i16, i16) -> boolean",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },

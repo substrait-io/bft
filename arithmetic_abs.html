@@ -112,64 +112,43 @@ of the type class.</p>
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-snowflake">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-postgres">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-cudf">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-velox_presto">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
@@ -432,17 +411,17 @@ latter will overflow.</p>
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -451,23 +430,23 @@ latter will overflow.</p>
             examples: [
                 
                 
-                  "The dialect snowflake does not support the kernel abs(i8) -> i8",
+                  "The dialect snowflake does not support the kernel arithmetic.abs(i8) -> i8",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel abs(i16) -> i16",
+                  "The dialect snowflake does not support the kernel arithmetic.abs(i16) -> i16",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel abs(i32) -> i32",
+                  "The dialect snowflake does not support the kernel arithmetic.abs(i32) -> i32",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel abs(i64) -> i64",
+                  "The dialect snowflake does not support the kernel arithmetic.abs(i64) -> i64",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel abs(fp32) -> fp32",
+                  "The dialect snowflake does not support the kernel arithmetic.abs(fp32) -> fp32",
                 
                 
                 
@@ -475,19 +454,19 @@ latter will overflow.</p>
                 
                 
                 
-                  "The dialect snowflake does not support the kernel abs(i8) -> i8",
+                  "The dialect snowflake does not support the kernel arithmetic.abs(i8) -> i8",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel abs(i8) -> error",
+                  "The dialect snowflake does not support the kernel arithmetic.abs(i8) -> error",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel abs(i8) -> i8",
+                  "The dialect snowflake does not support the kernel arithmetic.abs(i8) -> i8",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel abs(i8) -> undefined",
+                  "The dialect snowflake does not support the kernel arithmetic.abs(i8) -> undefined",
                 
                 
             ],
@@ -503,7 +482,7 @@ latter will overflow.</p>
                 
                 false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -512,7 +491,7 @@ latter will overflow.</p>
             examples: [
                 
                 
-                  "The dialect postgres does not support the kernel abs(i8) -> i8",
+                  "The dialect postgres does not support the kernel arithmetic.abs(i8) -> i8",
                 
                 
                 
@@ -536,19 +515,19 @@ latter will overflow.</p>
                 
                 
                 
-                  "The dialect postgres does not support the kernel abs(i8) -> i8",
+                  "The dialect postgres does not support the kernel arithmetic.abs(i8) -> i8",
                 
                 
                 
-                  "The dialect postgres does not support the kernel abs(i8) -> error",
+                  "The dialect postgres does not support the kernel arithmetic.abs(i8) -> error",
                 
                 
                 
-                  "The dialect postgres does not support the kernel abs(i8) -> i8",
+                  "The dialect postgres does not support the kernel arithmetic.abs(i8) -> i8",
                 
                 
                 
-                  "The dialect postgres does not support the kernel abs(i8) -> undefined",
+                  "The dialect postgres does not support the kernel arithmetic.abs(i8) -> undefined",
                 
                 
             ],
@@ -556,15 +535,15 @@ latter will overflow.</p>
                 
                 false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -615,17 +594,17 @@ latter will overflow.</p>
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -676,17 +655,17 @@ latter will overflow.</p>
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -737,17 +716,17 @@ latter will overflow.</p>
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -756,23 +735,15 @@ latter will overflow.</p>
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
+                  "The dialect velox_presto does not support the kernel arithmetic.abs(i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel abs(i16) -> i16",
+                  "The dialect velox_presto does not support the kernel arithmetic.abs(i16) -> i16",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel abs(i32) -> i32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel abs(fp32) -> fp32",
+                  "The dialect velox_presto does not support the kernel arithmetic.abs(i32) -> i32",
                 
                 
                 
@@ -780,19 +751,27 @@ latter will overflow.</p>
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
+                  "The dialect velox_presto does not support the kernel arithmetic.abs(fp32) -> fp32",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel abs(i8) -> error",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel abs(i8) -> i8",
+                  "The dialect velox_presto does not support the kernel arithmetic.abs(i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel abs(i8) -> undefined",
+                  "The dialect velox_presto does not support the kernel arithmetic.abs(i8) -> error",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.abs(i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.abs(i8) -> undefined",
                 
                 
             ],
@@ -804,11 +783,11 @@ latter will overflow.</p>
                 
                 false,
                 
-                true,
+                false,
                 
                 false,
                 
-                true,
+                false,
                 
             ]
         },

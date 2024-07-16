@@ -80,43 +80,43 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-snowflake">
                 
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-postgres">
                 
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-cudf">
                 
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-velox_presto">
                 
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
@@ -338,7 +338,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             ],
             kernels: [
                 
-                true,
+                false,
                 
             ]
         },
@@ -347,23 +347,19 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             examples: [
                 
                 
-                  "The dialect snowflake does not support the kernel equal(i8, i8) -> boolean",
+                  "The dialect snowflake does not support the kernel comparison.equal(i8, i8) -> boolean",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel equal(i16, i16) -> boolean",
+                  "The dialect snowflake does not support the kernel comparison.equal(i16, i16) -> boolean",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel equal(i32, i32) -> boolean",
+                  "The dialect snowflake does not support the kernel comparison.equal(i32, i32) -> boolean",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel equal(i64, i64) -> boolean",
-                
-                
-                
-                  null,
+                  "The dialect snowflake does not support the kernel comparison.equal(i64, i64) -> boolean",
                 
                 
                 
@@ -375,17 +371,21 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                 
-                  "The dialect snowflake does not support the kernel equal(i16, i16) -> boolean",
+                  null,
                 
                 
                 
-                  "The dialect snowflake does not support the kernel equal(i16, i16) -> boolean",
+                  "The dialect snowflake does not support the kernel comparison.equal(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.equal(i16, i16) -> boolean",
                 
                 
             ],
             kernels: [
                 
-                true,
+                false,
                 
             ]
         },
@@ -394,7 +394,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             examples: [
                 
                 
-                  "The dialect postgres does not support the kernel equal(i8, i8) -> boolean",
+                  "The dialect postgres does not support the kernel comparison.equal(i8, i8) -> boolean",
                 
                 
                 
@@ -432,7 +432,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             ],
             kernels: [
                 
-                true,
+                false,
                 
             ]
         },
@@ -479,7 +479,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             ],
             kernels: [
                 
-                true,
+                false,
                 
             ]
         },
@@ -526,7 +526,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             ],
             kernels: [
                 
-                true,
+                false,
                 
             ]
         },
@@ -573,7 +573,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             ],
             kernels: [
                 
-                true,
+                false,
                 
             ]
         },
@@ -582,19 +582,15 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel equal(i8, i8) -> boolean",
+                  "The dialect velox_presto does not support the kernel comparison.equal(i8, i8) -> boolean",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel equal(i16, i16) -> boolean",
+                  "The dialect velox_presto does not support the kernel comparison.equal(i16, i16) -> boolean",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel equal(i32, i32) -> boolean",
-                
-                
-                
-                  null,
+                  "The dialect velox_presto does not support the kernel comparison.equal(i32, i32) -> boolean",
                 
                 
                 
@@ -610,17 +606,21 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel equal(i16, i16) -> boolean",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel equal(i16, i16) -> boolean",
+                  "The dialect velox_presto does not support the kernel comparison.equal(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.equal(i16, i16) -> boolean",
                 
                 
             ],
             kernels: [
                 
-                true,
+                false,
                 
             ]
         },

@@ -83,97 +83,43 @@
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
-                    
-                        <dt>division_type</dt>
-                        <dd>TRUNCATE</dd>
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NULL</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-snowflake">
                 
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-postgres">
                 
-                    
-                        <dt>division_type</dt>
-                        <dd>TRUNCATE</dd>
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>ERROR</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-cudf">
                 
-                    
-                        <dt>division_type</dt>
-                        <dd>FLOOR</dd>
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NULL</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
-                    
-                        <dt>division_type</dt>
-                        <dd>TRUNCATE</dd>
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>NULL</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
-                    
-                        <dt>division_type</dt>
-                        <dd>TRUNCATE</dd>
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>ERROR</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-velox_presto">
                 
-                    
-                        <dt>division_type</dt>
-                        <dd>TRUNCATE</dd>
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
-                        <dt>on_domain_error</dt>
-                        <dd>ERROR</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
@@ -500,13 +446,13 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -515,63 +461,63 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
             examples: [
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -580,15 +526,11 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
             examples: [
                 
                 
-                  "The dialect postgres does not support the kernel modulus(i8, i8) -> i8",
+                  "The dialect postgres does not support the kernel arithmetic.modulus(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect postgres does not support the kernel modulus(i8, i8) -> i8",
-                
-                
-                
-                  null,
+                  "The dialect postgres does not support the kernel arithmetic.modulus(i8, i8) -> i8",
                 
                 
                 
@@ -600,7 +542,11 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect postgres does not support the kernel modulus(i8, i8) -> i8",
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel arithmetic.modulus(i8, i8) -> i8",
                 
                 
                 
@@ -612,19 +558,19 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect postgres does not support the kernel modulus(i8, i8) -> i8",
+                  "The dialect postgres does not support the kernel arithmetic.modulus(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect postgres does not support the kernel modulus(i8, i8) -> i8",
+                  "The dialect postgres does not support the kernel arithmetic.modulus(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect postgres does not support the kernel modulus(i8, i8) -> i8",
+                  "The dialect postgres does not support the kernel arithmetic.modulus(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect postgres does not support the kernel modulus(i8, i8) -> error",
+                  "The dialect postgres does not support the kernel arithmetic.modulus(i8, i8) -> error",
                 
                 
             ],
@@ -632,11 +578,11 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 
                 false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -695,13 +641,13 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -760,13 +706,13 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -825,13 +771,13 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -840,27 +786,19 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel modulus(i16, i16) -> i16",
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i16, i16) -> i16",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel modulus(i32, i32) -> i32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i32, i32) -> i32",
                 
                 
                 
@@ -868,23 +806,31 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 
                 
                 
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
+                
+                
+                
                   null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> i8",
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel modulus(i8, i8) -> error",
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> error",
                 
                 
             ],
@@ -896,7 +842,7 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 
                 false,
                 
-                true,
+                false,
                 
             ]
         },

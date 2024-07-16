@@ -144,82 +144,43 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
             
             <dl class="dialect-definition" id="dialect-duckdb">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-snowflake">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-postgres">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-cudf">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-sqlite">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>SILENT</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
             <dl class="dialect-definition" id="dialect-velox_presto">
                 
-                    
-                        <dt>overflow</dt>
-                        <dd>ERROR</dd>
-                    
-                        <dt>rounding</dt>
-                        <dd>TIE_TO_EVEN</dd>
-                    
+                    <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
@@ -342,6 +303,62 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
             </table>
             
             <table>
+                <caption>examples using the date types and resulting in a timestamp</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (date)</th>
+                        
+                        <th>arg2 (interval)</th>
+                        
+                        <th>result (timestamp)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2020-12-31</td>
+                        
+                        <td>INTERVAL '5 DAY'</td>
+                        
+                        <td>2020-12-26 00:00:00</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2020-12-31</td>
+                        
+                        <td>INTERVAL '5 YEAR'</td>
+                        
+                        <td>2015-12-31 00:00:00</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2020-12-31</td>
+                        
+                        <td>INTERVAL '5 MONTH'</td>
+                        
+                        <td>2020-07-31 00:00:00</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
                 <caption>Examples demonstrating exceptional floating point cases</caption>
                 <thead>
                     <tr>
@@ -377,6 +394,36 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                         <td>-1.5e+308</td>
                         
                         <td>inf</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>examples with null args or return</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (date)</th>
+                        
+                        <th>arg2 (interval)</th>
+                        
+                        <th>result (date)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>None</td>
+                        
+                        <td>INTERVAL '5 DAY'</td>
+                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -508,6 +555,62 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                     </tbody>
             </table>
             
+            <table>
+                <caption>examples using the timestamp type</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (timestamp)</th>
+                        
+                        <th>arg2 (interval)</th>
+                        
+                        <th>result (timestamp)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2016-12-31 13:30:15</td>
+                        
+                        <td>INTERVAL '5 DAY'</td>
+                        
+                        <td>2016-12-26 13:30:15</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2016-12-01 13:30:15</td>
+                        
+                        <td>INTERVAL '5 YEAR'</td>
+                        
+                        <td>2011-12-01 13:30:15</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2016-12-01 13:30:15</td>
+                        
+                        <td>INTERVAL '5 HOUR'</td>
+                        
+                        <td>2016-12-01 08:30:15</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
         </section>
     </article>
     <script src="./assets/supplementary/script.js"></script>
@@ -516,6 +619,22 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
         
         'duckdb': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
                 
                 
                   null,
@@ -569,20 +688,32 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                   "The dialect duckdb expects overflow=ERROR but overflow=SILENT was requested",
                 
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -591,19 +722,31 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
             examples: [
                 
                 
-                  "The dialect snowflake does not support the kernel subtract(i8, i8) -> i8",
+                  "The dialect snowflake does not support the kernel arithmetic.subtract(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel subtract(i16, i16) -> i16",
+                  "The dialect snowflake does not support the kernel arithmetic.subtract(i16, i16) -> i16",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel subtract(i32, i32) -> i32",
+                  "The dialect snowflake does not support the kernel arithmetic.subtract(i32, i32) -> i32",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel subtract(i64, i64) -> i64",
+                  "The dialect snowflake does not support the kernel arithmetic.subtract(i64, i64) -> i64",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -615,31 +758,47 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect snowflake does not support the kernel subtract(i8, i8) -> error",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel subtract(i16, i16) -> error",
+                  "The dialect snowflake does not support the kernel arithmetic.subtract(i8, i8) -> error",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel subtract(i32, i32) -> error",
+                  "The dialect snowflake does not support the kernel arithmetic.subtract(i16, i16) -> error",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel subtract(i64, i64) -> error",
+                  "The dialect snowflake does not support the kernel arithmetic.subtract(i32, i32) -> error",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel subtract(i8, i8) -> i8",
+                  "The dialect snowflake does not support the kernel arithmetic.subtract(i64, i64) -> error",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel subtract(i8, i8) -> i8",
+                  "The dialect snowflake does not support the kernel arithmetic.subtract(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect snowflake does not support the kernel subtract(i8, i8) -> undefined",
+                  "The dialect snowflake does not support the kernel arithmetic.subtract(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel arithmetic.subtract(i8, i8) -> undefined",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -655,7 +814,7 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -664,7 +823,7 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
             examples: [
                 
                 
-                  "The dialect postgres does not support the kernel subtract(i8, i8) -> i8",
+                  "The dialect postgres does not support the kernel arithmetic.subtract(i8, i8) -> i8",
                 
                 
                 
@@ -680,15 +839,31 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect postgres does not support the kernel subtract(fp64, fp64) -> fp64",
+                  null,
                 
                 
                 
-                  "The dialect postgres does not support the kernel subtract(fp64, fp64) -> fp64",
+                  null,
                 
                 
                 
-                  "The dialect postgres does not support the kernel subtract(i8, i8) -> error",
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel arithmetic.subtract(fp64, fp64) -> fp64",
+                
+                
+                
+                  "The dialect postgres does not support the kernel arithmetic.subtract(fp64, fp64) -> fp64",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel arithmetic.subtract(i8, i8) -> error",
                 
                 
                 
@@ -704,15 +879,27 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect postgres does not support the kernel subtract(i8, i8) -> i8",
+                  "The dialect postgres does not support the kernel arithmetic.subtract(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect postgres does not support the kernel subtract(i8, i8) -> i8",
+                  "The dialect postgres does not support the kernel arithmetic.subtract(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect postgres does not support the kernel subtract(i8, i8) -> undefined",
+                  "The dialect postgres does not support the kernel arithmetic.subtract(i8, i8) -> undefined",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
             ],
@@ -720,11 +907,11 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
                 false,
                 
@@ -753,11 +940,27 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
                   null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -786,22 +989,34 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                   null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -826,11 +1041,27 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
                   null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -859,22 +1090,34 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                   null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
             kernels: [
                 
-                true,
-                
-                true,
-                
-                true,
-                
-                true,
+                false,
                 
                 false,
                 
-                true,
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
                 
             ]
         },
@@ -899,11 +1142,27 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
                   null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -932,22 +1191,34 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                   null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
             kernels: [
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
@@ -956,15 +1227,31 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> i8",
+                  "The dialect velox_presto does not support the kernel arithmetic.subtract(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel subtract(i16, i16) -> i16",
+                  "The dialect velox_presto does not support the kernel arithmetic.subtract(i16, i16) -> i16",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel subtract(i32, i32) -> i32",
+                  "The dialect velox_presto does not support the kernel arithmetic.subtract(i32, i32) -> i32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -976,35 +1263,47 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 
                 
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.subtract(i8, i8) -> error",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.subtract(i16, i16) -> error",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.subtract(i32, i32) -> error",
+                
+                
+                
                   null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> error",
+                  "The dialect velox_presto does not support the kernel arithmetic.subtract(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel subtract(i16, i16) -> error",
+                  "The dialect velox_presto does not support the kernel arithmetic.subtract(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel subtract(i32, i32) -> error",
+                  "The dialect velox_presto does not support the kernel arithmetic.subtract(i8, i8) -> undefined",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> i8",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel subtract(i8, i8) -> undefined",
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -1016,11 +1315,11 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
-                true,
+                false,
                 
             ]
         },
