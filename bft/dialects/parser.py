@@ -21,13 +21,7 @@ class DialectFileVisitor(BaseYamlVisitor[DialectFile]):
     def _get_unqualified_func_name(name):
         return name.split(".")[-1]
 
-    def visit_scalar_function(self, func):
-        return self._visit_function(func)
-
-    def visit_aggregate_function(self, func):
-        return self._visit_function(func)
-
-    def _visit_function(self, func):
+    def visit_function(self, func):
         name = self._get_or_die(func, "name")
         required_opts = self._get_or_else(func, "required_options", {})
         local_name = self._get_or_else(func, "local_name", self._get_unqualified_func_name(name))
@@ -39,7 +33,6 @@ class DialectFileVisitor(BaseYamlVisitor[DialectFile]):
         # The extract function uses a special grammar in some SQL dialects.
         # i.e. SELECT EXTRACT(YEAR FROM times) FROM my_table
         extract = self._get_or_else(func, "extract", False)
-        # bad_kernels = self._visit_list(self.visit_kernel, func, "unsupported_kernels")
         good_kernels = self._visit_list(self.visit_kernel, func, "supported_kernels")
         variadic_min = self._get_or_else(func, "variadic", -1)
         return DialectFunction(
@@ -60,10 +53,10 @@ class DialectFileVisitor(BaseYamlVisitor[DialectFile]):
         name = self._get_or_die(dfile, "name")
         dtype = self._get_or_die(dfile, "type")
         scalar_functions = self._visit_list(
-            self.visit_scalar_function, dfile, "scalar_functions"
+            self.visit_function, dfile, "scalar_functions"
         )
         aggregate_functions = self._visit_list(
-            self.visit_aggregate_function, dfile, "aggregate_functions"
+            self.visit_function, dfile, "aggregate_functions"
         )
         uri_to_func_prefix = {uri: func_prefix for func_prefix, uri in dfile.get("dependencies", {}).items()}
         supported_types = self._visit_list(self.get_long_type, dfile, "supported_types")
