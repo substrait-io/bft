@@ -1,4 +1,5 @@
-function: add_datetime
+base_uri: https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_datetime.yaml
+function: add
 cases:
   - group:
       id: timestamps

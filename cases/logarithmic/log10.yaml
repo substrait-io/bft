@@ -1,4 +1,5 @@
-function: log
+base_uri: https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_logarithmic.yaml
+function: log10
 cases:
   - group:
       id: basic

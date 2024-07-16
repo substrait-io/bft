@@ -44,7 +44,7 @@ class BaseYamlVisitor(ABC, Generic[T]):
                                 result.value[i] = float("-inf")
                             elif lower_s.startswith("'nan'"):
                                 result.value[i] = math.nan
-                        results.append(CaseLiteral(result.value, result.type))
+                        results.append(CaseLiteral(result.value, result.type, result.is_not_a_func_arg))
                         results.remove(result)
             return results
         elif required:
