@@ -322,6 +322,13 @@ scalar_functions:
     on_domain_error: ERROR
   supported_kernels:
   - fp64
+- name: logarithmic.logb
+  local_name: log
+  required_options:
+    on_log_zero: ERROR
+    on_domain_error: ERROR
+  supported_kernels:
+  - fp64_fp64
 aggregate_functions:
 - name: arithmetic.min
   aggregate: true

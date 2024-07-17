@@ -529,6 +529,14 @@ scalar_functions:
   - i64
   - fp32
   - fp64
+- name: logarithmic.logb
+  local_name: log
+  required_options:
+    on_log_zero: MINUS_INFINITY
+    on_domain_error: NAN
+  supported_kernels:
+  - i64_i64
+  - fp64_fp64
 aggregate_functions:
 - name: arithmetic.min
   aggregate: true

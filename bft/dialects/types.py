@@ -212,7 +212,7 @@ class Dialect(object):
                 dfunc.postfix,
                 dfunc.between,
                 dfunc.aggregate,
-                dfunc.unsupported,
+                True,
                 dfunc.extract,
                 False,
                 kernel_failure,
