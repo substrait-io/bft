@@ -26,18 +26,18 @@ dependencies:
   string: 
     https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_string.yaml
 supported_types:
-  - i16
-  - i32
-  - i64
-  - fp32
-  - fp64
-  - bool
-  - str
-  - date
-  - time
-  - ts
-  - tstz
-  - interval
+  i16: smallint
+  i32: integer
+  i64: bigint
+  fp32: float4
+  fp64: float8
+  bool: boolean
+  str: text
+  date: date
+  time: time
+  ts: timestamp
+  tstz: timestamptz
+  interval: interval
 scalar_functions:
 - name: arithmetic.add
   local_name: +
