@@ -72,23 +72,23 @@ Floating point values return signedness with the same type as the input. Possibl
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
+                <option>datafusion</option>
                 
                 <option>snowflake</option>
                 
-                <option>postgres</option>
+                <option>duckdb</option>
                 
                 <option>cudf</option>
                 
                 <option>sqlite</option>
                 
-                <option>datafusion</option>
-                
                 <option>velox_presto</option>
+                
+                <option>postgres</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -100,7 +100,7 @@ Floating point values return signedness with the same type as the input. Possibl
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -118,13 +118,13 @@ Floating point values return signedness with the same type as the input. Possibl
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -173,7 +173,7 @@ sign(-2 * 3) will be the same as sign(-2) * sign(3).</p>
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'datafusion': {
             examples: [
                 
             ],
@@ -215,7 +215,7 @@ sign(-2 * 3) will be the same as sign(-2) * sign(3).</p>
             ]
         },
         
-        'postgres': {
+        'duckdb': {
             examples: [
                 
             ],
@@ -278,7 +278,7 @@ sign(-2 * 3) will be the same as sign(-2) * sign(3).</p>
             ]
         },
         
-        'datafusion': {
+        'velox_presto': {
             examples: [
                 
             ],
@@ -299,7 +299,7 @@ sign(-2 * 3) will be the same as sign(-2) * sign(3).</p>
             ]
         },
         
-        'velox_presto': {
+        'postgres': {
             examples: [
                 
             ],

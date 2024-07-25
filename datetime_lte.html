@@ -67,23 +67,23 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
+                <option>datafusion</option>
                 
                 <option>snowflake</option>
                 
-                <option>postgres</option>
+                <option>duckdb</option>
                 
                 <option>cudf</option>
                 
                 <option>sqlite</option>
                 
-                <option>datafusion</option>
-                
                 <option>velox_presto</option>
+                
+                <option>postgres</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -95,7 +95,7 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -113,13 +113,13 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -655,7 +655,7 @@
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'datafusion': {
             examples: [
                 
                 
@@ -699,7 +699,39 @@
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -715,71 +747,39 @@
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -941,15 +941,15 @@
             ]
         },
         
-        'postgres': {
+        'duckdb': {
             examples: [
                 
                 
-                  "The dialect postgres does not support the kernel comparison.lte(i8, i8) -> boolean",
+                  null,
                 
                 
                 
-                  "The dialect postgres does not support the kernel comparison.lte(i8, i8) -> boolean",
+                  null,
                 
                 
                 
@@ -1370,149 +1370,6 @@
             ]
         },
         
-        'datafusion': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
         'velox_presto': {
             examples: [
                 
@@ -1638,6 +1495,149 @@
                 
                 
                   "There is no dialect information for this function",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  "The dialect postgres does not support the kernel comparison.lte(i8, i8) -> boolean",
+                
+                
+                
+                  "The dialect postgres does not support the kernel comparison.lte(i8, i8) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
             ],

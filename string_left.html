@@ -61,23 +61,23 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
+                <option>datafusion</option>
                 
                 <option>snowflake</option>
                 
-                <option>postgres</option>
+                <option>duckdb</option>
                 
                 <option>cudf</option>
                 
                 <option>sqlite</option>
                 
-                <option>datafusion</option>
-                
                 <option>velox_presto</option>
+                
+                <option>postgres</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -89,7 +89,7 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -107,13 +107,13 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -282,7 +282,7 @@
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'datafusion': {
             examples: [
                 
                 
@@ -372,7 +372,7 @@
             ]
         },
         
-        'postgres': {
+        'duckdb': {
             examples: [
                 
                 
@@ -507,51 +507,6 @@
             ]
         },
         
-        'datafusion': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
         'velox_presto': {
             examples: [
                 
@@ -585,6 +540,51 @@
                 
                 
                   "There is no dialect information for this function",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
             ],

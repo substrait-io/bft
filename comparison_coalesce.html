@@ -60,23 +60,23 @@ If all arguments are null, return null.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
+                <option>datafusion</option>
                 
                 <option>snowflake</option>
                 
-                <option>postgres</option>
+                <option>duckdb</option>
                 
                 <option>cudf</option>
                 
                 <option>sqlite</option>
                 
-                <option>datafusion</option>
-                
                 <option>velox_presto</option>
+                
+                <option>postgres</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -88,7 +88,7 @@ If all arguments are null, return null.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -106,13 +106,13 @@ If all arguments are null, return null.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -251,7 +251,7 @@ If all arguments are null, return null.
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'datafusion': {
             examples: [
                 
                 
@@ -329,15 +329,15 @@ If all arguments are null, return null.
             ]
         },
         
-        'postgres': {
+        'duckdb': {
             examples: [
                 
                 
-                  "The dialect postgres does not support the kernel comparison.coalesce(i8, i8) -> i8",
+                  null,
                 
                 
                 
-                  "The dialect postgres does not support the kernel comparison.coalesce(i8, i8) -> i8",
+                  null,
                 
                 
                 
@@ -446,45 +446,6 @@ If all arguments are null, return null.
             ]
         },
         
-        'datafusion': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
         'velox_presto': {
             examples: [
                 
@@ -510,6 +471,45 @@ If all arguments are null, return null.
                 
                 
                   "The dialect velox_presto does not support the kernel comparison.coalesce(fp32, fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  "The dialect postgres does not support the kernel comparison.coalesce(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect postgres does not support the kernel comparison.coalesce(i8, i8) -> i8",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
                 

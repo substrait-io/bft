@@ -94,23 +94,23 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
+                <option>datafusion</option>
                 
                 <option>snowflake</option>
                 
-                <option>postgres</option>
+                <option>duckdb</option>
                 
                 <option>cudf</option>
                 
                 <option>sqlite</option>
                 
-                <option>datafusion</option>
-                
                 <option>velox_presto</option>
+                
+                <option>postgres</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -122,7 +122,7 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -140,13 +140,13 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -264,23 +264,23 @@ at 0.</p>
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'datafusion': {
             examples: [
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
             ],
@@ -322,23 +322,23 @@ at 0.</p>
             ]
         },
         
-        'postgres': {
+        'duckdb': {
             examples: [
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -409,35 +409,6 @@ at 0.</p>
             ]
         },
         
-        'datafusion': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
         'velox_presto': {
             examples: [
                 
@@ -455,6 +426,35 @@ at 0.</p>
                 
                 
                   "There is no dialect information for this function",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
             ],

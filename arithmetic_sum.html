@@ -94,23 +94,23 @@ yield an int32 on overflow)</p>
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
+                <option>datafusion</option>
                 
                 <option>snowflake</option>
                 
-                <option>postgres</option>
+                <option>duckdb</option>
                 
                 <option>cudf</option>
                 
                 <option>sqlite</option>
                 
-                <option>datafusion</option>
-                
                 <option>velox_presto</option>
+                
+                <option>postgres</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -122,7 +122,7 @@ yield an int32 on overflow)</p>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-postgres">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -140,13 +140,13 @@ yield an int32 on overflow)</p>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-postgres">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -402,7 +402,7 @@ DECLARED_OUTPUT nullability.</p></dd>
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'datafusion': {
             examples: [
                 
                 
@@ -450,7 +450,7 @@ DECLARED_OUTPUT nullability.</p></dd>
                 
                 
                 
-                  "The dialect duckdb does not support the kernel arithmetic.sum(i64) -> error",
+                  "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
                 
                 
             ],
@@ -540,14 +540,10 @@ DECLARED_OUTPUT nullability.</p></dd>
             ]
         },
         
-        'postgres': {
+        'duckdb': {
             examples: [
                 
                 
-                  "The dialect postgres does not support the kernel arithmetic.sum(i8) -> i8",
-                
-                
-                
                   null,
                 
                 
@@ -588,7 +584,11 @@ DECLARED_OUTPUT nullability.</p></dd>
                 
                 
                 
-                  "The dialect postgres does not support the kernel arithmetic.sum(i64) -> error",
+                  null,
+                
+                
+                
+                  "The dialect duckdb does not support the kernel arithmetic.sum(i64) -> error",
                 
                 
             ],
@@ -747,75 +747,6 @@ DECLARED_OUTPUT nullability.</p></dd>
             ]
         },
         
-        'datafusion': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
         'velox_presto': {
             examples: [
                 
@@ -865,6 +796,75 @@ DECLARED_OUTPUT nullability.</p></dd>
                 
                 
                   "There is no dialect information for this function",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  "The dialect postgres does not support the kernel arithmetic.sum(i8) -> i8",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel arithmetic.sum(i64) -> error",
                 
                 
             ],
