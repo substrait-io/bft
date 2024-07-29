@@ -71,7 +71,11 @@ class SqlCaseRunner(CaseRunner):
         elif result.type == "error":
             if case.result == "error":
                 # Case expected to error.  Dialect may or may not have expected it
-                return CaseResult(True, mapping.should_pass, mapping.reason)
+                should_pass = mapping.should_pass
+                if mapping.unsupported:
+                    # Unsupported test case, expected an error and got an error
+                    should_pass = True
+                return CaseResult(True, should_pass, mapping.reason)
             else:
                 if mapping.should_pass:
                     # Case should not have error.  Dialect should not have error
