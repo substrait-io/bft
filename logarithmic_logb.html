@@ -198,6 +198,203 @@ logb(x, b) => log_{b} (x)
         <section id="examples">
             <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
             
+            <table>
+                <caption>Basic examples without any special cases</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (fp64)</th>
+                        
+                        <th>arg2 (fp64)</th>
+                        
+                        <th>result (fp64)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>10</td>
+                        
+                        <td>100000</td>
+                        
+                        <td>5.0</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>7</td>
+                        
+                        <td>1.0</td>
+                        
+                        <td>0</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2</td>
+                        
+                        <td>7</td>
+                        
+                        <td>2.807354922057604</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>Examples with infinity as input</caption>
+                <thead>
+                    <tr>
+                        
+                        <th>on_domain_error</th>
+                        
+                        
+                        <th>arg1 (fp64)</th>
+                        
+                        <th>arg2 (fp64)</th>
+                        
+                        <th>result (fp64)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2.34</td>
+                        
+                        <td>inf</td>
+                        
+                        <td>inf</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>ERROR</td>
+                        
+                        
+                        <td>10</td>
+                        
+                        <td>-inf</td>
+                        
+                        <td>ERROR</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>NAN</td>
+                        
+                        
+                        <td>10</td>
+                        
+                        <td>-inf</td>
+                        
+                        <td>NAN</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>NONE</td>
+                        
+                        
+                        <td>10</td>
+                        
+                        <td>-inf</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>Examples with log zero</caption>
+                <thead>
+                    <tr>
+                        
+                        <th>on_log_zero</th>
+                        
+                        
+                        <th>arg1 (fp64)</th>
+                        
+                        <th>arg2 (fp64)</th>
+                        
+                        <th>result (fp64)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>ERROR</td>
+                        
+                        
+                        <td>2.0</td>
+                        
+                        <td>0.0</td>
+                        
+                        <td>ERROR</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>NAN</td>
+                        
+                        
+                        <td>2.0</td>
+                        
+                        <td>0.0</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>MINUS_INFINITY</td>
+                        
+                        
+                        <td>2.0</td>
+                        
+                        <td>0.0</td>
+                        
+                        <td>-inf</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
         </section>
     </article>
     <script src="./assets/supplementary/script.js"></script>
@@ -206,6 +403,46 @@ logb(x, b) => log_{b} (x)
         
         'datafusion': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=ERROR was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=NONE was requested",
+                
+                
+                
+                  "The dialect datafusion expects on_log_zero=MINUS_INFINITY but on_log_zero=ERROR was requested",
+                
+                
+                
+                  "The dialect datafusion expects on_log_zero=MINUS_INFINITY but on_log_zero=NAN was requested",
+                
+                
+                
+                  null,
+                
                 
             ],
             kernels: [
@@ -220,6 +457,46 @@ logb(x, b) => log_{b} (x)
         'snowflake': {
             examples: [
                 
+                
+                  "The dialect snowflake does not support the kernel logarithmic.logb(i64, i64) -> fp64",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect snowflake expects on_domain_error=ERROR but on_domain_error=NAN was requested",
+                
+                
+                
+                  "The dialect snowflake expects on_domain_error=ERROR but on_domain_error=NONE was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect snowflake expects on_log_zero=ERROR but on_log_zero=NAN was requested",
+                
+                
+                
+                  "The dialect snowflake expects on_log_zero=ERROR but on_log_zero=MINUS_INFINITY was requested",
+                
+                
             ],
             kernels: [
                 
@@ -232,6 +509,46 @@ logb(x, b) => log_{b} (x)
         
         'duckdb': {
             examples: [
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
                 
             ],
             kernels: [
@@ -246,6 +563,46 @@ logb(x, b) => log_{b} (x)
         'cudf': {
             examples: [
                 
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
             ],
             kernels: [
                 
@@ -258,6 +615,46 @@ logb(x, b) => log_{b} (x)
         
         'sqlite': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=NAN was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect sqlite expects on_log_zero=NAN but on_log_zero=ERROR was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect sqlite expects on_log_zero=NAN but on_log_zero=MINUS_INFINITY was requested",
+                
                 
             ],
             kernels: [
@@ -272,6 +669,46 @@ logb(x, b) => log_{b} (x)
         'velox_presto': {
             examples: [
                 
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
             ],
             kernels: [
                 
@@ -284,6 +721,46 @@ logb(x, b) => log_{b} (x)
         
         'postgres': {
             examples: [
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel logarithmic.logb(fp64, fp64) -> fp64",
+                
+                
+                
+                  "The dialect postgres does not support the kernel logarithmic.logb(fp64, fp64) -> fp64",
+                
+                
+                
+                  "The dialect postgres does not support the kernel logarithmic.logb(fp64, fp64) -> fp64",
+                
+                
+                
+                  "The dialect postgres does not support the kernel logarithmic.logb(fp64, fp64) -> error",
+                
+                
+                
+                  "The dialect postgres does not support the kernel logarithmic.logb(fp64, fp64) -> nan",
+                
+                
+                
+                  "The dialect postgres does not support the kernel logarithmic.logb(fp64, fp64) -> fp64",
+                
+                
+                
+                  "The dialect postgres does not support the kernel logarithmic.logb(fp64, fp64) -> error",
+                
+                
+                
+                  "The dialect postgres does not support the kernel logarithmic.logb(fp64, fp64) -> fp64",
+                
+                
+                
+                  "The dialect postgres does not support the kernel logarithmic.logb(fp64, fp64) -> fp64",
+                
                 
             ],
             kernels: [
