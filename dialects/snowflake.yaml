@@ -63,7 +63,6 @@ scalar_functions:
   local_name: pow
   required_options:
     overflow: ERROR
-    rounding: TIE_AWAY_FROM_ZERO
     complex_number_result: ERROR
   supported_kernels:
   - dec_dec

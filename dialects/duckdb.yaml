@@ -119,7 +119,6 @@ scalar_functions:
 - name: arithmetic_decimal.power
   local_name: pow
   required_options:
-    rounding: TRUNCATE
     complex_number_result: NAN
   supported_kernels:
   - dec_dec
