@@ -119,6 +119,8 @@ class Dialect(object):
             result: CaseLiteral | Literal["error", "undefined"],
     ):
         arg_len_matched = False
+        # figure out if case is a supported kernel. walk over each supported kernel and check if any kernel
+        # matches the case arguments type
         for supported_kernel in dfunc.supported_kernels:
             if dfunc.aggregate:
                 arg_len = 1
@@ -137,10 +139,16 @@ class Dialect(object):
             any_map = {}
             for ktype, arg in zip(kernel_arg_types, args):
                 arg_type = arg.type
+                # dialect supports base type and function support is checked against base type.
+                # get base type:
+                # if type is a parametrized type (e.g. decimal<38, 1>), get the base type (e.g. decimal)
+                # else type is base type
                 type_to_check = arg_type.split("<")[0].strip() if "<" in arg_type else arg_type
                 if type_to_check != ktype and not ktype.startswith("any"):
                     matched = False
                     break
+                # if supported argument type is any(i.e. allows all type supported by dialect),
+                # check if the case type is one of the supported type by dialect
                 if ktype.startswith("any"):
                     if ktype not in any_map:
                         if type_to_check not in self.supported_types:
