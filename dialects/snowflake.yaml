@@ -34,6 +34,7 @@ supported_types:
   - ts
   - tsz
   - interval
+  - dec
 scalar_functions:
 - name: arithmetic.add
   local_name: +
@@ -58,6 +59,14 @@ scalar_functions:
     rounding: TIE_TO_EVEN
   supported_kernels:
   - fp64_fp64
+- name: arithmetic_decimal.power
+  local_name: pow
+  required_options:
+    overflow: ERROR
+    rounding: TIE_AWAY_FROM_ZERO
+    complex_number_result: ERROR
+  supported_kernels:
+  - dec_dec
 - name: arithmetic.sqrt
   local_name: sqrt
   required_options:

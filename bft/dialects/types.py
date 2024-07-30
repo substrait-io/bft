@@ -136,16 +136,18 @@ class Dialect(object):
 
             any_map = {}
             for ktype, arg in zip(kernel_arg_types, args):
-                if arg.type != ktype and not ktype.startswith("any"):
+                arg_type = arg.type
+                type_to_check = arg_type.split("<")[0].strip() if "<" in arg_type else arg_type
+                if type_to_check != ktype and not ktype.startswith("any"):
                     matched = False
                     break
                 if ktype.startswith("any"):
                     if ktype not in any_map:
-                        if arg.type not in self.supported_types:
+                        if type_to_check not in self.supported_types:
                             matched = False
                             break
-                        any_map[ktype] = arg.type
-                    elif any_map[ktype] != arg.type:
+                        any_map[ktype] = type_to_check
+                    elif any_map[ktype] != type_to_check:
                         matched = False
                         break
             if matched:

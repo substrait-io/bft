@@ -1,0 +1,94 @@
+base_uri: https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_arithmetic_decimal.yaml
+function: power
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: 8
+        type: decimal
+      - value: 2
+        type: decimal<38, 0>
+    result:
+      value: 64
+      type: fp64
+  - group: basic
+    args:
+      - value: 1.0
+        type: decimal
+      - value: -1.0
+        type: decimal<38, 0>
+    result:
+      value: 1.0
+      type: fp64
+  - group: basic
+    args:
+      - value: 2.0
+        type: decimal<38, 0>
+      - value: -2.0
+        type: decimal<38, 0>
+    result:
+      value: 0.25
+      type: fp64
+  - group: basic
+    args:
+      - value: 13
+        type: decimal<38, 0>
+      - value: 10
+        type: decimal<38, 0>
+    result:
+      value: 137858491849
+      type: fp64
+  - group:
+      id: result_more_than_input_precison
+      description: Examples demonstrating result with more precision than input
+    args:
+      - value: 16
+        type: decimal<2, 0>
+      - value: 4
+        type: decimal<38, 0>
+    result:
+      value: 65536
+      type: fp64
+  - group:
+      id: floating_exception
+      description: Examples demonstrating exceptional floating point cases
+    args:
+      - value: 1.5e+10
+        type: decimal<38, 0>
+      - value: 1.5e+20
+        type: decimal<38, 0>
+    result:
+      value: inf
+      type: fp64
+  - group: floating_exception
+    args:
+      - value: -16
+        type: decimal<4, 0>
+      - value: 1001
+        type: decimal<4, 0>
+    result:
+      value: -inf
+      type: fp64
+  - group:
+      id: complex_number
+      description: Examples demonstrating complex number output
+    args:
+      - value: -1
+        type: decimal
+      - value: 0.5
+        type: decimal<38,1>
+    options:
+      complex_number_result: NAN
+    result:
+      special: nan
+  - group: complex_number
+    args:
+      - value: -1
+        type: decimal
+      - value: 0.5
+        type: decimal<38,1>
+    options:
+      complex_number_result: ERROR
+    result:
+      special: error
