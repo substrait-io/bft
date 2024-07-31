@@ -39,6 +39,7 @@ supported_types:
   - ts
   - tstz
   - interval
+  - dec
 scalar_functions:
 - name: arithmetic.add
   local_name: +
@@ -115,6 +116,12 @@ scalar_functions:
   - i64_i64
   - fp32_fp32
   - fp64_fp64
+- name: arithmetic_decimal.power
+  local_name: pow
+  required_options:
+    complex_number_result: NAN
+  supported_kernels:
+  - dec_dec
 - name: arithmetic.sqrt
   local_name: sqrt
   required_options:

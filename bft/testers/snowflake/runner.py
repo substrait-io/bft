@@ -10,6 +10,7 @@ from snowflake.connector.errors import Error
 from bft.cases.runner import SqlCaseResult, SqlCaseRunner
 from bft.cases.types import Case
 from bft.dialects.types import SqlMapping
+from bft.utils.utils import type_to_dialect_type
 
 type_map = {
     "fp64": "FLOAT",
@@ -20,14 +21,12 @@ type_map = {
     "timestamp": "TIMESTAMP",
     "timestamp_tz": "TIMESTAMPTZ",
     "interval": "INTERVAL",
+    "decimal": "DECIMAL",
 }
 
 
 def type_to_snowflake_type(type: str):
-    if type not in type_map:
-        return None
-    return type_map[type]
-
+    return type_to_dialect_type(type, type_map)
 
 def literal_to_str(lit: str | int | float):
     if lit is None:

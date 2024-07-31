@@ -7,6 +7,7 @@ import duckdb
 from bft.cases.runner import SqlCaseResult, SqlCaseRunner
 from bft.cases.types import Case
 from bft.dialects.types import SqlMapping
+from bft.utils.utils import type_to_dialect_type
 
 type_map = {
     "i8": "TINYINT",
@@ -22,13 +23,12 @@ type_map = {
     "timestamp": "TIMESTAMP",
     "timestamp_tz": "TIMESTAMPTZ",
     "interval": "INTERVAL",
+    "decimal": "DECIMAL",
 }
 
 
 def type_to_duckdb_type(type: str):
-    if type not in type_map:
-        raise Exception(f"Unrecognized type: {type}")
-    return type_map[type]
+    return type_to_dialect_type(type, type_map)
 
 
 def literal_to_str(lit: str | int | float):
@@ -128,6 +128,11 @@ class DuckDBRunner(SqlCaseRunner):
                 return SqlCaseResult.success()
             elif case.result == "error":
                 return SqlCaseResult.unexpected_pass(str(result))
+            elif str(result) == "nan":
+                if case.result == "nan":
+                    return SqlCaseResult.success()
+                else:
+                    return SqlCaseResult.mismatch(str(result))
             # Issues with python float comparison:
             # https://tutorpython.com/python-mathisclose/#The_problem_with_using_for_float_comparison
             # https://stackoverflow.com/questions/5595425/what-is-the-best-way-to-compare-floats-for-almost-equality-in-python
