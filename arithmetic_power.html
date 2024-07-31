@@ -193,14 +193,66 @@ and the way the operation is carried out in various dialects.</p>
                     <tr>
                         
                         
-                        <th>arg1 (i64)</th>
+                        <th>arg1 (decimal<38, 0>)</th>
                         
-                        <th>arg2 (i64)</th>
+                        <th>arg2 (decimal<38, 0>)</th>
                         
-                        <th>result (i64)</th>
+                        <th>result (fp64)</th>
                     </tr>
                 </thead>
                 <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>8</td>
+                        
+                        <td>2</td>
+                        
+                        <td>64</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>1.0</td>
+                        
+                        <td>-1.0</td>
+                        
+                        <td>1.0</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2.0</td>
+                        
+                        <td>-2.0</td>
+                        
+                        <td>0.25</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>13</td>
+                        
+                        <td>10</td>
+                        
+                        <td>137858491849</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
                     
                     <tr class="bft-case">
                         
@@ -257,14 +309,63 @@ and the way the operation is carried out in various dialects.</p>
             </table>
             
             <table>
+                <caption>Examples demonstrating complex number output</caption>
+                <thead>
+                    <tr>
+                        
+                        <th>complex_number_result</th>
+                        
+                        
+                        <th>arg1 (decimal)</th>
+                        
+                        <th>arg2 (decimal<38,1>)</th>
+                        
+                        <th>result (nan)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>NAN</td>
+                        
+                        
+                        <td>-1</td>
+                        
+                        <td>0.5</td>
+                        
+                        <td>NAN</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>ERROR</td>
+                        
+                        
+                        <td>-1</td>
+                        
+                        <td>0.5</td>
+                        
+                        <td>ERROR</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
                 <caption>Examples demonstrating exceptional floating point cases</caption>
                 <thead>
                     <tr>
                         
                         
-                        <th>arg1 (fp64)</th>
+                        <th>arg1 (decimal<4, 0>)</th>
                         
-                        <th>arg2 (fp64)</th>
+                        <th>arg2 (decimal<4, 0>)</th>
                         
                         <th>result (fp64)</th>
                     </tr>
@@ -279,6 +380,62 @@ and the way the operation is carried out in various dialects.</p>
                         <td>1.5e+208</td>
                         
                         <td>inf</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>15000000000.0</td>
+                        
+                        <td>1.5e+20</td>
+                        
+                        <td>inf</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>-16</td>
+                        
+                        <td>1001</td>
+                        
+                        <td>-inf</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>Examples demonstrating result with more precision than input</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (decimal<2, 0>)</th>
+                        
+                        <th>arg2 (decimal<38, 0>)</th>
+                        
+                        <th>result (fp64)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>16</td>
+                        
+                        <td>4</td>
+                        
+                        <td>65536</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -312,7 +469,43 @@ and the way the operation is carried out in various dialects.</p>
                 
                 
                 
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
                   null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -350,6 +543,42 @@ and the way the operation is carried out in various dialects.</p>
                   null,
                 
                 
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect snowflake expects complex_number_result=ERROR but complex_number_result=NAN was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
             ],
             kernels: [
                 
@@ -367,6 +596,42 @@ and the way the operation is carried out in various dialects.</p>
                 
                 
                   null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb expects complex_number_result=NAN but complex_number_result=ERROR was requested",
                 
                 
                 
@@ -417,7 +682,43 @@ and the way the operation is carried out in various dialects.</p>
                 
                 
                 
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
                   null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -452,7 +753,43 @@ and the way the operation is carried out in various dialects.</p>
                 
                 
                 
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
                   null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -487,7 +824,43 @@ and the way the operation is carried out in various dialects.</p>
                 
                 
                 
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
                   null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -522,7 +895,43 @@ and the way the operation is carried out in various dialects.</p>
                 
                 
                 
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
                   null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
