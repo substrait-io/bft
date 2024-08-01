@@ -93,4 +93,20 @@ cases:
         type: decimal<5,2>
     result:
       special: error
+  - group:
+      id: null_values
+      description: test with null values
+    args:
+      - value: null
+        type: decimal<38, 0>
+    result:
+      value: null
+      type: fp64
+  - group: null_values
+    args:
+      - value: null
+        type: decimal<1, 0>
+    result:
+      value: null
+      type: fp64
 
