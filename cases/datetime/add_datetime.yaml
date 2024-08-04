@@ -43,7 +43,7 @@ cases:
       type: timestamp
   - group: date_to_timestamp
     args:
-      - value: '2020-12-31 '
+      - value: '2020-12-31'
         type: date
       - value: INTERVAL '5 YEAR'
         type: interval

@@ -103,7 +103,7 @@ cases:
         type: decimal<38, 0>
     result:
       value: 10
-      type: boolean
+      type: decimal<38, 0>
   - group: null_input
     args:
       - value: null

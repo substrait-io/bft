@@ -1,0 +1,47 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: substrait testcase schema
+description: schema for substrait test cases
+type: object
+properties:
+  base_uri:
+    type: string
+    description: base uri for the function
+  function:
+    type: string
+    description: function name
+  cases:
+    type: array
+    items:
+      type: object
+      properties:
+        group:
+          type: string
+          description: group name
+        description:
+          type: string
+          description: description of the group
+        options:
+          type:object
+        tests:
+          type: array
+          items:
+            type: object
+            properties:
+              args:
+                type: array
+                items:
+                  type: object
+                  # (120|i32, 15|i32): 135|i32
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    column:
+                      type: array
+                      items:
+                        type: string
+                        description: column data
+                    type:
+                      type: string
+                      description: column type
