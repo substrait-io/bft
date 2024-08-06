@@ -6,30 +6,30 @@ cases:
       description: Basic examples without any special cases
     args:
       - value: 0
-        type: decimal<38,0>
+        type: decimal<1,0>
     result:
       value: 1
       type: decimal<38,0>
   - group: basic
     args:
       - value: 1
-        type: decimal<38,0>
+        type: decimal<1,0>
     result:
       value: 1
       type: decimal<38,0>
   - group: basic
     args:
       - value: 20
-        type: decimal<38,0>
+        type: decimal<2,0>
     result:
       value: 2432902008176640000
-      type: decimal<38,0>
+      type: decimal<19,0>
   - group:
       id: overflow
       description: Examples demonstrating overflow behavior
     args:
       - value: 34
-        type: decimal<38,0>
+        type: decimal<2,0>
     result:
       special: error
   - group:
@@ -37,7 +37,7 @@ cases:
       description: Examples demonstrating behavior on negative value
     args:
       - value: -1
-        type: decimal<38,0>
+        type: decimal<1,0>
     result:
       special: error
   - group:
