@@ -5,73 +5,73 @@ cases:
       id: basic
       description: Basic examples without any special cases
     args:
-      - value: [20, -3, 1, -10, 0, 5]
+      - value: !decimallist [20, -3, 1, -10, 0, 5]
         type: decimal<38, 0>
     result:
-      value: -10
+      value: !decimal -10
       type: decimal<38, 0>
   - group: basic
     args:
-      - value: [-32768, 32767, 20000, -30000]
+      - value: !decimallist [-32768, 32767, 20000, -30000]
         type: decimal<38, 0>
     result:
-      value: -32768
+      value: !decimal -32768
       type: decimal<38, 0>
   - group: basic
     args:
-      - value: [-214748648, 214748647, 21470048, 4000000]
+      - value: !decimallist [-214748648, 214748647, 21470048, 4000000]
         type: decimal<38, 0>
     result:
-      value: -214748648
+      value: !decimal -214748648
       type: decimal<38, 0>
   - group: basic
     args:
-      - value: [2000000000, -3217908979, 629000000, -100000000, 0, 987654321]
+      - value: !decimallist [2000000000, -3217908979, 629000000, -100000000, 0, 987654321]
         type: decimal<38, 0>
     result:
-      value: -3217908979
+      value: !decimal -3217908979
       type: decimal<38, 0>
   - group: basic
     args:
-      - value: [2.5, 0, 5.0, -2.5, -7.5]
+      - value: !decimallist [2.5, 0, 5.0, -2.5, -7.5]
         type: decimal<38, 2>
     result:
-      value: -7.5
+      value: !decimal -7.5
       type: decimal<38, 2>
   - group: basic
     args:
-      - value: [99999999999999999999999999999999999999, -99999999999999999999999999999999999998, -99999999999999999999999999999999999997, 0, 1111]
+      - value: !decimallist [99999999999999999999999999999999999999, -99999999999999999999999999999999999998, -99999999999999999999999999999999999997, 0, 1111]
         type: decimal<38, 0>
     result:
-      value: -99999999999999999999999999999999999998
+      value: !decimal -99999999999999999999999999999999999998
       type: decimal<38, 0>
   - group:
       id: null_handling
       description: Examples with null as unput or output
     args:
-      - value: [Null, Null, Null]
+      - value: !decimallist [Null, Null, Null]
         type: decimal<38, 0>
     result:
-      value: Null
+      value: !decimal Null
       type: decimal<38, 0>
   - group: null_handling
     args:
-      - value: []
+      - value: !decimallist []
         type: decimal<38, 0>
     result:
-      value: Null
+      value: !decimal Null
       type: decimal<38, 0>
   - group: null_handling
     args:
-      - value: [2000000000, Null, 629000000, -100000000, Null, 987654321]
+      - value: !decimallist [2000000000, Null, 629000000, -100000000, Null, 987654321]
         type: decimal<38, 0>
     result:
-      value: -100000000
+      value: !decimal -100000000
       type: decimal<38, 0>
   - group: null_handling
     args:
-      - value: [-99999999999999999999999999999999999998, Null, 99999999999999999999999999999999999999, Null]
+      - value: !decimallist [-99999999999999999999999999999999999998, Null, 99999999999999999999999999999999999999, Null]
         type: decimal<38, 0>
     result:
-      value: -99999999999999999999999999999999999998
+      value: !decimal -99999999999999999999999999999999999998
       type: decimal<38, 0>

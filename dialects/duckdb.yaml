@@ -669,10 +669,6 @@ aggregate_functions:
   aggregate: true
   supported_kernels:
     - dec
-- name: arithmetic_decimal.avg
-  aggregate: true
-  supported_kernels:
-    - dec
 - name: boolean.bool_and
   aggregate: true
   supported_kernels:

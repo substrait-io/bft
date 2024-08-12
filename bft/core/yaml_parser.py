@@ -1,5 +1,6 @@
 import math
 from abc import ABC, abstractmethod
+from decimal import Decimal
 from typing import BinaryIO, Generic, Iterable, List, TypeVar
 
 import yaml
@@ -90,7 +91,27 @@ class BaseYamlParser(ABC, Generic[T]):
     def get_visitor(self) -> BaseYamlVisitor[T]:
         pass
 
+    def get_loader(self):
+        loader = yaml.SafeLoader
+        """Add tag "!decimal" to the loader """
+        loader.add_constructor("!decimal", self.decimal_constructor)
+        loader.add_constructor("!decimallist", self.list_of_decimal_constructor)
+        return loader
+
+    def decimal_constructor(self, loader: yaml.SafeLoader, node: yaml.nodes.MappingNode):
+        return self.get_decimal_value(loader, node)
+
+    def get_decimal_value(self, loader: yaml.SafeLoader, node: yaml.ScalarNode):
+        value = loader.construct_scalar(node)
+        if isinstance(value, str) and value.lower() == 'null':
+            return None
+        return Decimal(value)
+
+    def list_of_decimal_constructor(self, loader: yaml.SafeLoader, node: yaml.nodes.MappingNode):
+        return [self.get_decimal_value(loader, item) for item in node.value]
+
     def parse(self, f: BinaryIO) -> List[T]:
-        objs = yaml.load_all(f, SafeLoader)
+        loader = self.get_loader()
+        objs = yaml.load_all(f, loader)
         visitor = self.get_visitor()
         return [visitor.visit(obj) for obj in objs]
