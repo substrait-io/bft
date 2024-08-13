@@ -23,7 +23,7 @@ cases:
         type: decimal<2,0>
     result:
       value: 2432902008176640000
-      type: decimal<19,0>
+      type: decimal<38,0>
   - group:
       id: overflow
       description: Examples demonstrating overflow behavior

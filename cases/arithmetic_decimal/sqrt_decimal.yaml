@@ -84,7 +84,7 @@ cases:
       description: negative input returns error
     args:
       - value: -9223372036854775800
-        type: decimal<38,0>
+        type: decimal<19,0>
     result:
       special: error
   - group: negative_input
