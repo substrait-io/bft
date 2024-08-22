@@ -206,9 +206,9 @@ DECLARED_OUTPUT nullability.</p></dd>
                     <tr>
                         
                         
-                        <th>arg1 (fp64)</th>
+                        <th>arg1 (decimal<23, 22>)</th>
                         
-                        <th>result (fp64)</th>
+                        <th>result (decimal<38, 22>)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -252,6 +252,50 @@ DECLARED_OUTPUT nullability.</p></dd>
                         <td>[2.5000007152557373, 7.000000715255737, 0, 7.000000715255737]</td>
                         
                         <td>16.500002145767212</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[Decimal('0'), Decimal('-1'), Decimal('2'), Decimal('20')]</td>
+                        
+                        <td>21</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[Decimal('2000000'), Decimal('-3217908'), Decimal('629000'), Decimal('-100000'), Decimal('0'), Decimal('987654')]</td>
+                        
+                        <td>298746</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[Decimal('2.5'), Decimal('0'), Decimal('5.0'), Decimal('-2.5'), Decimal('-7.5')]</td>
+                        
+                        <td>-2.5</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[Decimal('2.5000007152557373046875'), Decimal('7.0000007152557373046875'), Decimal('0'), Decimal('7.0000007152557373046875')]</td>
+                        
+                        <td>16.5000021457672119140625</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -324,9 +368,9 @@ DECLARED_OUTPUT nullability.</p></dd>
                     <tr>
                         
                         
-                        <th>arg1 (i32)</th>
+                        <th>arg1 (decimal<6, 0>)</th>
                         
-                        <th>result (i32)</th>
+                        <th>result (decimal<38, 0>)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -363,6 +407,39 @@ DECLARED_OUTPUT nullability.</p></dd>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
                     </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[None, None, None]</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[]</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>[Decimal('200000'), None, Decimal('629000'), Decimal('-10000'), Decimal('0'), Decimal('987621')]</td>
+                        
+                        <td>1806621</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
                     </tbody>
             </table>
             
@@ -387,6 +464,19 @@ DECLARED_OUTPUT nullability.</p></dd>
                         
                         
                         <td>[9223372036854775806, 1, 1, 1, 1, 10000000000]</td>
+                        
+                        <td>ERROR</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        <td>ERROR</td>
+                        
+                        
+                        <td>[Decimal('99999999999999999999999999999999999999'), Decimal('1'), Decimal('1'), Decimal('1'), Decimal('1'), Decimal('99999999999999999999999999999999999999')]</td>
                         
                         <td>ERROR</td>
                     </tr>
@@ -450,7 +540,39 @@ DECLARED_OUTPUT nullability.</p></dd>
                 
                 
                 
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
                   "The dialect duckdb does not support the kernel arithmetic.sum(i64) -> error",
+                
+                
+                
+                  null,
                 
                 
             ],
@@ -473,6 +595,38 @@ DECLARED_OUTPUT nullability.</p></dd>
         
         'velox_presto': {
             examples: [
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
                 
                 
                   "There is no dialect information for this function",
@@ -560,7 +714,19 @@ DECLARED_OUTPUT nullability.</p></dd>
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -585,10 +751,30 @@ DECLARED_OUTPUT nullability.</p></dd>
                 
                 
                   null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
                   "The dialect postgres does not support the kernel arithmetic.sum(i64) -> error",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -629,7 +815,19 @@ DECLARED_OUTPUT nullability.</p></dd>
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -658,6 +856,26 @@ DECLARED_OUTPUT nullability.</p></dd>
                 
                 
                   null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -698,7 +916,19 @@ DECLARED_OUTPUT nullability.</p></dd>
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -723,10 +953,30 @@ DECLARED_OUTPUT nullability.</p></dd>
                 
                 
                   null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
                   "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -783,6 +1033,22 @@ DECLARED_OUTPUT nullability.</p></dd>
                 
                 
                 
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
                   "The dialect snowflake does not support the kernel arithmetic.sum(i16) -> i16",
                 
                 
@@ -795,7 +1061,23 @@ DECLARED_OUTPUT nullability.</p></dd>
                 
                 
                 
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
                   "The dialect snowflake does not support the kernel arithmetic.sum(i64) -> error",
+                
+                
+                
+                  null,
                 
                 
             ],
@@ -836,7 +1118,19 @@ DECLARED_OUTPUT nullability.</p></dd>
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -865,6 +1159,26 @@ DECLARED_OUTPUT nullability.</p></dd>
                 
                 
                   null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
