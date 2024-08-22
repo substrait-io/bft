@@ -229,7 +229,7 @@ scalar_functions:
   local_name: factorial
   infix: false
   required_options:
-    overflow: SILENT
+    overflow: ERROR
   supported_kernels:
   - i32
   - i64
