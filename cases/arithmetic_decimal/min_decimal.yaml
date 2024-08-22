@@ -1,0 +1,77 @@
+base_uri: https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_arithmetic_decimal.yaml
+function: min
+cases:
+  - group:
+      id: basic
+      description: Basic examples without any special cases
+    args:
+      - value: !decimallist [20, -3, 1, -10, 0, 5]
+        type: decimal<2, 0>
+    result:
+      value: !decimal -10
+      type: decimal<2, 0>
+  - group: basic
+    args:
+      - value: !decimallist [-32768, 32767, 20000, -30000]
+        type: decimal<5, 0>
+    result:
+      value: !decimal -32768
+      type: decimal<5, 0>
+  - group: basic
+    args:
+      - value: !decimallist [-214748648, 214748647, 21470048, 4000000]
+        type: decimal<9, 0>
+    result:
+      value: !decimal -214748648
+      type: decimal<9, 0>
+  - group: basic
+    args:
+      - value: !decimallist [2000000000, -3217908979, 629000000, -100000000, 0, 987654321]
+        type: decimal<10, 0>
+    result:
+      value: !decimal -3217908979
+      type: decimal<10, 0>
+  - group: basic
+    args:
+      - value: !decimallist [2.5, 0, 5.0, -2.5, -7.5]
+        type: decimal<2, 1>
+    result:
+      value: !decimal -7.5
+      type: decimal<2, 1>
+  - group: basic
+    args:
+      - value: !decimallist [99999999999999999999999999999999999999, -99999999999999999999999999999999999998, -99999999999999999999999999999999999997, 0, 1111]
+        type: decimal<38, 0>
+    result:
+      value: !decimal -99999999999999999999999999999999999998
+      type: decimal<38, 0>
+  - group:
+      id: null_handling
+      description: Examples with null as unput or output
+    args:
+      - value: !decimallist [Null, Null, Null]
+        type: decimal<1, 0>
+    result:
+      value: !decimal Null
+      type: decimal<1, 0>
+  - group: null_handling
+    args:
+      - value: !decimallist []
+        type: decimal<1, 0>
+    result:
+      value: !decimal Null
+      type: decimal<1, 0>
+  - group: null_handling
+    args:
+      - value: !decimallist [2000000000, Null, 629000000, -100000000, Null, 987654321]
+        type: decimal<10, 0>
+    result:
+      value: !decimal -100000000
+      type: decimal<10, 0>
+  - group: null_handling
+    args:
+      - value: !decimallist [-99999999999999999999999999999999999998, Null, 99999999999999999999999999999999999999, Null]
+        type: decimal<38, 0>
+    result:
+      value: !decimal -99999999999999999999999999999999999998
+      type: decimal<38, 0>
