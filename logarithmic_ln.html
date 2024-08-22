@@ -119,21 +119,45 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>datafusion</option>
-                
-                <option>snowflake</option>
-                
                 <option>duckdb</option>
-                
-                <option>cudf</option>
-                
-                <option>sqlite</option>
                 
                 <option>velox_presto</option>
                 
                 <option>postgres</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>snowflake</option>
+                
+                <option>sqlite</option>
+                
             </select>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
@@ -147,31 +171,7 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -382,120 +382,6 @@
     <script>
       var bftDialects = {
         
-        'datafusion': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=ERROR was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=NONE was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect datafusion expects on_log_zero=MINUS_INFINITY but on_log_zero=ERROR was requested",
-                
-                
-                
-                  "The dialect datafusion expects on_log_zero=MINUS_INFINITY but on_log_zero=NAN was requested",
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'snowflake': {
-            examples: [
-                
-                
-                  "The dialect snowflake does not support the kernel logarithmic.ln(i64) -> fp64",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel logarithmic.ln(fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect snowflake expects on_domain_error=ERROR but on_domain_error=NAN was requested",
-                
-                
-                
-                  "The dialect snowflake expects on_domain_error=ERROR but on_domain_error=NONE was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect snowflake expects on_log_zero=ERROR but on_log_zero=NAN was requested",
-                
-                
-                
-                  "The dialect snowflake expects on_log_zero=ERROR but on_log_zero=MINUS_INFINITY was requested",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
         'duckdb': {
             examples: [
                 
@@ -541,120 +427,6 @@
                 
                 
                   "The dialect duckdb expects on_log_zero=ERROR but on_log_zero=MINUS_INFINITY was requested",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'cudf': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects on_log_zero=MINUS_INFINITY but on_log_zero=ERROR was requested",
-                
-                
-                
-                  "The dialect cudf expects on_log_zero=MINUS_INFINITY but on_log_zero=NAN was requested",
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=NAN was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects on_log_zero=NAN but on_log_zero=ERROR was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects on_log_zero=NAN but on_log_zero=MINUS_INFINITY was requested",
                 
                 
             ],
@@ -769,6 +541,234 @@
                 
                 
                   "The dialect postgres expects on_log_zero=ERROR but on_log_zero=MINUS_INFINITY was requested",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf expects on_log_zero=MINUS_INFINITY but on_log_zero=ERROR was requested",
+                
+                
+                
+                  "The dialect cudf expects on_log_zero=MINUS_INFINITY but on_log_zero=NAN was requested",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=ERROR was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=NONE was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects on_log_zero=MINUS_INFINITY but on_log_zero=ERROR was requested",
+                
+                
+                
+                  "The dialect datafusion expects on_log_zero=MINUS_INFINITY but on_log_zero=NAN was requested",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'snowflake': {
+            examples: [
+                
+                
+                  "The dialect snowflake does not support the kernel logarithmic.ln(i64) -> fp64",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel logarithmic.ln(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect snowflake expects on_domain_error=ERROR but on_domain_error=NAN was requested",
+                
+                
+                
+                  "The dialect snowflake expects on_domain_error=ERROR but on_domain_error=NONE was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect snowflake expects on_log_zero=ERROR but on_log_zero=NAN was requested",
+                
+                
+                
+                  "The dialect snowflake expects on_log_zero=ERROR but on_log_zero=MINUS_INFINITY was requested",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=NAN was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect sqlite expects on_log_zero=NAN but on_log_zero=ERROR was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect sqlite expects on_log_zero=NAN but on_log_zero=MINUS_INFINITY was requested",
                 
                 
             ],

@@ -59,21 +59,45 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>datafusion</option>
-                
-                <option>snowflake</option>
-                
                 <option>duckdb</option>
-                
-                <option>cudf</option>
-                
-                <option>sqlite</option>
                 
                 <option>velox_presto</option>
                 
                 <option>postgres</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>snowflake</option>
+                
+                <option>sqlite</option>
+                
             </select>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
@@ -87,31 +111,7 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -250,9 +250,9 @@
                     <tr>
                         
                         
-                        <th>arg1 (boolean)</th>
+                        <th>arg1 (decimal<38, 0>)</th>
                         
-                        <th>arg2 (boolean)</th>
+                        <th>arg2 (decimal<38, 0>)</th>
                         
                         <th>result (boolean)</th>
                     </tr>
@@ -297,6 +297,32 @@
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
                     </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>10</td>
+                        
+                        <td>None</td>
+                        
+                        <td>10</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>None</td>
+                        
+                        <td>None</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
                     </tbody>
             </table>
             
@@ -305,108 +331,6 @@
     <script src="./assets/supplementary/script.js"></script>
     <script>
       var bftDialects = {
-        
-        'datafusion': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
-        'snowflake': {
-            examples: [
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.nullif(i16, i16) -> i16",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.nullif(fp32, fp32) -> fp32",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.nullif(fp32, fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
         
         'duckdb': {
             examples: [
@@ -418,100 +342,6 @@
                 
                   null,
                 
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
-        'cudf': {
-            examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
                 
                 
                   null,
@@ -604,6 +434,14 @@
                   "There is no dialect information for this function",
                 
                 
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
             ],
             kernels: [
                 
@@ -653,6 +491,250 @@
                 
                 
                   null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel comparison.nullif(decimal<38, 0>, decimal<38, 0>) -> boolean",
+                
+                
+                
+                  "The dialect postgres does not support the kernel comparison.nullif(decimal<38, 0>, decimal<38, 0>) -> boolean",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'cudf': {
+            examples: [
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion does not support the kernel comparison.nullif(decimal<38, 0>, decimal<38, 0>) -> boolean",
+                
+                
+                
+                  "The dialect datafusion does not support the kernel comparison.nullif(decimal<38, 0>, decimal<38, 0>) -> boolean",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'snowflake': {
+            examples: [
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.nullif(i16, i16) -> i16",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.nullif(fp32, fp32) -> fp32",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.nullif(fp32, fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect sqlite does not support the kernel comparison.nullif(decimal<38, 0>, decimal<38, 0>) -> boolean",
+                
+                
+                
+                  "The dialect sqlite does not support the kernel comparison.nullif(decimal<38, 0>, decimal<38, 0>) -> boolean",
                 
                 
             ],

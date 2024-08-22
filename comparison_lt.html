@@ -62,21 +62,45 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>datafusion</option>
-                
-                <option>snowflake</option>
-                
                 <option>duckdb</option>
-                
-                <option>cudf</option>
-                
-                <option>sqlite</option>
                 
                 <option>velox_presto</option>
                 
                 <option>postgres</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>snowflake</option>
+                
+                <option>sqlite</option>
+                
             </select>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
@@ -90,31 +114,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -145,9 +145,9 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                     <tr>
                         
                         
-                        <th>arg1 (fp64)</th>
+                        <th>arg1 (decimal<38, 2>)</th>
                         
-                        <th>arg2 (fp64)</th>
+                        <th>arg2 (decimal<38, 2>)</th>
                         
                         <th>result (boolean)</th>
                     </tr>
@@ -235,6 +235,32 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                     <tr class="bft-case">
                         
                         
+                        <td>7.25</td>
+                        
+                        <td>7.25</td>
+                        
+                        <td>False</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2.49</td>
+                        
+                        <td>2.5</td>
+                        
+                        <td>True</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
                         <td>1.5e+308</td>
                         
                         <td>inf</td>
@@ -253,6 +279,32 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                         <td>-inf</td>
                         
                         <td>False</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>None</td>
+                        
+                        <td>2.5</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>None</td>
+                        
+                        <td>None</td>
+                        
+                        <td>None</td>
                     </tr>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
@@ -373,58 +425,19 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             </table>
             
             <table>
-                <caption>examples with null args or return</caption>
+                <caption>Examples with null as input</caption>
                 <thead>
                     <tr>
                         
                         
-                        <th>arg1 (timestamp)</th>
+                        <th>arg1 (i16)</th>
                         
-                        <th>arg2 (timestamp)</th>
+                        <th>arg2 (i16)</th>
                         
                         <th>result (boolean)</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>None</td>
-                        
-                        <td>1</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>2</td>
-                        
-                        <td>None</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>None</td>
-                        
-                        <td>None</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
                     
                     <tr class="bft-case">
                         
@@ -458,6 +471,45 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                         <td>None</td>
                         
                         <td>2018-12-31 13:30:15</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>None</td>
+                        
+                        <td>1</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>2</td>
+                        
+                        <td>None</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>None</td>
+                        
+                        <td>None</td>
                         
                         <td>None</td>
                     </tr>
@@ -559,220 +611,6 @@ If either/both of `x` and `y` are `null`, `null` is returned.
     <script>
       var bftDialects = {
         
-        'datafusion': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
-        'snowflake': {
-            examples: [
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.lt(i8, i8) -> boolean",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.lt(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.lt(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.lt(i32, i32) -> boolean",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.lt(i64, i64) -> boolean",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.lt(fp32, fp32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.lt(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.lt(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.lt(i16, i16) -> boolean",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
         'duckdb': {
             examples: [
                 
@@ -806,6 +644,268 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                   null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'velox_presto': {
+            examples: [
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.lt(i8, i8) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.lt(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.lt(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.lt(i32, i32) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.lt(fp32, fp32) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.lt(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.lt(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.lt(i16, i16) -> boolean",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'postgres': {
+            examples: [
+                
+                
+                  "The dialect postgres does not support the kernel comparison.lt(i8, i8) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
+                
+                
+                
+                  "The dialect postgres does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
+                
+                
+                
+                  "The dialect postgres does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
                 
                 
                 
@@ -908,6 +1008,30 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                 
+                  "The dialect cudf does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
+                
+                
+                
+                  "The dialect cudf does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
+                
+                
+                
+                  "The dialect cudf does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
+                
+                
+                
                   null,
                 
                 
@@ -971,12 +1095,250 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                   null,
                 
                 
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'datafusion': {
+            examples: [
+                
                 
                   null,
                 
                 
                 
                   null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
+                
+                
+                
+                  "The dialect datafusion does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
+                
+                
+                
+                  "The dialect datafusion does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'snowflake': {
+            examples: [
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.lt(i8, i8) -> boolean",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.lt(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.lt(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.lt(i32, i32) -> boolean",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.lt(i64, i64) -> boolean",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.lt(fp32, fp32) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.lt(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.lt(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.lt(i16, i16) -> boolean",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -1015,35 +1377,11 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                 
-                  null,
+                  "The dialect sqlite does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
                 
                 
                 
-                  null,
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
+                  "The dialect sqlite does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
                 
                 
                 
@@ -1055,114 +1393,11 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                 
-                  null,
+                  "The dialect sqlite does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
                 
                 
                 
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
-        'velox_presto': {
-            examples: [
-                
-                
-                  "The dialect velox_presto does not support the kernel comparison.lt(i8, i8) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel comparison.lt(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel comparison.lt(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel comparison.lt(i32, i32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel comparison.lt(fp32, fp32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel comparison.lt(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel comparison.lt(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel comparison.lt(i16, i16) -> boolean",
+                  "The dialect sqlite does not support the kernel comparison.lt(decimal<38, 2>, decimal<38, 2>) -> boolean",
                 
                 
                 
@@ -1193,19 +1428,12 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                   "There is no dialect information for this function",
                 
                 
-            ],
-            kernels: [
                 
-                false,
-                
-            ]
-        },
-        
-        'postgres': {
-            examples: [
+                  "There is no dialect information for this function",
                 
                 
-                  "The dialect postgres does not support the kernel comparison.lt(i8, i8) -> boolean",
+                
+                  "There is no dialect information for this function",
                 
                 
                 
@@ -1221,83 +1449,19 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
+                  "There is no dialect information for this function",
                 
                 
             ],

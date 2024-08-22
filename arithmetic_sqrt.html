@@ -112,21 +112,45 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>datafusion</option>
-                
-                <option>snowflake</option>
-                
                 <option>duckdb</option>
-                
-                <option>cudf</option>
-                
-                <option>sqlite</option>
                 
                 <option>velox_presto</option>
                 
                 <option>postgres</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>snowflake</option>
+                
+                <option>sqlite</option>
+                
             </select>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
@@ -140,31 +164,7 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -339,108 +339,6 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
     <script>
       var bftDialects = {
         
-        'datafusion': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect datafusion expects on_domain_error=ERROR but on_domain_error=NAN was requested",
-                
-                
-                
-                  "The dialect datafusion expects on_domain_error=ERROR but on_domain_error=NAN was requested",
-                
-                
-                
-                  "The dialect datafusion expects on_domain_error=ERROR but on_domain_error=NAN was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'snowflake': {
-            examples: [
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.sqrt(fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
         'duckdb': {
             examples: [
                 
@@ -462,108 +360,6 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
                 
                 
                   "The dialect duckdb expects on_domain_error=ERROR but on_domain_error=NAN was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'cudf': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
                 
                 
                 
@@ -666,6 +462,210 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
                 
                 
                   "The dialect postgres expects on_domain_error=ERROR but on_domain_error=NAN was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects on_domain_error=ERROR but on_domain_error=NAN was requested",
+                
+                
+                
+                  "The dialect datafusion expects on_domain_error=ERROR but on_domain_error=NAN was requested",
+                
+                
+                
+                  "The dialect datafusion expects on_domain_error=ERROR but on_domain_error=NAN was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'snowflake': {
+            examples: [
+                
+                
+                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel arithmetic.sqrt(i64) -> fp64",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel arithmetic.sqrt(fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
                 

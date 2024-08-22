@@ -60,21 +60,45 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>datafusion</option>
-                
-                <option>snowflake</option>
-                
                 <option>duckdb</option>
-                
-                <option>cudf</option>
-                
-                <option>sqlite</option>
                 
                 <option>velox_presto</option>
                 
                 <option>postgres</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>snowflake</option>
+                
+                <option>sqlite</option>
+                
             </select>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
@@ -88,31 +112,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -143,51 +143,7 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
     <script>
       var bftDialects = {
         
-        'datafusion': {
-            examples: [
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
-        'snowflake': {
-            examples: [
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
         'duckdb': {
-            examples: [
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
-        'cudf': {
-            examples: [
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
-        'sqlite': {
             examples: [
                 
             ],
@@ -210,6 +166,50 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
         },
         
         'postgres': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'cudf': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'datafusion': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'snowflake': {
+            examples: [
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'sqlite': {
             examples: [
                 
             ],

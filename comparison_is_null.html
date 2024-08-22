@@ -59,21 +59,45 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>datafusion</option>
-                
-                <option>snowflake</option>
-                
                 <option>duckdb</option>
-                
-                <option>cudf</option>
-                
-                <option>sqlite</option>
                 
                 <option>velox_presto</option>
                 
                 <option>postgres</option>
                 
+                <option>cudf</option>
+                
+                <option>datafusion</option>
+                
+                <option>snowflake</option>
+                
+                <option>sqlite</option>
+                
             </select>
+            
+            <dl class="dialect-definition" id="dialect-duckdb">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-velox_presto">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-postgres">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-cudf">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
             
             <dl class="dialect-definition" id="dialect-datafusion">
                 
@@ -87,31 +111,7 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-cudf">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
             <dl class="dialect-definition" id="dialect-sqlite">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-velox_presto">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-postgres">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -142,7 +142,7 @@
                     <tr>
                         
                         
-                        <th>arg1 (i16)</th>
+                        <th>arg1 (decimal<38, 3>)</th>
                         
                         <th>result (boolean)</th>
                     </tr>
@@ -174,6 +174,28 @@
                     <tr class="bft-case">
                         
                         
+                        <td>7.823</td>
+                        
+                        <td>False</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>None</td>
+                        
+                        <td>True</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
                         <td>None</td>
                         
                         <td>True</td>
@@ -190,52 +212,6 @@
     <script>
       var bftDialects = {
         
-        'datafusion': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
-        'snowflake': {
-            examples: [
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.is_null(i16) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.is_null(i16) -> boolean",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
         'duckdb': {
             examples: [
                 
@@ -246,44 +222,6 @@
                 
                   null,
                 
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
-        'cudf': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
                 
                 
                   null,
@@ -320,6 +258,14 @@
                   "There is no dialect information for this function",
                 
                 
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
             ],
             kernels: [
                 
@@ -340,7 +286,139 @@
                 
                 
                 
+                  "The dialect postgres does not support the kernel comparison.is_null(decimal<38, 3>) -> boolean",
+                
+                
+                
                   null,
+                
+                
+                
+                  "The dialect postgres does not support the kernel comparison.is_null(decimal<38, 3>) -> boolean",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'cudf': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf does not support the kernel comparison.is_null(decimal<38, 3>) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect cudf does not support the kernel comparison.is_null(decimal<38, 3>) -> boolean",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion does not support the kernel comparison.is_null(decimal<38, 3>) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion does not support the kernel comparison.is_null(decimal<38, 3>) -> boolean",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'snowflake': {
+            examples: [
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.is_null(i16) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.is_null(i16) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'sqlite': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect sqlite does not support the kernel comparison.is_null(decimal<38, 3>) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect sqlite does not support the kernel comparison.is_null(decimal<38, 3>) -> boolean",
                 
                 
             ],
