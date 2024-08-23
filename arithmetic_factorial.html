@@ -188,9 +188,9 @@ the reducing product of a given positive integer.</p>
                     <tr>
                         
                         
-                        <th>arg1 (i32)</th>
+                        <th>arg1 (decimal<2,0>)</th>
                         
-                        <th>result (i32)</th>
+                        <th>result (decimal<38,0>)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -238,6 +238,102 @@ the reducing product of a given positive integer.</p>
                     <tr class="bft-error-case bft-case-err-message" hidden>
                         <td colspan="4"/>
                     </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>0</td>
+                        
+                        <td>1</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>1</td>
+                        
+                        <td>1</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>20</td>
+                        
+                        <td>2432902008176640000</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>Examples demonstrating behavior on negative value</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (decimal<1,0>)</th>
+                        
+                        <th>result (error)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>-1</td>
+                        
+                        <td>ERROR</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <table>
+                <caption>test with null values</caption>
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>arg1 (decimal<1, 0>)</th>
+                        
+                        <th>result (decimal<38, 0>)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>None</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>None</td>
+                        
+                        <td>None</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
                     </tbody>
             </table>
             
@@ -262,6 +358,17 @@ the reducing product of a given positive integer.</p>
                         
                         
                         <td>1000000</td>
+                        
+                        <td>ERROR</td>
+                    </tr>
+                    <tr class="bft-error-case bft-case-err-message" hidden>
+                        <td colspan="4"/>
+                    </tr>
+                    
+                    <tr class="bft-case">
+                        
+                        
+                        <td>34</td>
                         
                         <td>ERROR</td>
                     </tr>
@@ -297,7 +404,35 @@ the reducing product of a given positive integer.</p>
                 
                 
                 
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
                   null,
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -312,6 +447,34 @@ the reducing product of a given positive integer.</p>
         
         'velox_presto': {
             examples: [
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
                 
                 
                   "There is no dialect information for this function",
@@ -363,7 +526,35 @@ the reducing product of a given positive integer.</p>
                 
                 
                 
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
                   null,
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -378,6 +569,34 @@ the reducing product of a given positive integer.</p>
         
         'cudf': {
             examples: [
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
                 
                 
                   "There is no dialect information for this function",
@@ -429,7 +648,35 @@ the reducing product of a given positive integer.</p>
                 
                 
                 
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
                   null,
+                
+                
+                
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -462,7 +709,35 @@ the reducing product of a given positive integer.</p>
                 
                 
                 
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
                   "There is no dialect information for this function",
+                
+                
+                
+                  null,
                 
                 
             ],
@@ -477,6 +752,34 @@ the reducing product of a given positive integer.</p>
         
         'sqlite': {
             examples: [
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
                 
                 
                   "There is no dialect information for this function",
