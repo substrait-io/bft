@@ -59,12 +59,12 @@ cases:
       type: decimal<10, 0>
   - group: basic
     args:
-      - value: 2147483647
+      - value: -2147483647
         type: decimal<10, 0>
       - value: 1234567
         type: decimal<7, 0>
     result:
-      value: 1234567
+      value: 1
       type: decimal<10, 0>
   - group: basic
     args:
