@@ -27,24 +27,24 @@ dependencies:
     https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_string.yaml
 supported_types:
   fp64:
-    sql_type_name: FLOAT
+    sql_type_name: float
   bool:
-    sql_type_name: BOOLEAN
+    sql_type_name: boolean
   str:
-    sql_type_name: VARCHAR
+    sql_type_name: varchar
   date:
-    sql_type_name: DATE
+    sql_type_name: date
   time:
-    sql_type_name: TIME
+    sql_type_name: time
   ts:
-    sql_type_name: TIMESTAMP
+    sql_type_name: timestamp
   tstz:
-    sql_type_name: TIMESTAMPTZ
+    sql_type_name: timestamptz
   interval:
-    sql_type_name: INTERVAL
+    sql_type_name: interval
     supported_as_column: false
   dec:
-    sql_type_name: NUMERIC
+    sql_type_name: numeric
 scalar_functions:
 - name: arithmetic.add
   local_name: +

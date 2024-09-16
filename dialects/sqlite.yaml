@@ -27,21 +27,21 @@ dependencies:
     https://github.com/substrait-io/substrait/blob/main/extensions/substrait/extensions/functions_string.yaml
 supported_types:
   i8:
-    sql_type_name: TINYINT
+    sql_type_name: tinyint
   i16:
-    sql_type_name: SMALLINT
+    sql_type_name: smallint
   i32:
-    sql_type_name: INT
+    sql_type_name: int
   i64:
-    sql_type_name: HUGEINT
+    sql_type_name: hugeint
   fp32:
-    sql_type_name: REAL
+    sql_type_name: real
   fp64:
-    sql_type_name: REAL
+    sql_type_name: real
   bool:
-    sql_type_name: BOOLEAN
+    sql_type_name: boolean
   str:
-    sql_type_name: TEXT
+    sql_type_name: text
 scalar_functions:
 - name: arithmetic.add
   local_name: +
