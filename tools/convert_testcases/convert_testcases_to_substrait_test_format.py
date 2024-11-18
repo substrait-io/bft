@@ -2,7 +2,7 @@ import yaml
 import os
 from collections import defaultdict
 from itertools import count
-from tools.convert_tests.convert_tests_helper import convert_to_new_value
+from tools.convert_testcases.convert_testcase_helper import convert_to_substrait_test_value
 
 
 # Define a custom YAML loader that interprets all values as strings
@@ -43,7 +43,7 @@ def format_return_value(case):
             return "nan::fp64"
 
     # Return formatted result with format_value
-    return convert_to_new_value(result.get("value"), result.get("type"))
+    return convert_to_substrait_test_value(result.get("value"), result.get("type"))
 
 
 def format_test_case_group(case, description_map):
@@ -71,7 +71,7 @@ def generate_define_table(case, table_id):
 
     # Transpose the arguments' values to construct rows
     values = [
-        [convert_to_new_value(value, arg["type"], 1) for value in arg.get("value", [])]
+        [convert_to_substrait_test_value(value, arg["type"], 1) for value in arg.get("value", [])]
         for arg in args
     ]
     rows = zip(*values)  # zip will combine each nth element of each argument
@@ -92,7 +92,7 @@ def format_test_case(case, function, description_map, table_id_counter, is_aggre
     description = format_test_case_group(case, description_map)
     options = case.get("options")
     options = (
-        f" [{', '.join(f'{k}:{convert_to_new_value(v, None)}' for k, v in options.items())}]"
+        f" [{', '.join(f'{k}:{convert_to_substrait_test_value(v, None)}' for k, v in options.items())}]"
         if options
         else ""
     )
@@ -106,7 +106,7 @@ def format_test_case(case, function, description_map, table_id_counter, is_aggre
         return description, f"{table_definition}{function}({args}){options} = {results}"
 
     args = ", ".join(
-        convert_to_new_value(arg.get("value"), str(arg["type"]))
+        convert_to_substrait_test_value(arg.get("value"), str(arg["type"]))
         for arg in case.get("args", [])
     )
     return description, f"{function}({args}){options} = {results}"

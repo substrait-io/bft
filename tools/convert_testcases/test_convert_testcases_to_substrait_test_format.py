@@ -1,6 +1,6 @@
 import pytest
 
-from convert_tests_to_new_format import convert_test_file_to_new_format
+from convert_testcases_to_substrait_test_format import convert_test_file_to_new_format
 
 
 @pytest.mark.parametrize(

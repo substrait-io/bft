@@ -1,6 +1,6 @@
 import pytest
 
-from convert_tests_to_old_format import convert_test_file_to_yaml
+from convert_testcases_to_yaml_format import convert_test_file_to_yaml
 from tests.coverage.nodes import (
     TestFile,
     TestCase,

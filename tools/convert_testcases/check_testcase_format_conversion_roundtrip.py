@@ -5,8 +5,8 @@ import shutil
 from ruamel.yaml import YAML
 from deepdiff import DeepDiff
 
-from convert_tests_to_new_format import convert_directory, load_test_file
-from convert_tests_to_old_format import convert_directory as convert_directory_roundtrip
+from convert_testcases_to_substrait_test_format import convert_directory, load_test_file
+from convert_testcases_to_yaml_format import convert_directory as convert_directory_roundtrip
 
 # Initialize the YAML handler with ruamel to ensure consistency in parsing and dumping
 yaml = YAML()
@@ -42,6 +42,7 @@ def compare_yaml_files(file1, file2):
     return not diff
 
 
+#Compare tests in yaml format, roundtrip_dir contains files converted from substrait test format to yaml
 def compare_directories(original_dir, roundtrip_dir):
     count = 0
     for root, _, files in os.walk(original_dir):
@@ -75,13 +76,13 @@ def main():
         "https://github.com/substrait-io/substrait/blob/main/extensions/substrait"
     )
 
-    # Step 1: Convert from `../../cases` to `./temp/substrait_cases/`
+    # Step 1: Convert from initial_cases_dir to intermediate_dir
     convert_directory(initial_cases_dir, intermediate_dir, uri_prefix)
 
-    # Step 2: Convert from `./temp/substrait_cases/` to `./temp/roundtrip_cases/`
+    # Step 2: Convert from intermediate_dir to roundtrip_dir
     convert_directory_roundtrip(intermediate_dir, roundtrip_dir)
 
-    # Step 3: Compare YAML content in `./cases` and `./temp/roundtrip_cases/`
+    # Step 3: Compare tests in initial and rounttrip_dir in yaml format
     count = compare_directories(initial_cases_dir, roundtrip_dir)
     if count == 0:
         print("All YAML files match between original and roundtrip directories.")

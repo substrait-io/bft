@@ -6,8 +6,8 @@ from tests.coverage.nodes import (
     AggregateArgument,
 )
 from tests.coverage.case_file_parser import load_all_testcases
-from tools.convert_tests.convert_tests_helper import (
-    convert_to_old_value,
+from tools.convert_testcases.convert_testcase_helper import (
+    convert_to_yaml_value,
     convert_to_long_type,
     SQUOTE,
     DQUOTE,
@@ -27,14 +27,14 @@ def convert_result(test_case):
         return {"special": "nan"}
     elif test_case.func_name == "add_intervals" and test_case.result.type == "iday":
         return {
-            "value": convert_to_old_value(
+            "value": convert_to_yaml_value(
                 iso_duration_to_timedelta(test_case.result.value), "str"
             ),
             "type": "string",
         }
     else:
         return {
-            "value": convert_to_old_value(
+            "value": convert_to_yaml_value(
                 test_case.result.value, test_case.result.type
             ),
             "type": convert_to_long_type(test_case.result.type),
@@ -67,7 +67,7 @@ def convert_table_definition(test_case):
         # Handle the case where columns is not empty
         return [
             {
-                "value": convert_to_old_value(column, col_type),
+                "value": convert_to_yaml_value(column, col_type),
                 "type": col_type,
                 "is_not_a_func_arg": "true",
             }
@@ -95,7 +95,7 @@ def convert_test_case_to_old_format(test_case, groups):
         if isinstance(test_case.args[0], AggregateArgument):
             case["args"] = [
                 {
-                    "value": convert_to_old_value(
+                    "value": convert_to_yaml_value(
                         arg.scalar_value.value, arg.scalar_value.type
                     ),
                     "type": convert_to_long_type(arg.scalar_value.type),
@@ -105,7 +105,7 @@ def convert_test_case_to_old_format(test_case, groups):
         else:
             case["args"] = [
                 {
-                    "value": convert_to_old_value(arg.value, arg.type),
+                    "value": convert_to_yaml_value(arg.value, arg.type),
                     "type": convert_to_long_type(arg.type),
                 }
                 for arg in test_case.args
@@ -113,7 +113,7 @@ def convert_test_case_to_old_format(test_case, groups):
 
     if len(test_case.options) > 0:
         case["options"] = {
-            key: convert_to_old_value(value, None)
+            key: convert_to_yaml_value(value, None)
             for key, value in test_case.options.items()
         }
 

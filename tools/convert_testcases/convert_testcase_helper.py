@@ -47,35 +47,33 @@ timediff_zone_map = {
 }
 
 
-def convert_type(type_str, mapping):
-    """Helper function to convert a type string using the provided mapping."""
-    if type_str.startswith("list<") and type_str.endswith(">"):
+def convert_type(value_type, mapping):
+    """Helper function to convert a type using the provided mapping."""
+    if value_type.startswith("list<") and value_type.endswith(">"):
         # Extract the inner type and convert it
-        inner_type = type_str[5:-1]  # Extract what's inside "list<...>"
+        inner_type = value_type[5:-1]  # Extract what's inside "list<...>"
         short_inner_type = mapping.get(inner_type.lower(), inner_type)
         return f"list<{short_inner_type}>"
 
-    base_type, parameters = (type_str.split("<", 1) + [""])[:2]
+    base_type, parameters = (value_type.split("<", 1) + [""])[:2]
     parameters = f"<{parameters}" if parameters else ""
     return mapping.get(base_type.lower(), base_type) + parameters
 
 
-def convert_to_long_type(type_str):
-    type_str = convert_type(type_str, long_name_map)
-    if type_str == "interval_year" or type_str == "interval_day":
-        type_str = "interval"
-    return type_str
+def convert_to_long_type(value_type):
+    value_type = convert_type(value_type, long_name_map)
+    if value_type == "interval_year" or value_type == "interval_day":
+        value_type = "interval"
+    return value_type
 
 
-def match_sql_duration(value, value_type):
+def is_sql_duration(value):
     """
     Check if a string is in the format of 'X days, HH:MM:SS'.
     Returns a match object if successful, or None if it doesn't match.
     """
-    if value_type != "str":
-        return None
     pattern = r"^(?:(\d+)\s+days?,\s*)?(\d+):(\d+):(\d+)$"
-    return re.match(pattern, value)
+    return re.match(pattern, value) is not None
 
 
 def format_timestamp(value):
@@ -116,13 +114,14 @@ def has_last_colon_after_last_dash(s):
         and last_dash_index < last_colon_index
     )
 
+def timestamp_tz_has_zoneoffset(timestamp_with_tz):
+    return "-" in timestamp_with_tz and not has_last_colon_after_last_dash(timestamp_with_tz)
 
 def format_timestamp_tz(timestamp_with_tz):
     """Convert a timestamp with timezone abbreviation to ISO 8601 with offset."""
-    if "-" in timestamp_with_tz and not has_last_colon_after_last_dash(
-        timestamp_with_tz
-    ):
+    if timestamp_tz_has_zoneoffset(timestamp_with_tz):
         return timestamp_with_tz.replace(" ", "T") + ":00"
+
     datetime_str, tz_abbr = timestamp_with_tz.rsplit(" ", 1)
     dt = datetime.strptime(datetime_str, "%Y-%m-%d %H:%M:%S")
 
@@ -172,17 +171,21 @@ def convert_sql_interval_to_iso_duration(interval: str):
     iso_interval = "".join(iso_parts)
 
     # Determine whether it's a 'iyear' or 'iday' based on units
+    # we won't support compound intervals. interval is either 'iyear' or 'iday'
     if iyear:
         return iso_interval, "iyear"
     else:
         return iso_interval, "iday"
 
 
-def convert_sql_duration_to_iso_duration(match):
+def convert_sql_duration_to_iso_duration(value):
     """
     Convert a valid "X days, HH:MM:SS" string to ISO 8601 duration format.
     If the input does not match, return the original string.
     """
+
+    pattern = r"^(?:(\d+)\s+days?,\s*)?(\d+):(\d+):(\d+)$"
+    match =  re.match(pattern, value)
 
     days, hours, minutes, seconds = match.groups(default="0")
 
@@ -228,7 +231,7 @@ def is_list_type(value_type):
     )
 
 
-def needs_quotes(type_str):
+def needs_quotes(value_type):
     quote_types = {
         "str",
         "string",
@@ -245,9 +248,9 @@ def needs_quotes(type_str):
 
     """Check if the type requires quotes around its values."""
     # Extract base type, ignoring any <...> parameters, and lowercase for case-insensitive comparison
-    base_type = type_str.split("<", 1)[0].lower()
+    base_type = value_type.split("<", 1)[0].lower()
     # Check against short and long versions of each type in quote_types
-    if base_type not in quote_types and type_str not in quote_types:
+    if base_type not in quote_types and value_type not in quote_types:
         return False
     return True
 
@@ -318,12 +321,12 @@ def iso_duration_to_timedelta(iso_duration):
     return f"{day_str}, {time_str}" if day_str else time_str
 
 
-def convert_to_old_value(value, value_type, level=0):
+def convert_to_yaml_value(value, value_type, level=0):
     if value_type is not None:
         value_type = convert_to_long_type(value_type)
 
     if isinstance(value, list):
-        formatted_values = f"[{', '.join(convert_to_old_value(v, value_type, level + 1) for v in value)}]"
+        formatted_values = f"[{', '.join(convert_to_yaml_value(v, value_type, level + 1) for v in value)}]"
         return (
             f"!decimallist {formatted_values}"
             if value_type.startswith("decimal") and level == 0
@@ -359,7 +362,7 @@ def convert_to_old_value(value, value_type, level=0):
     return str(value)
 
 
-def convert_to_new_value(value, value_type, level=0):
+def convert_to_substrait_test_value(value, value_type, level=0):
     """Format a value based on its type, if specified."""
     if value_type:
         value_type = convert_type(value_type, short_name_map)
@@ -368,7 +371,7 @@ def convert_to_new_value(value, value_type, level=0):
     if isinstance(value, list):
         left_delim, right_delim = ("[", "]") if is_list_type(value_type) else ("(", ")")
         formatted_values = [
-            convert_to_new_value(x, value_type, level + 1) for x in value
+            convert_to_substrait_test_value(x, value_type, level + 1) for x in value
         ]
         return (
             f"{left_delim}"
@@ -389,9 +392,8 @@ def convert_to_new_value(value, value_type, level=0):
     # convert duration
     if value_type in ("iday", "iyear"):
         value, value_type = convert_sql_interval_to_iso_duration(str(value))
-    match = match_sql_duration(value, value_type)
-    if match:
-        value = convert_sql_duration_to_iso_duration(match)
+    if value_type == "str" and is_sql_duration(value):
+        value = convert_sql_duration_to_iso_duration(value)
         value_type = iso_format_type(value)
 
     if value_type == "time":
