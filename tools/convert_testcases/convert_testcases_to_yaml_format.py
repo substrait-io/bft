@@ -9,8 +9,8 @@ from tests.coverage.case_file_parser import load_all_testcases
 from tools.convert_testcases.convert_testcase_helper import (
     convert_to_yaml_value,
     convert_to_long_type,
-    SQUOTE,
-    DQUOTE,
+    SQUOTE_PLACEHOLDER,
+    DQUOTE_PLACEHOLDER,
     iso_duration_to_timedelta,
 )
 
@@ -28,7 +28,12 @@ def convert_result(test_case):
     elif test_case.func_name == "add_intervals" and test_case.result.type == "iday":
         return {
             "value": convert_to_yaml_value(
-                iso_duration_to_timedelta(test_case.result.value), "str"
+                (
+                    iso_duration_to_timedelta(test_case.result.value)
+                    if test_case.result.value is not None
+                    else None
+                ),
+                "str",
             ),
             "type": "string",
         }
@@ -44,8 +49,9 @@ def convert_result(test_case):
 def convert_table_definition(test_case):
     column_types = None
 
-    if test_case.column_types is not None:
-        column_types = [convert_to_long_type(type) for type in test_case.column_types]
+    if all(isinstance(arg, AggregateArgument) for arg in test_case.args):
+        # Extract the column_type from each AggregateArgument
+        column_types = [arg.column_type for arg in test_case.args]
     elif test_case.args is not None:
         column_types = [
             convert_to_long_type(
@@ -156,8 +162,8 @@ def fix_quotes(file_path):
     content = (
         content.replace("'", "")
         .replace('"', "")
-        .replace(SQUOTE, "'")
-        .replace(DQUOTE, '"')
+        .replace(SQUOTE_PLACEHOLDER, "'")
+        .replace(DQUOTE_PLACEHOLDER, '"')
     )
 
     with open(file_path, "w") as file:
@@ -183,14 +189,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-from io import StringIO
-
-
-def normalize_yaml(yaml_string):
-    """Normalize YAML by loading it into Python objects and then dumping it back to a string."""
-    # If the input is a dictionary or list, convert it to a YAML string first
-    yaml_stream = StringIO(yaml_string)
-
-    # Load the YAML from the string (as a stream)
-    return yaml.load(yaml_stream)

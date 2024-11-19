@@ -2,7 +2,9 @@ import yaml
 import os
 from collections import defaultdict
 from itertools import count
-from tools.convert_testcases.convert_testcase_helper import convert_to_substrait_test_value
+from tools.convert_testcases.convert_testcase_helper import (
+    convert_to_substrait_test_value,
+)
 
 
 # Define a custom YAML loader that interprets all values as strings
@@ -71,7 +73,10 @@ def generate_define_table(case, table_id):
 
     # Transpose the arguments' values to construct rows
     values = [
-        [convert_to_substrait_test_value(value, arg["type"], 1) for value in arg.get("value", [])]
+        [
+            convert_to_substrait_test_value(value, arg["type"], 1)
+            for value in arg.get("value", [])
+        ]
         for arg in args
     ]
     rows = zip(*values)  # zip will combine each nth element of each argument
@@ -165,8 +170,8 @@ def convert_directory(input_dir, output_dir, prefix):
 
 
 if __name__ == "__main__":
-    input_directory = "./cases"
-    output_directory = "./substrait/tests/cases"
+    input_directory = "../../cases"
+    output_directory = "../../substrait/tests/cases"
     uri_prefix = (
         "https://github.com/substrait-io/substrait/blob/main/extensions/substrait"
     )

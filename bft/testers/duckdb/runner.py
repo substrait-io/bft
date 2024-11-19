@@ -62,18 +62,23 @@ class DuckDBRunner(SqlCaseRunner):
     def run_sql_case(self, case: Case, mapping: SqlMapping) -> SqlCaseResult:
 
         try:
+            max_args = len(case.args) + 1
+            if case.function == 'regexp_replace':
+                max_args = 3
+            if case.function == 'regexp_match_substring':
+                max_args = 2
             arg_defs = [
                 f"arg{idx} {type_to_duckdb_type(arg.type)}"
-                for idx, arg in enumerate(case.args)
+                for idx, arg in enumerate(case.args[:max_args])
             ]
             schema = ",".join(arg_defs)
             self.conn.execute(f"CREATE TABLE my_table({schema});")
             self.conn.execute(f"SET TimeZone='UTC';")
 
-            arg_names = [f"arg{idx}" for idx in range(len(case.args))]
+            arg_names = [f"arg{idx}" for idx in range(len(case.args[:max_args]))]
             joined_arg_names = ",".join(arg_names)
             arg_vals_list = list()
-            for arg in case.args:
+            for arg in case.args[:max_args]:
                 if is_string_type(arg):
                     arg_vals_list.append("'" + literal_to_str(arg.value) + "'")
                 else:
@@ -81,7 +86,7 @@ class DuckDBRunner(SqlCaseRunner):
             arg_vals = ", ".join(arg_vals_list)
             if mapping.aggregate:
                 arg_vals_list = list()
-                for arg in case.args:
+                for arg in case.args[:max_args]:
                     arg_vals = ""
                     for value in arg.value:
                         if is_string_type(arg):

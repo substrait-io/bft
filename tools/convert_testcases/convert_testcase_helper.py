@@ -32,8 +32,8 @@ timezone_abbr_map = {
     "UTC": "UTC",
 }
 
-SQUOTE = "\u200B"
-DQUOTE = "&"
+SQUOTE_PLACEHOLDER = "\u200B"
+DQUOTE_PLACEHOLDER = "&"
 
 # Map timezone abbreviations to valid pytz timezone names
 timediff_abbr_map = {
@@ -56,7 +56,11 @@ def convert_type(value_type, mapping):
         return f"list<{short_inner_type}>"
 
     base_type, parameters = (value_type.split("<", 1) + [""])[:2]
-    parameters = f"<{parameters}" if parameters else ""
+    parameters = (
+        f"<{', '.join(param.strip() for param in parameters.rstrip('>').split(','))}>"
+        if parameters
+        else ""
+    )
     return mapping.get(base_type.lower(), base_type) + parameters
 
 
@@ -114,8 +118,12 @@ def has_last_colon_after_last_dash(s):
         and last_dash_index < last_colon_index
     )
 
+
 def timestamp_tz_has_zoneoffset(timestamp_with_tz):
-    return "-" in timestamp_with_tz and not has_last_colon_after_last_dash(timestamp_with_tz)
+    return "-" in timestamp_with_tz and not has_last_colon_after_last_dash(
+        timestamp_with_tz
+    )
+
 
 def format_timestamp_tz(timestamp_with_tz):
     """Convert a timestamp with timezone abbreviation to ISO 8601 with offset."""
@@ -129,7 +137,6 @@ def format_timestamp_tz(timestamp_with_tz):
         dt = pytz.timezone(timezone_abbr_map[tz_abbr]).localize(dt)
     else:
         return timestamp_with_tz
-        # raise ValueError(f"Invalid timezone abbreviation: {tz_abbr}")
 
     return dt.isoformat()
 
@@ -185,7 +192,7 @@ def convert_sql_duration_to_iso_duration(value):
     """
 
     pattern = r"^(?:(\d+)\s+days?,\s*)?(\d+):(\d+):(\d+)$"
-    match =  re.match(pattern, value)
+    match = re.match(pattern, value)
 
     days, hours, minutes, seconds = match.groups(default="0")
 
@@ -222,7 +229,7 @@ def format_null(value_type, value, level):
         return "null::iday" if level == 0 else "null"
     if value_type:
         return f"null::{value_type}" if level == 0 else value
-    return "null"
+    return "NULL"
 
 
 def is_list_type(value_type):
@@ -240,6 +247,7 @@ def needs_quotes(value_type):
         "date",
         "time",
         "list<str>",
+        "list<string>",
         "iday",
         "iyear",
         "timestamp_tz",
@@ -270,7 +278,7 @@ def iso_to_sql_interval(iso_duration):
     parts = [f"{value} {unit}" for value, unit in zip(match.groups(), units) if value]
     interval = " ".join(parts)
 
-    return "INTERVAL " + SQUOTE + interval + SQUOTE
+    return "INTERVAL " + SQUOTE_PLACEHOLDER + interval + SQUOTE_PLACEHOLDER
 
 
 def convert_iso_to_timezone_format(iso_string):
@@ -334,7 +342,9 @@ def convert_to_yaml_value(value, value_type, level=0):
         )
 
     if value_type is None and value.lower() == "null":
-        return DQUOTE + "NULL" + DQUOTE
+        return DQUOTE_PLACEHOLDER + "NULL" + DQUOTE_PLACEHOLDER
+    if value_type == "string" and value is not None and value.lower() == "null":
+        return value
     if value_type is None and value.upper() == "IYEAR_360DAYS":
         return "360"
     if value_type is None and value.upper() == "IYEAR_365DAYS":
@@ -357,7 +367,7 @@ def convert_to_yaml_value(value, value_type, level=0):
         if value_type == "timestamp_tz":
             value = convert_iso_to_timezone_format(value)
         if needs_quotes(value_type):
-            value = DQUOTE + value + DQUOTE
+            value = DQUOTE_PLACEHOLDER + value + DQUOTE_PLACEHOLDER
             return value
     return str(value)
 
