@@ -530,7 +530,6 @@ scalar_functions:
   required_options:
     lookaround: true
   supported_kernels:
-  - str_str_str_i64_i64
   - vchar_vchar_vchar_i64_i64
   - str_str_str
 - name: string.regexp_string_split
@@ -541,7 +540,6 @@ scalar_functions:
 - name: string.regexp_count_substring
   local_name: regexp_count
   supported_kernels:
-  - str_str_i64
   - vchar_vchar_i64
   - fchar_fchar_i64
   - str_str
@@ -549,7 +547,6 @@ scalar_functions:
   local_name: regexp_substr
   supported_kernels:
   - vchar_vchar_i64_i64_i64
-  - str_str_i64_i64_i64
   - str_str
 - name: string.bit_length
   supported_kernels:

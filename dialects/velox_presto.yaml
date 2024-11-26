@@ -329,14 +329,12 @@ scalar_functions:
   required_options:
     spaces_only: true
   supported_kernels:
-  - vchar_vchar
   - str_str
   - str
 - name: string.rtrim
   required_options:
     spaces_only: true
   supported_kernels:
-  - vchar_vchar
   - str_str
   - str
 - name: string.trim
