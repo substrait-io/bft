@@ -6,3 +6,6 @@ pytest
 pyvelox
 pyyaml
 snowflake
+ruamel.yaml
+deepdiff
+pytz
