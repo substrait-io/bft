@@ -7,6 +7,7 @@ import psycopg
 from bft.cases.runner import SqlCaseResult, SqlCaseRunner
 from bft.cases.types import Case
 from bft.dialects.types import SqlMapping
+from bft.utils.utils import datetype_value_equal
 
 type_map = {
     "i16": "smallint",
@@ -152,7 +153,9 @@ class PostgresRunner(SqlCaseRunner):
             else:
                 if result == case.result.value:
                     return SqlCaseResult.success()
-                elif is_datetype(result) and str(result) == case.result.value:
+                elif is_datetype(result) and datetype_value_equal(
+                    result, case.result.value
+                ):
                     return SqlCaseResult.success()
                 else:
                     return SqlCaseResult.mismatch(str(result))

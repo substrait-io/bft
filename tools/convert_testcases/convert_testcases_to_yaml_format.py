@@ -1,11 +1,11 @@
 import os
 
 from ruamel.yaml import YAML
-from tests.coverage.nodes import (
+from substrait.tests.coverage.nodes import (
     TestFile,
     AggregateArgument,
 )
-from tests.coverage.case_file_parser import load_all_testcases
+from substrait.tests.coverage.case_file_parser import load_all_testcases
 from tools.convert_testcases.convert_testcase_helper import (
     convert_to_yaml_value,
     convert_to_long_type,
