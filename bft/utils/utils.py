@@ -1,4 +1,5 @@
 from typing import Dict
+import datetime
 
 
 def type_to_dialect_type(type: str, type_map: Dict[str, str])->str:
@@ -24,3 +25,24 @@ def type_to_dialect_type(type: str, type_map: Dict[str, str])->str:
         return type_val
     # transform parameterized type name to have dialect type
     return type.replace(type_to_check, type_val).replace("<", "(").replace(">", ")")
+
+def has_only_date(value: datetime.datetime):
+    if (
+        value.hour == 0
+        and value.minute == 0
+        and value.second == 0
+        and value.microsecond == 0
+    ):
+        return True
+    return False
+
+def datetype_value_equal(result, case_result):
+    if str(result) == case_result:
+        return True
+    if (
+        isinstance(result, datetime.datetime)
+        and has_only_date(result)
+        and str(result.date()) == case_result
+    ):
+        return True
+    return False
