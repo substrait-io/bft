@@ -5,22 +5,40 @@ import pytest
 
 from bft.cases.parser import CaseFileParser
 from bft.cases.types import Case
-from bft.dialects.types import DialectsLibrary
 from bft.testers.base_tester import BaseTester
+from tools.convert_testcases.convert_testcases_to_yaml_format import (
+    convert_directory as convert_directory_from_substrait,
+)
 
 
 # Would be nice to have this as a session-scoped fixture but it doesn't seem that
 # parameter values can be a fixture
 def cases() -> List[Case]:
     cases = []
+    bft_dir = Path(__file__).parent.parent.parent
     parser = CaseFileParser()
-    cases_dir = Path(__file__) / ".." / ".." / ".." / "cases"
+    cases_dir = bft_dir / "cases"
+    substrait_cases_dir = bft_dir / "substrait" / "tests" / "cases"
+    convert_directory_from_substrait(substrait_cases_dir, cases_dir)
     for case_path in cases_dir.resolve().rglob("*.yaml"):
         with open(case_path, "rb") as case_f:
             for case_file in parser.parse(case_f):
                 for case in case_file.cases:
+                    case = transform_case(case)
                     cases.append(case)
     return cases
+
+
+def transform_case(case):
+    # Create a new Case instance with updated `args`
+    return Case(
+        function=case.function,
+        base_uri=case.base_uri,
+        group=case.group,
+        args=case.args,  # Update args here
+        result=case.result,
+        options=case.options,
+    )
 
 
 def case_id_fn(case: Case):
