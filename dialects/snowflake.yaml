@@ -136,10 +136,6 @@ scalar_functions:
 - name: arithmetic.sign
   local_name: sign
   supported_kernels:
-  - i8
-  - i16
-  - i32
-  - i64
   - fp32
   - fp64
 - name: boolean.and
