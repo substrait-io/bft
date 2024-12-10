@@ -498,8 +498,6 @@ scalar_functions:
   required_options:
     lookaround: false
   supported_kernels:
-  - str_str_str_i64_i64
-  - vchar_vchar_vchar_i64_i64
   - str_str_str
 - name: string.regexp_string_split
   local_name: regexp_split_to_array
@@ -513,8 +511,6 @@ scalar_functions:
   required_options:
     lookaround: false
   supported_kernels:
-  - vchar_vchar_i64_i64_i64
-  - str_str_i64_i64_i64
   - str_str
 - name: string.bit_length
   supported_kernels:

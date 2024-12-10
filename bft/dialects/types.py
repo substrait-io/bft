@@ -118,7 +118,6 @@ class Dialect(object):
             args: List[CaseLiteral],
             result: CaseLiteral | Literal["error", "undefined"],
     ):
-        arg_len_matched = False
         # figure out if case is a supported kernel. walk over each supported kernel and check if any kernel
         # matches the case arguments type
         for supported_kernel in dfunc.supported_kernels:
@@ -130,7 +129,6 @@ class Dialect(object):
                 arg_len = len(args)
             if len(supported_kernel.arg_types) != arg_len and dfunc.variadic_min == -1:
                 continue
-            arg_len_matched = True
             matched = True
             kernel_arg_types = supported_kernel.arg_types
             if dfunc.variadic_min != -1 and len(supported_kernel.arg_types) == 1:
@@ -161,8 +159,6 @@ class Dialect(object):
             if matched:
                 return None
 
-        if not arg_len_matched:
-            raise Exception("Unreachable path.  Supported kernel with different # of types than case")
         return f"The dialect {self.name} does not support the kernel {case_to_kernel_str(dfunc.name, args, result)}"
 
     def __supports_options(self, dfunc: DialectFunction, case: Case):

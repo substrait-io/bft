@@ -58,11 +58,10 @@ class FunctionBuilder(object):
     def note_option(self, name: str, values: List[str]):
         if name in self.options:
             existing_values = self.options[name]
-            if existing_values != values:
-                raise Exception(
-                    f"In the function {self.name} the option {name} had choices {existing_values} but we now encountered choices {values}"
-                )
+            # Merge existing values and new values using set union
+            self.options[name] = list(set(existing_values).union(values))
         else:
+            # Add the new values directly if the option does not exist
             self.options[name] = values
 
     def note_kernel(
