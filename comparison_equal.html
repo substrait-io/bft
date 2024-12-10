@@ -62,29 +62,35 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
+                <option>snowflake</option>
                 
-                <option>velox_presto</option>
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
                 
                 <option>postgres</option>
                 
                 <option>cudf</option>
                 
-                <option>datafusion</option>
+                <option>velox_presto</option>
                 
-                <option>snowflake</option>
-                
-                <option>sqlite</option>
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -102,19 +108,13 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-snowflake">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -348,11 +348,23 @@ If either/both of `x` and `y` are `null`, `null` is returned.
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'snowflake': {
             examples: [
                 
                 
-                  null,
+                  "The dialect snowflake does not support the kernel comparison.equal(i8, i8) -> boolean",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.equal(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.equal(i32, i32) -> boolean",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel comparison.equal(i64, i64) -> boolean",
                 
                 
                 
@@ -376,23 +388,11 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                 
-                  null,
+                  "The dialect snowflake does not support the kernel comparison.equal(i16, i16) -> boolean",
                 
                 
                 
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
+                  "The dialect snowflake does not support the kernel comparison.equal(i16, i16) -> boolean",
                 
                 
                 
@@ -411,19 +411,19 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             ]
         },
         
-        'velox_presto': {
+        'sqlite': {
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel comparison.equal(i8, i8) -> boolean",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel comparison.equal(i16, i16) -> boolean",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel comparison.equal(i32, i32) -> boolean",
+                  null,
                 
                 
                 
@@ -439,11 +439,11 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
+                  "The dialect sqlite does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 2>) -> boolean",
+                  "The dialect sqlite does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 2>) -> boolean",
                 
                 
                 
@@ -451,19 +451,82 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel comparison.equal(i16, i16) -> boolean",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel comparison.equal(i16, i16) -> boolean",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
+                  "The dialect sqlite does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
+                  "The dialect sqlite does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
+                
+                
+                
+                  "The dialect datafusion does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 2>) -> boolean",
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
+                
+                
+                
+                  "The dialect datafusion does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
                 
                 
             ],
@@ -600,11 +663,19 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             ]
         },
         
-        'datafusion': {
+        'velox_presto': {
             examples: [
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel comparison.equal(i8, i8) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.equal(i16, i16) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.equal(i32, i32) -> boolean",
                 
                 
                 
@@ -620,7 +691,11 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 2>) -> boolean",
                 
                 
                 
@@ -628,31 +703,19 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                 
-                  "The dialect datafusion does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
+                  "The dialect velox_presto does not support the kernel comparison.equal(i16, i16) -> boolean",
                 
                 
                 
-                  "The dialect datafusion does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 2>) -> boolean",
+                  "The dialect velox_presto does not support the kernel comparison.equal(i16, i16) -> boolean",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
                 
                 
                 
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect datafusion does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
-                
-                
-                
-                  "The dialect datafusion does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
+                  "The dialect velox_presto does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
                 
                 
             ],
@@ -663,70 +726,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
             ]
         },
         
-        'snowflake': {
-            examples: [
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.equal(i8, i8) -> boolean",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.equal(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.equal(i32, i32) -> boolean",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.equal(i64, i64) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.equal(i16, i16) -> boolean",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.equal(i16, i16) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
-        'sqlite': {
+        'duckdb': {
             examples: [
                 
                 
@@ -754,11 +754,15 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                 
-                  "The dialect sqlite does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
+                  null,
                 
                 
                 
-                  "The dialect sqlite does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 2>) -> boolean",
+                  null,
+                
+                
+                
+                  null,
                 
                 
                 
@@ -774,11 +778,7 @@ If either/both of `x` and `y` are `null`, `null` is returned.
                 
                 
                 
-                  "The dialect sqlite does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
-                
-                
-                
-                  "The dialect sqlite does not support the kernel comparison.equal(decimal<38, 0>, decimal<38, 0>) -> boolean",
+                  null,
                 
                 
             ],

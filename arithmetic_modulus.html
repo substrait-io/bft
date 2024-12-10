@@ -65,29 +65,35 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
+                <option>snowflake</option>
                 
-                <option>velox_presto</option>
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
                 
                 <option>postgres</option>
                 
                 <option>cudf</option>
                 
-                <option>datafusion</option>
+                <option>velox_presto</option>
                 
-                <option>snowflake</option>
-                
-                <option>sqlite</option>
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -105,19 +111,13 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-snowflake">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -392,55 +392,55 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'snowflake': {
             examples: [
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect duckdb expects division_type=TRUNCATE but division_type=FLOOR was requested",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect duckdb expects on_domain_error=NULL but on_domain_error=ERROR was requested",
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -457,31 +457,15 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
             ]
         },
         
-        'velox_presto': {
+        'sqlite': {
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i16, i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i32, i32) -> i32",
-                
-                
-                
                   null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
+                  null,
                 
                 
                 
@@ -493,19 +477,100 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> error",
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect sqlite expects division_type=TRUNCATE but division_type=FLOOR was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect sqlite expects on_domain_error=NULL but on_domain_error=ERROR was requested",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects division_type=TRUNCATE but division_type=FLOOR was requested",
+                
+                
+                
+                  "The dialect datafusion expects on_domain_error=ERROR but on_domain_error=NULL was requested",
+                
+                
+                
+                  null,
                 
                 
             ],
@@ -652,10 +717,34 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
             ]
         },
         
-        'datafusion': {
+        'velox_presto': {
             examples: [
                 
                 
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i16, i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i32, i32) -> i32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
+                
+                
+                
                   null,
                 
                 
@@ -664,43 +753,19 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
                 
                 
                 
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect datafusion expects division_type=TRUNCATE but division_type=FLOOR was requested",
-                
-                
-                
-                  "The dialect datafusion expects on_domain_error=ERROR but on_domain_error=NULL was requested",
-                
-                
-                
-                  null,
+                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> error",
                 
                 
             ],
@@ -717,72 +782,7 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
             ]
         },
         
-        'snowflake': {
-            examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'sqlite': {
+        'duckdb': {
             examples: [
                 
                 
@@ -822,7 +822,7 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect sqlite expects division_type=TRUNCATE but division_type=FLOOR was requested",
+                  "The dialect duckdb expects division_type=TRUNCATE but division_type=FLOOR was requested",
                 
                 
                 
@@ -830,7 +830,7 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
                 
                 
                 
-                  "The dialect sqlite expects on_domain_error=NULL but on_domain_error=ERROR was requested",
+                  "The dialect duckdb expects on_domain_error=NULL but on_domain_error=ERROR was requested",
                 
                 
             ],

@@ -94,29 +94,35 @@ The `case_sensitivity` option applies to the `substring` argument.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
+                <option>snowflake</option>
                 
-                <option>velox_presto</option>
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
                 
                 <option>postgres</option>
                 
                 <option>cudf</option>
                 
-                <option>datafusion</option>
+                <option>velox_presto</option>
                 
-                <option>snowflake</option>
-                
-                <option>sqlite</option>
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -134,19 +140,13 @@ The `case_sensitivity` option applies to the `substring` argument.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-snowflake">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -319,7 +319,7 @@ The `case_sensitivity` option applies to the `substring` argument.
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'snowflake': {
             examples: [
                 
                 
@@ -327,7 +327,7 @@ The `case_sensitivity` option applies to the `substring` argument.
                 
                 
                 
-                  "The dialect duckdb expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
+                  "The dialect snowflake expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
                 
                 
                 
@@ -347,7 +347,7 @@ The `case_sensitivity` option applies to the `substring` argument.
                 
                 
                 
-                  "The dialect duckdb expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
+                  "The dialect snowflake expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
                 
                 
                 
@@ -378,7 +378,66 @@ The `case_sensitivity` option applies to the `substring` argument.
             ]
         },
         
-        'velox_presto': {
+        'sqlite': {
+            examples: [
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'datafusion': {
             examples: [
                 
                 
@@ -555,7 +614,7 @@ The `case_sensitivity` option applies to the `substring` argument.
             ]
         },
         
-        'datafusion': {
+        'velox_presto': {
             examples: [
                 
                 
@@ -614,7 +673,7 @@ The `case_sensitivity` option applies to the `substring` argument.
             ]
         },
         
-        'snowflake': {
+        'duckdb': {
             examples: [
                 
                 
@@ -622,7 +681,7 @@ The `case_sensitivity` option applies to the `substring` argument.
                 
                 
                 
-                  "The dialect snowflake expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
+                  "The dialect duckdb expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
                 
                 
                 
@@ -642,70 +701,11 @@ The `case_sensitivity` option applies to the `substring` argument.
                 
                 
                 
-                  "The dialect snowflake expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
+                  "The dialect duckdb expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
                 
                 
                 
                   null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
                 
                 
             ],

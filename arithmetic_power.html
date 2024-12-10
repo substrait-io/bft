@@ -86,29 +86,35 @@ This option controls what happens when this overflow occurs.</p>
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
+                <option>snowflake</option>
                 
-                <option>velox_presto</option>
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
                 
                 <option>postgres</option>
                 
                 <option>cudf</option>
                 
-                <option>datafusion</option>
+                <option>velox_presto</option>
                 
-                <option>snowflake</option>
-                
-                <option>sqlite</option>
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -126,19 +132,13 @@ This option controls what happens when this overflow occurs.</p>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-snowflake">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -492,10 +492,26 @@ and the way the operation is carried out in various dialects.</p>
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'snowflake': {
             examples: [
                 
                 
+                  "The dialect snowflake does not support the kernel arithmetic.power(i64, i64) -> i64",
+                
+                
+                
+                  "The dialect snowflake does not support the kernel arithmetic.power(fp32, fp32) -> fp32",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect snowflake does not support the kernel arithmetic.power(i64, i64) -> i64",
+                
+                
+                
                   null,
                 
                 
@@ -512,27 +528,11 @@ and the way the operation is carried out in various dialects.</p>
                 
                 
                 
-                  null,
+                  "The dialect snowflake expects complex_number_result=ERROR but complex_number_result=NAN was requested",
                 
                 
                 
                   null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect duckdb expects complex_number_result=NAN but complex_number_result=ERROR was requested",
                 
                 
                 
@@ -571,7 +571,7 @@ and the way the operation is carried out in various dialects.</p>
             ]
         },
         
-        'velox_presto': {
+        'sqlite': {
             examples: [
                 
                 
@@ -579,7 +579,86 @@ and the way the operation is carried out in various dialects.</p>
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel arithmetic.power(fp32, fp32) -> fp32",
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
                 
@@ -808,7 +887,7 @@ and the way the operation is carried out in various dialects.</p>
             ]
         },
         
-        'datafusion': {
+        'velox_presto': {
             examples: [
                 
                 
@@ -816,7 +895,7 @@ and the way the operation is carried out in various dialects.</p>
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel arithmetic.power(fp32, fp32) -> fp32",
                 
                 
                 
@@ -887,86 +966,7 @@ and the way the operation is carried out in various dialects.</p>
             ]
         },
         
-        'snowflake': {
-            examples: [
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.power(i64, i64) -> i64",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.power(fp32, fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.power(i64, i64) -> i64",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect snowflake expects complex_number_result=ERROR but complex_number_result=NAN was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'sqlite': {
+        'duckdb': {
             examples: [
                 
                 
@@ -986,27 +986,7 @@ and the way the operation is carried out in various dialects.</p>
                 
                 
                 
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
@@ -1014,23 +994,43 @@ and the way the operation is carried out in various dialects.</p>
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  "The dialect duckdb expects complex_number_result=NAN but complex_number_result=ERROR was requested",
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
                 
                 
             ],

@@ -108,29 +108,35 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
+                <option>snowflake</option>
                 
-                <option>velox_presto</option>
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
                 
                 <option>postgres</option>
                 
                 <option>cudf</option>
                 
-                <option>datafusion</option>
+                <option>velox_presto</option>
                 
-                <option>snowflake</option>
-                
-                <option>sqlite</option>
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -148,19 +154,13 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-snowflake">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -637,87 +637,87 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'snowflake': {
             examples: [
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -730,7 +730,100 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
             ]
         },
         
-        'velox_presto': {
+        'sqlite': {
+            examples: [
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'datafusion': {
             examples: [
                 
                 
@@ -1009,7 +1102,7 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
             ]
         },
         
-        'datafusion': {
+        'velox_presto': {
             examples: [
                 
                 
@@ -1102,180 +1195,87 @@ The `case_sensitivity` option specifies case-sensitive or case-insensitive match
             ]
         },
         
-        'snowflake': {
+        'duckdb': {
             examples: [
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
                 
                 
                 
-                  "There is no dialect information for this function",
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
                 
                 
                 
-                  "There is no dialect information for this function",
+                  "The dialect duckdb expects lookaround=False but lookaround=True was requested",
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
+                  null,
                 
                 
             ],

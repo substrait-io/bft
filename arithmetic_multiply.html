@@ -128,29 +128,35 @@ then round to the value closest to zero.</p>
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
+                <option>snowflake</option>
                 
-                <option>velox_presto</option>
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
                 
                 <option>postgres</option>
                 
                 <option>cudf</option>
                 
-                <option>datafusion</option>
+                <option>velox_presto</option>
                 
-                <option>snowflake</option>
-                
-                <option>sqlite</option>
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -168,19 +174,13 @@ then round to the value closest to zero.</p>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-snowflake">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -505,7 +505,84 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'snowflake': {
+            examples: [
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'sqlite': {
             examples: [
                 
                 
@@ -533,31 +610,31 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
                 
                 
                 
-                  null,
+                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
+                
+                
+                
+                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
                 
                 
                 
                   null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect duckdb expects overflow=ERROR but overflow=SATURATE was requested",
-                
-                
-                
-                  "The dialect duckdb expects overflow=ERROR but overflow=SATURATE was requested",
-                
-                
-                
-                  "The dialect duckdb expects overflow=ERROR but overflow=SILENT was requested",
                 
                 
                 
@@ -582,19 +659,19 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
             ]
         },
         
-        'velox_presto': {
+        'datafusion': {
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i8, i8) -> i8",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i16, i16) -> i16",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i32, i32) -> i32",
+                  null,
                 
                 
                 
@@ -610,31 +687,31 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i8, i8) -> error",
+                  "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i16, i16) -> error",
+                  "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i32, i32) -> error",
+                  "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
+                
+                
+                
+                  "The dialect datafusion expects overflow=SILENT but overflow=SATURATE was requested",
+                
+                
+                
+                  "The dialect datafusion expects overflow=SILENT but overflow=SATURATE was requested",
                 
                 
                 
                   null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i8, i8) -> undefined",
                 
                 
                 
@@ -813,11 +890,19 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
             ]
         },
         
-        'datafusion': {
+        'velox_presto': {
             examples: [
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i16, i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i32, i32) -> i32",
                 
                 
                 
@@ -833,7 +918,15 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i8, i8) -> error",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i16, i16) -> error",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i32, i32) -> error",
                 
                 
                 
@@ -841,31 +934,15 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
                 
                 
                 
-                  "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i8, i8) -> i8",
                 
                 
                 
-                  "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect datafusion expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect datafusion expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  "The dialect datafusion expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  null,
+                  "The dialect velox_presto does not support the kernel arithmetic.multiply(i8, i8) -> undefined",
                 
                 
                 
@@ -890,84 +967,7 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
             ]
         },
         
-        'snowflake': {
-            examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'sqlite': {
+        'duckdb': {
             examples: [
                 
                 
@@ -995,31 +995,31 @@ guaranteed to be true for integer multiplication when overflow is SILENT.</p></d
                 
                 
                 
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
+                  null,
                 
                 
                 
                   null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect duckdb expects overflow=ERROR but overflow=SATURATE was requested",
+                
+                
+                
+                  "The dialect duckdb expects overflow=ERROR but overflow=SATURATE was requested",
+                
+                
+                
+                  "The dialect duckdb expects overflow=ERROR but overflow=SILENT was requested",
                 
                 
                 

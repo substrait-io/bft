@@ -60,29 +60,35 @@ If all arguments are null, return null.
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
+                <option>snowflake</option>
                 
-                <option>velox_presto</option>
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
                 
                 <option>postgres</option>
                 
                 <option>cudf</option>
                 
-                <option>datafusion</option>
+                <option>velox_presto</option>
                 
-                <option>snowflake</option>
-                
-                <option>sqlite</option>
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -100,19 +106,13 @@ If all arguments are null, return null.
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-snowflake">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -316,31 +316,31 @@ If all arguments are null, return null.
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'snowflake': {
             examples: [
                 
                 
-                  null,
+                  "The dialect snowflake does not support the kernel comparison.coalesce(i8, i8) -> i8",
                 
                 
                 
-                  null,
+                  "The dialect snowflake does not support the kernel comparison.coalesce(i8, i8) -> i8",
                 
                 
                 
-                  null,
+                  "The dialect snowflake does not support the kernel comparison.coalesce(i16, i16) -> i16",
                 
                 
                 
-                  null,
+                  "The dialect snowflake does not support the kernel comparison.coalesce(i32, i32) -> i32",
                 
                 
                 
-                  null,
+                  "The dialect snowflake does not support the kernel comparison.coalesce(i64, i64) -> i64",
                 
                 
                 
-                  null,
+                  "The dialect snowflake does not support the kernel comparison.coalesce(fp32, fp32) -> fp32",
                 
                 
                 
@@ -375,23 +375,11 @@ If all arguments are null, return null.
             ]
         },
         
-        'velox_presto': {
+        'sqlite': {
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel comparison.coalesce(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel comparison.coalesce(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel comparison.coalesce(i16, i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel comparison.coalesce(i32, i32) -> i32",
+                  null,
                 
                 
                 
@@ -399,7 +387,7 @@ If all arguments are null, return null.
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel comparison.coalesce(fp32, fp32) -> fp32",
+                  null,
                 
                 
                 
@@ -407,23 +395,94 @@ If all arguments are null, return null.
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                  "The dialect sqlite does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                  "The dialect sqlite does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                
+                
+                
+                  "The dialect sqlite does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                
+                
+                
+                  "The dialect sqlite does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                
+                
+                
+                  "The dialect sqlite does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+            ]
+        },
+        
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                
+                
+                
+                  "The dialect datafusion does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                
+                
+                
+                  "The dialect datafusion does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                
+                
+                
+                  "The dialect datafusion does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                
+                
+                
+                  "The dialect datafusion does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
                 
                 
             ],
@@ -552,11 +611,23 @@ If all arguments are null, return null.
             ]
         },
         
-        'datafusion': {
+        'velox_presto': {
             examples: [
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel comparison.coalesce(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.coalesce(i8, i8) -> i8",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.coalesce(i16, i16) -> i16",
+                
+                
+                
+                  "The dialect velox_presto does not support the kernel comparison.coalesce(i32, i32) -> i32",
                 
                 
                 
@@ -564,7 +635,7 @@ If all arguments are null, return null.
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel comparison.coalesce(fp32, fp32) -> fp32",
                 
                 
                 
@@ -572,35 +643,23 @@ If all arguments are null, return null.
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
                 
                 
                 
-                  "The dialect datafusion does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                  "The dialect velox_presto does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
                 
                 
                 
-                  "The dialect datafusion does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
-                
-                
-                
-                  "The dialect datafusion does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
-                
-                
-                
-                  "The dialect datafusion does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
-                
-                
-                
-                  "The dialect datafusion does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                  "The dialect velox_presto does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
                 
                 
             ],
@@ -611,66 +670,7 @@ If all arguments are null, return null.
             ]
         },
         
-        'snowflake': {
-            examples: [
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.coalesce(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.coalesce(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.coalesce(i16, i16) -> i16",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.coalesce(i32, i32) -> i32",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.coalesce(i64, i64) -> i64",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.coalesce(fp32, fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-            ]
-        },
-        
-        'sqlite': {
+        'duckdb': {
             examples: [
                 
                 
@@ -702,23 +702,23 @@ If all arguments are null, return null.
                 
                 
                 
-                  "The dialect sqlite does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                  null,
                 
                 
                 
-                  "The dialect sqlite does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                  null,
                 
                 
                 
-                  "The dialect sqlite does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                  null,
                 
                 
                 
-                  "The dialect sqlite does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                  null,
                 
                 
                 
-                  "The dialect sqlite does not support the kernel comparison.coalesce(decimal<38, 0>, decimal<38, 0>) -> decimal<38, 0>",
+                  null,
                 
                 
             ],

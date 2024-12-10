@@ -63,29 +63,35 @@
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
+                <option>snowflake</option>
                 
-                <option>velox_presto</option>
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
                 
                 <option>postgres</option>
                 
                 <option>cudf</option>
                 
-                <option>datafusion</option>
+                <option>velox_presto</option>
                 
-                <option>snowflake</option>
-                
-                <option>sqlite</option>
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -103,19 +109,13 @@
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-snowflake">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -382,7 +382,62 @@
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'snowflake': {
+            examples: [
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+                
+                  "There is no dialect information for this function",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'sqlite': {
             examples: [
                 
                 
@@ -410,11 +465,11 @@
                 
                 
                 
-                  "The dialect duckdb expects negative_start=WRAP_FROM_END but negative_start=LEFT_OF_BEGINNING was requested",
+                  "The dialect sqlite expects negative_start=WRAP_FROM_END but negative_start=LEFT_OF_BEGINNING was requested",
                 
                 
                 
-                  "The dialect duckdb expects negative_start=WRAP_FROM_END but negative_start=LEFT_OF_BEGINNING was requested",
+                  "The dialect sqlite expects negative_start=WRAP_FROM_END but negative_start=LEFT_OF_BEGINNING was requested",
                 
                 
                 
@@ -437,47 +492,47 @@
             ]
         },
         
-        'velox_presto': {
+        'datafusion': {
             examples: [
                 
                 
-                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
+                  "The dialect datafusion expects negative_start=LEFT_OF_BEGINNING but negative_start=WRAP_FROM_END was requested",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
+                  "The dialect datafusion expects negative_start=LEFT_OF_BEGINNING but negative_start=WRAP_FROM_END was requested",
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
+                  null,
                 
                 
                 
-                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
+                  null,
                 
                 
             ],
@@ -602,47 +657,47 @@
             ]
         },
         
-        'datafusion': {
+        'velox_presto': {
             examples: [
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  "The dialect datafusion expects negative_start=LEFT_OF_BEGINNING but negative_start=WRAP_FROM_END was requested",
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  "The dialect datafusion expects negative_start=LEFT_OF_BEGINNING but negative_start=WRAP_FROM_END was requested",
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
                 
-                  null,
+                  "The dialect velox_presto does not support the kernel string.substring(string, i32, i32) -> string",
                 
                 
             ],
@@ -657,62 +712,7 @@
             ]
         },
         
-        'snowflake': {
-            examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'sqlite': {
+        'duckdb': {
             examples: [
                 
                 
@@ -740,11 +740,11 @@
                 
                 
                 
-                  "The dialect sqlite expects negative_start=WRAP_FROM_END but negative_start=LEFT_OF_BEGINNING was requested",
+                  "The dialect duckdb expects negative_start=WRAP_FROM_END but negative_start=LEFT_OF_BEGINNING was requested",
                 
                 
                 
-                  "The dialect sqlite expects negative_start=WRAP_FROM_END but negative_start=LEFT_OF_BEGINNING was requested",
+                  "The dialect duckdb expects negative_start=WRAP_FROM_END but negative_start=LEFT_OF_BEGINNING was requested",
                 
                 
                 

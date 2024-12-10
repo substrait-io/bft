@@ -121,29 +121,35 @@ logb(x, b) => log_{b} (x)
             <h3>Dialects&nbsp;<a href="#dialects">&para;</a></h3>
             <select id="dialect">
                 
-                <option>duckdb</option>
+                <option>snowflake</option>
                 
-                <option>velox_presto</option>
+                <option>sqlite</option>
+                
+                <option>datafusion</option>
                 
                 <option>postgres</option>
                 
                 <option>cudf</option>
                 
-                <option>datafusion</option>
+                <option>velox_presto</option>
                 
-                <option>snowflake</option>
-                
-                <option>sqlite</option>
+                <option>duckdb</option>
                 
             </select>
             
-            <dl class="dialect-definition" id="dialect-duckdb">
+            <dl class="dialect-definition" id="dialect-snowflake">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-velox_presto">
+            <dl class="dialect-definition" id="dialect-sqlite">
+                
+                    <dt>Dialect isn't yet supported</dt>
+                
+            </dl>
+            
+            <dl class="dialect-definition" id="dialect-datafusion">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -161,19 +167,13 @@ logb(x, b) => log_{b} (x)
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-datafusion">
+            <dl class="dialect-definition" id="dialect-velox_presto">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
             </dl>
             
-            <dl class="dialect-definition" id="dialect-snowflake">
-                
-                    <dt>Dialect isn't yet supported</dt>
-                
-            </dl>
-            
-            <dl class="dialect-definition" id="dialect-sqlite">
+            <dl class="dialect-definition" id="dialect-duckdb">
                 
                     <dt>Dialect isn't yet supported</dt>
                 
@@ -401,47 +401,47 @@ logb(x, b) => log_{b} (x)
     <script>
       var bftDialects = {
         
-        'duckdb': {
+        'snowflake': {
             examples: [
                 
                 
-                  "There is no dialect information for this function",
+                  "The dialect snowflake does not support the kernel logarithmic.logb(i64, i64) -> fp64",
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  "The dialect snowflake expects on_domain_error=ERROR but on_domain_error=NAN was requested",
                 
                 
                 
-                  "There is no dialect information for this function",
+                  "The dialect snowflake expects on_domain_error=ERROR but on_domain_error=NONE was requested",
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  "The dialect snowflake expects on_log_zero=ERROR but on_log_zero=NAN was requested",
                 
                 
                 
-                  "There is no dialect information for this function",
+                  "The dialect snowflake expects on_log_zero=ERROR but on_log_zero=MINUS_INFINITY was requested",
                 
                 
             ],
@@ -454,47 +454,100 @@ logb(x, b) => log_{b} (x)
             ]
         },
         
-        'velox_presto': {
+        'sqlite': {
             examples: [
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=ERROR was requested",
                 
                 
                 
-                  "There is no dialect information for this function",
+                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=NAN was requested",
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  "The dialect sqlite expects on_log_zero=NAN but on_log_zero=ERROR was requested",
                 
                 
                 
-                  "There is no dialect information for this function",
+                  null,
                 
                 
                 
-                  "There is no dialect information for this function",
+                  "The dialect sqlite expects on_log_zero=NAN but on_log_zero=MINUS_INFINITY was requested",
+                
+                
+            ],
+            kernels: [
+                
+                false,
+                
+                false,
+                
+            ]
+        },
+        
+        'datafusion': {
+            examples: [
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=ERROR was requested",
+                
+                
+                
+                  null,
+                
+                
+                
+                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=NONE was requested",
+                
+                
+                
+                  "The dialect datafusion expects on_log_zero=MINUS_INFINITY but on_log_zero=ERROR was requested",
+                
+                
+                
+                  "The dialect datafusion expects on_log_zero=MINUS_INFINITY but on_log_zero=NAN was requested",
+                
+                
+                
+                  null,
                 
                 
             ],
@@ -613,47 +666,47 @@ logb(x, b) => log_{b} (x)
             ]
         },
         
-        'datafusion': {
+        'velox_presto': {
             examples: [
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=ERROR was requested",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=NONE was requested",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect datafusion expects on_log_zero=MINUS_INFINITY but on_log_zero=ERROR was requested",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect datafusion expects on_log_zero=MINUS_INFINITY but on_log_zero=NAN was requested",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
             ],
@@ -666,100 +719,47 @@ logb(x, b) => log_{b} (x)
             ]
         },
         
-        'snowflake': {
+        'duckdb': {
             examples: [
                 
                 
-                  "The dialect snowflake does not support the kernel logarithmic.logb(i64, i64) -> fp64",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect snowflake expects on_domain_error=ERROR but on_domain_error=NAN was requested",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect snowflake expects on_domain_error=ERROR but on_domain_error=NONE was requested",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  null,
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect snowflake expects on_log_zero=ERROR but on_log_zero=NAN was requested",
+                  "There is no dialect information for this function",
                 
                 
                 
-                  "The dialect snowflake expects on_log_zero=ERROR but on_log_zero=MINUS_INFINITY was requested",
-                
-                
-            ],
-            kernels: [
-                
-                false,
-                
-                false,
-                
-            ]
-        },
-        
-        'sqlite': {
-            examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=NAN was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects on_log_zero=NAN but on_log_zero=ERROR was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects on_log_zero=NAN but on_log_zero=MINUS_INFINITY was requested",
+                  "There is no dialect information for this function",
                 
                 
             ],
