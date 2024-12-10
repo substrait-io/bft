@@ -3,6 +3,8 @@ import math
 import os
 import yaml
 from typing import Dict, NamedTuple
+from cryptography.hazmat.primitives.serialization import load_der_private_key
+from cryptography.hazmat.backends import default_backend
 
 from snowflake.connector import connect
 from snowflake.connector.errors import Error
@@ -28,6 +30,7 @@ type_map = {
 def type_to_snowflake_type(type: str):
     return type_to_dialect_type(type, type_map)
 
+
 def literal_to_str(lit: str | int | float):
     if lit is None:
         return "null"
@@ -41,9 +44,9 @@ def literal_to_str(lit: str | int | float):
 
 
 def literal_to_float(lit: str | int | float):
-    if lit in [float('inf'), 'inf']:
+    if lit in [float("inf"), "inf"]:
         return "TO_DOUBLE('inf'::float)"
-    elif lit in [float('-inf'), '-inf']:
+    elif lit in [float("-inf"), "-inf"]:
         return "TO_DOUBLE('-inf'::float)"
     return lit
 
@@ -52,11 +55,10 @@ def is_float_type(arg):
     return arg.type in ["fp32", "fp64"]
 
 
-
 def is_string_type(arg):
     return (
-            arg.type in ["string", "timestamp", "timestamp_tz", "date", "time"]
-            and arg.value is not None
+        arg.type in ["string", "timestamp", "timestamp_tz", "date", "time"]
+        and arg.value is not None
     )
 
 
@@ -67,20 +69,24 @@ def is_datetype(arg):
 class SnowflakeRunner(SqlCaseRunner):
     def __init__(self, dialect):
         super().__init__(dialect)
-        with open('bft/testers/snowflake/config.yaml', 'r') as file:
+        with open("testers/snowflake/config.yaml", "r") as file:
             config = yaml.safe_load(file)
-            sf_config = config['snowflake']
-        print(
-            f"Connecting to {sf_config['account']} as {sf_config['username']}")
-        self.conn = connect(user=sf_config['username'],
-                            password=os.environ['SNOWSQL_PWD'],
-                            account=sf_config['account'],
-                            database=sf_config['database'],
-                            schema=sf_config['schema'],
-                            # host=sf_config['hostname'].get(""),
-                            # role=sf_config['role'].get(""),
-                            warehouse=sf_config['warehouse']
-                            )
+            sf_config = config["snowflake"]
+        print(f"Connecting to {sf_config['account']} as {sf_config['username']}")
+        private_key_path = os.environ["SNOWSQL_PRIVATE_KEY_PATH"]
+        with open(private_key_path, "rb") as f:
+            private_key = f.read()
+
+        self.conn = connect(
+            user=sf_config["username"],
+            private_key=private_key,
+            account=sf_config["account"],
+            database=sf_config["database"],
+            schema=sf_config["schema"],
+            # host=sf_config['hostname'].get(""),
+            # role=sf_config['role'].get(""),
+            warehouse=sf_config["warehouse"],
+        )
 
     def run_sql_case(self, case: Case, mapping: SqlMapping) -> SqlCaseResult:
 
@@ -147,7 +153,7 @@ class SnowflakeRunner(SqlCaseRunner):
                 if len(arg_names) != 2:
                     raise Exception(f"Extract function with {len(arg_names)} args")
                 expr = f"SELECT {mapping.local_name}({arg_vals_list[0]} FROM {arg_names[1]}) FROM my_table;"
-            elif mapping.local_name == 'count(*)':
+            elif mapping.local_name == "count(*)":
                 expr = f"SELECT {mapping.local_name} FROM my_table;"
             elif mapping.aggregate:
                 if len(arg_names) < 1:
