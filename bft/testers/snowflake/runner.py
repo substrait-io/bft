@@ -83,8 +83,6 @@ class SnowflakeRunner(SqlCaseRunner):
             account=sf_config["account"],
             database=sf_config["database"],
             schema=sf_config["schema"],
-            # host=sf_config['hostname'].get(""),
-            # role=sf_config['role'].get(""),
             warehouse=sf_config["warehouse"],
         )
 
