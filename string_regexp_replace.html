@@ -37,9 +37,9 @@
             </p>
             <hr>
             <p>
-                Search a string for a substring that matches a given regular expression pattern and replace it with a replacement string. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github .io/icu/userguide/strings/regexp.html). The occurrence of the pattern to be replaced is specified using the `occurrence` argument. Specifying `1` means only the first occurrence will be replaced, `2` means the second occurrence, and so on. Specifying `0` means all occurrences will be replaced. The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer. The replacement string can capture groups using numbered backreferences.
+                Search a string for a substring that matches a given regular expression pattern and replace it with a replacement string. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github .io/icu/userguide/strings/regexp.html). The replacement string can capture groups using numbered backreferences. All occurrences of the pattern will be replaced. The search for matches start at the first character of the input.
 The `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines.  This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.
-Behavior is undefined if the regex fails to compile, the replacement contains an illegal back-reference, the occurrence value is out of range, or the position value is out of range.
+Behavior is undefined if the regex fails to compile or the replacement contains an illegal back-reference.
             </p>
         </section>
         <hr>
@@ -98,9 +98,7 @@ Behavior is undefined if the regex fails to compile, the replacement contains an
             <h3>Kernels&nbsp;<a href="#kernels">&para;</a></h3>
             <ul>
                 
-                <li class="bft-kernel"><span>regexp_replace(string, string, string, i64, i64) -> string : [case_sensitivity, multiline, dotall]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
-                
-                <li class="bft-kernel"><span>regexp_replace(varchar<L1>, varchar<L2>, varchar<L3>, i64, i64) -> varchar<L1> : [case_sensitivity, multiline, dotall]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>regexp_replace(string, string, string) -> string : [case_sensitivity, multiline, dotall]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
             </ul>
         </section>
@@ -919,8 +917,6 @@ Behavior is undefined if the regex fails to compile, the replacement contains an
                 
                 false,
                 
-                false,
-                
             ]
         },
         
@@ -1033,8 +1029,6 @@ Behavior is undefined if the regex fails to compile, the replacement contains an
                 
             ],
             kernels: [
-                
-                false,
                 
                 false,
                 
@@ -1153,8 +1147,6 @@ Behavior is undefined if the regex fails to compile, the replacement contains an
                 
                 false,
                 
-                false,
-                
             ]
         },
         
@@ -1267,8 +1259,6 @@ Behavior is undefined if the regex fails to compile, the replacement contains an
                 
             ],
             kernels: [
-                
-                false,
                 
                 false,
                 
@@ -1387,8 +1377,6 @@ Behavior is undefined if the regex fails to compile, the replacement contains an
                 
                 false,
                 
-                false,
-                
             ]
         },
         
@@ -1504,8 +1492,6 @@ Behavior is undefined if the regex fails to compile, the replacement contains an
                 
                 false,
                 
-                false,
-                
             ]
         },
         
@@ -1618,8 +1604,6 @@ Behavior is undefined if the regex fails to compile, the replacement contains an
                 
             ],
             kernels: [
-                
-                false,
                 
                 false,
                 

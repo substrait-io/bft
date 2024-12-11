@@ -50,11 +50,7 @@ logb(x, b) => log_{b} (x)
                 No supplemental information for rounding
                 <dl>
                     
-                    <dt>TIE_TO_EVEN</dt>
-                    <dd>Missing supplementary description
-                    </dd>
-                    
-                    <dt>TIE_AWAY_FROM_ZERO</dt>
+                    <dt>FLOOR</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
@@ -66,7 +62,11 @@ logb(x, b) => log_{b} (x)
                     <dd>Missing supplementary description
                     </dd>
                     
-                    <dt>FLOOR</dt>
+                    <dt>TIE_AWAY_FROM_ZERO</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                    <dt>TIE_TO_EVEN</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
@@ -76,11 +76,15 @@ logb(x, b) => log_{b} (x)
                 No supplemental information for on_domain_error
                 <dl>
                     
+                    <dt>ERROR</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
                     <dt>NAN</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
-                    <dt>ERROR</dt>
+                    <dt>NULL</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
@@ -90,15 +94,15 @@ logb(x, b) => log_{b} (x)
                 No supplemental information for on_log_zero
                 <dl>
                     
-                    <dt>NAN</dt>
-                    <dd>Missing supplementary description
-                    </dd>
-                    
                     <dt>ERROR</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
                     <dt>MINUS_INFINITY</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                    <dt>NAN</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
@@ -110,9 +114,13 @@ logb(x, b) => log_{b} (x)
             <h3>Kernels&nbsp;<a href="#kernels">&para;</a></h3>
             <ul>
                 
+                <li class="bft-kernel"><span>logb(i64, i64) -> fp64 : [rounding, on_domain_error, on_log_zero]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
                 <li class="bft-kernel"><span>logb(fp32, fp32) -> fp32 : [rounding, on_domain_error, on_log_zero]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
                 <li class="bft-kernel"><span>logb(fp64, fp64) -> fp64 : [rounding, on_domain_error, on_log_zero]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>logb(decimal<P1,S1>, decimal<P1,S1>) -> fp64 : [rounding, on_domain_error, on_log_zero]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
             </ul>
         </section>
@@ -451,6 +459,10 @@ logb(x, b) => log_{b} (x)
                 
                 false,
                 
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -499,6 +511,10 @@ logb(x, b) => log_{b} (x)
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
                 
                 false,
                 
@@ -557,6 +573,10 @@ logb(x, b) => log_{b} (x)
                 
                 false,
                 
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -605,6 +625,10 @@ logb(x, b) => log_{b} (x)
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
                 
                 false,
                 
@@ -663,6 +687,10 @@ logb(x, b) => log_{b} (x)
                 
                 false,
                 
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -716,6 +744,10 @@ logb(x, b) => log_{b} (x)
                 
                 false,
                 
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -764,6 +796,10 @@ logb(x, b) => log_{b} (x)
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
                 
                 false,
                 

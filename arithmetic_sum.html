@@ -50,6 +50,10 @@ representable range of the type class. This option controls what happens when
 this overflow occurs.</p>
                 <dl>
                     
+                    <dt>ERROR</dt>
+                    <dd><p>If an overflow occurs then an error should be raised.</p>
+                    </dd>
+                    
                     <dt>SILENT</dt>
                     <dd><p>If an overflow occurs then an integer value will be returned. The value is
 undefined. It may be any integer and can change from engine to engine or
@@ -61,10 +65,6 @@ yield an int32 on overflow)</p>
                     <dt>SATURATE</dt>
                     <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest
 (for negative overflow) possible value for the type class will be returned.</p>
-                    </dd>
-                    
-                    <dt>ERROR</dt>
-                    <dd><p>If an overflow occurs then an error should be raised.</p>
                     </dd>
                     
                 </dl>

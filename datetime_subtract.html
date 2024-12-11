@@ -53,17 +53,27 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
                 <li class="bft-kernel"><span>subtract(timestamp, interval_year) -> timestamp : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
+                <li class="bft-kernel"><span>subtract(precision_timestamp<P>, interval_year) -> precision_timestamp<P> : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
                 <li class="bft-kernel"><span>subtract(timestamp_tz, interval_year) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>subtract(precision_timestamp_tz<P>, interval_year) -> precision_timestamp_tz<P> : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
                 <li class="bft-kernel"><span>subtract(timestamp_tz, interval_year, string) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
+                <li class="bft-kernel"><span>subtract(precision_timestamp_tz<P>, interval_year, string) -> precision_timestamp_tz<P> : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
                 <li class="bft-kernel"><span>subtract(date, interval_year) -> date : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>subtract(timestamp, interval_day) -> timestamp : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>subtract(timestamp, interval_day<P>) -> timestamp : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>subtract(timestamp_tz, interval_day) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>subtract(precision_timestamp<P>, interval_day<P>) -> precision_timestamp<P> : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>subtract(date, interval_day) -> date : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>subtract(timestamp_tz, interval_day<P>) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>subtract(precision_timestamp_tz<P>, interval_day<P>) -> precision_timestamp_tz<P> : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>subtract(date, interval_day<P>) -> date : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
             </ul>
         </section>
@@ -663,6 +673,16 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 false,
                 
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -751,6 +771,16 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
                 
                 false,
                 
@@ -869,6 +899,16 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 false,
                 
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -957,6 +997,16 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
                 
                 false,
                 
@@ -1075,6 +1125,16 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 false,
                 
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -1178,6 +1238,16 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
                 false,
                 
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -1266,6 +1336,16 @@ guaranteed to be true for integer subtraction when overflow is SILENT.</p></dd>
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
                 
                 false,
                 

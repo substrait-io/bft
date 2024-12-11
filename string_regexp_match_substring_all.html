@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>strptime Function - BFT</title>
+    <title>regexp_match_substring_all Function - BFT</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-        <meta name="description" content="Reference for the  function">
+        <meta name="description" content="Reference for the match_substring_all function">
     
     <link rel="stylesheet" href="./assets/supplementary/terminal.css">
     <link rel="stylesheet" href="./assets/supplementary/style.css">
@@ -30,20 +30,67 @@
     </header>
 
     <article class="container">
-        <h2>Strptime</h2>
+        <h2>Regexp_match_substring_all</h2>
         <section>
             <p>
-                Defined in <a href="https://github.com/substrait-io/substrait/blob/main/extensions/functions_datetime.yaml">functions_datetime.yaml</a>
+                Defined in <a href="https://github.com/substrait-io/substrait/blob/main/extensions/functions_string.yaml">functions_string.yaml</a>
             </p>
             <hr>
             <p>
-                Parse string into timestamp/date/time using provided format, see https://man7.org/linux/man-pages/man3/strptime.3.html for reference. If timezone is present in timestamp and provided as parameter an error is thrown.
-Timezone strings must be as defined by IANA timezone database (https://www.iana.org/time-zones). Examples: "Pacific/Marquesas", "Etc/GMT+1". If timezone is supplied as parameter and present in the parsed string the parsed timezone is used. If parameter supplied timezone is invalid an error is thrown.
+                Extract all substrings that match the given regular expression pattern. This will return a list of extracted strings with one value for each occurrence of a match. The regular expression pattern should follow the International Components for Unicode implementation (https://unicode-org.github.io/icu/userguide/strings/regexp.html). The number of characters from the beginning of the string to begin starting to search for pattern matches can be specified using the `position` argument. Specifying `1` means to search for matches starting at the first character of the input string, `2` means the second character, and so on. The `position` argument should be a positive non-zero integer. The regular expression capture group can be specified using the `group` argument. Specifying `0` will return substrings matching the full regular expression. Specifying `1` will return substrings matching only the first capture group, and so on. The `group` argument should be a non-negative integer.
+The `case_sensitivity` option specifies case-sensitive or case-insensitive matching. Enabling the `multiline` option will treat the input string as multiple lines. This makes the `^` and `$` characters match at the beginning and end of any line, instead of just the beginning and end of the input string. Enabling the `dotall` option makes the `.` character match line terminator characters in a string.
+Behavior is undefined if the regex fails to compile, the position value is out of range, or the group value is out of range.
             </p>
         </section>
         <hr>
         <section id="options">
             <h3>Options&nbsp;<a href="#options">&para;</a></h3>
+            
+                <h4>Case_sensitivity</h4>
+                No supplemental information for case_sensitivity
+                <dl>
+                    
+                    <dt>CASE_SENSITIVE</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                    <dt>CASE_INSENSITIVE</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                    <dt>CASE_INSENSITIVE_ASCII</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                </dl>
+            
+                <h4>Multiline</h4>
+                No supplemental information for multiline
+                <dl>
+                    
+                    <dt>MULTILINE_DISABLED</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                    <dt>MULTILINE_ENABLED</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                </dl>
+            
+                <h4>Dotall</h4>
+                No supplemental information for dotall
+                <dl>
+                    
+                    <dt>DOTALL_DISABLED</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                    <dt>DOTALL_ENABLED</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                </dl>
             
         </section>
         <hr>
@@ -51,13 +98,9 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
             <h3>Kernels&nbsp;<a href="#kernels">&para;</a></h3>
             <ul>
                 
-                <li class="bft-kernel"><span>strptime(string, string, string) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>regexp_match_substring_all(varchar<L1>, varchar<L2>, i64, i64) -> List<varchar<L1>> : [case_sensitivity, multiline, dotall]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>strptime(string, string) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
-                
-                <li class="bft-kernel"><span>strptime(string, string) -> date : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
-                
-                <li class="bft-kernel"><span>strptime(string, string) -> time : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>regexp_match_substring_all(string, string, i64, i64) -> List<string> : [case_sensitivity, multiline, dotall]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
             </ul>
         </section>
@@ -159,10 +202,6 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
                 false,
                 
-                false,
-                
-                false,
-                
             ]
         },
         
@@ -171,10 +210,6 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
             ],
             kernels: [
-                
-                false,
-                
-                false,
                 
                 false,
                 
@@ -193,10 +228,6 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
                 false,
                 
-                false,
-                
-                false,
-                
             ]
         },
         
@@ -205,10 +236,6 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
             ],
             kernels: [
-                
-                false,
-                
-                false,
                 
                 false,
                 
@@ -227,10 +254,6 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
                 false,
                 
-                false,
-                
-                false,
-                
             ]
         },
         
@@ -244,10 +267,6 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
                 false,
                 
-                false,
-                
-                false,
-                
             ]
         },
         
@@ -256,10 +275,6 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
             ],
             kernels: [
-                
-                false,
-                
-                false,
                 
                 false,
                 

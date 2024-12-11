@@ -37,12 +37,82 @@
             </p>
             <hr>
             <p>
-                Get the remainder when dividing one value by another.
+                Calculate the remainder (r) when dividing dividend (x) by divisor (y).
+In mathematics, many conventions for the modulus (mod) operation exists. The result of a mod operation depends on the software implementation and underlying hardware. Substrait is a format for describing compute operations on structured data and designed for interoperability. Therefore the user is responsible for determining a definition of division as defined by the quotient (q).
+The following basic conditions of division are satisfied: (1) q ∈ ℤ (the quotient is an integer) (2) x = y * q + r (division rule) (3) abs(r) < abs(y) where q is the quotient.
+The `division_type` option determines the mathematical definition of quotient to use in the above definition of division.
+When `division_type`=TRUNCATE, q = trunc(x/y). When `division_type`=FLOOR, q = floor(x/y).
+In the cases of TRUNCATE and FLOOR division: remainder r = x - round_func(x/y)
+The `on_domain_error` option governs behavior in cases where y is 0, y is +/-inf, or x is +/-inf. In these cases the mod is undefined. The `overflow` option governs behavior when integer overflow occurs. If x and y are both 0 or both +/-infinity, behavior will be governed by `on_domain_error`.
+
             </p>
         </section>
         <hr>
         <section id="options">
             <h3>Options&nbsp;<a href="#options">&para;</a></h3>
+            
+                <h4>Division_type</h4>
+                <p>Determines the nature of division rounding function and quotient
+evaluation that shall lead to the reminder. The reminder will be
+determined by  r = x - round_func(x/y)</p>
+                <dl>
+                    
+                    <dt>FLOOR</dt>
+                    <dd><p>The quotient is evaluated i.e. the round_func(x/y) is floored,
+thus the fractional result is rounded to the largest integer
+value less than or equal to it.</p>
+                    </dd>
+                    
+                    <dt>TRUNCATE</dt>
+                    <dd><p>The quotient is evaluated i.e. the round_func(x/y) is truncated,
+thus the fractional result is rounded towards zero.</p>
+                    </dd>
+                    
+                </dl>
+            
+                <h4>Overflow</h4>
+                <p>The modulus operation typically occurs after finding the quotient,
+i.e., mod(x, y) = x - round_func(x/y), where the round_func can be
+to truncate, floor, or any such operation. Thus, the entire operation
+may trigger an overflow when the result is outside the representable
+range of the type class. This option controls what happens when this overflow occurs.</p>
+                <dl>
+                    
+                    <dt>ERROR</dt>
+                    <dd><p>If an overflow occurs then an error should be raised.</p>
+                    </dd>
+                    
+                    <dt>SILENT</dt>
+                    <dd><p>If an overflow occurs then an integer value will be returned. The value is
+undefined. It may be any integer and can change from engine to engine or
+even from row to row within the same query.  The only constraint is that it
+must be a valid value for the result type class (e.g. modulus of int16
+cannot yield an int32 on overflow)</p>
+                    </dd>
+                    
+                    <dt>SATURATE</dt>
+                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest
+(for negative overflow) possible value for the type class will be returned.</p>
+                    </dd>
+                    
+                </dl>
+            
+                <h4>On_domain_error</h4>
+                <p>Option controls what happens when the dividend is ±infinity or
+the divisor is 0 or ±infinity in a divide function.</p>
+                <dl>
+                    
+                    <dt>ERROR</dt>
+                    <dd><p>If the dividend is ±infinity or the divisor is 0 or ±infinity,
+an error should be raised.</p>
+                    </dd>
+                    
+                    <dt>NULL</dt>
+                    <dd><p>Return a NULL if the dividend is ±infinity or the divisor is 0
+or ±infinity.</p>
+                    </dd>
+                    
+                </dl>
             
         </section>
         <hr>
@@ -50,13 +120,13 @@
             <h3>Kernels&nbsp;<a href="#kernels">&para;</a></h3>
             <ul>
                 
-                <li class="bft-kernel"><span>modulus(i8, i8) -> i8 : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>modulus(i8, i8) -> i8 : [division_type, overflow, on_domain_error]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>modulus(i16, i16) -> i16 : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>modulus(i16, i16) -> i16 : [division_type, overflow, on_domain_error]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>modulus(i32, i32) -> i32 : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>modulus(i32, i32) -> i32 : [division_type, overflow, on_domain_error]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>modulus(i64, i64) -> i64 : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>modulus(i64, i64) -> i64 : [division_type, overflow, on_domain_error]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
             </ul>
         </section>

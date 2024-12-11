@@ -55,7 +55,11 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
                 <li class="bft-kernel"><span>extract_boolean(IS_LEAP_YEAR, timestamp) -> boolean : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
+                <li class="bft-kernel"><span>extract_boolean(IS_LEAP_YEAR, precision_timestamp<P>) -> boolean : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
                 <li class="bft-kernel"><span>extract_boolean(IS_LEAP_YEAR|IS_DST, timestamp_tz, string) -> boolean : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>extract_boolean(IS_LEAP_YEAR|IS_DST, precision_timestamp_tz<P>, string) -> boolean : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
                 <li class="bft-kernel"><span>extract_boolean(IS_LEAP_YEAR, date) -> boolean : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
@@ -161,6 +165,10 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
                 false,
                 
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -169,6 +177,10 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
                 
                 false,
                 
@@ -191,6 +203,10 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
                 false,
                 
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -199,6 +215,10 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
                 
                 false,
                 
@@ -221,6 +241,10 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
                 false,
                 
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -236,6 +260,10 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
                 false,
                 
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -244,6 +272,10 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
                 
                 false,
                 

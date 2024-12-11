@@ -53,7 +53,11 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
                 <li class="bft-kernel"><span>round_calendar(timestamp, FLOOR|CEIL|ROUND_TIE_DOWN|ROUND_TIE_UP, YEAR|MONTH|WEEK|DAY|HOUR|MINUTE|SECOND|MILLISECOND|MICROSECOND, YEAR|MONTH|MONDAY_WEEK|SUNDAY_WEEK|ISO_WEEK|US_WEEK|DAY|HOUR|MINUTE|SECOND|MILLISECOND, i64) -> timestamp : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
+                <li class="bft-kernel"><span>round_calendar(precision_timestamp<P>, FLOOR|CEIL|ROUND_TIE_DOWN|ROUND_TIE_UP, YEAR|MONTH|WEEK|DAY|HOUR|MINUTE|SECOND|MILLISECOND|MICROSECOND, YEAR|MONTH|MONDAY_WEEK|SUNDAY_WEEK|ISO_WEEK|US_WEEK|DAY|HOUR|MINUTE|SECOND|MILLISECOND, i64) -> precision_timestamp<P> : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
                 <li class="bft-kernel"><span>round_calendar(timestamp_tz, FLOOR|CEIL|ROUND_TIE_DOWN|ROUND_TIE_UP, YEAR|MONTH|WEEK|DAY|HOUR|MINUTE|SECOND|MILLISECOND|MICROSECOND, YEAR|MONTH|MONDAY_WEEK|SUNDAY_WEEK|ISO_WEEK|US_WEEK|DAY|HOUR|MINUTE|SECOND|MILLISECOND, i64, string) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>round_calendar(precision_timestamp_tz<P>, FLOOR|CEIL|ROUND_TIE_DOWN|ROUND_TIE_UP, YEAR|MONTH|WEEK|DAY|HOUR|MINUTE|SECOND|MILLISECOND|MICROSECOND, YEAR|MONTH|MONDAY_WEEK|SUNDAY_WEEK|ISO_WEEK|US_WEEK|DAY|HOUR|MINUTE|SECOND|MILLISECOND, i64, string) -> precision_timestamp_tz<P> : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
                 <li class="bft-kernel"><span>round_calendar(date, FLOOR|CEIL|ROUND_TIE_DOWN|ROUND_TIE_UP, YEAR|MONTH|WEEK|DAY, YEAR|MONTH|MONDAY_WEEK|SUNDAY_WEEK|ISO_WEEK|US_WEEK|DAY, i64, date) -> date : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
@@ -163,6 +167,10 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
                 false,
                 
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -171,6 +179,10 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
                 
                 false,
                 
@@ -197,6 +209,10 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
                 false,
                 
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -205,6 +221,10 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
                 
                 false,
                 
@@ -231,6 +251,10 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
                 false,
                 
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -248,6 +272,10 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
                 false,
                 
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -256,6 +284,10 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
                 
                 false,
                 

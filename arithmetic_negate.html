@@ -51,6 +51,11 @@ will overflow since the range for the int8 type class is [-128,127]. This option
 control the behavior upon overflow in the negate function.</p>
                 <dl>
                     
+                    <dt>ERROR</dt>
+                    <dd><p>If an overflow occurs then an error should be raised.
+</p>
+                    </dd>
+                    
                     <dt>SILENT</dt>
                     <dd><p>If an overflow occurs then an integer value will be returned. The value is undefined. It may be any integer and can change from engine to engine or even from row to row within the same query.  The only constraint is that it must be a valid value for the result type class.
 </p>
@@ -58,11 +63,6 @@ control the behavior upon overflow in the negate function.</p>
                     
                     <dt>SATURATE</dt>
                     <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest (for negative overflow) possible value for the type class will be returned.
-</p>
-                    </dd>
-                    
-                    <dt>ERROR</dt>
-                    <dd><p>If an overflow occurs then an error should be raised.
 </p>
                     </dd>
                     

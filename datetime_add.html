@@ -53,15 +53,23 @@ Timezone strings must be as defined by IANA timezone database (https://www.iana.
                 
                 <li class="bft-kernel"><span>add(timestamp, interval_year) -> timestamp : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
+                <li class="bft-kernel"><span>add(precision_timestamp<P>, interval_year) -> precision_timestamp<P> : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
                 <li class="bft-kernel"><span>add(timestamp_tz, interval_year, string) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>add(precision_timestamp_tz<P>, interval_year, string) -> precision_timestamp_tz<P> : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
                 <li class="bft-kernel"><span>add(date, interval_year) -> timestamp : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>add(timestamp, interval_day) -> timestamp : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>add(timestamp, interval_day<P>) -> timestamp : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>add(timestamp_tz, interval_day) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>add(precision_timestamp<P>, interval_day<P>) -> precision_timestamp<P> : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
-                <li class="bft-kernel"><span>add(date, interval_day) -> timestamp : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                <li class="bft-kernel"><span>add(timestamp_tz, interval_day<P>) -> timestamp_tz : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>add(precision_timestamp_tz<P>, interval_day<P>) -> precision_timestamp_tz<P> : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>add(date, interval_day<P>) -> timestamp : []</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
             </ul>
         </section>
@@ -729,6 +737,14 @@ because the first will overflow and the second will not.</p>
                 
                 false,
                 
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -825,6 +841,14 @@ because the first will overflow and the second will not.</p>
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
                 
                 false,
                 
@@ -947,6 +971,14 @@ because the first will overflow and the second will not.</p>
                 
                 false,
                 
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -1043,6 +1075,14 @@ because the first will overflow and the second will not.</p>
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
                 
                 false,
                 
@@ -1165,6 +1205,14 @@ because the first will overflow and the second will not.</p>
                 
                 false,
                 
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -1274,6 +1322,14 @@ because the first will overflow and the second will not.</p>
                 
                 false,
                 
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -1370,6 +1426,14 @@ because the first will overflow and the second will not.</p>
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
+                
+                false,
+                
+                false,
                 
                 false,
                 

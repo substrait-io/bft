@@ -48,11 +48,7 @@
                 No supplemental information for rounding
                 <dl>
                     
-                    <dt>TIE_TO_EVEN</dt>
-                    <dd>Missing supplementary description
-                    </dd>
-                    
-                    <dt>TIE_AWAY_FROM_ZERO</dt>
+                    <dt>FLOOR</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
@@ -64,7 +60,11 @@
                     <dd>Missing supplementary description
                     </dd>
                     
-                    <dt>FLOOR</dt>
+                    <dt>TIE_AWAY_FROM_ZERO</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                    <dt>TIE_TO_EVEN</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
@@ -74,11 +74,15 @@
                 No supplemental information for on_domain_error
                 <dl>
                     
+                    <dt>ERROR</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
                     <dt>NAN</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
-                    <dt>ERROR</dt>
+                    <dt>NULL</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
@@ -88,15 +92,15 @@
                 No supplemental information for on_log_zero
                 <dl>
                     
-                    <dt>NAN</dt>
-                    <dd>Missing supplementary description
-                    </dd>
-                    
                     <dt>ERROR</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
                     <dt>MINUS_INFINITY</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                    <dt>NAN</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
@@ -108,9 +112,13 @@
             <h3>Kernels&nbsp;<a href="#kernels">&para;</a></h3>
             <ul>
                 
+                <li class="bft-kernel"><span>log10(i64) -> fp64 : [rounding, on_domain_error, on_log_zero]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
                 <li class="bft-kernel"><span>log10(fp32) -> fp32 : [rounding, on_domain_error, on_log_zero]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
                 <li class="bft-kernel"><span>log10(fp64) -> fp64 : [rounding, on_domain_error, on_log_zero]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
+                
+                <li class="bft-kernel"><span>log10(decimal<P,S>) -> fp64 : [rounding, on_domain_error, on_log_zero]</span><span hidden>&nbsp;(not supported by dialect)</span></li>
                 
             </ul>
         </section>
@@ -436,6 +444,10 @@
                 
                 false,
                 
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -488,6 +500,10 @@
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
                 
                 false,
                 
@@ -550,6 +566,10 @@
                 
                 false,
                 
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -602,6 +622,10 @@
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
                 
                 false,
                 
@@ -664,6 +688,10 @@
                 
                 false,
                 
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -721,6 +749,10 @@
                 
                 false,
                 
+                false,
+                
+                false,
+                
             ]
         },
         
@@ -773,6 +805,10 @@
                 
             ],
             kernels: [
+                
+                false,
+                
+                false,
                 
                 false,
                 
