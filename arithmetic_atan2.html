@@ -50,18 +50,8 @@ representable in the given type class. In this case the value will be rounded.
 Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 <dl>
                     
-                    <dt>TIE_AWAY_FROM_ZERO</dt>
-                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the number furthest from zero.
-</p>
-                    </dd>
-                    
                     <dt>CEILING</dt>
                     <dd><p>Round to the value closest to positive infinity.
-</p>
-                    </dd>
-                    
-                    <dt>FLOOR</dt>
-                    <dd><p>Round to the value closest to negative infinity.
 </p>
                     </dd>
                     
@@ -70,8 +60,18 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
 </p>
                     </dd>
                     
+                    <dt>FLOOR</dt>
+                    <dd><p>Round to the value closest to negative infinity.
+</p>
+                    </dd>
+                    
                     <dt>TRUNCATE</dt>
                     <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the value closest to zero.
+</p>
+                    </dd>
+                    
+                    <dt>TIE_AWAY_FROM_ZERO</dt>
+                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the number furthest from zero.
 </p>
                     </dd>
                     
@@ -81,13 +81,13 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 <p>Mathematically, atan2 function has a domain of [-Infinity, Infinity], i.e. values of only this range are allowed. This option controls the behavior when the function is called with values outside of this range.</p>
                 <dl>
                     
-                    <dt>ERROR</dt>
-                    <dd><p>If any or all of the input values are either 0 or ±infinity an error should be raised.
+                    <dt>NAN</dt>
+                    <dd><p>Return a Not a Number value if any or all of the input values are either 0 or ±infinity.
 </p>
                     </dd>
                     
-                    <dt>NAN</dt>
-                    <dd><p>Return a Not a Number value if any or all of the input values are either 0 or ±infinity.
+                    <dt>ERROR</dt>
+                    <dd><p>If any or all of the input values are either 0 or ±infinity an error should be raised.
 </p>
                     </dd>
                     

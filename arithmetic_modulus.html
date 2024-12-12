@@ -78,6 +78,11 @@ may trigger an overflow when the result is outside the representable
 range of the type class. This option controls what happens when this overflow occurs.</p>
                 <dl>
                     
+                    <dt>SATURATE</dt>
+                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest
+(for negative overflow) possible value for the type class will be returned.</p>
+                    </dd>
+                    
                     <dt>ERROR</dt>
                     <dd><p>If an overflow occurs then an error should be raised.</p>
                     </dd>
@@ -90,11 +95,6 @@ must be a valid value for the result type class (e.g. modulus of int16
 cannot yield an int32 on overflow)</p>
                     </dd>
                     
-                    <dt>SATURATE</dt>
-                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest
-(for negative overflow) possible value for the type class will be returned.</p>
-                    </dd>
-                    
                 </dl>
             
                 <h4>On_domain_error</h4>
@@ -102,14 +102,14 @@ cannot yield an int32 on overflow)</p>
 the divisor is 0 or ±infinity in a divide function.</p>
                 <dl>
                     
-                    <dt>ERROR</dt>
-                    <dd><p>If the dividend is ±infinity or the divisor is 0 or ±infinity,
-an error should be raised.</p>
-                    </dd>
-                    
                     <dt>NULL</dt>
                     <dd><p>Return a NULL if the dividend is ±infinity or the divisor is 0
 or ±infinity.</p>
+                    </dd>
+                    
+                    <dt>ERROR</dt>
+                    <dd><p>If the dividend is ±infinity or the divisor is 0 or ±infinity,
+an error should be raised.</p>
                     </dd>
                     
                 </dl>

@@ -53,6 +53,11 @@ of the type class can cause an overflow. This option helps
 control the behavior upon overflow in the Factorial function.</p>
                 <dl>
                     
+                    <dt>SATURATE</dt>
+                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest (for negative overflow) possible value for the type class will be returned.
+</p>
+                    </dd>
+                    
                     <dt>ERROR</dt>
                     <dd><p>If an overflow occurs then an error should be raised.
 </p>
@@ -60,11 +65,6 @@ control the behavior upon overflow in the Factorial function.</p>
                     
                     <dt>SILENT</dt>
                     <dd><p>If an overflow occurs then an integer value will be returned. The value is undefined. It may be any integer and can change from engine to engine or even from row to row within the same query.  The only constraint is that it must be a valid value for the result type class.
-</p>
-                    </dd>
-                    
-                    <dt>SATURATE</dt>
-                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest (for negative overflow) possible value for the type class will be returned.
 </p>
                     </dd>
                     
