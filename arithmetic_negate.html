@@ -51,6 +51,11 @@ will overflow since the range for the int8 type class is [-128,127]. This option
 control the behavior upon overflow in the negate function.</p>
                 <dl>
                     
+                    <dt>SATURATE</dt>
+                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest (for negative overflow) possible value for the type class will be returned.
+</p>
+                    </dd>
+                    
                     <dt>ERROR</dt>
                     <dd><p>If an overflow occurs then an error should be raised.
 </p>
@@ -58,11 +63,6 @@ control the behavior upon overflow in the negate function.</p>
                     
                     <dt>SILENT</dt>
                     <dd><p>If an overflow occurs then an integer value will be returned. The value is undefined. It may be any integer and can change from engine to engine or even from row to row within the same query.  The only constraint is that it must be a valid value for the result type class.
-</p>
-                    </dd>
-                    
-                    <dt>SATURATE</dt>
-                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest (for negative overflow) possible value for the type class will be returned.
 </p>
                     </dd>
                     
@@ -195,180 +195,6 @@ because the first will overflow and the second will not.</p>
         <section id="examples">
             <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
             
-            <table>
-                <caption>Basic examples without any special cases</caption>
-                <thead>
-                    <tr>
-                        
-                        
-                        <th>arg1 (fp64)</th>
-                        
-                        <th>result (fp64)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>25</td>
-                        
-                        <td>-25</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>-200</td>
-                        
-                        <td>200</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>30000</td>
-                        
-                        <td>-30000</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>9223372036854775800</td>
-                        
-                        <td>-9223372036854775800</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>2.5</td>
-                        
-                        <td>-2.5</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>2.000002861022949</td>
-                        
-                        <td>-2.000002861022949</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>inf</td>
-                        
-                        <td>-inf</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
-            <table>
-                <caption>Examples with null as input</caption>
-                <thead>
-                    <tr>
-                        
-                        
-                        <th>arg1 (i8)</th>
-                        
-                        <th>result (i8)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>None</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
-            <table>
-                <caption>Examples demonstrating overflow behavior</caption>
-                <thead>
-                    <tr>
-                        
-                        <th>overflow</th>
-                        
-                        
-                        <th>arg1 (i8)</th>
-                        
-                        <th>result (i8)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>ERROR</td>
-                        
-                        
-                        <td>-128</td>
-                        
-                        <td>ERROR</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>SATURATE</td>
-                        
-                        
-                        <td>-128</td>
-                        
-                        <td>127</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>SILENT</td>
-                        
-                        
-                        <td>-128</td>
-                        
-                        <td>UNDEFINED</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
         </section>
     </article>
     <script src="./assets/supplementary/script.js"></script>
@@ -377,50 +203,6 @@ because the first will overflow and the second will not.</p>
         
         'snowflake': {
             examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
                 
             ],
             kernels: [
@@ -443,50 +225,6 @@ because the first will overflow and the second will not.</p>
         'sqlite': {
             examples: [
                 
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
             ],
             kernels: [
                 
@@ -507,50 +245,6 @@ because the first will overflow and the second will not.</p>
         
         'datafusion': {
             examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
                 
             ],
             kernels: [
@@ -573,50 +267,6 @@ because the first will overflow and the second will not.</p>
         'postgres': {
             examples: [
                 
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
             ],
             kernels: [
                 
@@ -637,50 +287,6 @@ because the first will overflow and the second will not.</p>
         
         'cudf': {
             examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
                 
             ],
             kernels: [
@@ -703,50 +309,6 @@ because the first will overflow and the second will not.</p>
         'velox_presto': {
             examples: [
                 
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.negate(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.negate(i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.negate(i32) -> i32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.negate(fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.negate(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.negate(i8) -> error",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.negate(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.negate(i8) -> undefined",
-                
-                
             ],
             kernels: [
                 
@@ -767,50 +329,6 @@ because the first will overflow and the second will not.</p>
         
         'duckdb': {
             examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
                 
             ],
             kernels: [

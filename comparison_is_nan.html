@@ -140,98 +140,6 @@ If `x` is `null`, `null` is returned.
         <section id="examples">
             <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
             
-            <table>
-                <caption>Basic examples without any special cases</caption>
-                <thead>
-                    <tr>
-                        
-                        
-                        <th>arg1 (fp64)</th>
-                        
-                        <th>result (boolean)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>0.0</td>
-                        
-                        <td>False</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>0.55</td>
-                        
-                        <td>False</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>1000.000000000001</td>
-                        
-                        <td>False</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>-inf</td>
-                        
-                        <td>False</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>inf</td>
-                        
-                        <td>False</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>None</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>nan</td>
-                        
-                        <td>True</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
         </section>
     </article>
     <script src="./assets/supplementary/script.js"></script>
@@ -240,34 +148,6 @@ If `x` is `null`, `null` is returned.
         
         'snowflake': {
             examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
                 
             ],
             kernels: [
@@ -282,34 +162,6 @@ If `x` is `null`, `null` is returned.
         'sqlite': {
             examples: [
                 
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
             ],
             kernels: [
                 
@@ -322,34 +174,6 @@ If `x` is `null`, `null` is returned.
         
         'datafusion': {
             examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
                 
             ],
             kernels: [
@@ -364,34 +188,6 @@ If `x` is `null`, `null` is returned.
         'postgres': {
             examples: [
                 
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
             ],
             kernels: [
                 
@@ -404,34 +200,6 @@ If `x` is `null`, `null` is returned.
         
         'cudf': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
@@ -446,34 +214,6 @@ If `x` is `null`, `null` is returned.
         'velox_presto': {
             examples: [
                 
-                
-                  "The dialect velox_presto does not support the kernel comparison.is_nan(fp32) -> boolean",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel comparison.is_nan(fp32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
             ],
             kernels: [
                 
@@ -486,34 +226,6 @@ If `x` is `null`, `null` is returned.
         
         'duckdb': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [

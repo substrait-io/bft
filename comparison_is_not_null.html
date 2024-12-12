@@ -136,87 +136,6 @@
         <section id="examples">
             <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
             
-            <table>
-                <caption>Basic examples without any special cases</caption>
-                <thead>
-                    <tr>
-                        
-                        
-                        <th>arg1 (decimal<38, 3>)</th>
-                        
-                        <th>result (boolean)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>25</td>
-                        
-                        <td>True</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>True</td>
-                        
-                        <td>True</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>7.25</td>
-                        
-                        <td>True</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>7.25</td>
-                        
-                        <td>True</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>None</td>
-                        
-                        <td>False</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>None</td>
-                        
-                        <td>False</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
         </section>
     </article>
     <script src="./assets/supplementary/script.js"></script>
@@ -225,30 +144,6 @@
         
         'snowflake': {
             examples: [
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.is_not_null(i16) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.is_not_null(fp32) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect snowflake does not support the kernel comparison.is_not_null(i8) -> boolean",
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
@@ -261,30 +156,6 @@
         'sqlite': {
             examples: [
                 
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite does not support the kernel comparison.is_not_null(decimal<38, 3>) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite does not support the kernel comparison.is_not_null(decimal<38, 3>) -> boolean",
-                
-                
             ],
             kernels: [
                 
@@ -295,30 +166,6 @@
         
         'datafusion': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect datafusion does not support the kernel comparison.is_not_null(decimal<38, 3>) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect datafusion does not support the kernel comparison.is_not_null(decimal<38, 3>) -> boolean",
-                
                 
             ],
             kernels: [
@@ -331,30 +178,6 @@
         'postgres': {
             examples: [
                 
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres does not support the kernel comparison.is_not_null(decimal<38, 3>) -> boolean",
-                
-                
-                
-                  "The dialect postgres does not support the kernel comparison.is_not_null(i8) -> boolean",
-                
-                
-                
-                  "The dialect postgres does not support the kernel comparison.is_not_null(decimal<38, 3>) -> boolean",
-                
-                
             ],
             kernels: [
                 
@@ -365,30 +188,6 @@
         
         'cudf': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf does not support the kernel comparison.is_not_null(decimal<38, 3>) -> boolean",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf does not support the kernel comparison.is_not_null(decimal<38, 3>) -> boolean",
-                
                 
             ],
             kernels: [
@@ -401,30 +200,6 @@
         'velox_presto': {
             examples: [
                 
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
             ],
             kernels: [
                 
@@ -435,30 +210,6 @@
         
         'duckdb': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [

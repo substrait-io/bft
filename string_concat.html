@@ -49,11 +49,11 @@ The `null_handling` option determines whether or not null values will be recogni
                 No supplemental information for null_handling
                 <dl>
                     
-                    <dt>IGNORE_NULLS</dt>
+                    <dt>ACCEPT_NULLS</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
-                    <dt>ACCEPT_NULLS</dt>
+                    <dt>IGNORE_NULLS</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
@@ -153,145 +153,6 @@ The `null_handling` option determines whether or not null values will be recogni
         <section id="examples">
             <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
             
-            <table>
-                <caption>Basic examples without any special cases</caption>
-                <thead>
-                    <tr>
-                        
-                        
-                        <th>arg1 (string)</th>
-                        
-                        <th>arg2 (string)</th>
-                        
-                        <th>result (string)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>abcd</td>
-                        
-                        <td>efg</td>
-                        
-                        <td>abcdefg</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
-            <table>
-                <caption>Examples with null as input</caption>
-                <thead>
-                    <tr>
-                        
-                        <th>null_handling</th>
-                        
-                        
-                        <th>arg1 (string)</th>
-                        
-                        <th>arg2 (string)</th>
-                        
-                        <th>result (string)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>ACCEPT_NULLS</td>
-                        
-                        
-                        <td>abcd</td>
-                        
-                        <td>None</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>IGNORE_NULLS</td>
-                        
-                        
-                        <td>abcd</td>
-                        
-                        <td>None</td>
-                        
-                        <td>abcd</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>ACCEPT_NULLS</td>
-                        
-                        
-                        <td>None</td>
-                        
-                        <td>abcd</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>IGNORE_NULLS</td>
-                        
-                        
-                        <td>None</td>
-                        
-                        <td>abcd</td>
-                        
-                        <td>abcd</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>ACCEPT_NULLS</td>
-                        
-                        
-                        <td>None</td>
-                        
-                        <td>None</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>IGNORE_NULLS</td>
-                        
-                        
-                        <td>None</td>
-                        
-                        <td>None</td>
-                        
-                        <td></td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
         </section>
     </article>
     <script src="./assets/supplementary/script.js"></script>
@@ -300,34 +161,6 @@ The `null_handling` option determines whether or not null values will be recogni
         
         'snowflake': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect snowflake expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect snowflake expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect snowflake expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
                 
             ],
             kernels: [
@@ -342,34 +175,6 @@ The `null_handling` option determines whether or not null values will be recogni
         'sqlite': {
             examples: [
                 
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
-                
             ],
             kernels: [
                 
@@ -382,34 +187,6 @@ The `null_handling` option determines whether or not null values will be recogni
         
         'datafusion': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect datafusion expects null_handling=IGNORE_NULLS but null_handling=ACCEPT_NULLS was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect datafusion expects null_handling=IGNORE_NULLS but null_handling=ACCEPT_NULLS was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect datafusion expects null_handling=IGNORE_NULLS but null_handling=ACCEPT_NULLS was requested",
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
@@ -424,34 +201,6 @@ The `null_handling` option determines whether or not null values will be recogni
         'postgres': {
             examples: [
                 
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
-                
             ],
             kernels: [
                 
@@ -464,34 +213,6 @@ The `null_handling` option determines whether or not null values will be recogni
         
         'cudf': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
                 
             ],
             kernels: [
@@ -506,34 +227,6 @@ The `null_handling` option determines whether or not null values will be recogni
         'velox_presto': {
             examples: [
                 
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
-                
             ],
             kernels: [
                 
@@ -546,34 +239,6 @@ The `null_handling` option determines whether or not null values will be recogni
         
         'duckdb': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect duckdb expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect duckdb expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect duckdb expects null_handling=ACCEPT_NULLS but null_handling=IGNORE_NULLS was requested",
-                
                 
             ],
             kernels: [

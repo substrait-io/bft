@@ -49,15 +49,15 @@ The `case_sensitivity` option applies to the `match` argument.
                 No supplemental information for case_sensitivity
                 <dl>
                     
+                    <dt>CASE_INSENSITIVE_ASCII</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
                     <dt>CASE_SENSITIVE</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
                     <dt>CASE_INSENSITIVE</dt>
-                    <dd>Missing supplementary description
-                    </dd>
-                    
-                    <dt>CASE_INSENSITIVE_ASCII</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
@@ -157,118 +157,6 @@ The `case_sensitivity` option applies to the `match` argument.
         <section id="examples">
             <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
             
-            <table>
-                <caption>Basic examples without any special cases</caption>
-                <thead>
-                    <tr>
-                        
-                        
-                        <th>arg1 (string)</th>
-                        
-                        <th>arg2 (string)</th>
-                        
-                        <th>result (boolean)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>abcdefg</td>
-                        
-                        <td>abcdefg</td>
-                        
-                        <td>True</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>abcdefg</td>
-                        
-                        <td>abc</td>
-                        
-                        <td>False</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
-            <table>
-                <caption>Examples using wildcards</caption>
-                <thead>
-                    <tr>
-                        
-                        
-                        <th>arg1 (string)</th>
-                        
-                        <th>arg2 (string)</th>
-                        
-                        <th>result (boolean)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>abcdefg</td>
-                        
-                        <td>abc%</td>
-                        
-                        <td>True</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>abcdefg</td>
-                        
-                        <td>%efg</td>
-                        
-                        <td>True</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>abcdefg</td>
-                        
-                        <td>_bcdefg</td>
-                        
-                        <td>True</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>abcdefg</td>
-                        
-                        <td>abc_efg</td>
-                        
-                        <td>True</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
         </section>
     </article>
     <script src="./assets/supplementary/script.js"></script>
@@ -277,30 +165,6 @@ The `case_sensitivity` option applies to the `match` argument.
         
         'snowflake': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
@@ -315,30 +179,6 @@ The `case_sensitivity` option applies to the `match` argument.
         'sqlite': {
             examples: [
                 
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
             ],
             kernels: [
                 
@@ -351,30 +191,6 @@ The `case_sensitivity` option applies to the `match` argument.
         
         'datafusion': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
@@ -389,30 +205,6 @@ The `case_sensitivity` option applies to the `match` argument.
         'postgres': {
             examples: [
                 
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
             ],
             kernels: [
                 
@@ -425,30 +217,6 @@ The `case_sensitivity` option applies to the `match` argument.
         
         'cudf': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
@@ -463,30 +231,6 @@ The `case_sensitivity` option applies to the `match` argument.
         'velox_presto': {
             examples: [
                 
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
             ],
             kernels: [
                 
@@ -499,30 +243,6 @@ The `case_sensitivity` option applies to the `match` argument.
         
         'duckdb': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [

@@ -50,13 +50,18 @@ representable in the given type class. In this case the value will be rounded.
 Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 <dl>
                     
-                    <dt>TRUNCATE</dt>
-                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the value closest to zero.
+                    <dt>TIE_AWAY_FROM_ZERO</dt>
+                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the number furthest from zero.
 </p>
                     </dd>
                     
                     <dt>TIE_TO_EVEN</dt>
                     <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the number whose least significant digit is even. Or, because we are working with binary digits, round to the number whose last digit is 0. This is the default behavior in many systems because it helps to avoid bias in rounding.
+</p>
+                    </dd>
+                    
+                    <dt>TRUNCATE</dt>
+                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the value closest to zero.
 </p>
                     </dd>
                     
@@ -70,24 +75,19 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
 </p>
                     </dd>
                     
-                    <dt>TIE_AWAY_FROM_ZERO</dt>
-                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the number furthest from zero.
-</p>
-                    </dd>
-                    
                 </dl>
             
                 <h4>On_domain_error</h4>
                 <p>Hyperbolic arccosine function has a domain of [1, Infinity], i.e. input should be greater than one. This option controls the behavior when the function is called with values outside of this range.</p>
                 <dl>
                     
-                    <dt>ERROR</dt>
-                    <dd><p>If any or all of the input values are either 0 or ±infinity an error should be raised.
+                    <dt>NAN</dt>
+                    <dd><p>Return a Not a Number value if any or all of the input values are either 0 or ±infinity.
 </p>
                     </dd>
                     
-                    <dt>NAN</dt>
-                    <dd><p>Return a Not a Number value if any or all of the input values are either 0 or ±infinity.
+                    <dt>ERROR</dt>
+                    <dd><p>If any or all of the input values are either 0 or ±infinity an error should be raised.
 </p>
                     </dd>
                     
@@ -215,110 +215,6 @@ at 1.</p>
         <section id="examples">
             <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
             
-            <table>
-                <caption>Examples demonstrating On_domain_error behavior</caption>
-                <thead>
-                    <tr>
-                        
-                        <th>on_domain_error</th>
-                        
-                        
-                        <th>arg1 (fp32)</th>
-                        
-                        <th>result (fp32)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>ERROR</td>
-                        
-                        
-                        <td>0.01</td>
-                        
-                        <td>ERROR</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>NAN</td>
-                        
-                        
-                        <td>0.5</td>
-                        
-                        <td>NAN</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>NONE</td>
-                        
-                        
-                        <td>0.5</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
-            <table>
-                <caption>Basic examples without any special cases</caption>
-                <thead>
-                    <tr>
-                        
-                        
-                        <th>arg1 (fp64)</th>
-                        
-                        <th>result (fp64)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>1.0</td>
-                        
-                        <td>0.0</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>10.0005</td>
-                        
-                        <td>2.9932730967481995</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>None</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
         </section>
     </article>
     <script src="./assets/supplementary/script.js"></script>
@@ -327,30 +223,6 @@ at 1.</p>
         
         'snowflake': {
             examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
                 
             ],
             kernels: [
@@ -365,30 +237,6 @@ at 1.</p>
         'sqlite': {
             examples: [
                 
-                
-                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects on_domain_error=NONE but on_domain_error=NAN was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
             ],
             kernels: [
                 
@@ -401,30 +249,6 @@ at 1.</p>
         
         'datafusion': {
             examples: [
-                
-                
-                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=ERROR was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect datafusion expects on_domain_error=NAN but on_domain_error=NONE was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
@@ -439,30 +263,6 @@ at 1.</p>
         'postgres': {
             examples: [
                 
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres expects on_domain_error=ERROR but on_domain_error=NAN was requested",
-                
-                
-                
-                  "The dialect postgres expects on_domain_error=ERROR but on_domain_error=NONE was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
             ],
             kernels: [
                 
@@ -475,30 +275,6 @@ at 1.</p>
         
         'cudf': {
             examples: [
-                
-                
-                  "The dialect cudf expects on_domain_error=NAN but on_domain_error=ERROR was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects on_domain_error=NAN but on_domain_error=NONE was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
@@ -513,30 +289,6 @@ at 1.</p>
         'velox_presto': {
             examples: [
                 
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
             ],
             kernels: [
                 
@@ -549,30 +301,6 @@ at 1.</p>
         
         'duckdb': {
             examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
                 
             ],
             kernels: [

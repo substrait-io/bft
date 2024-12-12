@@ -78,6 +78,11 @@ may trigger an overflow when the result is outside the representable
 range of the type class. This option controls what happens when this overflow occurs.</p>
                 <dl>
                     
+                    <dt>SATURATE</dt>
+                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest
+(for negative overflow) possible value for the type class will be returned.</p>
+                    </dd>
+                    
                     <dt>ERROR</dt>
                     <dd><p>If an overflow occurs then an error should be raised.</p>
                     </dd>
@@ -88,11 +93,6 @@ undefined. It may be any integer and can change from engine to engine or
 even from row to row within the same query.  The only constraint is that it
 must be a valid value for the result type class (e.g. modulus of int16
 cannot yield an int32 on overflow)</p>
-                    </dd>
-                    
-                    <dt>SATURATE</dt>
-                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest
-(for negative overflow) possible value for the type class will be returned.</p>
                     </dd>
                     
                 </dl>
@@ -237,225 +237,6 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
         <section id="examples">
             <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
             
-            <table>
-                <caption>Basic examples without any special cases</caption>
-                <thead>
-                    <tr>
-                        
-                        
-                        <th>arg1 (i64)</th>
-                        
-                        <th>arg2 (i64)</th>
-                        
-                        <th>result (i64)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>9</td>
-                        
-                        <td>3</td>
-                        
-                        <td>0</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>10</td>
-                        
-                        <td>-3</td>
-                        
-                        <td>1</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>32767</td>
-                        
-                        <td>1000</td>
-                        
-                        <td>767</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>-2147483647</td>
-                        
-                        <td>300000000</td>
-                        
-                        <td>-47483647</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>-9223372036854775800</td>
-                        
-                        <td>-80000000000000</td>
-                        
-                        <td>-12036854775800</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>5</td>
-                        
-                        <td>None</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>None</td>
-                        
-                        <td>1</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>None</td>
-                        
-                        <td>None</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
-            <table>
-                <caption>Examples demonstrating truncate and floor division types</caption>
-                <thead>
-                    <tr>
-                        
-                        <th>division_type</th>
-                        
-                        
-                        <th>arg1 (i8)</th>
-                        
-                        <th>arg2 (i8)</th>
-                        
-                        <th>result (i8)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>TRUNCATE</td>
-                        
-                        
-                        <td>8</td>
-                        
-                        <td>-3</td>
-                        
-                        <td>2</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>FLOOR</td>
-                        
-                        
-                        <td>8</td>
-                        
-                        <td>-3</td>
-                        
-                        <td>-1</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
-            <table>
-                <caption>Examples demonstrating operation when the divisor is 0</caption>
-                <thead>
-                    <tr>
-                        
-                        <th>on_domain_error</th>
-                        
-                        
-                        <th>arg1 (i8)</th>
-                        
-                        <th>arg2 (i8)</th>
-                        
-                        <th>result (i8)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>NULL</td>
-                        
-                        
-                        <td>5</td>
-                        
-                        <td>0</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>ERROR</td>
-                        
-                        
-                        <td>5</td>
-                        
-                        <td>0</td>
-                        
-                        <td>ERROR</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
         </section>
     </article>
     <script src="./assets/supplementary/script.js"></script>
@@ -464,54 +245,6 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
         
         'snowflake': {
             examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
                 
             ],
             kernels: [
@@ -530,54 +263,6 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
         'sqlite': {
             examples: [
                 
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects division_type=TRUNCATE but division_type=FLOOR was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects on_domain_error=NULL but on_domain_error=ERROR was requested",
-                
-                
             ],
             kernels: [
                 
@@ -594,54 +279,6 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
         
         'datafusion': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect datafusion expects division_type=TRUNCATE but division_type=FLOOR was requested",
-                
-                
-                
-                  "The dialect datafusion expects on_domain_error=ERROR but on_domain_error=NULL was requested",
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
@@ -660,54 +297,6 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
         'postgres': {
             examples: [
                 
-                
-                  "The dialect postgres does not support the kernel arithmetic.modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel arithmetic.modulus(i8, i8) -> i8",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres does not support the kernel arithmetic.modulus(i8, i8) -> i8",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres does not support the kernel arithmetic.modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel arithmetic.modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel arithmetic.modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel arithmetic.modulus(i8, i8) -> error",
-                
-                
             ],
             kernels: [
                 
@@ -724,54 +313,6 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
         
         'cudf': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects division_type=FLOOR but division_type=TRUNCATE was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects on_domain_error=NULL but on_domain_error=ERROR was requested",
-                
                 
             ],
             kernels: [
@@ -790,54 +331,6 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
         'velox_presto': {
             examples: [
                 
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i16, i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i32, i32) -> i32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.modulus(i8, i8) -> error",
-                
-                
             ],
             kernels: [
                 
@@ -854,54 +347,6 @@ guaranteed to be true for integer division when overflow is SILENT.</p></dd>
         
         'duckdb': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect duckdb expects division_type=TRUNCATE but division_type=FLOOR was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect duckdb expects on_domain_error=NULL but on_domain_error=ERROR was requested",
-                
                 
             ],
             kernels: [

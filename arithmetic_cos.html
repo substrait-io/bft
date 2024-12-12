@@ -50,13 +50,18 @@ representable in the given type class. In this case the value will be rounded.
 Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                 <dl>
                     
-                    <dt>TRUNCATE</dt>
-                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the value closest to zero.
+                    <dt>TIE_AWAY_FROM_ZERO</dt>
+                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the number furthest from zero.
 </p>
                     </dd>
                     
                     <dt>TIE_TO_EVEN</dt>
                     <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the number whose least significant digit is even. Or, because we are working with binary digits, round to the number whose last digit is 0. This is the default behavior in many systems because it helps to avoid bias in rounding.
+</p>
+                    </dd>
+                    
+                    <dt>TRUNCATE</dt>
+                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the value closest to zero.
 </p>
                     </dd>
                     
@@ -67,11 +72,6 @@ Rounding behaviors are defined as part of the IEEE 754 standard.</p>
                     
                     <dt>FLOOR</dt>
                     <dd><p>Round to the value closest to negative infinity.
-</p>
-                    </dd>
-                    
-                    <dt>TIE_AWAY_FROM_ZERO</dt>
-                    <dd><p>Round to the nearest value. If the number is exactly halfway between two values then round to the number furthest from zero.
 </p>
                     </dd>
                     
@@ -198,76 +198,6 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
         <section id="examples">
             <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
             
-            <table>
-                <caption>Basic examples without any special cases</caption>
-                <thead>
-                    <tr>
-                        
-                        
-                        <th>arg1 (fp64)</th>
-                        
-                        <th>result (fp64)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>0.0</td>
-                        
-                        <td>1.0</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>1.0</td>
-                        
-                        <td>0.5403023058681398</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>7.0000009</td>
-                        
-                        <td>0.7539016630550606</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>-7.00000095</td>
-                        
-                        <td>0.7539016302056953</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>None</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
         </section>
     </article>
     <script src="./assets/supplementary/script.js"></script>
@@ -276,26 +206,6 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
         
         'snowflake': {
             examples: [
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.cos(fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
@@ -310,26 +220,6 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
         'sqlite': {
             examples: [
                 
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
             ],
             kernels: [
                 
@@ -342,26 +232,6 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
         
         'datafusion': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
@@ -376,26 +246,6 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
         'postgres': {
             examples: [
                 
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
             ],
             kernels: [
                 
@@ -408,26 +258,6 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
         
         'cudf': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
@@ -442,26 +272,6 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
         'velox_presto': {
             examples: [
                 
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.cos(fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
             ],
             kernels: [
                 
@@ -474,26 +284,6 @@ information on what happens in these cases refer to the IEEE 754 standard.</p>
         
         'duckdb': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [

@@ -52,6 +52,11 @@ This option helps control the behavior of the function when the input goes out o
 of the type class.</p>
                 <dl>
                     
+                    <dt>SATURATE</dt>
+                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest (for negative overflow) possible value for the type class will be returned.
+</p>
+                    </dd>
+                    
                     <dt>ERROR</dt>
                     <dd><p>If an overflow occurs then an error should be raised.
 </p>
@@ -59,11 +64,6 @@ of the type class.</p>
                     
                     <dt>SILENT</dt>
                     <dd><p>If an overflow occurs then an integer value will be returned. The value is undefined. It may be any integer and can change from engine to engine or even from row to row within the same query.  The only constraint is that it must be a valid value for the result type class.
-</p>
-                    </dd>
-                    
-                    <dt>SATURATE</dt>
-                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest (for negative overflow) possible value for the type class will be returned.
 </p>
                     </dd>
                     
@@ -196,169 +196,6 @@ latter will overflow.</p>
         <section id="examples">
             <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
             
-            <table>
-                <caption>Basic examples without any special cases</caption>
-                <thead>
-                    <tr>
-                        
-                        
-                        <th>arg1 (fp64)</th>
-                        
-                        <th>result (fp64)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>25</td>
-                        
-                        <td>25</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>-200</td>
-                        
-                        <td>200</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>30000</td>
-                        
-                        <td>30000</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>-9223372036854775800</td>
-                        
-                        <td>9223372036854775800</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>2.55</td>
-                        
-                        <td>2.55</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>-2.0000007152557373</td>
-                        
-                        <td>2.0000007152557373</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
-            <table>
-                <caption>Examples with null as input</caption>
-                <thead>
-                    <tr>
-                        
-                        
-                        <th>arg1 (i8)</th>
-                        
-                        <th>result (i8)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>None</td>
-                        
-                        <td>None</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
-            <table>
-                <caption>Examples demonstrating overflow behavior</caption>
-                <thead>
-                    <tr>
-                        
-                        <th>overflow</th>
-                        
-                        
-                        <th>arg1 (i8)</th>
-                        
-                        <th>result (i8)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>ERROR</td>
-                        
-                        
-                        <td>-128</td>
-                        
-                        <td>ERROR</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>SATURATE</td>
-                        
-                        
-                        <td>-128</td>
-                        
-                        <td>127</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>SILENT</td>
-                        
-                        
-                        <td>-128</td>
-                        
-                        <td>UNDEFINED</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
         </section>
     </article>
     <script src="./assets/supplementary/script.js"></script>
@@ -367,46 +204,6 @@ latter will overflow.</p>
         
         'snowflake': {
             examples: [
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.abs(i8) -> i8",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.abs(i16) -> i16",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.abs(i32) -> i32",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.abs(i64) -> i64",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.abs(fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.abs(i8) -> i8",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.abs(i8) -> error",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.abs(i8) -> i8",
-                
-                
-                
-                  "The dialect snowflake does not support the kernel arithmetic.abs(i8) -> undefined",
-                
                 
             ],
             kernels: [
@@ -429,46 +226,6 @@ latter will overflow.</p>
         'sqlite': {
             examples: [
                 
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect sqlite expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  null,
-                
-                
             ],
             kernels: [
                 
@@ -489,46 +246,6 @@ latter will overflow.</p>
         
         'datafusion': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect datafusion expects overflow=ERROR but overflow=SATURATE was requested",
-                
-                
-                
-                  "The dialect datafusion expects overflow=ERROR but overflow=SILENT was requested",
-                
                 
             ],
             kernels: [
@@ -551,46 +268,6 @@ latter will overflow.</p>
         'postgres': {
             examples: [
                 
-                
-                  "The dialect postgres does not support the kernel arithmetic.abs(i8) -> i8",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect postgres does not support the kernel arithmetic.abs(i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel arithmetic.abs(i8) -> error",
-                
-                
-                
-                  "The dialect postgres does not support the kernel arithmetic.abs(i8) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel arithmetic.abs(i8) -> undefined",
-                
-                
             ],
             kernels: [
                 
@@ -611,46 +288,6 @@ latter will overflow.</p>
         
         'cudf': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects overflow=SILENT but overflow=ERROR was requested",
-                
-                
-                
-                  "The dialect cudf expects overflow=SILENT but overflow=SATURATE was requested",
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
@@ -673,46 +310,6 @@ latter will overflow.</p>
         'velox_presto': {
             examples: [
                 
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.abs(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.abs(i16) -> i16",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.abs(i32) -> i32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.abs(fp32) -> fp32",
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.abs(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.abs(i8) -> error",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.abs(i8) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel arithmetic.abs(i8) -> undefined",
-                
-                
             ],
             kernels: [
                 
@@ -733,46 +330,6 @@ latter will overflow.</p>
         
         'duckdb': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect duckdb expects overflow=ERROR but overflow=SATURATE was requested",
-                
-                
-                
-                  "The dialect duckdb expects overflow=ERROR but overflow=SILENT was requested",
-                
                 
             ],
             kernels: [

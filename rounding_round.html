@@ -49,15 +49,11 @@
                 No supplemental information for rounding
                 <dl>
                     
+                    <dt>TIE_AWAY_FROM_ZERO</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
                     <dt>TIE_DOWN</dt>
-                    <dd>Missing supplementary description
-                    </dd>
-                    
-                    <dt>TIE_UP</dt>
-                    <dd>Missing supplementary description
-                    </dd>
-                    
-                    <dt>AWAY_FROM_ZERO</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
@@ -69,7 +65,19 @@
                     <dd>Missing supplementary description
                     </dd>
                     
-                    <dt>TIE_AWAY_FROM_ZERO</dt>
+                    <dt>TIE_TOWARDS_ZERO</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                    <dt>FLOOR</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                    <dt>TIE_UP</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
+                    <dt>AWAY_FROM_ZERO</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
@@ -77,15 +85,7 @@
                     <dd>Missing supplementary description
                     </dd>
                     
-                    <dt>TIE_TOWARDS_ZERO</dt>
-                    <dd>Missing supplementary description
-                    </dd>
-                    
                     <dt>CEILING</dt>
-                    <dd>Missing supplementary description
-                    </dd>
-                    
-                    <dt>FLOOR</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
@@ -193,131 +193,6 @@
         <section id="examples">
             <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
             
-            <table>
-                <caption>Basic examples without any special cases</caption>
-                <thead>
-                    <tr>
-                        
-                        
-                        <th>arg1 (fp64)</th>
-                        
-                        <th>arg2 (i32)</th>
-                        
-                        <th>result (fp64)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>2</td>
-                        
-                        <td>2</td>
-                        
-                        <td>2</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>2.75</td>
-                        
-                        <td>1</td>
-                        
-                        <td>2.8</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>2.0000007152457373</td>
-                        
-                        <td>10</td>
-                        
-                        <td>2.0000007152</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>2.0000007152457373</td>
-                        
-                        <td>10</td>
-                        
-                        <td>2.0000007152</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
-            <table>
-                <caption>Examples with negative rounding</caption>
-                <thead>
-                    <tr>
-                        
-                        
-                        <th>arg1 (i16)</th>
-                        
-                        <th>arg2 (i32)</th>
-                        
-                        <th>result (i16)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>2</td>
-                        
-                        <td>-2</td>
-                        
-                        <td>0</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>123</td>
-                        
-                        <td>-2</td>
-                        
-                        <td>100</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>8793</td>
-                        
-                        <td>-2</td>
-                        
-                        <td>8800</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
         </section>
     </article>
     <script src="./assets/supplementary/script.js"></script>
@@ -326,34 +201,6 @@
         
         'snowflake': {
             examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
                 
             ],
             kernels: [
@@ -376,34 +223,6 @@
         'sqlite': {
             examples: [
                 
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
             ],
             kernels: [
                 
@@ -424,34 +243,6 @@
         
         'datafusion': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
@@ -474,34 +265,6 @@
         'postgres': {
             examples: [
                 
-                
-                  "The dialect postgres does not support the kernel rounding.round(i8, i32) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel rounding.round(fp32, i32) -> fp32",
-                
-                
-                
-                  "The dialect postgres does not support the kernel rounding.round(fp64, i32) -> fp64",
-                
-                
-                
-                  "The dialect postgres does not support the kernel rounding.round(fp64, i32) -> fp64",
-                
-                
-                
-                  "The dialect postgres does not support the kernel rounding.round(i8, i32) -> i8",
-                
-                
-                
-                  "The dialect postgres does not support the kernel rounding.round(i8, i32) -> i8",
-                
-                
-                
-                  null,
-                
-                
             ],
             kernels: [
                 
@@ -522,34 +285,6 @@
         
         'cudf': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
@@ -572,34 +307,6 @@
         'velox_presto': {
             examples: [
                 
-                
-                  "The dialect velox_presto does not support the kernel rounding.round(i8, i32) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel rounding.round(fp32, i32) -> fp32",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel rounding.round(fp64, i32) -> fp64",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel rounding.round(fp64, i32) -> fp64",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel rounding.round(i8, i32) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel rounding.round(i8, i32) -> i8",
-                
-                
-                
-                  "The dialect velox_presto does not support the kernel rounding.round(i16, i32) -> i16",
-                
-                
             ],
             kernels: [
                 
@@ -620,34 +327,6 @@
         
         'duckdb': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [

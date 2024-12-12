@@ -49,15 +49,15 @@ The `case_sensitivity` option applies to the `substring` argument.
                 No supplemental information for case_sensitivity
                 <dl>
                     
+                    <dt>CASE_INSENSITIVE_ASCII</dt>
+                    <dd>Missing supplementary description
+                    </dd>
+                    
                     <dt>CASE_SENSITIVE</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
                     <dt>CASE_INSENSITIVE</dt>
-                    <dd>Missing supplementary description
-                    </dd>
-                    
-                    <dt>CASE_INSENSITIVE_ASCII</dt>
                     <dd>Missing supplementary description
                     </dd>
                     
@@ -171,148 +171,6 @@ The `case_sensitivity` option applies to the `substring` argument.
         <section id="examples">
             <h3>Examples&nbsp;<a href="#examples">&para;</a></h3>
             
-            <table>
-                <caption>Basic examples contains as prefix</caption>
-                <thead>
-                    <tr>
-                        
-                        
-                        <th>arg1 (string)</th>
-                        
-                        <th>arg2 (string)</th>
-                        
-                        <th>result (boolean)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>abcdefg</td>
-                        
-                        <td>abc</td>
-                        
-                        <td>True</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>CASE_INSENSITIVE</td>
-                        
-                        
-                        <td>abcdefg</td>
-                        
-                        <td>CdE</td>
-                        
-                        <td>True</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>abcdefg</td>
-                        
-                        <td>cde</td>
-                        
-                        <td>True</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>abcdefg</td>
-                        
-                        <td>fg</td>
-                        
-                        <td>True</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>abcdefg</td>
-                        
-                        <td>aef</td>
-                        
-                        <td>False</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
-            <table>
-                <caption>multi byte characters exists in the string</caption>
-                <thead>
-                    <tr>
-                        
-                        
-                        <th>arg1 (string)</th>
-                        
-                        <th>arg2 (string)</th>
-                        
-                        <th>result (boolean)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>😊a😊b😊😊</td>
-                        
-                        <td>a😊b</td>
-                        
-                        <td>True</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        <td>CASE_INSENSITIVE</td>
-                        
-                        
-                        <td>😊a😊b😊😊</td>
-                        
-                        <td>A😊B</td>
-                        
-                        <td>True</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    
-                    <tr class="bft-case">
-                        
-                        
-                        <td>😊a😊b😊😊</td>
-                        
-                        <td>a😊c</td>
-                        
-                        <td>False</td>
-                    </tr>
-                    <tr class="bft-error-case bft-case-err-message" hidden>
-                        <td colspan="4"/>
-                    </tr>
-                    </tbody>
-            </table>
-            
         </section>
     </article>
     <script src="./assets/supplementary/script.js"></script>
@@ -321,38 +179,6 @@ The `case_sensitivity` option applies to the `substring` argument.
         
         'snowflake': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect snowflake expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect snowflake expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
@@ -381,38 +207,6 @@ The `case_sensitivity` option applies to the `substring` argument.
         'sqlite': {
             examples: [
                 
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
             ],
             kernels: [
                 
@@ -439,38 +233,6 @@ The `case_sensitivity` option applies to the `substring` argument.
         
         'datafusion': {
             examples: [
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
                 
             ],
             kernels: [
@@ -499,38 +261,6 @@ The `case_sensitivity` option applies to the `substring` argument.
         'postgres': {
             examples: [
                 
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
             ],
             kernels: [
                 
@@ -557,38 +287,6 @@ The `case_sensitivity` option applies to the `substring` argument.
         
         'cudf': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect cudf expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
@@ -617,38 +315,6 @@ The `case_sensitivity` option applies to the `substring` argument.
         'velox_presto': {
             examples: [
                 
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
-                
-                  "There is no dialect information for this function",
-                
-                
             ],
             kernels: [
                 
@@ -675,38 +341,6 @@ The `case_sensitivity` option applies to the `substring` argument.
         
         'duckdb': {
             examples: [
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect duckdb expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  null,
-                
-                
-                
-                  "The dialect duckdb expects case_sensitivity=CASE_SENSITIVE but case_sensitivity=CASE_INSENSITIVE was requested",
-                
-                
-                
-                  null,
-                
                 
             ],
             kernels: [
