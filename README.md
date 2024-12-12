@@ -27,9 +27,9 @@ information from its own sources.
 
 ### Test Cases
 
-The BFT includes a collection of test cases in the ```cases``` directory.  These
-test cases explore different options, failure scenarios, or data types.  These
-test cases are continuously verfied by running against different compute engines.
+The substrait repo includes a collection of test cases in the [Cases](https://github.com/substrait-io/substrait/tree/main/tests/cases) directory.
+These test cases explore different options, failure scenarios, or data types.  These
+test cases are continuously verified by running against different compute engines.
 
 ### Supplemental Information
 
