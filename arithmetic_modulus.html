@@ -57,15 +57,15 @@ evaluation that shall lead to the reminder. The reminder will be
 determined by  r = x - round_func(x/y)</p>
                 <dl>
                     
+                    <dt>TRUNCATE</dt>
+                    <dd><p>The quotient is evaluated i.e. the round_func(x/y) is truncated,
+thus the fractional result is rounded towards zero.</p>
+                    </dd>
+                    
                     <dt>FLOOR</dt>
                     <dd><p>The quotient is evaluated i.e. the round_func(x/y) is floored,
 thus the fractional result is rounded to the largest integer
 value less than or equal to it.</p>
-                    </dd>
-                    
-                    <dt>TRUNCATE</dt>
-                    <dd><p>The quotient is evaluated i.e. the round_func(x/y) is truncated,
-thus the fractional result is rounded towards zero.</p>
                     </dd>
                     
                 </dl>
@@ -77,11 +77,6 @@ to truncate, floor, or any such operation. Thus, the entire operation
 may trigger an overflow when the result is outside the representable
 range of the type class. This option controls what happens when this overflow occurs.</p>
                 <dl>
-                    
-                    <dt>SATURATE</dt>
-                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest
-(for negative overflow) possible value for the type class will be returned.</p>
-                    </dd>
                     
                     <dt>ERROR</dt>
                     <dd><p>If an overflow occurs then an error should be raised.</p>
@@ -95,6 +90,11 @@ must be a valid value for the result type class (e.g. modulus of int16
 cannot yield an int32 on overflow)</p>
                     </dd>
                     
+                    <dt>SATURATE</dt>
+                    <dd><p>If an overflow occurs then the largest (for positive overflow) or smallest
+(for negative overflow) possible value for the type class will be returned.</p>
+                    </dd>
+                    
                 </dl>
             
                 <h4>On_domain_error</h4>
@@ -102,14 +102,14 @@ cannot yield an int32 on overflow)</p>
 the divisor is 0 or ±infinity in a divide function.</p>
                 <dl>
                     
-                    <dt>NULL</dt>
-                    <dd><p>Return a NULL if the dividend is ±infinity or the divisor is 0
-or ±infinity.</p>
-                    </dd>
-                    
                     <dt>ERROR</dt>
                     <dd><p>If the dividend is ±infinity or the divisor is 0 or ±infinity,
 an error should be raised.</p>
+                    </dd>
+                    
+                    <dt>NULL</dt>
+                    <dd><p>Return a NULL if the dividend is ±infinity or the divisor is 0
+or ±infinity.</p>
                     </dd>
                     
                 </dl>
